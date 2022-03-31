@@ -1,0 +1,63 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Garden"
+theme = "PaperMod"
+
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+	env = "production"
+	description = "A Collection of Evolving Notes by GabriOliv"
+	keywords =  ["Digital Garden", "Portfolio", "Hugo"]
+	author = "gabrioliv"
+	images = [ "/images" ]
+	DateFormat = "02/01/2006"
+	defaultTheme = "auto"
+	disableThemeToggle = false
+	ShowReadingTime = true
+	ShowShareButtons = true
+	ShowPostNavLinks = true
+	ShowBreadCrumbs = true
+	ShowCodeCopyButtons = false
+	disableSpecial1stPost = false
+	disableScrollToTop = false
+	comments = false
+	hidemeta = false
+	hideSummary = false
+	showtoc = false
+	tocopen = false
+
+[params.profileMode]
+	enabled = true
+	title = "Digital Garden"
+	subtitle = "A Collection of Evolving Notes"
+	imageUrl = "https://avatars.githubusercontent.com/u/43646296"
+	imageTitle = "Avatar"
+	imageWidth = 120
+	imageHeight = 120
+
+		[[params.profileMode.buttons]]
+		name = "Posts"
+		url = "/posts"
+
+		[[params.profileMode.buttons]]
+		name = "Archive"
+		url = "/archive"
+
+		[[params.profileMode.buttons]]
+		name = "Tags"
+		url = "/tags"
+
+	[[params.socialIcons]]
+	name = "github"
+	url = "https://github.com/gabrioliv/garden"
+
+	[[params.socialIcons]]
+	name = "telegram"
+	url = "https://t.me/Gab_Laureano"
+
+	[[params.socialIcons]]
+	name = "linkedin"
+	url = "https://linkedin.com/in/gabriel-o-77569a208/"
