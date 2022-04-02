@@ -1,4 +1,4 @@
-baseURL = "gabrioliv-garden.netlify.app"
+baseURL = "https://gabrioliv-garden.netlify.app"
 languageCode = "en-us"
 title = "Garden"
 theme = "PaperMod"

@@ -1,7 +1,7 @@
 {
   "commitMessage": "garden backup: {{date}}",
   "autoCommitMessage": "garden backup: {{date}}",
-  "commitDateFormat": "YYYY-MM-DD HH:mm:ss",
+  "commitDateFormat": "YYYY-MM-DD",
   "autoSaveInterval": 0,
   "autoPullInterval": 0,
   "autoPullOnBoot": true,
