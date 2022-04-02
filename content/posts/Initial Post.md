@@ -35,5 +35,4 @@ editPost:
   appendFilePath: true # to append file path to Edit link
 ---
 
-
 # Initial Post
