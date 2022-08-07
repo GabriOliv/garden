@@ -3,15 +3,15 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 # weight: 1
 # aliases: ["default"]
-tags: ["Default"]
+tags: []
 author: "gabrioliv"
 # author: ["Me", "You"] # multiple authors
 showToc: true
 TocOpen: false
-draft: false
+draft: true
 hidemeta: false
 comments: false
-description: "Desc Text."
+description: "Description Text"
 #canonicalURL: "https://canonical.url/to/page"
 disableHLJS: true # to disable highlightjs
 disableShare: false
@@ -34,4 +34,3 @@ editPost:
   Text: "Suggest Changes" # edit text
   appendFilePath: true # to append file path to Edit link
 ---
-
