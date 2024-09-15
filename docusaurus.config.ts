@@ -19,8 +19,10 @@ const config: Config = {
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
-	organizationName: 'gabrioliv', // Usually your GitHub org/user name.
 	projectName: 'garden', // Usually your repo name.
+	organizationName: 'gabrioliv', // Usually your GitHub org/user name.
+	trailingSlash: false,
+	deploymentBranch: 'gh-pages',
 
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
@@ -29,7 +31,8 @@ const config: Config = {
 	// useful metadata like html lang. For example, if your site is Chinese, you
 	// may want to replace "en" with "zh-Hans".
 	i18n: {
-		defaultLocale: 'pt-BR',
+		defaultLocale: 'en',
+		// defaultLocale: 'pt-BR',
 		locales: ['en'],
 	},
 
