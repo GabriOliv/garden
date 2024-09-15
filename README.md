@@ -4,9 +4,7 @@ Repositório para documentação em formato digital garden.
 
 ---
 
-## instalando o projeto
-
-Clone o repositório
+## Instalando o Projeto
 
 ```bash
 git clone git@github.com:GabriOliv/garden.git
@@ -21,8 +19,7 @@ npm install
 npm start
 ```
 
-Build
-
+Build:
 ```bash
 npm run build
 ```
