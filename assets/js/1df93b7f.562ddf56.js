@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkqa=self.webpackChunkqa||[]).push([[583],{8198:(e,r,s)=>{s.r(r),s.d(r,{default:()=>a});s(8774),s(4586),s(1107);s(6540);var t=s(6347),u=s(4848);function a(){return(0,u.jsx)(t.rd,{to:"docs/project/"})}}}]);
