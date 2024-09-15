@@ -1,6 +1,44 @@
-# Exclude workspace cache
-.obsidian/workspace
+# ----------------------------------------
+# Docusaurus
+# ----------------------------------------
+# Dependencies
+/node_modules
 
-# Exclude OS settings and caches
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ----------------------------------------
+# Operating System
+# ----------------------------------------
+
+# Trash settings and caches
 .trash/
 .DS_Store
+
+# ----------------------------------------
+# IDEs
+# ----------------------------------------
+
+.idea/
+.vscode/
+
+# ----------------------------------------
+# WIP
+# ----------------------------------------
+
+docs/sketches/
