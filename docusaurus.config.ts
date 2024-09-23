@@ -52,7 +52,8 @@ const config: Config = {
 					// Remove this to remove the "edit this page" links.
 					editUrl:
 						// 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-						'https://github.com/GabriOliv/garden',
+						'https://github.com/GabriOliv/garden/blob/master/',
+						// 'https://github.com/GabriOliv/garden',
 					remarkPlugins: [remarkMath],
 					rehypePlugins: [rehypeKatex],
 				},
@@ -109,7 +110,7 @@ const config: Config = {
 		},
 		footer: {
 			style: 'dark',
-			links: [
+			// links: [
 			// 	{
 			// 		title: 'Docs',
 			// 		items: [
@@ -149,7 +150,7 @@ const config: Config = {
 			// 			},
 			// 		],
 			// 	},
-			],
+			// ],
 			// copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
 			copyright: `Criado com Docusaurus e ❤️`,
 		},

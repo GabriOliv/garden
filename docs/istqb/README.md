@@ -11,9 +11,9 @@ Fluxo atual (`15/09/2024`) de certificações da BSTQB:
 
 		classDef node fill:#000F,color:#FFFF,stroke:#0000;
 		classDef ctal fill:#F60,stroke:#333,stroke-width:2px;
-		classDef invisible fill:#0000,stroke:#0000;
+		classDef invi fill:#0000,stroke:#0000;
 
-		S1:::invisible
+		S1:::invi
 
 		subgraph S0["Fundamental"]
 			A[CTFL]

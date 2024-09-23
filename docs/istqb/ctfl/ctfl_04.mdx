@@ -1,0 +1,177 @@
+---
+sidebar_position: 1
+title: Capítulo 4
+description: CTFL - Capítulo 4 - Análise e Modelagem de Teste
+tags: [stageA, istqb, ctfl, capitulo]
+draft: false
+---
+
+# 4 Análise e Modelagem de Teste
+
+### 4.1 Visão geral das técnicas de teste
+
+- Técnicas de Teste Caixa-Preta
+	- Analisa o comportamento do objeto de teste
+- Técnicas de Teste Caixa-Branca
+	- Analisa a estrutura interna do objeto de teste
+- Técnicas de Teste Baseada na Experiência
+	- Usa o conhecimento e experiência do testador
+
+### 4.2 Técnicas de Teste Caixa-Preta
+
+### 4.2.1 Particionamento de Equivalência (EP)
+
+Divide os dados em partes para serem testados.
+
+Cada partição de dados é agrupada de forma que possam ser testadas com o mesmo processo.
+
+- Dados que podem ser agrupados:
+	- Input
+	- Output
+	- Valores Internos
+	- Parâmetros de Interface
+
+Compreender como os dados são processos é complicado.
+
+Usar o particionamento com cuidado.
+
+A cobertura é feita validando cada partição com pelo menos um caso de uso.
+
+### 4.2.2 Análise de Valor de Limite (BVA)
+
+BVA (Boundary Value Analysis) se concentra nos valores limites.
+
+- BVA de 2 Valores: é validado todos os dois limites da partição
+	- Exemplo: `00-01|10-11|20-21|30-31|`
+- BVA de 3 Valores: é validado todos os dois limites da partição e seu vizinhos
+	- Exemplo: `00-01|09-10-11|19-20-21|29-30-31|`
+
+### 4.2.3 Teste de Tabela de Decisão
+
+Usada para testar combinações de requisitos do sistema.
+
+É gerada uma tabela de requisitos em que cada coluna é um req e ações associadas.
+
+Age como a "tabela verdade" de lógica computacional.
+
+Na tabela, todas as decisões são desenhadas.
+
+Abordagem sistemática para todas as combinações.
+
+### 4.2.4 Teste de Transição de Estado
+
+Um diagrama de transição de estado modela o comportamento.
+
+Mostra possíveis estados e transições.
+
+```mermaid
+stateDiagram
+	s1: Credentials Entered
+	s2: Successful Login
+	s3: Incorrect Login
+	s4: Locked Out
+
+	[*] --> s1
+	s1 --> s3 : Wrong Credentials
+	s3 --> s4 : Too many wrong logins
+	s3 --> s1
+	s1 --> s2 : Correct credentials
+
+	s2 --> [*]
+	s4 --> [*]
+
+```
+
+- Cobertura
+	- Cobertura de Todos os Estados
+	- Cobertura de Transições Válidas
+	- Cobertura de Todas as Transições
+
+### 4.3 Técnicas de Teste Caixa-Branca
+
+### 4.3.1 Teste de Instrução e Cobertura de Instrução
+
+- Teste de Instruções
+- Teste de Ramificação
+
+### 4.3.1 Teste de Instrução e Cobertura de Instrução
+
+Teste de instrução
+
+Itens de Cobertura são Instruções Executáveis.
+
+Casos de teste são instruções no código
+
+Não pega casos que dependem de dados
+
+### 4.3.2 Teste de Ramificação e Cobertura de Ramificação
+
+Usando um grafo de fluxo de controle, cada ramificação é um caso de teste.
+
+As ramificações geralmente são os IF ou LOOPs.
+
+### 4.3.3 O valor do Teste Caixa-Branca
+
+Usa toda a implementação durante o teste, facilitando a detecção de defeitos de especificação.
+
+Os testes de caixa branca podem ser usados como teste estático.
+
+### 4.4 Técnicas de Teste Baseadas na Experiência
+
+- Suposição de erro
+- Teste exploratório
+- Teste baseado em lista de verificação
+
+### 4.4.1 Suposição de Erro
+
+Cria o caso de teste já pensando nos erros possíveis.
+São criados com base em erros já experienciados e como o software funcionava anteriormente.
+
+### 4.4.2 Testes Exploratórios
+
+Os teste são modelados, executados e avaliados ao mesmo tempo.
+
+Útil quando não há um conhecimento de como o sistema irá se comportar.
+
+### 4.4.3 Testes baseados em Lista de Verificação
+
+O tester cria uma lista de verificação que será usada como cobertura.
+
+O itens são formulados em formado de pergunta.
+
+Pode ser usado como um teste de suporte.
+
+### 4.5 Abordagens de Teste Baseadas na Colaboração
+
+Objetivos de EVITAR defeitos.
+
+### 4.5.1 Escrita colaborativa de histórias de usuários
+
+Junta, a equipe escreve as UserStories
+
+Usando "3C"
+
+- Cartão: descrição da história
+- Conversação: como o software será usado
+- Confirmação: critérios de aceite
+
+### 4.5.2 Critérios de Aceite
+
+Critérios para que os stakeholders aceite a implementação como completa.
+
+- São usados para:
+	- Definir escopo
+	- Chegar em consenso com stakeholders
+	- Descrever cenários
+	- Base dos Testes de Aceite
+- Podem ser Orientados por:
+	- Cenários
+	- Regras
+
+### 4.5.3 Desenvolvimento Orientado por Teste de Aceite (ATDD)
+
+ATDD é uma abordagem que prioriza o teste
+
+Os casos são criados antes da implementação da UserStories
+
+---

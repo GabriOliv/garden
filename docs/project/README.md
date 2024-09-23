@@ -1,8 +1,13 @@
 ---
-title: Sobre o Projeto
-position: 0
+sidebar_position: 0
+title: Garden
+description: Uma Coleção de Notas em Evolução
+custom_edit_url: null
+draft: false
 ---
 
-# Digital Garden
+<!--<h1 style={{textAlign: 'center'}}> Garden </h1>-->
+
+![Banner](./assets/undraw_done_checking_re_6vyx.svg)
 
 ---

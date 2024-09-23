@@ -1,0 +1,64 @@
+# ==============================================================================
+# Níveis de Maturidade dos Artigos
+# ==============================================================================
+
+stageA:
+  label: '🌱'
+  permalink: '/stageA'
+  description: '🌱 Artigos Iniciais'
+stageB:
+  label: '🌿'
+  permalink: '/stageB'
+  description: '🌿 Artigos Melhorados'
+stageC:
+  label: '🌲'
+  permalink: '/stageC'
+  description: '🌲 Artigos Intermediários'
+stageD:
+  label: '🍎'
+  permalink: '/stageD'
+  description: '🍎 Artigos Completos'
+
+# ==============================================================================
+# Tipos de Conteúdo
+# ==============================================================================
+
+capitulo:
+  label: 'Capítulo'
+  permalink: '/capitulo'
+  description: 'Capítulo de livro estudado'
+artigo:
+  label: 'Artigo'
+  permalink: '/artigo'
+  description: 'Artigo'
+
+# ==============================================================================
+# Categorias
+# ==============================================================================
+
+projeto:
+  label: 'Projeto'
+  permalink: '/projeto'
+  description: 'Projeto'
+garden:
+  label: 'Garden'
+  permalink: '/garden'
+  description: 'Garden'
+qa:
+  label: 'QA'
+  permalink: '/qa'
+  description: 'Quality Assurance'
+
+# ==============================================================================
+# ISTQB
+# ==============================================================================
+
+istqb:
+  label: 'ISTQB'
+  permalink: '/istqb'
+  description: 'International Software Testing Qualifications Board'
+ctfl:
+  label: 'CTFL'
+  permalink: '/ctfl'
+  description: 'Certified Tester Foundation Level'
+

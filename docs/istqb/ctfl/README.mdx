@@ -1,0 +1,53 @@
+---
+sidebar_position: 1
+title: CTFL
+---
+
+# Certified Tester Foundation Level
+
+CTFL é uma certificação reconhecida internacionalmente para profissionais de qualidade de software e teste de software. É oferecida pela ISTQB (International Software Testing Qualifications Board) e é considerada um padrão de base na indústria de testes de software.
+É a primeira certificação da ISTQB e é um pré-requisito para outras certificações mais avançadas, como CTAL e CTAL-TAE. 
+
+A seguir, você encontrará a documentação criada como resumo de estudo para a certificação CTFL.
+A única base utilizada para a criação deste material foi o Syllabus da CTFL 4.0, portanto, é recomendado que você consulte o documento oficial para obter informações mais detalhadas.
+
+Consegui a certificação CTFL em 30/08/2024 e resolvi compartilhar o material que criei para estudar.
+
+### Capítulos
+
+- [Capitulo 1: Fundamentos de Teste](./ctfl/ctfl_01)
+- [Capitulo 2: Testes no SDLC](./ctfl/ctfl_02)
+- [Capitulo 3: Teste Estático](./ctfl/ctfl_03)
+- [Capitulo 4: Técnicas de Teste](./ctfl/ctfl_04)
+- [Capitulo 5: Gerenciamento de Teste](./ctfl/ctfl_05)
+- [Capitulo 6: Ferramentas de Teste](./ctfl/ctfl_06)
+
+### Fluxo de Estudo
+
+```mermaid
+%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
+flowchart LR
+	classDef node fill:#000F,color:#FFFF,stroke:#0000;
+	classDef exec fill:#F55;
+
+	A[Capitulo 1<br>Fundamentos de Teste]
+	B[Capitulo 2<br>Testes no SDLC]
+	C[Capitulo 3<br>Teste Estático]
+	D[Capitulo 4<br>Técnicas de Teste]
+	E[Capitulo 5<br>Gerenciamento de Teste]
+	F[Capitulo 6<br>Ferramentas de Teste]
+
+	R1[Aplicação de<br>Técnicas de Teste]:::exec
+	R2[Revisão]:::exec
+
+	A --> B --> C --> D --> R1 --> E --> F --> R2
+```
+
+### Referências
+
+- Syllabus CTFL 4.0 (BSTQB pt_BR) — Utilizado para a criação deste material.
+- Syllabus CTFL 4.0 (ISTQB en) — Documento oficial da ISTQB, utilizada para desambiguação de termos.
+- MermaidJS — Utilizado para a criação de diagramas no markdown.
+- As demais bibliografias já estão referenciadas adequadamente nos Syllabus.
+
+---
