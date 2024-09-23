@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkqa=self.webpackChunkqa||[]).push([[237],{2237:(e,t,s)=>{s.r(t),s.d(t,{default:()=>d});s(6540);var n=s(1312),a=s(1003),u=s(8244),r=s(3363),c=s(4848);function d(){const e=(0,n.T)({id:"theme.NotFound.title",message:"Page Not Found"});return(0,c.jsxs)(c.Fragment,{children:[(0,c.jsx)(a.be,{title:e}),(0,c.jsx)(u.A,{children:(0,c.jsx)(r.A,{})})]})}}}]);

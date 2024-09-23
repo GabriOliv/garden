@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-istqb/ctfl/ctfl_01" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Capítulo 1 | Garden</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://gabrioliv.github.io/garden/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://gabrioliv.github.io/garden/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_01"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Capítulo 1 | Garden"><meta data-rh="true" name="description" content="CTFL - Capítulo 1 - Fundamentos de Teste"><meta data-rh="true" property="og:description" content="CTFL - Capítulo 1 - Fundamentos de Teste"><link data-rh="true" rel="icon" href="/garden/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_01"><link data-rh="true" rel="alternate" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_01" hreflang="en"><link data-rh="true" rel="alternate" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_01" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/garden/assets/css/styles.cae9cab2.css">
+<script src="/garden/assets/js/runtime~main.aa584020.js" defer="defer"></script>
+<script src="/garden/assets/js/main.828dc498.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/garden/"><b class="navbar__title text--truncate">Garden</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/garden/docs/istqb">ISTQB</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/GabriOliv/garden" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/garden/docs/istqb">ISTQB / BSTQB</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/garden/docs/istqb/ctfl">CTFL</a><button aria-label="Collapse sidebar category &#x27;CTFL&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_01">Capítulo 1</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_02">Capítulo 2</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_03">Capítulo 3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_04">Capítulo 4</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_05">Capítulo 5</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_06">Capítulo 6</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/garden/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/garden/docs/istqb/ctfl"><span itemprop="name">CTFL</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Capítulo 1</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>1 Fundamentos de Teste</h1></header>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11-o-que-é-teste">1.1 O que é teste<a href="#11-o-que-é-teste" class="hash-link" aria-label="Direct link to 1.1 O que é teste" title="Direct link to 1.1 O que é teste">​</a></h3>
+<p>Teste é um conjunto de atividades usadas para descobrir defeitos e avaliar a qualidade do software e seus artefatos.</p>
+<ul>
+<li>Conjunto de atividades usadas para:<!-- -->
+<ul>
+<li>Descobrir defeitos do software;</li>
+<li>Avaliar a qualidade dos artefatos do software;</li>
+<li>Verificar o sistema atende requisitos.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>
+<p>Tipos de Teste:</p>
+<ul>
+<li>Estático<!-- -->
+<ul>
+<li>Análise de Requisitos</li>
+</ul>
+</li>
+<li>Dinâmico<!-- -->
+<ul>
+<li>Execução do Software</li>
+<li>Diferentes Técnicas</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Teste NÃO É SÓ TÉCNICO, precisa:</p>
+<ul>
+<li>Planejado</li>
+<li>Gerenciado</li>
+<li>Estimado</li>
+<li>Monitorado</li>
+<li>Controlado</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="111-objetivos-do-teste">1.1.1 Objetivos do Teste<a href="#111-objetivos-do-teste" class="hash-link" aria-label="Direct link to 1.1.1 Objetivos do Teste" title="Direct link to 1.1.1 Objetivos do Teste">​</a></h3>
+<ul>
+<li>Objetivos típicos são:<!-- -->
+<ul>
+<li>Avaliar produtos de trabalho<!-- -->
+<ul>
+<li>user stories</li>
+<li>requisitos</li>
+<li>projetos</li>
+<li>códigos</li>
+</ul>
+</li>
+<li>Detectar falhas</li>
+<li>Garantir cobertura de um objeto de teste</li>
+<li>Verificar se requisitos foram atendidos</li>
+<li>Verificar conformidade legal de contrato</li>
+<li>Fornecer informação para tomada de decisão</li>
+<li>Validar se objeto está completo</li>
+</ul>
+</li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>OBJETIVOS (EM RESUMO):</div><div class="admonitionContent_BuS1"><ul>
+<li>DESCOBRIR DEFEITO:<!-- -->
+<ul>
+<li>NO SOFTWARE</li>
+<li>NOS REQUISITOS</li>
+<li>NA COBERTURA</li>
+<li>NA ENTREGA</li>
+<li>NAS DECISÕES</li>
+</ul>
+</li>
+</ul></div></div>
+<p>Varia de acordo com o contexto da empresa.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="112-teste-e-depuração">1.1.2 Teste e Depuração<a href="#112-teste-e-depuração" class="hash-link" aria-label="Direct link to 1.1.2 Teste e Depuração" title="Direct link to 1.1.2 Teste e Depuração">​</a></h3>
+<p>Depurar = Debuggar</p>
+<p>DEPURAR/DEBUGGAR NÃO É UMA ATIVIDADE DE TESTE</p>
+<ul>
+<li>Reproduzir a falha</li>
+<li>Fazer diagnóstico</li>
+<li>Encontrar a causa raiz</li>
+</ul>
+<p>Teste de confirmação é feito posterior à alteração de correção;</p>
+<p>É realizado pela mesma pessoa que fez o teste inicial.</p>
+<!-- -->
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12-por-que-os-testes-são-necessários">1.2 Por que os testes são NECESSÁRIOS?<a href="#12-por-que-os-testes-são-necessários" class="hash-link" aria-label="Direct link to 1.2 Por que os testes são NECESSÁRIOS?" title="Direct link to 1.2 Por que os testes são NECESSÁRIOS?">​</a></h3>
+<p>Os testes s ão uma forma de controle de qualidade.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="121-contribuições-para-o-sucesso-dos-testes">1.2.1 Contribuições para o sucesso dos testes<a href="#121-contribuições-para-o-sucesso-dos-testes" class="hash-link" aria-label="Direct link to 1.2.1 Contribuições para o sucesso dos testes" title="Direct link to 1.2.1 Contribuições para o sucesso dos testes">​</a></h3>
+<p>Testes são um meio ECONÔMICO de detectar defeitos.</p>
+<p>Ajudam no ciclo de vida do software.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="122-testes-e-garantia-da-qualidade-qa">1.2.2 Testes e Garantia da Qualidade (QA)<a href="#122-testes-e-garantia-da-qualidade-qa" class="hash-link" aria-label="Direct link to 1.2.2 Testes e Garantia da Qualidade (QA)" title="Direct link to 1.2.2 Testes e Garantia da Qualidade (QA)">​</a></h3>
+<p>Teste(QC) é diferente de QA.</p>
+<table><thead><tr><th style="text-align:left"></th><th style="text-align:center">QC</th><th style="text-align:center">QA</th></tr></thead><tbody><tr><td style="text-align:left">br</td><td style="text-align:center">Controle de Qualidade</td><td style="text-align:center">Garantia da Qualidade</td></tr><tr><td style="text-align:left">en</td><td style="text-align:center">Quality Control</td><td style="text-align:center">Quality Assurance</td></tr><tr><td style="text-align:left">Método</td><td style="text-align:center">Corretivo</td><td style="text-align:center">Preventivo</td></tr><tr><td style="text-align:left">Orientado ao</td><td style="text-align:center">Produto</td><td style="text-align:center">Processo</td></tr><tr><td style="text-align:left">Resultado dos testes</td><td style="text-align:center">Corrigir Defeitos</td><td style="text-align:center">Feedback do Processo</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="123-erros-defeitos-falhas-e-causa-raiz">1.2.3 Erros, Defeitos, Falhas e Causa-Raiz<a href="#123-erros-defeitos-falhas-e-causa-raiz" class="hash-link" aria-label="Direct link to 1.2.3 Erros, Defeitos, Falhas e Causa-Raiz" title="Direct link to 1.2.3 Erros, Defeitos, Falhas e Causa-Raiz">​</a></h3>
+<ul>
+<li>humanos cometem ERROS<!-- -->
+<ul>
+<li>que podem produzir DEFEITOS<!-- -->
+<ul>
+<li>que podem resultar em FALHAS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Nem todo ERRO gera um DEFEITO, e assim por diante.</p>
+<!-- -->
+<p>Root Causes — Causa Raiz</p>
+<ul>
+<li>Razão fundamental que causou o problema.</li>
+<li>Identificado em Root Cause Analysis (RCA) ou Análise de Causa Raiz.<!-- -->
+<ul>
+<li>Executada quando uma falha ou defeito é identificado.</li>
+</ul>
+</li>
+</ul>
+<p>Bug — Bug</p>
+<ul>
+<li>Termo geral e informal para referir aos defeitos do software.</li>
+</ul>
+<p>Error — Erro</p>
+<ul>
+<li>Erro (Error) ou Engano (Mistake) são gerados por humanos</li>
+<li>Podem, ou não, gerar problemas.</li>
+</ul>
+<p>Defect — Defeito</p>
+<ul>
+<li>Defeito é a variação entre o esperado (expected) e os resultados atuais.</li>
+</ul>
+<p>Failure — Falha</p>
+<ul>
+<li>Consequência da existência de um ou mais defeitos</li>
+<li>Incapacidade do software de desempenhar a função desejada</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13-princípios-de-teste">1.3 Princípios de Teste<a href="#13-princípios-de-teste" class="hash-link" aria-label="Direct link to 1.3 Princípios de Teste" title="Direct link to 1.3 Princípios de Teste">​</a></h3>
+<ol>
+<li>O teste mostra a presença, não a ausência de defeitos<!-- -->
+<ul>
+<li>OU SEJA: nunca haverá a certeza da ausência de bugs</li>
+</ul>
+</li>
+<li>Testes exaustivos são impossíveis<!-- -->
+<ul>
+<li>OU SEJA: não dá para testar TUDO SEMPRE</li>
+</ul>
+</li>
+<li>Testes antecipados economizam tempo e dinheiro<!-- -->
+<ul>
+<li>OU SEJA: é mais fácil descobrir e corrigir no começo</li>
+</ul>
+</li>
+<li>Os defeitos se agrupam<!-- -->
+<ul>
+<li>OU SEJA: se algo está quebrado, vários outros estarão</li>
+</ul>
+</li>
+<li>Os testes se degradam<!-- -->
+<ul>
+<li>OU SEJA: testar do mesmo jeito não descobre problemas novos</li>
+</ul>
+</li>
+<li>Os testes dependem do contexto<!-- -->
+<ul>
+<li>OU SEJA: cada problema requer uma heurística</li>
+</ul>
+</li>
+<li>Falácia da ausência de defeitos<!-- -->
+<ul>
+<li>OU SEJA: piada de ironia do: &quot;Se funciona está correto&quot;</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="14-atividades-de-teste-testware-e-papéis-no-teste">1.4 Atividades de teste, Testware e Papéis no teste<a href="#14-atividades-de-teste-testware-e-papéis-no-teste" class="hash-link" aria-label="Direct link to 1.4 Atividades de teste, Testware e Papéis no teste" title="Direct link to 1.4 Atividades de teste, Testware e Papéis no teste">​</a></h3>
+<p>&quot;Processo de Teste&quot; é um forma geral de executar as &quot;Atividades de Teste&quot;.</p>
+<p>&quot;Testware&quot; é o conjunto de produtos de trabalho de teste.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="141-atividades-e-tarefas-de-teste">1.4.1 Atividades e Tarefas de Teste<a href="#141-atividades-e-tarefas-de-teste" class="hash-link" aria-label="Direct link to 1.4.1 Atividades e Tarefas de Teste" title="Direct link to 1.4.1 Atividades e Tarefas de Teste">​</a></h3>
+<p>As atividades podem ser executadas em sequência ou paralelo.</p>
+<ul>
+<li>Planejamento do Teste<!-- -->
+<ul>
+<li>Definir os objetivos</li>
+<li>Escolher abordagem</li>
+</ul>
+</li>
+<li>Monitoramento e Controle de Teste<!-- -->
+<ul>
+<li>Verificação contínua das atividades (monitoramento em paralelo)</li>
+</ul>
+</li>
+<li>Análise de Teste<!-- -->
+<ul>
+<li>Análise de recursos testáveis</li>
+<li>Definir prioridades</li>
+</ul>
+</li>
+<li>Modelagem de Teste<!-- -->
+<ul>
+<li>Elaborar as condições do teste</li>
+<li>Identificar com será a Cobertura</li>
+<li>Ferramentas necessárias</li>
+</ul>
+</li>
+<li>Implementação do Teste<!-- -->
+<ul>
+<li>Criação do teste</li>
+<li>Escrita dos casos ou scripts</li>
+</ul>
+</li>
+<li>Execução do Teste<!-- -->
+<ul>
+<li>Executar o teste no sistema</li>
+<li>Manual ou automatizado</li>
+</ul>
+</li>
+<li>Conclusão do Teste<!-- -->
+<ul>
+<li>Arquivar resultados</li>
+<li>Salvar as análises dos testes realizados</li>
+</ul>
+</li>
+</ul>
+<table><thead><tr><th style="text-align:left">Atividade</th><th style="text-align:left">Exemplo</th></tr></thead><tbody><tr><td style="text-align:left">Planejamento</td><td style="text-align:left">Vamos fazer um teste de carga nessa versão</td></tr><tr><td style="text-align:left">Monitoramento</td><td style="text-align:left">O teste de carga está seguindo o &quot;Processo de Teste&quot;</td></tr><tr><td style="text-align:left">Análise</td><td style="text-align:left">Analisar qual tela está mais lenta no sistema</td></tr><tr><td style="text-align:left">Modelagem</td><td style="text-align:left">O parâmetro para passar é 500 requisições/segundo sem lentidão</td></tr><tr><td style="text-align:left">Implementação</td><td style="text-align:left">Codificação do teste no k6</td></tr><tr><td style="text-align:left">Execução</td><td style="text-align:left">O script de teste de carga é executado no sistema</td></tr><tr><td style="text-align:left">Conclusão</td><td style="text-align:left">Os resultados são salvos e entregues em um Relatório à gerencia</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="142-processo-de-teste-no-contexto">1.4.2 Processo de Teste no Contexto<a href="#142-processo-de-teste-no-contexto" class="hash-link" aria-label="Direct link to 1.4.2 Processo de Teste no Contexto" title="Direct link to 1.4.2 Processo de Teste no Contexto">​</a></h3>
+<p>Testes servem para os stakeholders e esse contexto dita os processos de testes.</p>
+<ul>
+<li>Depende<!-- -->
+<ul>
+<li>da ferramenta (manual ou automatizado)</li>
+<li>do ciclo de vida (scrum ou cascata)</li>
+<li>do projeto (pouco orçamento, pouco tempo)</li>
+<li>domínio de negócio (situação legal, riscos identificados)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="143-testware">1.4.3 Testware<a href="#143-testware" class="hash-link" aria-label="Direct link to 1.4.3 Testware" title="Direct link to 1.4.3 Testware">​</a></h3>
+<p>Testware é o conjunto de produtos de trabalho de teste.</p>
+<ul>
+<li>Tudo que é gerado pelo trabalho de teste se aplica ao Testware.<!-- -->
+<ul>
+<li>Relatórios, registros, tabelas, documentação, gráficos...</li>
+</ul>
+</li>
+</ul>
+<p>Todas as Atividades de Teste podem gerar produtos que compõem o Testware.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="144-rastreabilidade-entre-a-base-de-teste-e-o-testware">1.4.4 Rastreabilidade entre a Base de Teste e o Testware<a href="#144-rastreabilidade-entre-a-base-de-teste-e-o-testware" class="hash-link" aria-label="Direct link to 1.4.4 Rastreabilidade entre a Base de Teste e o Testware" title="Direct link to 1.4.4 Rastreabilidade entre a Base de Teste e o Testware">​</a></h3>
+<p>O Testware é usado para rastrear o processo de teste</p>
+<ul>
+<li>&quot;Processo de Teste&quot; gera &quot;Testware&quot;<!-- -->
+<ul>
+<li>&quot;Testware&quot; gera dados de Cobertura<!-- -->
+<ul>
+<li>Cobertura é um indicador de objetivo do teste<!-- -->
+<ul>
+<li>Indicador mede a eficiência do teste</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A rastreabilidade da Base do Teste ao Testware também mantem a transparência.</p>
+<ul>
+<li>Facilita a<!-- -->
+<ul>
+<li>Avaliação de Cobertura</li>
+<li>Determinar impactos das mudanças</li>
+<li>Informações de qualidade</li>
+<li>Progresso do projeto</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="145-papéis-no-teste">1.4.5 Papéis no Teste<a href="#145-papéis-no-teste" class="hash-link" aria-label="Direct link to 1.4.5 Papéis no Teste" title="Direct link to 1.4.5 Papéis no Teste">​</a></h3>
+<p>Ambos os papéis podem ser executados pela mesma pessoa.</p>
+<ul>
+<li>Gerente de Teste<!-- -->
+<ul>
+<li>Responsabilidade sobre<!-- -->
+<ul>
+<li>Processo de Teste</li>
+<li>Equipe de Teste</li>
+</ul>
+</li>
+<li>Planejamento</li>
+<li>Monitoramento</li>
+</ul>
+</li>
+<li>Testador<!-- -->
+<ul>
+<li>Engenharia técnica do teste</li>
+<li>Análise</li>
+<li>Modelagem</li>
+<li>Implementação</li>
+<li>Execução</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="15-habilidades-essenciais-e-boas-práticas-em-testes">1.5 Habilidades essenciais e boas práticas em testes<a href="#15-habilidades-essenciais-e-boas-práticas-em-testes" class="hash-link" aria-label="Direct link to 1.5 Habilidades essenciais e boas práticas em testes" title="Direct link to 1.5 Habilidades essenciais e boas práticas em testes">​</a></h3>
+<p>Algumas habilidades são essenciais, que vão além da aptidão</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="151-habilidades-genéricas-necessárias-para-testes">1.5.1 Habilidades genéricas necessárias para testes<a href="#151-habilidades-genéricas-necessárias-para-testes" class="hash-link" aria-label="Direct link to 1.5.1 Habilidades genéricas necessárias para testes" title="Direct link to 1.5.1 Habilidades genéricas necessárias para testes">​</a></h3>
+<ul>
+<li>Conhecimento de teste</li>
+<li>Meticulosidade (Cuidadoso)</li>
+<li>Boa Comunicação</li>
+<li>Pensamento Analítico</li>
+<li>Conhecimento Técnico</li>
+<li>Conhecimento de Domínio</li>
+</ul>
+<p>Erros devem ser comunicados de forma construtiva.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="152-abordagem-de-equipe-completa">1.5.2 Abordagem de equipe completa<a href="#152-abordagem-de-equipe-completa" class="hash-link" aria-label="Direct link to 1.5.2 Abordagem de equipe completa" title="Direct link to 1.5.2 Abordagem de equipe completa">​</a></h3>
+<ul>
+<li>Na &quot;Abordagem de Equipe Completa&quot;<!-- -->
+<ul>
+<li>Qualquer membro pode executar qualquer tarefa</li>
+<li>Todos são responsáveis pela qualidade</li>
+<li>A equipe compartilha o mesmo espaço de trabalho</li>
+<li>Testers colaboram diretamente com outros membros da equipe</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="153-independência-dos-testes">1.5.3 Independência dos testes<a href="#153-independência-dos-testes" class="hash-link" aria-label="Direct link to 1.5.3 Independência dos testes" title="Direct link to 1.5.3 Independência dos testes">​</a></h3>
+<p>Independência é a separação entre o criador e o testador do produto.
+A Independência tem vários níveis.</p>
+<table><thead><tr><th style="text-align:left">Testador</th><th style="text-align:left">Independência</th><th style="text-align:left"></th><th style="text-align:left">Testes Relacionados</th></tr></thead><tbody><tr><td style="text-align:left">Próprio Autor</td><td style="text-align:left">Nulo</td><td style="text-align:left">🟥</td><td style="text-align:left">Testes de Componente</td></tr><tr><td style="text-align:left">Membro da Equipe</td><td style="text-align:left">Alguma</td><td style="text-align:left">🟥🟧</td><td style="text-align:left">Testes de Sistema</td></tr><tr><td style="text-align:left">Membro fora da equipe</td><td style="text-align:left">Alta</td><td style="text-align:left">🟥🟧🟨</td><td style="text-align:left">Testes de Integração</td></tr><tr><td style="text-align:left">Membro fora da organização</td><td style="text-align:left">Muito Alta</td><td style="text-align:left">🟥🟧🟨🟩</td><td style="text-align:left">Testes de Aceite</td></tr></tbody></table>
+<p>O ideal é que testes sejam realizados em diferentes níveis de Independência.</p>
+<ul>
+<li>Pro: Várias visões de teste.</li>
+<li>Contra: Pode gerar problemas de colaboração.</li>
+</ul>
+<hr></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a title="🌱 Artigos Iniciais" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/stageA">🌱</a></li><li class="tag_QGVx"><a title="International Software Testing Qualifications Board" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/istqb">ISTQB</a></li><li class="tag_QGVx"><a title="Certified Tester Foundation Level" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/ctfl">CTFL</a></li><li class="tag_QGVx"><a title="Capítulo de livro estudado" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/capitulo">Capítulo</a></li></ul></div></div><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/GabriOliv/garden/blob/master/docs/istqb/ctfl/ctfl_01.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/garden/docs/istqb/ctfl"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CTFL</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/garden/docs/istqb/ctfl/ctfl_02"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Capítulo 2</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#11-o-que-é-teste" class="table-of-contents__link toc-highlight">1.1 O que é teste</a></li><li><a href="#111-objetivos-do-teste" class="table-of-contents__link toc-highlight">1.1.1 Objetivos do Teste</a></li><li><a href="#112-teste-e-depuração" class="table-of-contents__link toc-highlight">1.1.2 Teste e Depuração</a></li><li><a href="#12-por-que-os-testes-são-necessários" class="table-of-contents__link toc-highlight">1.2 Por que os testes são NECESSÁRIOS?</a></li><li><a href="#121-contribuições-para-o-sucesso-dos-testes" class="table-of-contents__link toc-highlight">1.2.1 Contribuições para o sucesso dos testes</a></li><li><a href="#122-testes-e-garantia-da-qualidade-qa" class="table-of-contents__link toc-highlight">1.2.2 Testes e Garantia da Qualidade (QA)</a></li><li><a href="#123-erros-defeitos-falhas-e-causa-raiz" class="table-of-contents__link toc-highlight">1.2.3 Erros, Defeitos, Falhas e Causa-Raiz</a></li><li><a href="#13-princípios-de-teste" class="table-of-contents__link toc-highlight">1.3 Princípios de Teste</a></li><li><a href="#14-atividades-de-teste-testware-e-papéis-no-teste" class="table-of-contents__link toc-highlight">1.4 Atividades de teste, Testware e Papéis no teste</a></li><li><a href="#141-atividades-e-tarefas-de-teste" class="table-of-contents__link toc-highlight">1.4.1 Atividades e Tarefas de Teste</a></li><li><a href="#142-processo-de-teste-no-contexto" class="table-of-contents__link toc-highlight">1.4.2 Processo de Teste no Contexto</a></li><li><a href="#143-testware" class="table-of-contents__link toc-highlight">1.4.3 Testware</a></li><li><a href="#144-rastreabilidade-entre-a-base-de-teste-e-o-testware" class="table-of-contents__link toc-highlight">1.4.4 Rastreabilidade entre a Base de Teste e o Testware</a></li><li><a href="#145-papéis-no-teste" class="table-of-contents__link toc-highlight">1.4.5 Papéis no Teste</a></li><li><a href="#15-habilidades-essenciais-e-boas-práticas-em-testes" class="table-of-contents__link toc-highlight">1.5 Habilidades essenciais e boas práticas em testes</a></li><li><a href="#151-habilidades-genéricas-necessárias-para-testes" class="table-of-contents__link toc-highlight">1.5.1 Habilidades genéricas necessárias para testes</a></li><li><a href="#152-abordagem-de-equipe-completa" class="table-of-contents__link toc-highlight">1.5.2 Abordagem de equipe completa</a></li><li><a href="#153-independência-dos-testes" class="table-of-contents__link toc-highlight">1.5.3 Independência dos testes</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Criado com Docusaurus e ❤️</div></div></div></footer></div>
+</body>
+</html>

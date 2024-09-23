@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-istqb/ctfl/ctfl_05" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Capítulo 5 | Garden</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://gabrioliv.github.io/garden/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://gabrioliv.github.io/garden/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_05"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Capítulo 5 | Garden"><meta data-rh="true" name="description" content="CTFL - Capítulo 5 - Gerenciamento das Atividades de Teste"><meta data-rh="true" property="og:description" content="CTFL - Capítulo 5 - Gerenciamento das Atividades de Teste"><link data-rh="true" rel="icon" href="/garden/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_05"><link data-rh="true" rel="alternate" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_05" hreflang="en"><link data-rh="true" rel="alternate" href="https://gabrioliv.github.io/garden/docs/istqb/ctfl/ctfl_05" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/garden/assets/css/styles.cae9cab2.css">
+<script src="/garden/assets/js/runtime~main.aa584020.js" defer="defer"></script>
+<script src="/garden/assets/js/main.828dc498.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/garden/"><b class="navbar__title text--truncate">Garden</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/garden/docs/istqb">ISTQB</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/GabriOliv/garden" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/garden/docs/istqb">ISTQB / BSTQB</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/garden/docs/istqb/ctfl">CTFL</a><button aria-label="Collapse sidebar category &#x27;CTFL&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_01">Capítulo 1</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_02">Capítulo 2</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_03">Capítulo 3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_04">Capítulo 4</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_05">Capítulo 5</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/garden/docs/istqb/ctfl/ctfl_06">Capítulo 6</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/garden/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/garden/docs/istqb/ctfl"><span itemprop="name">CTFL</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Capítulo 5</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>5 Gerenciamento das Atividades de Teste</h1></header>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="51-planejamento-de-teste">5.1 Planejamento de Teste<a href="#51-planejamento-de-teste" class="hash-link" aria-label="Direct link to 5.1 Planejamento de Teste" title="Direct link to 5.1 Planejamento de Teste">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="511-objetivo-e-conteúdo-de-um-plano-de-teste">5.1.1 Objetivo e conteúdo de um Plano de Teste<a href="#511-objetivo-e-conteúdo-de-um-plano-de-teste" class="hash-link" aria-label="Direct link to 5.1.1 Objetivo e conteúdo de um Plano de Teste" title="Direct link to 5.1.1 Objetivo e conteúdo de um Plano de Teste">​</a></h3>
+<p>O plano descreve os objetivos, recursos e processos</p>
+<p>Usado para orientar o tester em relação ao viés e o escopo dos testes.</p>
+<ul>
+<li>Cria um contexto</li>
+<li>Premissas</li>
+<li>Comunicação</li>
+<li>Abordagem</li>
+<li>Cronograma</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="512-contribuição-do-testador-para-o-planejamento-de-iteração-e-liberação">5.1.2 Contribuição do Testador para o planejamento de iteração e liberação<a href="#512-contribuição-do-testador-para-o-planejamento-de-iteração-e-liberação" class="hash-link" aria-label="Direct link to 5.1.2 Contribuição do Testador para o planejamento de iteração e liberação" title="Direct link to 5.1.2 Contribuição do Testador para o planejamento de iteração e liberação">​</a></h3>
+<p>Os testadores participam como parte do shift-left e outras escritas anteriores.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="513-critérios-de-entrada-e-critérios-de-saída">5.1.3 Critérios de Entrada e Critérios de Saída<a href="#513-critérios-de-entrada-e-critérios-de-saída" class="hash-link" aria-label="Direct link to 5.1.3 Critérios de Entrada e Critérios de Saída" title="Direct link to 5.1.3 Critérios de Entrada e Critérios de Saída">​</a></h3>
+<p>Define as condições prévias, dados, recursos.
+Define a precisão, a cobertura necessária, critérios de conclusão.</p>
+<p>Geralmente é usado como DoD (Definition of Done).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="514-técnicas-de-estimativa">5.1.4 Técnicas de estimativa<a href="#514-técnicas-de-estimativa" class="hash-link" aria-label="Direct link to 5.1.4 Técnicas de estimativa" title="Direct link to 5.1.4 Técnicas de estimativa">​</a></h3>
+<ul>
+<li>Estimativa por índice: usa dados de indicadores como parâmetro.</li>
+<li>Extrapolação: coleta os dados no começo e extrapola para testes futuros.</li>
+<li>Wideband Delphi: cada profissional avalia e depois compara com os demais.</li>
+<li>Estimativa de 3 Pontos: usa a formula<!-- -->
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathsize="1.44em"><mrow><mi>E</mi><mo>=</mo><mfrac><mrow><mi>o</mi><mo>+</mo><mn>4</mn><mi>m</mi><mo>+</mo><mi>p</mi></mrow><mn>6</mn></mfrac></mrow></mstyle></mrow><annotation encoding="application/x-tex">\Large{E = \frac{o + 4m + p}{6}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7821em;vertical-align:-0.4968em"></span><span class="mord sizing reset-size6 size8"><span class="mord mathnormal" style="margin-right:0.05764em">E</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord"><span class="mopen nulldelimiter sizing reset-size8 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8926em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size8 size6 mtight"><span class="mord mtight"><span class="mord mtight">6</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.445em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size8 size6 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mbin mtight">+</span><span class="mord mtight">4</span><span class="mord mathnormal mtight">m</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size8 size6"></span></span></span></span></span></span>
+<ul>
+<li>Otimista (o)</li>
+<li>Estimativa mais provável (m)</li>
+<li>Pessimista (p)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="515-priorização-de-casos-de-teste">5.1.5 Priorização de casos de teste<a href="#515-priorização-de-casos-de-teste" class="hash-link" aria-label="Direct link to 5.1.5 Priorização de casos de teste" title="Direct link to 5.1.5 Priorização de casos de teste">​</a></h3>
+<p>Depois de escritos, os casos podem ser priorizados</p>
+<ul>
+<li>Baseado em Risco: ordem de criticidade</li>
+<li>Baseado em Cobertura: ordem de maior cobertura</li>
+<li>Baseado em Requisitos: order de requisito mais importante</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="516-pirâmide-de-teste">5.1.6 Pirâmide de Teste<a href="#516-pirâmide-de-teste" class="hash-link" aria-label="Direct link to 5.1.6 Pirâmide de Teste" title="Direct link to 5.1.6 Pirâmide de Teste">​</a></h3>
+<p>Usada como modelo para apoiar a equipe de automação de testes.</p>
+<table><thead><tr><th style="text-align:left">Pyramid</th><th style="text-align:center">Teste</th><th style="text-align:center">Custo</th><th style="text-align:center">Integração</th><th style="text-align:center">ROI</th></tr></thead><tbody><tr><td style="text-align:left">Topo</td><td style="text-align:center">Teste de UI</td><td style="text-align:center">Alto</td><td style="text-align:center">Alta</td><td style="text-align:center">Baixo</td></tr><tr><td style="text-align:left">Meio</td><td style="text-align:center">Teste de Integração</td><td style="text-align:center">Médio</td><td style="text-align:center">Média</td><td style="text-align:center">Média</td></tr><tr><td style="text-align:left">Base</td><td style="text-align:center">Teste de Unitário</td><td style="text-align:center">Baixo</td><td style="text-align:center">Baixa</td><td style="text-align:center">Alto</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="517-quadrantes-de-teste">5.1.7 Quadrantes de Teste<a href="#517-quadrantes-de-teste" class="hash-link" aria-label="Direct link to 5.1.7 Quadrantes de Teste" title="Direct link to 5.1.7 Quadrantes de Teste">​</a></h3>
+<table><thead><tr><th style="text-align:center">Q2</th><th style="text-align:center">Negócio</th><th style="text-align:center">Negócio</th><th style="text-align:center">Q3</th></tr></thead><tbody><tr><td style="text-align:center">Suporte à Equipe</td><td style="text-align:center"><b style="color:cyan">UserStories<br>Protótipos<br>Funcionais</b></td><td style="text-align:center"><b style="color:violet">Exploratório<br>Usabilidade<br>Aceitação</b></td><td style="text-align:center">Crítica do Produto</td></tr><tr><td style="text-align:center">Suporte à Equipe</td><td style="text-align:center"><b style="color:orange">CI/CD<br>Automatizado<br>Integrado<br>Unitário</b></td><td style="text-align:center"><b style="color:red">Smoke Test<br>Carga<br>Segurança</b></td><td style="text-align:center">Crítica do Produto</td></tr><tr><td style="text-align:center">Q1</td><td style="text-align:center">Tecnologia</td><td style="text-align:center">Tecnologia</td><td style="text-align:center">Q4</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="52-gerenciamento-de-risco">5.2 Gerenciamento de Risco<a href="#52-gerenciamento-de-risco" class="hash-link" aria-label="Direct link to 5.2 Gerenciamento de Risco" title="Direct link to 5.2 Gerenciamento de Risco">​</a></h3>
+<ul>
+<li>Atividades do Gerenciamento de Risco:<!-- -->
+<ul>
+<li>Análise de Risco:<!-- -->
+<ul>
+<li>Identificar e avaliar um risco</li>
+</ul>
+</li>
+<li>Controle de Risco:<!-- -->
+<ul>
+<li>Mitigar e monitorar riscos</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Teste Baseado em Riscos: teste são selecionadas, priorizadas e gerenciadas se baseando nas análises de risco.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="521-definição-de-risco-e-atributos-do-risco">5.2.1 Definição de Risco e Atributos do Risco<a href="#521-definição-de-risco-e-atributos-do-risco" class="hash-link" aria-label="Direct link to 5.2.1 Definição de Risco e Atributos do Risco" title="Direct link to 5.2.1 Definição de Risco e Atributos do Risco">​</a></h3>
+<p>Um risco pode ser categorizado por dois fatores:</p>
+<ul>
+<li>Probabilidade<!-- -->
+<ul>
+<li>probabilidade de ocorrência do risco</li>
+<li><code>0 &lt; x &lt; 1</code></li>
+</ul>
+</li>
+<li>Impacto<!-- -->
+<ul>
+<li>dano</li>
+<li>consequências dessa ocorrência</li>
+</ul>
+</li>
+</ul>
+<p>A multiplicação destes fatores indica o Nível de Risco.</p>
+<p>Quanto maior o nível, mais importante é seu tratamento.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="522-riscos-do-projeto-e-riscos-do-produto">5.2.2 Riscos do projeto e riscos do produto<a href="#522-riscos-do-projeto-e-riscos-do-produto" class="hash-link" aria-label="Direct link to 5.2.2 Riscos do projeto e riscos do produto" title="Direct link to 5.2.2 Riscos do projeto e riscos do produto">​</a></h3>
+<ul>
+<li>Existem dois grupos de riscos:<!-- -->
+<ul>
+<li>Riscos de Projeto: gerenciamento, entregas, escopo.</li>
+<li>Riscos de Produto: insatisfação do usuário, sobrecarga de helpdesk, manutenção custosa</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="523-análise-de-risco-do-produto">5.2.3 Análise de Risco do Produto<a href="#523-análise-de-risco-do-produto" class="hash-link" aria-label="Direct link to 5.2.3 Análise de Risco do Produto" title="Direct link to 5.2.3 Análise de Risco do Produto">​</a></h3>
+<ul>
+<li>Com a análise dos riscos de produto, os resultados influenciam:<!-- -->
+<ul>
+<li>Escopo</li>
+<li>Estimativa de esforço</li>
+<li>Priorização de testes</li>
+<li>Níveis de Teste</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="524-controle-de-risco-do-produto">5.2.4 Controle de Risco do Produto<a href="#524-controle-de-risco-do-produto" class="hash-link" aria-label="Direct link to 5.2.4 Controle de Risco do Produto" title="Direct link to 5.2.4 Controle de Risco do Produto">​</a></h3>
+<ul>
+<li>Selecionar testadores com nível de experiência</li>
+<li>Aplicar nível de teste adequado</li>
+<li>Conduzir revisões e realizar análises estáticas</li>
+<li>Coberturas apropriadas</li>
+<li>Abordagens de teste apropriadas</li>
+<li>Testes dinâmicos</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="53-monitoramento-controle-e-conclusão-do-teste">5.3 Monitoramento, Controle e Conclusão do Teste<a href="#53-monitoramento-controle-e-conclusão-do-teste" class="hash-link" aria-label="Direct link to 5.3 Monitoramento, Controle e Conclusão do Teste" title="Direct link to 5.3 Monitoramento, Controle e Conclusão do Teste">​</a></h3>
+<ul>
+<li>Controles Importantes:<!-- -->
+<ul>
+<li>Risco novo identificado -&gt; Repriorizar testes</li>
+<li>Reavaliar se um Item atende ao critério</li>
+<li>Ajuste de cronograma</li>
+<li>Adição de Recurso</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="531-métricas-usadas-em-testes">5.3.1 Métricas usadas em testes<a href="#531-métricas-usadas-em-testes" class="hash-link" aria-label="Direct link to 5.3.1 Métricas usadas em testes" title="Direct link to 5.3.1 Métricas usadas em testes">​</a></h3>
+<ul>
+<li>Métricas Relevantes:<!-- -->
+<ul>
+<li>Progresso de Projeto</li>
+<li>Progresso de Teste</li>
+<li>Qualidade do Produto</li>
+<li>Defeitos (encontrados/corrigidos)</li>
+<li>Risco (residual)</li>
+<li>Cobertura</li>
+<li>Custo</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="532-relatórios-de-teste-objetivo-conteúdo-e-público-alvo">5.3.2 Relatórios de Teste: objetivo, conteúdo e público-alvo<a href="#532-relatórios-de-teste-objetivo-conteúdo-e-público-alvo" class="hash-link" aria-label="Direct link to 5.3.2 Relatórios de Teste: objetivo, conteúdo e público-alvo" title="Direct link to 5.3.2 Relatórios de Teste: objetivo, conteúdo e público-alvo">​</a></h3>
+<p>Resumem e comunicam as informações do teste.</p>
+<ul>
+<li>Relatório de Progresso:<!-- -->
+<ul>
+<li>Período de teste</li>
+<li>Progresso do teste</li>
+<li>Riscos novos</li>
+<li>Testes planejados</li>
+</ul>
+</li>
+<li>Relatório de Conclusão:<!-- -->
+<ul>
+<li>Resumo do teste</li>
+<li>Avaliação do produto</li>
+<li>Desvios do plano</li>
+<li>Riscos não mitigados</li>
+<li>Lições aprendidas</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="533-comunicação-do-status-dos-testes">5.3.3 Comunicação do status dos testes<a href="#533-comunicação-do-status-dos-testes" class="hash-link" aria-label="Direct link to 5.3.3 Comunicação do status dos testes" title="Direct link to 5.3.3 Comunicação do status dos testes">​</a></h3>
+<ul>
+<li>Comunicação ideal depende da organização, variando entre:<!-- -->
+<ul>
+<li>Comunicação Verbal</li>
+<li>Painéis</li>
+<li>Documentação Online</li>
+<li>Relatórios de Teste Formais</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="54-gerenciamento-de-configuração-cm">5.4 Gerenciamento de Configuração (CM)<a href="#54-gerenciamento-de-configuração-cm" class="hash-link" aria-label="Direct link to 5.4 Gerenciamento de Configuração (CM)" title="Direct link to 5.4 Gerenciamento de Configuração (CM)">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="55-gerenciamento-de-defeitos">5.5 Gerenciamento de Defeitos<a href="#55-gerenciamento-de-defeitos" class="hash-link" aria-label="Direct link to 5.5 Gerenciamento de Defeitos" title="Direct link to 5.5 Gerenciamento de Defeitos">​</a></h3>
+<hr></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a title="🌱 Artigos Iniciais" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/stageA">🌱</a></li><li class="tag_QGVx"><a title="International Software Testing Qualifications Board" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/istqb">ISTQB</a></li><li class="tag_QGVx"><a title="Certified Tester Foundation Level" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/ctfl">CTFL</a></li><li class="tag_QGVx"><a title="Capítulo de livro estudado" class="tag_zVej tagRegular_sFm0" href="/garden/docs/tags/capitulo">Capítulo</a></li></ul></div></div><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/GabriOliv/garden/blob/master/docs/istqb/ctfl/ctfl_05.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/garden/docs/istqb/ctfl/ctfl_04"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Capítulo 4</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/garden/docs/istqb/ctfl/ctfl_06"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Capítulo 6</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#51-planejamento-de-teste" class="table-of-contents__link toc-highlight">5.1 Planejamento de Teste</a></li><li><a href="#511-objetivo-e-conteúdo-de-um-plano-de-teste" class="table-of-contents__link toc-highlight">5.1.1 Objetivo e conteúdo de um Plano de Teste</a></li><li><a href="#512-contribuição-do-testador-para-o-planejamento-de-iteração-e-liberação" class="table-of-contents__link toc-highlight">5.1.2 Contribuição do Testador para o planejamento de iteração e liberação</a></li><li><a href="#513-critérios-de-entrada-e-critérios-de-saída" class="table-of-contents__link toc-highlight">5.1.3 Critérios de Entrada e Critérios de Saída</a></li><li><a href="#514-técnicas-de-estimativa" class="table-of-contents__link toc-highlight">5.1.4 Técnicas de estimativa</a></li><li><a href="#515-priorização-de-casos-de-teste" class="table-of-contents__link toc-highlight">5.1.5 Priorização de casos de teste</a></li><li><a href="#516-pirâmide-de-teste" class="table-of-contents__link toc-highlight">5.1.6 Pirâmide de Teste</a></li><li><a href="#517-quadrantes-de-teste" class="table-of-contents__link toc-highlight">5.1.7 Quadrantes de Teste</a></li><li><a href="#52-gerenciamento-de-risco" class="table-of-contents__link toc-highlight">5.2 Gerenciamento de Risco</a></li><li><a href="#521-definição-de-risco-e-atributos-do-risco" class="table-of-contents__link toc-highlight">5.2.1 Definição de Risco e Atributos do Risco</a></li><li><a href="#522-riscos-do-projeto-e-riscos-do-produto" class="table-of-contents__link toc-highlight">5.2.2 Riscos do projeto e riscos do produto</a></li><li><a href="#523-análise-de-risco-do-produto" class="table-of-contents__link toc-highlight">5.2.3 Análise de Risco do Produto</a></li><li><a href="#524-controle-de-risco-do-produto" class="table-of-contents__link toc-highlight">5.2.4 Controle de Risco do Produto</a></li><li><a href="#53-monitoramento-controle-e-conclusão-do-teste" class="table-of-contents__link toc-highlight">5.3 Monitoramento, Controle e Conclusão do Teste</a></li><li><a href="#531-métricas-usadas-em-testes" class="table-of-contents__link toc-highlight">5.3.1 Métricas usadas em testes</a></li><li><a href="#532-relatórios-de-teste-objetivo-conteúdo-e-público-alvo" class="table-of-contents__link toc-highlight">5.3.2 Relatórios de Teste: objetivo, conteúdo e público-alvo</a></li><li><a href="#533-comunicação-do-status-dos-testes" class="table-of-contents__link toc-highlight">5.3.3 Comunicação do status dos testes</a></li><li><a href="#54-gerenciamento-de-configuração-cm" class="table-of-contents__link toc-highlight">5.4 Gerenciamento de Configuração (CM)</a></li><li><a href="#55-gerenciamento-de-defeitos" class="table-of-contents__link toc-highlight">5.5 Gerenciamento de Defeitos</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Criado com Docusaurus e ❤️</div></div></div></footer></div>
+</body>
+</html>
