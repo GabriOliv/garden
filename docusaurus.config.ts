@@ -83,6 +83,11 @@ const config: Config = {
 	themeConfig: {
 		// Replace with your project's social card
 		image: 'img/docusaurus-social-card.jpg',
+		colorMode: {
+			defaultMode: 'dark',
+			disableSwitch: false,
+			respectPrefersColorScheme: true,
+		},
 		navbar: {
 			title: 'Garden',
 			// logo: {
@@ -152,16 +157,17 @@ const config: Config = {
 			// 	},
 			// ],
 			// copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-			copyright: `Criado com Docusaurus e ❤️`,
+			copyright: `Criado com Docusaurus`,
 		},
 		prism: {
 			theme: prismThemes.github,
 			darkTheme: prismThemes.dracula,
 		},
 		mermaid: {
-				options: {
-					theme: 'base',
-				},
+			theme: {light: 'base', dark: 'dark'},
+			options: {
+				theme: 'base',
+			},
 		},
 	} satisfies Preset.ThemeConfig,
 	stylesheets: [

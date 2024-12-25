@@ -1,0 +1,179 @@
+---
+sidebar_position: 1
+title: Capítulo 3
+description: CT-TAS - Capítulo 3 - Preparando-se para a Automação de Teste
+tags: [stageA, istqb, cttas, capitulo]
+draft: false
+---
+
+# 3 Preparando-se para a Automação de Teste
+
+### 3.1 Integração entre os Níveis de Teste
+
+### 3.1.1 Diferenciar as distribuições de automação de teste
+
+Pirâmide inicial:
+- BASE Unidade (Componente)
+- MEIO Serviço
+- TOPO Interface de Usuário
+
+É preciso desenhar o estado da pirâmide atual e o estado desejável.
+
+- Pirâmide
+	- Distribuição equilibrada
+	- Testes estáveis de unidade permitem validações rápidas e baixo custo
+	- É O ESTADO ALVO IDEAL
+- Cone de Sorvete
+	- Versão invertida do ideal
+	- É o mais caro de automatizar
+	- Defeitos são encontrados tardes no sistema
+- Ampulheta
+	- São maiores em testes de unidade e interface
+	- Resulta em maiores problemas gerados nas integrações do software
+	- É o pior para lógica de negócio em que se fornece API
+- Guarda-Chuva
+	- Depende totalmente de testes caros de interface
+	- Retorno lento de defeitos
+	- Caso seja irreversível, o foco deve ser otimizar e reduzir o custo de execução
+
+| Nível | Tipo de Teste | Pirâmide | Cone de Sorvete | Ampulheta | Guarda-Chuva |
+| :----- | :-----: | -----: | -----: | -----: | -----: |
+`TOPO` | Teste de UI | Baixo 🟩 | Alto 🟥 | Alto 🟥 | Alto 🟥 |
+`MEIO` | Testes de Serviço | Médio 🟧 | Médio 🟧 | Baixo 🟩 | Baixo 🟩 |
+`BASE` | Teste de Unidade | Alto 🟥 | Baixo 🟩 | Alto 🟥 | Baixo 🟩 |
+
+### 3.1.2 Selecionar uma abordagem de automação de teste com base na arquitetura do sistema em teste
+
+Determinar o estado atual
+
+Determinar o estado esperado
+
+O estado final deve ser realista, mesmo que o piramide seja o ideal.
+
+Ex:
+
+Guarda-Chuva --> Pirâmide (Irrealista)
+
+Guarda-Chuva --> Ampulheta (Realista)
+
+Guarda-Chuva --> Cone de Sorvete (Realista)
+
+- Levar em consideração:
+	- cultura da empresa;
+	- maturidade da engenharia
+
+### 3.1.3 Demonstrar maneiras de otimizar a distribuição da automação de teste para alcançar as abordagens Shift Left e Shift Right
+
+Primeiramente necessário é escolher o "o quê" e o "como"
+- Após a escolha de:
+	- Estratégia
+	- Escopo
+
+Então é necessário saber a prioridade do backlog do itens.
+
+- Shift Left
+	- mover os testes para mais cedo
+- Shift Right
+	- entender as preferencias do usuário
+	- mover os testes para mais tarde
+	- usar monitoramento de performance do usuário
+
+Liberação de Features
+- Canary
+	- Lançamento para alguns usuários selecionados
+	- Lançamento gradual
+- Dark Launches
+	- Lançamento oculto para todos
+	- Liberação aos poucos
+
+### 3.2 Considerações estratégicas em diferentes Modelos de Ciclo de Vida de Desenvolvimento de Software
+
+### 3.2.1 Explicar como os projetos de automação de teste estão em conformidade com o modelo de ciclo de vida de desenvolvimento de software legado
+
+- Modelo Cascata:
+	- Os testes vem depois da implementação,
+	- Diminuindo o ROI da automação.
+- Modelo V:
+	- Planejamento de teste ocorre em fases iniciais,
+	- Melhorando o ROI da automação,
+	- Mesmo que o TAS ocorra mais tarde.
+
+### 3.2.2 Explicar como os projetos de automação de teste estão em conformidade com as práticas recomendadas de desenvolvimento ágil de software que dão suporte à automação de teste
+
+- Objetivo Ágil: alcançar automação de teste in-sprint
+	- Determinar todas as atividades de automação como critérios de saída para cada user-story
+		- Definição de casos de teste
+		- Implementação dos casos de teste automatizados
+		- Atualização do TAF
+		- Integração com o CI/CD
+
+Se uma equipe não está MADURA do ponto de vista ÁGIL, segue os passos:
+- 1. Primeira Sprint, tentar aplicar:
+	- Testes in-sprint;
+	- Automatização atrasada.
+- 2. Segunda Sprint, tentar aplicar:
+	- Testes in-sprint;
+	- Automatização in-sprint.
+
+### 3.2.3 Preparar-se para projetos de automação de teste em conformidade com as práticas recomendadas de DevOps que suportam a automação de teste em testes contínuos
+
+Ênfase na implementação de casos de teste automatizados de nível inferior
+
+- Foco em testes de base:
+	- componentes;
+	- componentes integrados;
+	- contratos.
+- Pois são:
+	- rápido
+	- sem dependência de serviço real
+	- podem ser executados a cada atualização
+
+Testes E2E e API devem ser executados separadamente no pipeline.
+
+- Testes Manuais foca em:
+	- Testes exploratórios
+	- Comentários de usuário final
+	- Atividade complementar
+
+### 3.3 Aplicabilidade e Viabilidade da Automação de Teste
+
+### 3.3.1 Explicar os critérios para determinar a adequação dos testes para a automação de teste
+
+Os casos de teste que devem ser automatizados devem ser escolhidos pelo analista de teste ou TAE.
+
+- Critérios:
+	- tecnicamente possível?
+	- possui desafio técnico que pode afetar a entrega?
+	- ROI adequado?
+	- Valor ao executar os casos com frequência?
+	- Qual o tipo de teste?
+	- Caso repetível?
+	- Fácil de manter quando o SUT atualiza?
+	- Abrange fluxo comercial?
+	- Sobreposição que permite reutilização de dados?
+
+### 3.3.2 Identificar os desafios que somente a automação de teste pode resolver
+
+Existem testes que só podem ser realizados com automação.
+
+- Categorias de Automação:
+	1. Tempo de execução manual maior que o adequado
+	2. Execução de teste sincronizada
+	3. Testes precisam estar em pipeline
+	4. Arquivos grandes precisam ser analisados
+	5. Precisão no tempo dos testes
+	6. Testes iguais executados em diferentes navegadores, sistemas...
+	7. Grande volume de testes para cobertura
+	8. Teste não funcional que precisa de monitoramento
+
+### 3.3.3 Identificar condições de teste que são difíceis de automatizar
+
+Testes difíceis ou impossíveis de automatizar.
+
+- Categorias sem Automação:
+	- Validação de requisitos de design de interface
+	- Caso de teste que envolva muita interação humana
+	- Dificuldades técnicas que bloqueiam atividades de automação
+	- Condições que demoram muito tempo
+
+---

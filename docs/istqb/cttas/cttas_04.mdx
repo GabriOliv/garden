@@ -1,0 +1,215 @@
+---
+sidebar_position: 1
+title: Capítulo 4
+description: CT-TAS - Capítulo 4 - Estratégias Organizacionais de Implantação e Liberação para Automação de Teste
+tags: [stageA, istqb, cttas, capitulo]
+draft: false
+---
+
+# 4 Estratégias Organizacionais de Implantação e Liberação para Automação de Teste
+
+### 4.1 Planejamento de Soluções de Automação de Teste
+
+### 4.1.1 Identificar maneiras pelas quais a automação de teste ajuda a reduzir o tempo de lançamento no mercado
+
+- Automatização acelera o lançamento no mercado
+- Reduz o tempo de ciclo de teste
+
+- Marco da Qualidade
+	- É obrigatória a incorporação no processo
+	- Precisa cumprir o marco antes de passar para a próxima fase
+	- Permite a implantação acelerada
+	- Promove uma cultura de consciência da qualidade
+
+### 4.1.2 Identificar as formas em que a automatização dos testes ajuda a verificar os defeitos comunicados de acordo com os requisitos
+
+- Testes de Confirmação
+	- teste realizado após uma correção para validar se o defeito foi mitigado
+	- o tester segue as etapas necessárias para replicar o defeito e depois valida o resultado
+
+- Automatizar Testes de Confirmação
+	- impede que o mesmo bug se reintroduza no sistema em versões posteriores
+
+### 4.1.3 Definir abordagens que permitam o desenvolvimento de cenários operacionalmente relevantes para a automação de teste
+
+- Testes de Aceite:
+	- garante a prontidão do software
+	- realizado logo antes da liberação
+	- validação final
+	- garante que o SUT funcione em ambiente de produção
+
+- Abordagens que podem ser usadas:
+	- Análise de Código Estático
+		- Ferramentas que analisam código filtrando falhas de segurança
+	- Testes E2E
+		- Scripts de teste que conduzem cenários de teste
+	- Teste de Failover
+		- Scripts que simulam falhas de hardware. falha de disco, redes  ou serviços de nuvem
+	- Teste de Backup e Restauração
+		- Scripts que testam o sucesso de backup da versão atual e em seguida reverter para ponto anterior
+	- Teste de Eficiência e Performance
+		- Scripts com testes de carga que simulam muitos usuários ou alto fluxo de dados
+	- Revisão da documentação operacional
+		- Scripts usados para comparar versões da documentação e sinalizar para a equipe se é necessária uma atualização
+	- Teste de Segurança
+		- Scripts  e Ferramentas que testam vulnerabilidades de forma estática e dinâmica
+	- Monitoramento do SDLC
+		- Monitoram os processos de desenvolvimento, emitindo alertas se um teste falha
+
+### 4.2 Estratégias de Implantação
+
+### 4.2.1 Definir uma estratégia de implantação de automação de teste
+
+Uma boa estratégia de implantação de abranger
+
+- Ambiente de Teste
+	- Teste serem executados em vários ambientes sem muitas alterações
+	- Deve ser possível executar os testes em ambiente de teste, pré-produção e produção
+- Ferramentas
+	- Quais ferramentas usar
+		- Se Comercial, como é licenciada?
+		- Se Open-Source, como é a manutenção?
+- Acesso ao Software
+	- Quais credenciais serão usadas no ambiente de teste e posterior em ambiente de produção
+	- É necessário flexibilidade de parâmetros para a execução independente do ambiente
+- Armazenamento de scripts de teste
+	- O armazenamento pode ser incorporado ao gerenciamento de configuração
+	- TAS e TAF podem ser gerenciados em repositórios
+		- Juntos ou Separados do SUT
+- Fornecimento de dados
+	- Evitar dados estáticos
+	- Criar scripts de configuração (db populate strategies)
+	- Carregar dados ou Criar dados
+		- Carregar dados
+			- Ganho de tempo
+			- Deixa o tester refém de outros recursos
+			- Dados incompletos
+		- Criar dados
+			- Requer tempo
+			- Scripts precisam de manutenção
+			- Abrangência de casos
+
+### 4.2.2 Identificar os riscos da automação de teste na implantação
+
+Problemas técnicos -> Riscos de Produto e de Projeto
+
+Problemas Típicos:
+
+- excesso de abstrações: dificulta a compreensão do código de automação
+- tabelas de dados complexas: difícil migração ou com resultados inconsistentes
+- dependência da TAS: requer bibliotecas que dificultam a execução em ambientes diferentes
+
+Riscos Típicos:
+
+- problemas de pessoal: dificuldade de conseguir pessoas certas para a automação
+- manutenção da TAS não planejado: as atualizações do SUT faz com que o TAS fique incorreto
+- Atrasos na introdução da automação
+- Atrasos na atualização da TAS em relação ao SUT
+- TAS não capturar objetos da UX despadronizados
+- Casos desatualizados continuam nas suítes de teste
+
+Pontos em que ocorrem Falhas do TAS:
+
+- migração para ambiente de teste diferente
+- implementação em ambiente de produção
+- esquecer que a TAS também é um software (também deve ser testado)
+
+Monitorar esses pontos ao longo do processo e medidas proativas garantirão o sucesso.
+
+### 4.2.3 Definir abordagens para mitigar os riscos da implantação
+
+O TAS REQUER UM SDLC PRÓPRIO
+Precisa estar sob gerenciamento e documentação
+
+Há dois tipos de implantação de TAS
+
+- Primeira Implantação
+- Implementação de Manutenção
+
+Os riscos relacionados à **Primeira Implantação** incluem:
+
+- tempo total de execução maior que o tempo planejado
+	- Solução: planejar tempo suficiente para a execução em totalidade
+- existem problemas de instalação com o ambiente de teste
+	- Solução: garantir que o TAS possua as condições prévias para executar os casos
+
+Os riscos relacionados à **Implementação de Manutenção** incluem:
+
+- Problemas de execução em produção após atualização
+	- Solução:
+		- validar o TAS em ambiente de teste
+		- validar se a suíte de teste nova foi executada adequadamente
+
+### 4.3 Dependências no Ambiente de Teste
+
+### 4.3.1 Definir os componentes de automação de teste no ambiente de teste
+
+- SUT
+	- SUT também faz parte do ambiente, sendo o que será testado
+	- Pode ser dividido em API, Web, banco, ...
+- Plataforma
+	- Onde os componentes da automação estão
+	- Podem ser infra de nuvem, máquinas virtuais, containers
+- Casos de Teste
+	- Descrição dos casos individuais de teste que são compostos de etapas
+	- Eles direcionam as ações manuais e automatizadas
+- Ferramentas
+	- Diferentes ferramentas usadas na automatização
+	- Podem ser gerador de dados, monitoramento, gerenciador de requisitos
+	- NÃO CONFUNDIR COM O TAF
+- TAF
+	- Componentes que compoem o desenho do TAF
+	- Incluem drivers, bibliotecas, modelos de casos, documentação, ...
+
+complicar o AMBIENTE de teste = complicar a MANUTENÇÃO
+
+Encontrar a combinação correta de ferramentas, configuração e portabilidade de plataforma.
+
+### 4.3.2 Identificar os componentes da infraestrutura e as dependências da automação de teste
+
+Abrangem todos os pré-requisitos para executar o TAF.
+
+- Máquinas hospedeiras (Host Machines)
+	- Hardware que tem o software de automação instalado
+	- Os scripts são criados e executados nelas
+	- Ex: Máquinas virtuais, servidores ou dispositivos
+- Rede
+	- Conexão entre o TAS e o SUT
+	- Ex: Rede local ou entre servidores
+- Plataforma
+	- Plataforma em que a automação é executada
+- Dependências de Software
+	- Todas as dependências que o TAS requer para funcionar
+	- Devem estar claras, antes e depois da escolha de uma ferramenta
+- SUT
+	- Acesso ao SUT para a execução dos testes
+	- Ex: Acesso a aplicação web com navegador
+
+### 4.3.3 Definir dados de automação de teste e requisitos de interface
+
+Antes de desenvolver, os scripts de automação, devem ser planejadas:
+
+- Interface entre SUT e o TAS
+- Dependências de dados dos casos de teste
+
+- Ex: API
+	- Interface:
+		- Pode ser testado a nível de endpoint com requisições.
+	- Dependências:
+		- Quais as ordens das requisições
+		- Qual o processo para criar uma regra de negócio no sistema
+- Interface de Banco de Dados
+	- Interface:
+		- Testado com acesso direto ao banco de dados
+	- Dependências:
+		- Quais verificação de integridade de dados é necessária
+		- Quais procedures (processos do banco) não utilizadas nos testes
+- Compatibilidade da Interface
+	- Interface:
+		- Testando a compatibilidade entre dois serviços
+	- Dependências:
+		- Quais conexões são usadas
+		- Quais dados devem ser passados entre a interface
+		- Quais fatores de confiabilidade estão sendo testados
+
+---

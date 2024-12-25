@@ -3,19 +3,19 @@
 # ==============================================================================
 
 stageA:
-  label: '🌱'
+  label: '[🌱]'
   permalink: '/stageA'
   description: '🌱 Artigos Iniciais'
 stageB:
-  label: '🌿'
+  label: '[🌿]'
   permalink: '/stageB'
   description: '🌿 Artigos Melhorados'
 stageC:
-  label: '🌲'
+  label: '[🌲]'
   permalink: '/stageC'
   description: '🌲 Artigos Intermediários'
 stageD:
-  label: '🍎'
+  label: '[🍎]'
   permalink: '/stageD'
   description: '🍎 Artigos Completos'
 
@@ -23,6 +23,10 @@ stageD:
 # Tipos de Conteúdo
 # ==============================================================================
 
+readme:
+  label: 'README'
+  permalink: '/readme'
+  description: 'README/Sumário do conteúdo'
 capitulo:
   label: 'Capítulo'
   permalink: '/capitulo'
@@ -61,4 +65,7 @@ ctfl:
   label: 'CTFL'
   permalink: '/ctfl'
   description: 'Certified Tester Foundation Level'
-
+cttas:
+  label: 'CT-TAS'
+  permalink: '/cttas'
+  description: 'Certified Tester, Test Automation Strategy'

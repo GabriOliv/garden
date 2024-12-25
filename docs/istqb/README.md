@@ -1,9 +1,14 @@
 ---
 title: ISTQB / BSTQB
 sidebar_position: 0
+description: Diagrama do fluxo de certificações da BSTQB
+tags: [stageB, istqb]
+draft: false
 ---
 
-Fluxo atual (`15/09/2024`) de certificações da BSTQB:
+Fluxo de certificações da BSTQB:
+
+Revisão de `15/09/2024`.
 
 ```mermaid
 	%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
