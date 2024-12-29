@@ -61,3 +61,14 @@ html[data-theme='dark'] {
 .footer--dark {
 	padding: 0px;	/* minimize footer */
 }
+
+.img-center {
+	display: flex;
+	justify-content: center;
+	width: 100%,
+}
+
+[data-theme='light'] img[src$='#gh-dark-mode-only'],
+[data-theme='dark'] img[src$='#gh-light-mode-only'] {
+  display: none;
+}

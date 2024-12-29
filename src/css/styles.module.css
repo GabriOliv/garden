@@ -1,0 +1,22 @@
+
+/* Verify if the view is mobile or desktop */
+
+.mobileOnly {
+	display: none;
+}
+
+.desktopOnly {
+	display: none;
+}
+
+@media (max-width: 996px) {
+	.mobileOnly {
+		display: block;
+	}
+}
+
+@media (min-width: 997px) {
+	.desktopOnly {
+		display: block;
+	}
+}
