@@ -23,11 +23,11 @@ import styles from '@site/src/css/styles.module.css';
 
 <div className={styles.mobileOnly}>
 	<div class="img-center">
-		![Banner Light Mode](./assets/3f3fd9_undraw_done-checking.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_done-checking.svg#gh-dark-mode-only)
+		![Banner Light Mode](./assets/3f3fd9_undraw_art-museum.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_art-museum.svg#gh-dark-mode-only)
 	</div>
 </div>
 <div className={styles.desktopOnly}>
-	<Columns className='padding--md'>
+	<Columns>
 		<Column className='text--center'>
 			![Banner Light Mode](./assets/3f3fd9_undraw_done-checking.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_done-checking.svg#gh-dark-mode-only)
 		</Column>
@@ -39,5 +39,3 @@ import styles from '@site/src/css/styles.module.css';
 		</Column>
 	</Columns>
 </div>
-
----
