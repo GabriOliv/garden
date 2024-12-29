@@ -2,10 +2,13 @@
 
 > Uma Coleção de Notas em Evolução.
 
-Repositório para documentação em formato de digital garden.
+Repositório para documentação sobre teste e qualidade de software em formato de digital garden.
 
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.5.2-blue?logo=docusaurus&style=for-the-badge)](https://docusaurus.io/)
-![CD Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/garden/deploy.yml?style=for-the-badge&logo=github)
+&nbsp;&nbsp;&nbsp;
+[![CD Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/garden/deploy.yml?style=for-the-badge&logo=github)](https://github.com/GabriOliv/garden/actions)
+&nbsp;&nbsp;&nbsp;
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fgabrioliv.github.io%2Fgarden&style=for-the-badge&color=1b73ff)](https://gabrioliv.github.io/garden/)
 
 ---
 
