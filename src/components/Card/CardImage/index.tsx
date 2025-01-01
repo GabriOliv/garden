@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import cardLogo from '@site/static/animations/potion_3d_spin_wide.gif';
 
 interface CardImageProps {
   className?: string;
@@ -19,11 +20,16 @@ const CardImage: React.FC<CardImageProps> = ({
 }) => {
   const generatedCardImageUrl = useBaseUrl(cardImageUrl);
 
-  return (
-   
-      <img className={clsx('card__image', className)} style={style} src={generatedCardImageUrl} alt={alt} title={title} />
-  
-  );
+	return (
+		<img
+			className={clsx('card__image', className)}
+			style={style}
+			// src={generatedCardImageUrl}
+			src={cardLogo}
+			alt={alt}
+			title={title}
+		/>
+	);
 };
 
 export default CardImage;
