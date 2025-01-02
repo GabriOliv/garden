@@ -1,7 +1,8 @@
 import React, { CSSProperties } from 'react';
 import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import cardLogo from '@site/static/animations/potion_3d_spin_wide.gif';
+// import cardLogo from '@site/static/animations/potion_3d_spin_wide.gif';
+import cardLogo from '@site/static/img/banner_flask_default.webp';
 
 interface CardImageProps {
   className?: string;
