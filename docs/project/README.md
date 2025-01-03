@@ -6,6 +6,7 @@ custom_edit_url: null
 tags: [stageB, projeto, garden, readme]
 draft: false
 hide_title: true
+hide_table_of_contents: true
 ---
 
 import Columns from '@site/src/components/Columns';
@@ -84,6 +85,8 @@ import styles from '@site/src/css/styles.module.css';
 				</a>
 			</CardFooter>
 		</Card>
+	</Column>
+	<Column className='padding--md'>
 	</Column>
 </Columns>
 
