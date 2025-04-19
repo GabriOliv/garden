@@ -35,6 +35,10 @@ artigo:
   label: 'Artigo'
   permalink: '/artigo'
   description: 'Artigo'
+notes:
+  label: 'Notas'
+  permalink: '/notes'
+  description: 'Notas gerais de estudo'
 
 # ==============================================================================
 # Categorias
@@ -52,6 +56,10 @@ qa:
   label: 'QA'
   permalink: '/qa'
   description: 'Quality Assurance'
+theory:
+  label: 'Teoria'
+  permalink: '/theory'
+  description: 'Teorias e Conceitos'
 
 # ==============================================================================
 # ISTQB

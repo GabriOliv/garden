@@ -101,6 +101,12 @@ const config: Config = {
 					position: 'left',
 					label: 'ISTQB',
 				},
+				{
+					type: 'docSidebar',
+					sidebarId: 'notes',
+					position: 'left',
+					label: 'Notes',
+				},
 				// {
 				// 	to: '/blog',
 				// 	label: 'Blog',
