@@ -56,6 +56,10 @@ qa:
   label: 'QA'
   permalink: '/qa'
   description: 'Quality Assurance'
+test:
+  label: 'Testes'
+  permalink: '/test'
+  description: 'Testes'
 theory:
   label: 'Teoria'
   permalink: '/theory'

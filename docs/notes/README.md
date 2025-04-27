@@ -24,6 +24,12 @@ Notas sobre QA, Teste ou Computação em geral.
 			<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode diminuir a qualidade do software?</div>
 			</a>
 		</div>
+		<div class="pagination-nav__item">
+			<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
+			<div class="pagination-nav__label">Cobertura de Testes</div>
+			<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
+			</a>
+		</div>
 	</div>
 </div>
 
@@ -33,7 +39,15 @@ Notas sobre QA, Teste ou Computação em geral.
 		<div class="pagination-nav__label">Efeito Peltzman e a Centralização da Responsabilidade</div>
 		<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode diminuir a qualidade do software?</div>
 		</a>
-	</div><br />
+	</div>
+	<br />
+	<div class="pagination-nav__item">
+		<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
+		<div class="pagination-nav__label">Cobertura de Testes</div>
+		<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
+		</a>
+	</div>
+	<br />
 </div>
 
 ---

@@ -1,0 +1,83 @@
+---
+sidebar_position: 1
+title: Cobertura de Testes
+description: Cobertura de Testes
+tags: [stageA, notes, qa, test]
+draft: false
+---
+
+# Cobertura de Testes
+
+---
+
+## Iteração de SDLC sem Cobertura de Testes
+
+<figure>
+	<figcaption class="text--center">Iteração de desenvolvimento sem cobertura de testes[^1]</figcaption>
+	![image](./assets/test_coverage_sdlc_without_coverage.svg)
+</figure>
+
+1. Software Estável:
+	- Ainda não há alterações instáveis (cinza).
+2. Processo de Desenvolvimento:
+	- Desenvolvedor:
+		- Adiciona um novo bloco de código ainda sem testes (vermelho).
+		- <span style={{color:'var(--ifm-color-danger-darker)'}}>NÃO escreve testes para o código novo.</span>
+	- Rotina de Teste:
+		- <span style={{color:'var(--ifm-color-danger-darker)'}}>Testes manuais para verificar o código.</span>
+		- Desenvolvedor corrige o código para que os testes passem.
+3. Processo de Teste:
+	- Código novo é testado e bugs são corrigidos.
+	- Código antigo é testado e bugs são corrigidos.
+	- <span style={{color:'var(--ifm-color-danger-darker)'}}>Partes dos bugs são corrigidas, mas não todos, pois não há rastreabilidade.</span>
+4. Software Após Iteração:
+	- <span style={{color:'var(--ifm-color-danger-darker)'}}>Software com blocos instáveis (laranja).</span>
+	- Recebe um novo bloco de código (vermelho).
+	- Processo se repete.
+
+## Iteração de SDLC com Cobertura de Testes
+
+<figure>
+	<figcaption class="text--center">Iteração de desenvolvimento com cobertura de testes[^2]</figcaption>
+	![image](./assets/test_coverage_sdlc_with_coverage.svg)
+</figure>
+
+1. Software Estável:
+	- Ainda não há alterações instáveis (cinza).
+	- <span style={{color:'var(--ifm-color-primary)'}}>Alguns blocos do código estão cobertos por testes (azul).</span>
+2. Processo de Desenvolvimento:
+	- Desenvolvedor:
+		- Adiciona um novo bloco de código ainda sem testes (vermelho).
+		- <span style={{color:'var(--ifm-color-primary)'}}>Escreve testes para o código novo.</span>
+	- Rotina de Teste:
+		- <span style={{color:'var(--ifm-color-primary)'}}>Executa os testes.</span>
+		- <span style={{color:'var(--ifm-color-primary)'}}>Testes falham e avisam o desenvolvedor (verde).</span>
+		- Desenvolvedor corrige o código para que os testes passem.
+3. Processo de Teste:
+	- <span style={{color:'var(--ifm-color-primary)'}}>Execução coberta de testes (azul).</span>
+	- Código novo é testado e bugs são corrigidos.
+	- Código antigo é testado e bugs são corrigidos.
+	- <span style={{color:'var(--ifm-color-primary)'}}>Testes são escritos para os testes que descobriram os novos bugs (verde).</span>
+4. Software Após Iteração:
+	- <span style={{color:'var(--ifm-color-primary)'}}>Software com cobertura de testes estável (azul).</span>
+	- Recebe um novo bloco de código (vermelho).
+	- <span style={{color:'var(--ifm-color-primary)'}}>Novos testes foram escritos para o código novo (verde).</span>
+	- Processo se repete.
+
+---
+
+[^1]: Imagem: "Iteração de desenvolvimento sem cobertura de testes"
+	- Fonte: Diagramação própria.
+	- Legenda:
+		- cinza: código estável;
+		- laranja: código instável;
+		- vermelho: código novo que não foi testado.
+
+[^2]: Imagem: "Iteração de desenvolvimento com cobertura de testes"
+	- Fonte: Diagramação própria.
+	- Legenda:
+		- cinza: código estável;
+		- laranja: código instável;
+		- vermelho: código novo que não foi testado;
+		- azul: código estável coberto por testes;
+		- verde: código coberto em que os testes falharam e avisaram o desenvolvedor.
