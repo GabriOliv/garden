@@ -4,7 +4,7 @@
 
 Repositório para documentação sobre teste e qualidade de software em formato de digital garden.
 
-[![Docusaurus](https://img.shields.io/badge/Docusaurus-3.5.2-blue?logo=docusaurus&style=for-the-badge)](https://docusaurus.io/)
+[![Docusaurus](https://img.shields.io/badge/Docusaurus-3.7.0-blue?logo=docusaurus&style=for-the-badge)](https://docusaurus.io/)
 &nbsp;&nbsp;&nbsp;
 [![CD Workflow](https://img.shields.io/github/actions/workflow/status/gabrioliv/garden/deploy.yml?style=for-the-badge&logo=github)](https://github.com/GabriOliv/garden/actions)
 &nbsp;&nbsp;&nbsp;
