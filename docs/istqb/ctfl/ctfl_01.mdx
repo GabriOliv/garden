@@ -15,7 +15,7 @@ Teste é um conjunto de atividades usadas para descobrir defeitos e avaliar a qu
 - Conjunto de atividades usadas para:
 	- Descobrir defeitos do software;
 	- Avaliar a qualidade dos artefatos do software;
-	- Verificar o sistema atende requisitos.
+	- Verificar se o sistema atende aos requisitos.
 
 ```mermaid
 flowchart LR
@@ -29,7 +29,7 @@ A["Artefatos de Software"] -->|"Quando Testados"| B[Objetos de Teste]
 		- Execução do Software
 		- Diferentes Técnicas
 
-- Teste NÃO É SÓ TÉCNICO, precisa:
+- Teste NÃO É SÓ TÉCNICO, precisa ser:
 	- Planejado
 	- Gerenciado
 	- Estimado
@@ -46,10 +46,10 @@ A["Artefatos de Software"] -->|"Quando Testados"| B[Objetos de Teste]
 		- códigos
 	- Detectar falhas
 	- Garantir cobertura de um objeto de teste
-	- Verificar se requisitos foram atendidos
-	- Verificar conformidade legal de contrato
-	- Fornecer informação para tomada de decisão
-	- Validar se objeto está completo
+	- Verificar se os requisitos foram atendidos
+	- Verificar conformidade legal ou contratual
+	- Fornecer informações para tomada de decisão
+	- Validar se o objeto está completo
 
 :::note OBJETIVOS (EM RESUMO):
 
@@ -66,15 +66,15 @@ Varia de acordo com o contexto da empresa.
 
 ### 1.1.2 Teste e Depuração
 
-Depurar = Debuggar
+Depurar = Debugar
 
-DEPURAR/DEBUGGAR NÃO É UMA ATIVIDADE DE TESTE
+DEPURAR/DEBUGAR NÃO É UMA ATIVIDADE DE TESTE
 
 - Reproduzir a falha
 - Fazer diagnóstico
 - Encontrar a causa raiz
 
-Teste de confirmação é feito posterior à alteração de correção;
+Teste de confirmação é feito posteriormente à alteração de correção;
 
 É realizado pela mesma pessoa que fez o teste inicial.
 
@@ -89,14 +89,14 @@ flowchart TB
 		direction TB
 		a["Teste Inicial"]
 		subgraph b["Debug"]
-		    direction LR
+			direction LR
 			b1["Reprodução"]
 			b2[Diagnóstico]
 			b3[Corrigir Causa]
 		end
 		subgraph c["Teste"]
 			c1[Teste de Confirmação]
-			c2[Teste Regressão]
+			c2[Teste de Regressão]
 		end
 	end
 	subgraph s2["Teste Estático"]
@@ -125,7 +125,7 @@ Ajudam no ciclo de vida do software.
 
 ### 1.2.2 Testes e Garantia da Qualidade (QA)
 
-Teste(QC) é diferente de QA.
+Teste (QC) é diferente de QA.
 
 | | QC | QA |
 | :----- | :-----: | :-----: |
@@ -135,9 +135,9 @@ Teste(QC) é diferente de QA.
 | Orientado ao | Produto | Processo |
 | Resultado dos testes | Corrigir Defeitos | Feedback do Processo |
 
-### 1.2.3 Erros, Defeitos, Falhas e Causa-Raiz
+### 1.2.3 Erros, Defeitos, Falhas e Causa Raiz
 
-- humanos cometem ERROS
+- Humanos cometem ERROS
 	- que podem produzir DEFEITOS
 		- que podem resultar em FALHAS
 
@@ -151,7 +151,7 @@ flowchart LR
 	classDef red	fill:#DD1C1A
 	classDef gra	fill:#9D9D9D
 
-	a(<b>Causa-Raiz</b>):::gra;
+	a(<b>Causa Raiz</b>):::gra;
 	b(<b>Erro / Equívoco</b>):::yel;
 	c(<b>Defeito</b>):::ora;
 	d(<b>Falha</b>):::red
@@ -164,16 +164,16 @@ flowchart LR
 Root Causes — Causa Raiz
 
 - Razão fundamental que causou o problema.
-- Identificado em Root Cause Analysis (RCA) ou Análise de Causa Raiz.
+- Identificada em Root Cause Analysis (RCA) ou Análise de Causa Raiz.
 	- Executada quando uma falha ou defeito é identificado.
 
 Bug — Bug
 
-- Termo geral e informal para referir aos defeitos do software.
+- Termo geral e informal para se referir aos defeitos do software.
 
 Error — Erro
 
-- Erro (Error) ou Engano (Mistake) são gerados por humanos
+- Erro (Error) ou Engano (Mistake) são gerados por humanos.
 - Podem, ou não, gerar problemas.
 
 Defect — Defeito
@@ -182,39 +182,39 @@ Defect — Defeito
 
 Failure — Falha
 
-- Consequência da existência de um ou mais defeitos
-- Incapacidade do software de desempenhar a função desejada
+- Consequência da existência de um ou mais defeitos.
+- Incapacidade do software de desempenhar a função desejada.
 
 ### 1.3 Princípios de Teste
 
 1. O teste mostra a presença, não a ausência de defeitos
-	- OU SEJA: nunca haverá a certeza da ausência de bugs
+	- OU SEJA: nunca haverá a certeza da ausência de bugs.
 2. Testes exaustivos são impossíveis
-	- OU SEJA: não dá para testar TUDO SEMPRE
+	- OU SEJA: não dá para testar TUDO SEMPRE.
 3. Testes antecipados economizam tempo e dinheiro
-	- OU SEJA: é mais fácil descobrir e corrigir no começo
+	- OU SEJA: é mais fácil descobrir e corrigir no começo.
 4. Os defeitos se agrupam
-	- OU SEJA: se algo está quebrado, vários outros estarão
+	- OU SEJA: se algo está quebrado, vários outros estarão.
 5. Os testes se degradam
-	- OU SEJA: testar do mesmo jeito não descobre problemas novos
+	- OU SEJA: testar do mesmo jeito não descobre problemas novos.
 6. Os testes dependem do contexto
-	- OU SEJA: cada problema requer uma heurística
+	- OU SEJA: cada problema requer uma heurística.
 7. Falácia da ausência de defeitos
-	- OU SEJA: piada de ironia do: "Se funciona está correto"
+	- OU SEJA: piada de ironia do: "Se funciona está correto".
 
 ### 1.4 Atividades de teste, Testware e Papéis no teste
 
-"Processo de Teste" é um forma geral de executar as "Atividades de Teste".
+"Processo de Teste" é uma forma geral de executar as "Atividades de Teste".
 
 "Testware" é o conjunto de produtos de trabalho de teste.
 
 ### 1.4.1 Atividades e Tarefas de Teste
 
-As atividades podem ser executadas em sequência ou paralelo.
+As atividades podem ser executadas em sequência ou em paralelo.
 
 - Planejamento do Teste
 	- Definir os objetivos
-	- Escolher abordagem
+	- Escolher a abordagem
 - Monitoramento e Controle de Teste
 	- Verificação contínua das atividades (monitoramento em paralelo)
 - Análise de Teste
@@ -222,7 +222,7 @@ As atividades podem ser executadas em sequência ou paralelo.
 	- Definir prioridades
 - Modelagem de Teste
 	- Elaborar as condições do teste
-	- Identificar com será a Cobertura
+	- Identificar como será a Cobertura
 	- Ferramentas necessárias
 - Implementação do Teste
 	- Criação do teste
@@ -242,17 +242,17 @@ As atividades podem ser executadas em sequência ou paralelo.
 | Modelagem | O parâmetro para passar é 500 requisições/segundo sem lentidão |
 | Implementação | Codificação do teste no k6 |
 | Execução | O script de teste de carga é executado no sistema |
-| Conclusão | Os resultados são salvos e entregues em um Relatório à gerencia |
+| Conclusão | Os resultados são salvos e entregues em um Relatório à gerência |
 
 ### 1.4.2 Processo de Teste no Contexto
 
 Testes servem para os stakeholders e esse contexto dita os processos de testes.
 
-- Depende
+- Depende:
 	- da ferramenta (manual ou automatizado)
 	- do ciclo de vida (scrum ou cascata)
 	- do projeto (pouco orçamento, pouco tempo)
-	- domínio de negócio (situação legal, riscos identificados)
+	- do domínio de negócio (situação legal, riscos identificados)
 
 ### 1.4.3 Testware
 
@@ -265,18 +265,18 @@ Todas as Atividades de Teste podem gerar produtos que compõem o Testware.
 
 ### 1.4.4 Rastreabilidade entre a Base de Teste e o Testware
 
-O Testware é usado para rastrear o processo de teste
+O Testware é usado para rastrear o processo de teste.
 
 - "Processo de Teste" gera "Testware"
 	- "Testware" gera dados de Cobertura
 		- Cobertura é um indicador de objetivo do teste
 			- Indicador mede a eficiência do teste
 
-A rastreabilidade da Base do Teste ao Testware também mantem a transparência.
+A rastreabilidade da Base do Teste ao Testware também mantém a transparência.
 
-- Facilita a
+- Facilita a:
 	- Avaliação de Cobertura
-	- Determinar impactos das mudanças
+	- Determinação de impactos das mudanças
 	- Informações de qualidade
 	- Progresso do projeto
 
@@ -285,7 +285,7 @@ A rastreabilidade da Base do Teste ao Testware também mantem a transparência.
 Ambos os papéis podem ser executados pela mesma pessoa.
 
 - Gerente de Teste
-	- Responsabilidade sobre
+	- Responsabilidade sobre:
 		- Processo de Teste
 		- Equipe de Teste
 	- Planejamento
@@ -299,7 +299,7 @@ Ambos os papéis podem ser executados pela mesma pessoa.
 
 ### 1.5 Habilidades essenciais e boas práticas em testes
 
-Algumas habilidades são essenciais, que vão além da aptidão
+Algumas habilidades são essenciais, que vão além da aptidão.
 
 ### 1.5.1 Habilidades genéricas necessárias para testes
 
@@ -314,7 +314,7 @@ Erros devem ser comunicados de forma construtiva.
 
 ### 1.5.2 Abordagem de equipe completa
 
-- Na "Abordagem de Equipe Completa"
+- Na "Abordagem de Equipe Completa":
 	- Qualquer membro pode executar qualquer tarefa
 	- Todos são responsáveis pela qualidade
 	- A equipe compartilha o mesmo espaço de trabalho
