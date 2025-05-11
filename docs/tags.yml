@@ -56,6 +56,10 @@ qa:
   label: 'QA'
   permalink: '/qa'
   description: 'Quality Assurance'
+process:
+  label: 'Processo'
+  permalink: '/process'
+  description: 'Processo'
 test:
   label: 'Testes'
   permalink: '/test'

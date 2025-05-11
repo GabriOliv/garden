@@ -25,10 +25,6 @@ Notas sobre QA, Teste ou Computação em geral.
 			</a>
 		</div>
 		<div class="pagination-nav__item">
-			<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
-			<div class="pagination-nav__label">Cobertura de Testes</div>
-			<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
-			</a>
 		</div>
 	</div>
 </div>
@@ -41,6 +37,24 @@ Notas sobre QA, Teste ou Computação em geral.
 		</a>
 	</div>
 	<br />
+</div>
+
+## Processos
+
+<div className={styles.desktopOnly}>
+	<div class="pagination-nav">
+		<div class="pagination-nav__item">
+			<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
+			<div class="pagination-nav__label">Cobertura de Testes</div>
+			<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
+			</a>
+		</div>
+		<div class="pagination-nav__item">
+		</div>
+	</div>
+</div>
+
+<div className={styles.mobileOnly}>
 	<div class="pagination-nav__item">
 		<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
 		<div class="pagination-nav__label">Cobertura de Testes</div>
@@ -49,5 +63,6 @@ Notas sobre QA, Teste ou Computação em geral.
 	</div>
 	<br />
 </div>
+
 
 ---

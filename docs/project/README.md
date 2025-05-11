@@ -51,40 +51,75 @@ import styles from '@site/src/css/styles.module.css';
 
 <Columns>
 	<Column className='padding--md'>
-		<Card shadow='md'>
-			<div className={styles.desktopOnly}>
-				<CardImage cardImageUrl=''/>
+		<div class="card-demo">
+			<div class="card shadow--md">
+				<div class="card__image">
+					![image](./assets/banner/banner_flask_default.webp)
+				</div>
+				<div class="card__body">
+					<h4>CTFL - Certified Tester Foundation Level</h4>
+					<small>
+						Primeira certificação da ISTQB para a carreira de Teste de Software.
+					</small>
+				</div>
+				<div class="card__footer">
+					<a href='/garden/docs/istqb/ctfl'>
+						<button className='button button--secondary button--block'>Leia Mais</button>
+					</a>
+				</div>
 			</div>
-			<CardHeader textAlign='center'>
-				<p><b>CTFL - Certified Tester Foundation Level</b></p>
-			</CardHeader>
-			<CardBody weight='light'>
-				Primeira certificação da ISTQB para a carreira de Teste de Software.
-			</CardBody>
-			<CardFooter>
-				<a href='/garden/docs/istqb/ctfl'>
-					<button className='button button--secondary button--block'>Leia Mais</button>
-				</a>
-			</CardFooter>
-		</Card>
+		</div>
 	</Column>
 	<Column className='padding--md'>
-		<Card shadow='md'>
-			<div className={styles.desktopOnly}>
-				<CardImage cardImageUrl=''/>
+		<div class="card-demo">
+			<div class="card shadow--md">
+				<div class="card__image">
+					![image](./assets/banner/banner_flask_default.webp)
+				</div>
+				<div class="card__body">
+					<h4>CT-TAS - Test Automation Strategy</h4>
+					<small>
+						Certificação de Especialização para perspectiva estratégica sobre a automação de testes.
+					</small>
+				</div>
+				<div class="card__footer">
+					<a href='/garden/docs/istqb/cttas'>
+						<button className='button button--secondary button--block'>Leia Mais</button>
+					</a>
+				</div>
 			</div>
-			<CardHeader textAlign='center'>
-				<p><b>CT-TAS - Test Automation Strategy</b></p>
-			</CardHeader>
-			<CardBody weight='light'>
-				Certificação de Especialização para perspectiva estratégica sobre a automação de testes.
-			</CardBody>
-			<CardFooter>
-				<a href='/garden/docs/istqb/cttas'>
-					<button className='button button--secondary button--block'>Leia Mais</button>
-				</a>
-			</CardFooter>
-		</Card>
+		</div>
+	</Column>
+	<Column className='padding--md'>
+	</Column>
+</Columns>
+
+---
+
+## Documentações
+
+<Columns>
+	<Column className='padding--md'>
+		<div class="card-demo">
+			<div class="card shadow--md">
+				<div class="card__image">
+					![image](./assets/banner/banner_flask_qa_default.webp)
+				</div>
+				<div class="card__body">
+					<h4>Notes</h4>
+					<small>
+						Notas sobre QA, Teste ou Computação em geral.
+					</small>
+				</div>
+				<div class="card__footer">
+					<a href='/garden/docs/notes'>
+						<button className='button button--secondary button--block'>Leia Mais</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</Column>
+	<Column className='padding--md'>
 	</Column>
 	<Column className='padding--md'>
 	</Column>
