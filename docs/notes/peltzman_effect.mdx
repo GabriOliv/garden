@@ -2,67 +2,100 @@
 sidebar_position: 1
 title: Efeito Peltzman
 description: Incluir uma nova camada de qualidade pode diminuir a qualidade do software?
-tags: [stageA, notes, qa, theory]
+tags: [stageB, notes, qa, theory]
 draft: false
 ---
 
 # Efeito Peltzman e a Centralização da Responsabilidade
 
-Incluir uma nova camada de qualidade pode diminuir a qualidade do software?
+Incluir uma nova camada de qualidade pode reduzir a qualidade do software?
 
 ---
 
-### O Cenário de Implementação
+### O Contexto de Implementação
 
-Imagine o cenário em que, uma nova equipe de testers é contratada para realizar uma nova camada de qualidade, testando as novas alterações antes que cheguem em produção. A intenção é garantir que todos os erros sejam identificados antes do cliente e essa responsabilidade agora é transferida para essa nova equipe.
+Imaginemos um cenário em que uma nova equipe de testers é contratada com a finalidade de implementar uma camada adicional de qualidade, testando as alterações antes que estas cheguem à produção. O objetivo dessa mudança é assegurar que todos os erros sejam detectados antes de afetar os usuários finais, transferindo a responsabilidade pela qualidade para essa equipe especializada.
 
-Mas algo inverso acontece, mais erros começam a aparecer em produção, e a gestão não consegue entender porque mais erros estão aparecendo no fluxo de desenvolvimento.
-A solução proposta é aumentar o tempo de execução dos testes para garantir que todos sejam mais minuciosos. E agora o tempo de desenvolvimento também está sofrendo atrasos.
+Após essa alteração, um resultado inesperado ocorre: o número de erros em produção começa a aumentar. A gestão não compreende por que mais falhas estão surgindo no fluxo de desenvolvimento. Como solução, aumenta-se o tempo dedicado aos testes, com o intuito de torná-los mais detalhados e abrangentes. Mas essa decisão de "aumento no tempo de execução" resulta também em atrasos no desenvolvimento.
 
-Com o tempo, a equipe de testes é desfeita por não conseguir entregar os resultados esperados e a equipe de desenvolvimento recebe novamente a responsabilidade de realizar os próprios testes. O que magicamente diminui o número de erros em produção.
+Com o tempo, a equipe de testes é desfeita, incapaz de alcançar os resultados esperados. A responsabilidade de testar retorna à equipe de desenvolvimento, o que, curiosamente, leva a uma diminuição no número de erros em produção.
+
+<figure>
+	<figcaption class="text--center">SDLC com nova camada de qualidade</figcaption>
+
+	```mermaid
+		%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
+		flowchart LR
+
+		classDef node      stroke:#000,stroke-width:2px;
+		classDef invisible fill:#fff0,stroke:#fff0,stroke-width:0px,color:#fff0;
+		classDef green     fill:#8f8,stroke:#000,stroke-width:2px,color:#000;
+
+		a:::invisible; b:::invisible; c:::invisible; d:::invisible; e:::invisible; f:::invisible;
+
+		subgraph a[" "]; a0; a1; end
+		subgraph b[" "]; b0; b1; end
+		subgraph c[" "]; c0; c1; end
+		subgraph d[" "]; d0; d1; end
+		subgraph e[" "]; e1; end
+		subgraph f[" "]; f0; f1; end
+
+		a0["Planejamento"]
+		b0["Definição"]
+		c0["Design"]
+		d0["Desenvolvimento"]
+		f0["Deploy"]
+
+		a1["Planejamento"]
+		b1["Definição"]
+		c1["Design"]
+		d1["Desenvolvimento"]
+		e1@{ shape: processes, label: "Testes", green}; e1:::green;
+		f1["Deploy"]
+
+		a0 ==> b0 ==> c0 ==> d0 ==> f0
+		a1 ==> b1 ==> c1 ==> d1 l0@==> e1 l1@==> f1
+
+		l0@{ animate: true, animation: fast }
+		l1@{ animate: true, animation: slow}
+	```
+
+</figure>
 
 ### Análise do Cenário
 
-Implementar uma nova camada de qualidade piorou a qualidade do software porque não faz sentido somente uma equipe ser responsável por garantir a qualidade do software em um fluxo completo e complexo de desenvolvimento.
+A introdução de uma nova camada de qualidade, embora inicialmente promissora, resultou em uma diminuição da qualidade do software. Isso aconteceu porque não é eficaz transferir toda a responsabilidade pela qualidade para uma única equipe em um processo de desenvolvimento dinâmico e complexo.
 
-O que aconteceu foi que, a nova equipe criou uma falsa sensação de segurança em todos os envolvidos no processo de desenvolvimento. Fazendo com que os desenvolvedores acreditassem que não precisavam mais se preocupar com a qualidade como antes, pois agora havia uma equipe dedicada a isso. Essa sensação de segurança levou a um desleixo nas práticas de desenvolvimento  e testes, resultando em mais erros que a equipe focada em qualidade não conseguiu cobrir. Isso é o que chamamos de Efeito Peltzman.
+O que ocorreu foi que a criação dessa nova equipe gerou uma falsa sensação de segurança entre os envolvidos no processo. Os desenvolvedores, agora amparados por uma equipe dedicada ao controle de qualidade, passaram a acreditar que poderiam relaxar em suas próprias práticas de testes e desenvolvimento. Essa confiança levou ao descuido nas etapas de desenvolvimento e testes, o que resultou em um aumento no número de erros. A equipe de testes, por sua vez, não conseguiu identificar todos esses erros antes que chegassem à produção. Essa situação é um bom exemplo do Efeito Peltzman.
 
 ### O Efeito Peltzman
 
-O Efeito Peltzman foi um conceito proposto pelo economista Sam Peltzman no artigo de 1975, "The Effects of Automobile Safety Regulation". O estudo analisou como a introdução de regulamentações de segurança em automóveis levou a um aumento no número de acidentes.
+O Efeito Peltzman é um conceito proposto pelo economista Sam Peltzman em seu estudo de 1975, "The Effects of Automobile Safety Regulation". Em sua pesquisa, Peltzman analisou os impactos das regulamentações de segurança em automóveis, observando que, paradoxalmente, a implementação dessas normas de segurança levou a um aumento no número de acidentes.
 
-A ideia proposta é que, quando as pessoas se sentem mais seguras devido a regulamentações ou medidas de segurança, elas tendem a adotar comportamentos mais arriscados, diminuindo sua vigilância ou negligenciando as precauções que tomavam anteriormente.
+A ideia central é que, quando as pessoas percebem um aumento na segurança, regulamentações ou medidas preventivas, elas tendem a adotar comportamentos mais arriscados, reduzindo sua vigilância e negligenciando as precauções que tomavam anteriormente. Ou seja, a sensação de segurança gerada pela intervenção faz com que as pessoas se tornem mais propensas a agir de maneira imprudente.
 
-No cenário do desenvolvimento de software, a equipe de testes não pode simplesmente receber toda a responsabilidade pelos erros encontrados em produção, apenas por ser a última camada de segurança. É necessário que dados sejam coletados e analisados para garantir que todos os envolvidos no processo de desenvolvimento mantenham a vigilância e a responsabilidade pela qualidade do software.
+Esse fenômeno também pode ser aplicado ao desenvolvimento de software. A introdução de uma equipe de testes, encarregada de identificar falhas antes da produção, não deve ser vista como a única responsável pela qualidade. Em vez disso, a qualidade deve ser uma responsabilidade compartilhada entre todos os membros da equipe de desenvolvimento. Quando se transfere completamente a responsabilidade para uma única camada de testes, os desenvolvedores podem negligenciar suas próprias responsabilidades, resultando no aumento dos erros.
 
-Toda alteração feita no fluxo de desenvolvimento deve ser acompanhada de dados que comprovem a eficácia da mudança, etapa por etapa. Isso garante que nenhuma equipe envolvida se sinta excluída da responsabilidade e consequentemente negligencie seu papel na manutenção da qualidade do software.
+A centralização da responsabilidade de garantir a qualidade do software em uma única equipe pode gerar um ambiente propício ao desleixo, reduzindo a eficácia geral do processo de desenvolvimento.
+
+### A Necessidade de Vigilância Coletiva e Dados Consistentes
+
+A responsabilidade pela qualidade do software é de todos os envolvidos no processo, desde os desenvolvedores até os testadores. A introdução de qualquer nova camada de controle, como a equipe de testes, deve ser acompanhada de dados objetivos e mensuráveis que comprovem, tanto a eficácia da nova equipe, quanto das equipes já anteriormente presentes no SDLC. Esses dados coletados e analisados ao longo de todo o fluxo de desenvolvimento serão usados para garantir que cada etapa esteja contribuindo de forma significativa para a qualidade do produto final.
+
+Ao manter uma abordagem colaborativa e uma vigilância completa sobre todas as fases do desenvolvimento, é possível evitar a criação de uma falsa sensação de segurança. Isso assegura que nenhuma equipe se sinta alheia às suas responsabilidades e que a qualidade do software seja efetivamente garantida de forma integral e contínua.
 
 ---
 
 ### Mapa Mental
 
-```mermaid
-	%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
-	flowchart LR
-
-	classDef red fill:#f88,stroke:#333,stroke-width:2px,color:#000;
-	classDef green fill:#8f8,stroke:#333,stroke-width:2px,color:#000;
-
-	a:::red
-	b:::green
-
-	z["Nova camada de<br>qualidade no SDLC"]
-		z --> a["Método A<br>Diminuição de Qualidade"]
-			a --> A01["Incluir Equipe"]
-			a --> A02["Centralizar<br>Responsabilidade"]
-		z --> b["Método B<br>Aumento de Qualidade"]
-			b --> B01["Incluir Equipe"]
-			b --> B02["Incluir Monitoramento<br>Etapa a Etapa"]
-			b --> B03["Dividir<br>Responsabilidade"]
-
-	subgraph p["Peltzman Effect"]; a; A01; A02; end
-
-```
+- **Nova camada de qualidade:**
+	- 🔴 **Método A (Diminuição da qualidade):**
+		- Incluir equipe;
+		- Centralizar a responsabilidade.
+	- 🟢 **Método B (Aumento da qualidade):**
+		- Incluir equipe;
+		- Incluir monitoramento etapa por etapa;
+		- Dividir a responsabilidade.
 
 ---
 
