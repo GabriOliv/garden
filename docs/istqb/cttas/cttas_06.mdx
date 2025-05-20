@@ -12,56 +12,56 @@ draft: false
 
 ### 6.1.1 Descrever os fatores e as atividades de planejamento na transição do teste manual para a automação de teste
 
-Como trasicionar de Teste manual para automação?
+Como transicionar de teste manual para automação?
 
-Mais fácil -> ADD Testes de Regressão
+Mais fácil -> Adicionar testes de regressão
 
-Mantendo o Sentido de linha do tempo
-- Teste Funcionais e Não-Funcionais -> Se tornam os Regressivos
-- Teste Regressivos -> Se tornam os Automatizados
-- Teste Automatizados -> Recebem manutenção
+Mantendo o sentido de linha do tempo:
+- Testes funcionais e não funcionais -> Se tornam os regressivos
+- Testes regressivos -> Se tornam os automatizados
+- Testes automatizados -> Recebem manutenção
 
-Custos de transição
+Custos de transição:
 
 - Aumento de custo irá acontecer durante a transição
-- Porque
-	- Manual e Automatizado correm em paralelo
+- Porque:
+	- Manual e automatizado correm em paralelo
 	- Mais esforços são necessários em testes exploratórios para definição de casos de teste
 
-Sobreposição Funcional
+Sobreposição funcional:
 
-- Quando um mesmo testes utilizado em vários casos de teste;
+- Quando um mesmo teste é utilizado em vários casos de teste;
 - Faz com que a manutenção seja feita em vários lugares (onerosa)
-- COMO REMOVER A Sobreposição Funcional
+- COMO REMOVER A Sobreposição Funcional:
 	- Componentizar o teste que é usado em múltiplos casos;
 	- Um componente centraliza a manutenção e facilita o reuso.
 
-Compartilhamento de Dados
+Compartilhamento de dados:
 
 - Testes automatizados requerem compartilhamento de dados entre casos
 - Evitando duplicidade e introdução de erros
 
-Interdependência de testes
+Interdependência de testes:
 
 - Testes podem depender de outros
-- Ex:
-	- TestA: Validar se ID de pedido está na Tela
-	- Requer TestB: Inclusão de Pedido que retorna o ID
+- Exemplo:
+	- TestA: Validar se ID de pedido está na tela
+	- Requer TestB: Inclusão de pedido que retorna o ID
 
-Condições prévias para a execução do teste
+Condições prévias para a execução do teste:
 
 - Certos casos requerem condições específicas
-- Ex: usuários cadastrados, funções de conta, tabelas de dados...
-- Antes de automatizar um casos, é necessário prever essas condições específicas
+- Exemplo: usuários cadastrados, funções de conta, tabelas de dados...
+- Antes de automatizar um caso, é necessário prever essas condições específicas
 
-Cobertura Funcional
+Cobertura funcional:
 
-- 100% Testes Manuais < 100% Testes possíveis de automação
-- Conforme os testes são automatizados, os testers ganham o tempo de execução
+- 100% testes manuais < 100% testes possíveis de automação
+- Conforme os testes são automatizados, os testers ganham tempo de execução
 
-Testes executáveis
+Testes executáveis:
 
-Teste manual deve estar correto e seguro antes de ser automatizado.
+O teste manual deve estar correto e seguro antes de ser automatizado.
 
 ### 6.1.2 Descrever os fatores e as atividades de planejamento na transição da automação de teste para testes contínuos
 
@@ -72,14 +72,14 @@ Contínuo = Executar conjuntos de teste logo após uma alteração de código.
 
 Adaptando o TAS para teste contínuo:
 - Execução em TAS atualizado
-- Incluir drivers, interface e simuladores necessários para Execução
-- Alterar infra para comportar a Execução do TAS atualizado
+- Incluir drivers, interface e simuladores necessários para execução
+- Alterar infraestrutura para comportar a execução do TAS atualizado
 - Se problemas no TAS travarem a esteira:
-	- Validar o Risco/Benefício e tomar a decisão
+	- Validar o Risco/Benefício e tomar a decisão:
 		- Manter o TAS contínuo e dar manutenção urgente
 		- Desligar o TAS contínuo e dar manutenção com mais prazo
 		- Permitir que o TAS seja desligado sem previsão de volta
-- Criar notas de versão com os defeitos de TAS para serem corrigidos
+- Criar notas de versão com os defeitos do TAS para serem corrigidos
 
 ### 6.2 Compreensão dos Fatores e Atividades de Planejamento na Transição da Automação de Teste para Testes Contínuos
 
@@ -87,46 +87,45 @@ Adaptando o TAS para teste contínuo:
 
 Em partes do processo, é importante avaliar oportunidades de melhoria.
 
-Na linha de tempo:
-- Teste Funcionais e Não-Funcionais -> Se tornam os Regressivos
-- Teste Regressivos -> Se tornam os Automatizados
-- Teste Automatizados -> Se tornam os Contínuos
-- Teste Contínuos -> Se tornam parte da rotina no CI/CD
+Na linha do tempo:
+- Testes funcionais e não funcionais -> Se tornam os regressivos
+- Testes regressivos -> Se tornam os automatizados
+- Testes automatizados -> Se tornam os contínuos
+- Testes contínuos -> Se tornam parte da rotina no CI/CD
 
 Monitorar:
-- Horas gastas no dev do TAS
-- Horas gastas na fix do TAS
-- Quanto a Economia de execução automatizada em relação à manual
-
+- Horas gastas no desenvolvimento do TAS
+- Horas gastas na correção do TAS
+- Economia de execução automatizada em relação à manual
 
 Etapas básicas para análise:
-- Ferramentas de Cobertura de Código
-	- indica as Lacunas que podem ser cobertas
-- Ferramentas de Cobertura Funcional
-	- indica quais Funcionalidades não foram cobertas
-- Métricas de Infraestrutura
-	- indica se Recursos estão sendo usados com eficiência
-- Tempo de Configuração
-	- melhorar/criar Estratégias de Gerenciamento de Configuração
-- Diretrizes do TAS
-	- indica práticas recomendadas à serem seguidas
-- Implementação de Pré-Condições
-	- definição de quais Pré-Condições são necessárias para os testes
+- Ferramentas de cobertura de código:
+	- Indicam as lacunas que podem ser cobertas
+- Ferramentas de cobertura funcional:
+	- Indicam quais funcionalidades não foram cobertas
+- Métricas de infraestrutura:
+	- Indicam se recursos estão sendo usados com eficiência
+- Tempo de configuração:
+	- Melhorar/criar estratégias de gerenciamento de configuração
+- Diretrizes do TAS:
+	- Indicam práticas recomendadas a serem seguidas
+- Implementação de pré-condições:
+	- Definição de quais pré-condições são necessárias para os testes
 
-Atualizações incrementais da TAS para novos recursos ou manutenção:
-- Avaliar se atualização fornece mais recursos
+Atualizações incrementais do TAS para novos recursos ou manutenção:
+- Avaliar se a atualização fornece mais recursos
 - Avaliar formas de otimizar recursos
 - Identificar oportunidades de modularizar os scripts
 - Garantir conhecimento de componentes reutilizáveis
 - Coletar evidências sobre possíveis melhorias e listar benefícios
 - Avaliar e corrigir sobreposição funcional
-- Avaliar testes manuais adicionais para identificar Casos novos a serem automatizados
+- Avaliar testes manuais adicionais para identificar casos novos a serem automatizados
 - Destacar oportunidades de gerenciamento de dados e projeto
 - Garantir que todos os testes rodem no TAS atualizado
-- Se a automação de teste cause fila no pipeline
-	- Diminua o escopo para os mais críticos (smoke testes)
-	- Testes de Regressão mais elaborados:
-		- podem ser executados com acionamento separado
-		- podem ser executados sob demanda
+- Se a automação de teste causar fila no pipeline:
+	- Diminuir o escopo para os mais críticos (smoke testes)
+	- Testes de regressão mais elaborados:
+		- Podem ser executados com acionamento separado
+		- Podem ser executados sob demanda
 
 ---

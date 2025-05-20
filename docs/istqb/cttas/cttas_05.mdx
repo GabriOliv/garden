@@ -17,8 +17,8 @@ Cálculo de "Return of Investment":
 $\large \text{ROI} = \frac{\text{Economia}}{\text{Investimento}}$
 
 - Usar na Economia:
-	- Tempo de execução Manual
-	- Tempo de execução Automatizada
+	- Tempo de execução manual
+	- Tempo de execução automatizada
 	- Número de casos de teste
 	- Número de execuções de teste
 
@@ -29,14 +29,14 @@ $\large \text{ROI} = \frac{\text{Economia}}{\text{Investimento}}$
 	- Tempo médio de manutenção
 	- Tempo de execução
 	- Porcentagem de scripts falhos
-	- Numero de casos de teste
+	- Número de casos de teste
 	- Número de execuções
 
 IMPORTANTE:
 
 O projeto deve durar tempo suficiente para que o "ponto de virada" do ROI funcione; Senão o ROI não vale a pena.
 
-A automação deve ser realizada no nível correto da piramide de teste para que o ROI seja mais efetivo.
+A automação deve ser realizada no nível correto da pirâmide de teste para que o ROI seja mais efetivo.
 
 ### 5.2 Métricas de Automação de Teste
 
@@ -45,61 +45,60 @@ A automação deve ser realizada no nível correto da piramide de teste para que
 Análises de dados são importantes para as tomadas de decisões.
 
 - Adequação do TAS ao projeto
-- Adaptabilidade da TAS
+- Adaptabilidade do TAS
 - Capacidade de manutenção
 
-O custo da medição deve ser o mais baixo possível
+O custo da medição deve ser o mais baixo possível.
 
-Métricas Importantes:
+Métricas importantes:
 
-- Taxa de Aprovação/Reprovação
-	- formula que indica a efetividade do sistema ao atingir o resultado esperado
+- Taxa de aprovação/reprovação
+	- Fórmula que indica a efetividade do sistema ao atingir o resultado esperado
 	- $\large \text{Taxa de aprovação/reprovação} = \frac{\text{quantidade de testes aprovados}}{\text{quantidade de testes reprovados}}$
 - Proporção de falhas e defeitos
-	- levanta de um único defeito quebrou vários testes
-	- ajuda a evidenciar se o defeito está vinculado à infraestrutura ou subsistemas.
+	- Levanta se um único defeito quebrou vários testes
+	- Ajuda a evidenciar se o defeito está vinculado à infraestrutura ou subsistemas.
 - Tempo de execução da automação de teste
-	- a medida que os casos aumentam essa métrica se toma importante
-	- inclui o tempo de construção do TAS
+	- À medida que os casos aumentam, essa métrica se torna importante
+	- Inclui o tempo de construção do TAS
 - Número de casos de teste automatizados
-	- indica o progresso feito
-	- cuidado, pois o numero de casos não indica o nível de cobertura
+	- Indica o progresso feito
+	- Cuidado, pois o número de casos não indica o nível de cobertura
 - Cobertura funcional de automação
-	- casos funcionais implementados
+	- Casos funcionais implementados
 - Cobertura do código
-	- cobertura de teste de componente (unitário)
-	- é difícil alcançar 100%, mas quanto maior melhor
+	- Cobertura de teste de componente (unitário)
+	- É difícil alcançar 100%, mas quanto maior, melhor
 
 ### 5.3 O Valor da Automação de Teste no Nível do Projeto e da Organização
 
 ### 5.3.1 Identificar as considerações organizacionais para o uso da automação de teste
 
 - Políticas e práticas de desenvolvimento de software
-	- verificar como as equipes trabalham
-	- documentação disponível
-	- padrões de codificação definidos
+	- Verificar como as equipes trabalham
+	- Documentação disponível
+	- Padrões de codificação definidos
 - Projetos de automação de teste ativos existentes e seu status
-	- validar projetos existentes e status
-	- reutilizar alguma TAS existente
+	- Validar projetos existentes e status
+	- Reutilizar alguma TAS existente
 - Os Especialistas no Assunto (SME) da organização para automação de teste
-	- procurar SME que possa ajudar na implementação
-	- os SME podem compartilhar lições aprendidas
+	- Procurar SME que possa ajudar na implementação
+	- Os SME podem compartilhar lições aprendidas
 - Disponibilidade de ambientes de teste
-	- reunir informações sobre ambientes de teste
-	- um novo projeto pode precisar de um novo ambiente
+	- Reunir informações sobre ambientes de teste
+	- Um novo projeto pode precisar de um novo ambiente
 - Ferramentas e licenças de teste
-	- licenças que a organização já possui
-	- identificar ferramentas que pode reduzir o cronograma
+	- Licenças que a organização já possui
+	- Identificar ferramentas que podem reduzir o cronograma
 
 ### 5.3.2 Analisar as características do projeto que ajudam a determinar a implementação ideal dos objetivos do teste de automação de teste
 
-
-Objetivos do teste dependem das características.
+Os objetivos do teste dependem das características.
 
 Domínio
-- Ambiente em que as regras de negócio se propõe a lidar.
+- Ambiente em que as regras de negócio se propõem a lidar.
 - Ex: Turismo, Saúde, Segurança, Financeiro, ...
-- Cada Domínio possui restrições, riscos e padrões específicos.
+- Cada domínio possui restrições, riscos e padrões específicos.
 
 Plataformas
 - Quais ambientes e dispositivos são necessários na cobertura.
@@ -111,40 +110,40 @@ Linguagem de Programação e Conjunto de Tecnologias
 - Recomenda-se usar as mesmas linguagens de programação que os devs
 	- Facilita a colaboração
 	- Aprendizagem cruzada
-	- Facilita a Integração SUT e conhecimento dos TAE
+	- Facilita a integração SUT e conhecimento dos TAE
 
 Maturidade do Projeto
 - Número de casos de teste
-	- Muitos casos, requer análise mais profunda de abordagem
+	- Muitos casos requerem análise mais profunda de abordagem
 - Pipelines
 	- Quais testes podem ser realizados junto ao pipeline
-- Numero de testadores
+- Número de testadores
 	- Determina o prazo de execução do projeto
 - Linha do tempo
 	- Se o projeto possui um prazo curto de implementação de TAS
 
 Participação dos Stakeholders
-- Stakeholders podem não aceitar os testes com medo que comprometam
-	- Velocidade de Desenvolvimento
+- Stakeholders podem não aceitar os testes com medo de que comprometam:
+	- Velocidade de desenvolvimento
 	- Prazo
 	- Orçamento
-- Identifica os Riscos do produto
-- Precisam estar cientes do Plano de TAS e seus marcos (objetivos)
+- Identificar os riscos do produto
+- Precisam estar cientes do plano de TAS e seus marcos (objetivos)
 
-Conhecimento e Experiência de Equipe
+Conhecimento e Experiência da Equipe
 - Usar conhecimento de teste para determinar objetivos
-- Gestor de Teste criam uma matriz de Competencia e Habilidades
-	- identifica conhecimentos disponíveis
-	- identifica lacunas
-	- traça diferentes objetivos
-	- atribui tarefas com precisão
+- Gestores de Teste criam uma matriz de competência e habilidades
+	- Identifica conhecimentos disponíveis
+	- Identifica lacunas
+	- Traça diferentes objetivos
+	- Atribui tarefas com precisão
 
-Suporte ao gerenciamento
+Suporte ao Gerenciamento
 - Definir objetivos que possam ser cumpridos e medidos
 - Documentação concisa
 - Definir lacunas e custos futuros
 
-Características de qualidade
+Características de Qualidade
 - ISO/IEC 25010:2011 define características de qualidade
 - São citadas no CTFL 2.2.2 "Tipos de Teste"
 - Usadas para definir métricas do TAS
@@ -153,14 +152,14 @@ Características de qualidade
 
 ### 5.4.1 Analisar os dados do relatório de teste para tomada de decisões
 
-- Formato e Conteúdo de um relatório de automação podem variar
+- Formato e conteúdo de um relatório de automação podem variar
 - Pode ser criado por stakeholders gerenciais, operacionais ou técnicos
 - Um relatório pode ser incorporado em outro mais amplo
-- Dados Coletados podem ajudar:
-	- Identificar tendências e causa raiz
+- Dados coletados podem ajudar:
+	- Identificar tendências e causas raiz
 	- Transferência de recursos
 		- Transferir os esforços de automação para manutenção
-		- Transferir os esforços de Melhoria para desenvolvimento do TAF
+		- Transferir os esforços de melhoria para desenvolvimento do TAF
 		- Adicionar recursos à TAS geral
 	- Abordagem
 		- Aumentar o Shift-Left e Shift-Right
