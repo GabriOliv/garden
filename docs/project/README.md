@@ -49,6 +49,8 @@ import styles from '@site/src/css/styles.module.css';
 
 ## Certificações
 
+Resumos de estudo usados para certificações.
+
 <Columns>
 	<Column className='padding--md'>
 		<div class="card-demo">
@@ -98,6 +100,8 @@ import styles from '@site/src/css/styles.module.css';
 
 ## Documentações
 
+Documentações variadas sobre Teste de Software, QA e Computação em geral.
+
 <Columns>
 	<Column className='padding--md'>
 		<div class="card-demo">
@@ -122,6 +126,69 @@ import styles from '@site/src/css/styles.module.css';
 	<Column className='padding--md'>
 	</Column>
 	<Column className='padding--md'>
+	</Column>
+</Columns>
+
+---
+
+## Organização por Evolução
+
+Documentação organizada por evolução de aprendizado e revisão.
+
+<Columns>
+	<Column className='padding--md'>
+		<div class="card item shadow--md margin--md">
+			<div class="card__header">
+				<h3><code>🌱</code> Iniciais</h3>
+			</div>
+			<div class="card__body">
+				<p>Artigos em construção que começam a explorar um tema.</p>
+			</div>
+			<div class="card__footer">
+				<button class="button button--secondary button--block">Veja Todos</button>
+			</div>
+		</div>
+	</Column>
+	<Column className='padding--md'>
+		<div class="card item shadow--md margin--md">
+			<div class="card__header">
+				<h3><code>🌿</code> Melhorados</h3>
+			</div>
+			<div class="card__body">
+				<p>Artigos que foram revisados e melhorados.</p>
+			</div>
+			<div class="card__footer">
+				<button class="button button--secondary button--block">Veja Todos</button>
+			</div>
+		</div>
+	</Column>
+</Columns>
+<Columns>
+	<Column className='padding--md'>
+		<div class="card item shadow--md margin--md">
+			<div class="card__header">
+				<h3><code>🌲</code> Intermediários</h3>
+			</div>
+			<div class="card__body">
+				<p>Artigos que estão em um nível intermediário de revisão.</p>
+			</div>
+			<div class="card__footer">
+				<button class="button button--secondary button--block">Veja Todos</button>
+			</div>
+		</div>
+	</Column>
+	<Column className='padding--md'>
+		<div class="card item shadow--md margin--md">
+			<div class="card__header">
+				<h3><code>🍎</code> Completos</h3>
+			</div>
+			<div class="card__body">
+				<p>Artigos que estão maduros e completos.</p>
+			</div>
+			<div class="card__footer">
+				<button class="button button--secondary button--block">Veja Todos</button>
+			</div>
+		</div>
 	</Column>
 </Columns>
 
