@@ -26,20 +26,20 @@ import styles from '@site/src/css/styles.module.css';
 
 <div className={styles.mobileOnly}>
 	<div class="img-center">
-		![Banner Light Mode](./assets/3f3fd9_undraw_art-museum.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_art-museum.svg#gh-dark-mode-only)
+		![Banner Light Mode](/img/banner/3f3fd9_undraw_art-museum.svg#gh-light-mode-only)![Banner Dark Mode](/img/banner/9a47ff_undraw_art-museum.svg#gh-dark-mode-only)
 	</div>
 </div>
 <div className={styles.desktopOnly}>
 	<div class="container">
 		<div class="row">
 			<div class="col col--4">
-				![Banner Light Mode](./assets/3f3fd9_undraw_done-checking.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_done-checking.svg#gh-dark-mode-only)
+				![Banner Light Mode](/img/banner/3f3fd9_undraw_done-checking.svg#gh-light-mode-only)![Banner Dark Mode](/img/banner/9a47ff_undraw_done-checking.svg#gh-dark-mode-only)
 			</div>
 			<div class="col col--4">
-				![Banner Light Mode](./assets/3f3fd9_undraw_creative-team.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_creative-team.svg#gh-dark-mode-only)
+				![Banner Light Mode](/img/banner/3f3fd9_undraw_creative-team.svg#gh-light-mode-only)![Banner Dark Mode](/img/banner/9a47ff_undraw_creative-team.svg#gh-dark-mode-only)
 			</div>
 			<div class="col col--4">
-				![Banner Light Mode](./assets/3f3fd9_undraw_file-analysis.svg#gh-light-mode-only)![Banner Dark Mode](./assets/9a47ff_undraw_file-analysis.svg#gh-dark-mode-only)
+				![Banner Light Mode](/img/banner/3f3fd9_undraw_file-analysis.svg#gh-light-mode-only)![Banner Dark Mode](/img/banner/9a47ff_undraw_file-analysis.svg#gh-dark-mode-only)
 			</div>
 		</div>
 	</div>
