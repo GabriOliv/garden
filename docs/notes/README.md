@@ -25,6 +25,10 @@ Notas sobre QA, Teste ou Computação em geral.
 			</a>
 		</div>
 		<div class="pagination-nav__item">
+			<a class="pagination-nav__link" href="./notes/e2e_useful">
+			<div class="pagination-nav__label">E2E é Útil?</div>
+			<div class="pagination-nav__sublabel">Testes Automatizados E2E são úteis ou são apenas uma falácia de mercado em relação à qualidade de software?</div>
+			</a>
 		</div>
 	</div>
 </div>
@@ -37,6 +41,12 @@ Notas sobre QA, Teste ou Computação em geral.
 		</a>
 	</div>
 	<br />
+	<div class="pagination-nav__item">
+		<a class="pagination-nav__link" href="./notes/e2e_useful">
+		<div class="pagination-nav__label">E2E é Útil?</div>
+		<div class="pagination-nav__sublabel">Testes Automatizados E2E são úteis ou são apenas uma falácia de mercado em relação à qualidade de software?</div>
+		</a>
+	</div>
 </div>
 
 ## Processos
