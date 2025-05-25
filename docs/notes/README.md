@@ -1,7 +1,7 @@
 ---
 title: Notes
 sidebar_position: 0
-description: Notas do projeto sobre QA, Teste e Computação em geral.
+description: Notas sobre QA, Teste e Computação em geral.
 tags: [stageB, notes, readme]
 draft: false
 ---
@@ -10,7 +10,7 @@ import styles from '@site/src/css/styles.module.css';
 
 # Notes
 
-Notas sobre QA, Teste ou Computação em geral.
+{frontMatter.description}<br />
 
 ---
 
@@ -21,7 +21,7 @@ Notas sobre QA, Teste ou Computação em geral.
 		<div class="pagination-nav__item">
 			<a class="pagination-nav__link" href="./notes/peltzman_effect">
 			<div class="pagination-nav__label">Efeito Peltzman e a Centralização da Responsabilidade</div>
-			<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode diminuir a qualidade do software?</div>
+			<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode reduzir a qualidade do software?</div>
 			</a>
 		</div>
 		<div class="pagination-nav__item">
@@ -37,7 +37,7 @@ Notas sobre QA, Teste ou Computação em geral.
 	<div class="pagination-nav__item">
 		<a class="pagination-nav__link" href="./notes/peltzman_effect">
 		<div class="pagination-nav__label">Efeito Peltzman e a Centralização da Responsabilidade</div>
-		<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode diminuir a qualidade do software?</div>
+		<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode reduzir a qualidade do software?</div>
 		</a>
 	</div>
 	<br />
