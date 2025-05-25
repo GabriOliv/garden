@@ -145,7 +145,9 @@ Documentação organizada por evolução de aprendizado e revisão.
 				<p>Artigos em construção que começam a explorar um tema.</p>
 			</div>
 			<div class="card__footer">
-				<button class="button button--secondary button--block">Veja Todos</button>
+				<a href='/garden/docs/tags/stageA'>
+					<button class="button button--secondary button--block">Veja Todos</button>
+				</a>
 			</div>
 		</div>
 	</Column>
@@ -158,7 +160,9 @@ Documentação organizada por evolução de aprendizado e revisão.
 				<p>Artigos que foram revisados e melhorados.</p>
 			</div>
 			<div class="card__footer">
-				<button class="button button--secondary button--block">Veja Todos</button>
+				<a href='/garden/docs/tags/stageB'>
+					<button class="button button--secondary button--block">Veja Todos</button>
+				</a>
 			</div>
 		</div>
 	</Column>
@@ -173,11 +177,14 @@ Documentação organizada por evolução de aprendizado e revisão.
 				<p>Artigos que estão em um nível intermediário de revisão.</p>
 			</div>
 			<div class="card__footer">
-				<button class="button button--secondary button--block">Veja Todos</button>
+				<a href='/garden/docs/tags/stageC'>
+					<button class="button button--secondary button--block">Veja Todos</button>
+				</a>
 			</div>
 		</div>
 	</Column>
 	<Column className='padding--md'>
+		<!--
 		<div class="card item shadow--md margin--md">
 			<div class="card__header">
 				<h3><code>🍎</code> Completos</h3>
@@ -186,9 +193,12 @@ Documentação organizada por evolução de aprendizado e revisão.
 				<p>Artigos que estão maduros e completos.</p>
 			</div>
 			<div class="card__footer">
-				<button class="button button--secondary button--block">Veja Todos</button>
+				<a href='/garden/docs/tags/stageD'>
+					<button class="button button--secondary button--block">Veja Todos</button>
+				</a>
 			</div>
 		</div>
+		-->
 	</Column>
 </Columns>
 
