@@ -87,6 +87,12 @@ const config: Config = {
 			disableSwitch: false,
 			respectPrefersColorScheme: true,
 		},
+		docs: {
+			sidebar: {
+				hideable: true,
+				autoCollapseCategories: true,
+			},
+		},
 		navbar: {
 			title: 'Garden',
 			// logo: {
