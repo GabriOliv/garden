@@ -104,7 +104,7 @@ const config: Config = {
 					type: 'docSidebar',
 					sidebarId: 'notes',
 					position: 'left',
-					label: 'Notes',
+					label: 'Notas',
 				},
 				// {
 				// 	to: '/blog',

@@ -1,5 +1,5 @@
 ---
-title: Notes
+title: Notas
 sidebar_position: 0
 description: Notas sobre QA, Teste e Computação em geral.
 tags: [stageB, notes, readme]
@@ -7,8 +7,6 @@ draft: false
 ---
 
 import styles from '@site/src/css/styles.module.css';
-
-# Notes
 
 {frontMatter.description}<br />
 

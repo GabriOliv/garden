@@ -110,7 +110,7 @@ Documentações variadas sobre Teste de Software, QA e Computação em geral.
 					![image](./assets/banner/banner_flask_qa_default.webp)
 				</div>
 				<div class="card__body">
-					<h4>Notes</h4>
+					<h4>Notas</h4>
 					<small>
 						Notas sobre QA, Teste ou Computação em geral.
 					</small>
