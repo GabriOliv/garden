@@ -102,15 +102,15 @@ const config: Config = {
 				},
 				{
 					type: 'docSidebar',
-					sidebarId: 'istqb',
-					position: 'left',
-					label: 'ISTQB',
-				},
-				{
-					type: 'docSidebar',
 					sidebarId: 'notes',
 					position: 'left',
 					label: 'Notas',
+				},
+				{
+					type: 'docSidebar',
+					sidebarId: 'istqb',
+					position: 'left',
+					label: 'ISTQB',
 				},
 				// {
 				// 	to: '/blog',
