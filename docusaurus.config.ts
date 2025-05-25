@@ -96,6 +96,12 @@ const config: Config = {
 			items: [
 				{
 					type: 'docSidebar',
+					sidebarId: 'project',
+					position: 'left',
+					label: 'Sobre',
+				},
+				{
+					type: 'docSidebar',
 					sidebarId: 'istqb',
 					position: 'left',
 					label: 'ISTQB',
