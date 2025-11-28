@@ -51,7 +51,7 @@ const config: Config = {
 					// Remove this to remove the "edit this page" links.
 					editUrl:
 						// 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-						'https://github.com/GabriOliv/garden/blob/master/',
+						'https://github.com/GabriOliv/garden/blob/main/',
 						// 'https://github.com/GabriOliv/garden',
 					remarkPlugins: [remarkMath],
 					rehypePlugins: [rehypeKatex],

@@ -58,7 +58,7 @@ O deploy é feito automaticamente pelo GitHub Actions, após a aprovação do Pu
 
 - Configuração necessária:
 	- Adicionar `gh-pages` como branch de deploy.
-	- Adicionar branch `master` como branch protegida.
+	- Adicionar branch `main` como branch protegida.
 
 Projeto será publicado na URL: `USERNAME.github.io/garden`
 

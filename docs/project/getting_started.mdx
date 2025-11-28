@@ -21,7 +21,7 @@ O projeto é construído com a arquitetura JAMStack, usando [Docusaurus](https:/
 title: CI/CD Pipeline
 ---
 flowchart LR
-	a["IDE"] -->|Push| b["Github<br>(master)"]
+	a["IDE"] -->|Push| b["Github<br>(main)"]
 	b -->|Trigger| c -->|Deploy| d["Github Pages"]
 
 	subgraph c["Github Action (deploy.yml)"]
@@ -29,7 +29,7 @@ flowchart LR
 		c1["Test"] -->
 		c2["Build"] -->
 		c3["Deploy"] -->
-		c4["Merge Files<br>(master -> gh-pages)"]
+		c4["Merge Files<br>(main -> gh-pages)"]
 	end
 ```
 
@@ -83,7 +83,7 @@ O deploy é feito automaticamente pelo GitHub Actions, após a aprovação do Pu
 
 - Configuração necessária:
 	- Adicionar `gh-pages` como branch de deploy.
-	- Adicionar branch `master` como branch protegida.
+	- Adicionar branch `main` como branch protegida.
 
 Projeto será publicado na URL: `USERNAME.github.io/garden`
 
@@ -103,7 +103,7 @@ Você pode realizar o fork do projeto [AQUI](https://github.com/GabriOliv/garden
 
 O projeto é licenciado sob a licença MIT assim como o Docusaurus.
 
-- A licença do projeto pode ser encontrada no [Repositório do Projeto](https://github.com/GabriOliv/garden/blob/master/LICENSE);
+- A licença do projeto pode ser encontrada no [Repositório do Projeto](https://github.com/GabriOliv/garden/blob/main/LICENSE);
 - A licença do Docusaurus pode ser encontrada no [Site Oficial](https://docusaurus.io).
 
 ---
