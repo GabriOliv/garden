@@ -158,6 +158,10 @@ system_testing:
   label: 'Testes de Sistema'
   permalink: '/system-testing'
   description: 'Testes de Sistema'
+manual_testing:
+  label: 'Testes Manuais'
+  permalink: '/manual-testing'
+  description: 'Testes Realizados Manualmente'
 acceptance_testing:
   label: 'Testes de Aceitação'
   permalink: '/acceptance-testing'
