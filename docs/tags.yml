@@ -68,6 +68,140 @@ theory:
   label: 'Teoria'
   permalink: '/theory'
   description: 'Teorias e Conceitos'
+documentation:
+  label: 'Documentação'
+  permalink: '/documentation'
+  description: 'Documentação de Software'
+automation:
+  label: 'Automação'
+  permalink: '/automation'
+  description: 'Automatização'
+framework:
+  label: 'Framework'
+  permalink: '/framework'
+  description: 'Frameworks e Ferramentas'
+agile:
+  label: 'Agile'
+  permalink: '/agile'
+  description: 'Metodologias Ágeis'
+ci_cd:
+  label: 'CI/CD'
+  permalink: '/ci-cd'
+  description: 'Integração e Deploy Contínuo'
+
+# ==============================================================================
+# Garantia de Qualidade de Software
+# ==============================================================================
+
+qa_process:
+  label: 'Processo de QA'
+  permalink: '/qa-process'
+  description: 'Processos de Garantia de Qualidade'
+quality_standards:
+  label: 'Padrões de Qualidade'
+  permalink: '/quality-standards'
+  description: 'Padrões e Normas de Qualidade'
+quality_metrics:
+  label: 'Métricas de Qualidade'
+  permalink: '/quality-metrics'
+  description: 'Métricas e Indicadores de Qualidade'
+quality_planning:
+  label: 'Planejamento da Qualidade'
+  permalink: '/quality-planning'
+  description: 'Planejamento da Garantia de Qualidade'
+quality_assurance:
+  label: 'Garantia de Qualidade'
+  permalink: '/quality-assurance'
+  description: 'Atividades de Garantia de Qualidade'
+code_review:
+  label: 'Revisão de Código'
+  permalink: '/code-review'
+  description: 'Revisão e Inspeção de Código'
+software_inspection:
+  label: 'Inspeção de Software'
+  permalink: '/software-inspection'
+  description: 'Inspeção e Auditoria de Software'
+quality_gates:
+  label: 'Quality Gates'
+  permalink: '/quality-gates'
+  description: 'Portões de Qualidade'
+prevention:
+  label: 'Prevenção de Defeitos'
+  permalink: '/prevention'
+  description: 'Atividades Preventivas de Qualidade'
+quality_management:
+  label: 'Gestão da Qualidade'
+  permalink: '/quality-management'
+  description: 'Gerenciamento da Qualidade'
+
+# ==============================================================================
+# Controle de Qualidade de Software
+# ==============================================================================
+
+functional_testing:
+  label: 'Testes Funcionais'
+  permalink: '/functional-testing'
+  description: 'Testes de Funcionalidade'
+non_functional_testing:
+  label: 'Testes Não Funcionais'
+  permalink: '/non-functional-testing'
+  description: 'Testes de Performance, Segurança, Usabilidade'
+unit_testing:
+  label: 'Testes Unitários'
+  permalink: '/unit-testing'
+  description: 'Testes de Unidade'
+integration_testing:
+  label: 'Testes de Integração'
+  permalink: '/integration-testing'
+  description: 'Testes de Integração'
+system_testing:
+  label: 'Testes de Sistema'
+  permalink: '/system-testing'
+  description: 'Testes de Sistema'
+acceptance_testing:
+  label: 'Testes de Aceitação'
+  permalink: '/acceptance-testing'
+  description: 'Testes de Aceitação'
+regression_testing:
+  label: 'Testes de Regressão'
+  permalink: '/regression-testing'
+  description: 'Testes de Regressão'
+smoke_testing:
+  label: 'Smoke Testing'
+  permalink: '/smoke-testing'
+  description: 'Testes de Fumaça'
+api_testing:
+  label: 'Testes de API'
+  permalink: '/api-testing'
+  description: 'Testes de Interface de Programação'
+mobile_testing:
+  label: 'Testes Mobile'
+  permalink: '/mobile-testing'
+  description: 'Testes de Aplicações Móveis'
+security_testing:
+  label: 'Testes de Segurança'
+  permalink: '/security-testing'
+  description: 'Testes de Segurança'
+performance_testing:
+  label: 'Testes de Performance'
+  permalink: '/performance-testing'
+  description: 'Testes de Desempenho'
+usability_testing:
+  label: 'Testes de Usabilidade'
+  permalink: '/usability-testing'
+  description: 'Testes de Experiência do Usuário'
+bug_tracking:
+  label: 'Bug Tracking'
+  permalink: '/bug-tracking'
+  description: 'Rastreamento de Defeitos'
+test_planning:
+  label: 'Planejamento de Testes'
+  permalink: '/test-planning'
+  description: 'Estratégia e Planejamento'
+test_cases:
+  label: 'Casos de Teste'
+  permalink: '/test-cases'
+  description: 'Elaboração de Casos de Teste'
 
 # ==============================================================================
 # ISTQB
