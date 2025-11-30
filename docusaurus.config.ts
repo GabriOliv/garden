@@ -223,6 +223,14 @@ const config: Config = {
 			crossorigin: 'anonymous',
 		},
 	],
+
+	scripts: [
+		{
+			src: '/garden/js/select-text-search.js',
+			async: true,
+			defer: true,
+		}
+	],
 };
 
 export default config;
