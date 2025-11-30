@@ -1,0 +1,178 @@
+---
+sidebar_position: 1
+title: Softwares Contínuos e seu Dilema com Testes Manuais
+description: Por que softwares ongoing não podem depender apenas de testes manuais para garantir qualidade?
+tags: [stageA, notes, qa, theory, unit_testing, test_planning, quality_assurance, prevention, automation, quality_management, regression_testing, manual_testing]
+draft: false
+---
+
+# {frontMatter.title}
+
+{frontMatter.description}<br />
+
+---
+
+## O Dilema do Crescimento Sustentável
+
+No desenvolvimento de software, existe uma diferença fundamental entre projetos "on demand" e "ongoing" que muitas equipes ignoram até que seja tarde demais. Softwares "on demand" são aqueles desenvolvidos para atender uma necessidade específica, com escopo definido e ciclo de vida previsível - o cliente paga pela solução e o produto é entregue. Já os softwares "ongoing" são sistemas em constante evolução, com funcionalidades sendo adicionadas, modificadas e mantidas continuamente - o cliente paga para utilizar o software e o produto é melhorado eternamente. Para o primeiro caso, testes manuais podem ser suficientes. Para o segundo, são uma armadilha que transforma o desenvolvimento em um jogo de Jenga infinito, onde cada nova peça pode derrubar toda a torre.
+
+## Desenvolvimento de Software como Torre de Jenga
+
+Para entender melhor o porquê de testes manuais serem inadequados para softwares "ongoing", imagine o desenvolvimento como uma torre de Jenga infinita. Cada nova feature que adicionamos é como colocar um novo bloco no topo da torre (expande o sistema), mas não necessariamente o desestabiliza. O verdadeiro perigo está nas modificações em códigos anteriores, que alteramos uma funcionalidade existente, sendo como remover um bloco do meio da torre e recolocá-lo no topo.
+
+No Jenga tradicional, quando removemos um bloco, deixamos um buraco na estrutura. A torre pode permanecer de pé temporariamente, mas sua estabilidade está comprometida. No desenvolvimento de software, esse "buraco" representa os potenciais defeitos e regressões criados quando modificamos código existente. Outras partes do sistema dependiam daquele bloco estar exatamente onde estava, e agora precisamos verificar se a ausência dele (modificação no código) não causou instabilidade.
+
+Os testes manuais são como tentar validar a estabilidade da torre olhando para ela e balançando levemente algumas partes. É lento, impreciso e impossível de fazer para toda a estrutura a cada movimento. Os testes unitários, por outro lado, são como ter sensores automáticos em cada conexão da torre que imediatamente detectam qualquer instabilidade e preenchem instantaneamente os buracos deixados pelas modificações. Em segundos, você sabe se sua alteração comprometeu a estrutura e pode corrigir o problema antes que a torre desmorone.
+
+A diferença é que, ao contrário do Jenga tradicional, onde o objetivo é derrubar a torre na vez de outra pessoa, no desenvolvimento de software queremos que ela permaneça estável infinitamente, crescendo continuamente. Sem testes unitários, cada modificação se torna um risco existencial para todo o sistema.
+
+A realidade é que testes manuais funcionam apenas quando o volume de funcionalidades é gerenciável e estático. Quando um software está em constante mudança, a necessidade de validar toda a regressão a cada nova alteração se torna um gargalo insustentável. É aqui que os testes unitários deixam de ser uma "boa prática" e se tornam uma necessidade estratégica para a sobrevivência do projeto.
+
+## O Exemplo Prático: O Sistema de E-commerce que Cresceu Demais
+
+Imagine um sistema de e-commerce que começou simples: cadastro de produtos, carrinho de compras e checkout. A equipe tinha 3 desenvolvedores e conseguia testar manualmente todas as funcionalidades em cerca de 2 horas antes de cada deploy. O sistema funcionava perfeitamente e os testes manuais pareciam suficientes.
+
+Após 6 meses, o sistema evoluiu significativamente. Agora possui: sistema de cupons de desconto, programa de fidelidade, múltiplos métodos de pagamento, cálculo de frete com várias transportadoras, gestão de estoque em tempo real, integração com marketplace, sistema de recomendações e avaliações de produtos. A equipe cresceu para 8 desenvolvedores trabalhando simultaneamente em diferentes funcionalidades.
+
+O que antes levava 2 horas de teste manual, agora leva 2 dias completos. Mas o pior é que mesmo dedicando 2 dias inteiros, a equipe não consegue mais cobrir todos os cenários possíveis. Um desenvolvedor adiciona uma nova regra de desconto que quebra o cálculo de frete. Outro modifica a validação de estoque que interfere no programa de fidelidade. Um terceiro ajusta a API de pagamentos que impacta o sistema de cupons. Cada alteração pode afetar múltiplos pontos do sistema, e os testes manuais simplesmente não conseguem escalar para cobrir todas as combinações. Escalar o teste manual com mais pessoas aumenta o custo e a complexidade do planejamento de testes, mas não resolve o problema fundamental: a impossibilidade de garantir que tudo foi testado e validado antes do deploy diariamente.
+
+## Anatomia do Problema: Por Que Vira um Jogo de Jenga
+
+O teste manual em softwares "ongoing" cria um problema exponencial. A cada nova funcionalidade adicionada, não precisamos apenas testar a nova feature, mas também validar que ela não quebrou nenhuma das funcionalidades existentes. Se temos N funcionalidades e adicionamos uma nova, teoricamente precisamos fazer N+1 testes. Essa complexidade só pode ser diminuída quando existe uma Inteligência de Teste completamente eficaz, o que na prática é impossível de alcançar apenas com testes manuais. Na prática, precisamos testar as interações entre funcionalidades, o que nos leva a uma maior complexidade.
+
+No exemplo do e-commerce, com 8 módulos principais, temos potencialmente 64 combinações de interações a serem testadas. Adicione variações de dados, fluxos alternativos e estamos falando de centenas de cenários. Fazer isso manualmente antes de cada deploy é simplesmente impossível. O resultado? A equipe começa a fazer "testes parciais", focando apenas no que foi alterado e em algumas áreas "críticas".
+
+É exatamente nesse momento que bugs começam a aparecer em produção. Um desenvolvedor faz uma alteração "pequena" em uma função utilitária que é usada por 15 módulos diferentes. Ele testa manualmente apenas o módulo que estava trabalhando. Os outros 14 módulos? "Provavelmente estão funcionando". Até que não estão. E quando o bug é descoberto em produção, já passou semanas, outros desenvolvedores fizeram alterações por cima, e identificar a causa raiz vira uma investigação complexa.
+
+## O Papel dos Testes Manuais: Validação, Não Substituição
+
+É importante esclarecer que não é viável eliminar por completo os testes manuais. Os testes manuais têm um papel crucial e insubstituível no ciclo de desenvolvimento, pois são a validação final de requisitos realizada pelos stakeholders. Quando um Product Owner, um cliente ou um usuário final testa manualmente uma funcionalidade, ele está validando se o que foi construído atende realmente à necessidade de negócio, se a experiência do usuário faz sentido e se o fluxo está alinhado com as expectativas.
+
+Essa validação humana é essencial porque captura aspectos que testes automatizados não conseguem: a usabilidade, a intuitividade, a adequação ao contexto real de uso. Um teste unitário pode validar que a função de cálculo de desconto retorna o valor correto, mas não valida se a forma como o desconto é apresentado na tela faz sentido para o usuário final. Um teste automatizado pode confirmar que o fluxo de checkout funciona tecnicamente, mas não avalia se o processo é confuso ou frustrante.
+
+O problema não é a existência dos testes manuais, mas sim sua utilização como único ou principal método de validação técnica. Quando a equipe de desenvolvimento depende de testes manuais para validar regressões e garantir que o código não quebrou funcionalidades existentes, o sistema se torna insustentável. Os testes manuais devem ser a camada final de validação de negócio, não a rede de segurança técnica que impede o sistema de desmoronar.
+
+A estratégia ideal combina diferentes níveis de teste: testes unitários automatizados para validar componentes individuais e prevenir regressões, testes de integração para validar a comunicação entre módulos, e testes manuais para validar requisitos de negócio e experiência do usuário. Cada tipo de teste tem seu propósito específico, e nenhum substitui completamente o outro. A questão é não sobrecarregar os testes manuais com responsabilidades que deveriam ser automatizadas.
+
+## Testes Unitários como Rede de Segurança
+
+Testes unitários resolvem esse problema invertendo a lógica de validação. Em vez de testar o sistema inteiro manualmente após cada mudança, cada componente individual possui testes automatizados que validam seu comportamento esperado. Quando um desenvolvedor modifica uma função, os testes unitários de todas as funcionalidades que dependem dela são executados automaticamente em segundos.
+
+No nosso exemplo do e-commerce, cada módulo teria seus próprios testes unitários. O módulo de desconto teria testes para todas as regras de cálculo. O módulo de frete teria testes para cada transportadora e cenário. Quando um desenvolvedor altera a função de cálculo de preço total, 150 testes unitários são executados em 30 segundos, validando automaticamente que nenhuma regressão foi introduzida. Se algo quebrou, o desenvolvedor descobre imediatamente, enquanto o contexto da alteração ainda está fresco em sua mente.
+
+Além disso, testes unitários servem como documentação viva do sistema. Um novo desenvolvedor pode ler os testes do módulo de cupons e entender melhor quais são as regras de negócio em volta dele, casos especiais e validações necessárias. Os testes se tornam uma especificação executável que nunca fica desatualizada, porque se ficasse, os testes falhariam.
+
+A implementação de testes unitários deve ser incremental e pragmática. Não é necessário ter 100% de cobertura do dia para a noite. Comece pelas áreas mais críticas e com maior taxa de mudança. Estabeleça a regra de que todo código novo deve vir com testes. Gradualmente, refatore código legado adicionando testes quando for fazer manutenções. Em 6 meses, você terá uma cobertura significativa que transforma a dinâmica de desenvolvimento.
+
+## Escalando com Confiança
+
+Softwares "ongoing" não são projetos com linha de chegada definida. São sistemas vivos que evoluem continuamente, e precisam de práticas que suportem esse crescimento sustentável. Testes manuais têm seu lugar para validações exploratórias, testes de usabilidade e verificações finais antes de releases importantes. Mas não podem ser a única ou principal estratégia de qualidade.
+
+Quando uma equipe depende exclusivamente de testes manuais, o desenvolvimento se torna cada vez mais lento e arriscado. O medo de quebrar algo existente paralisa a inovação. Desenvolvedores começam a evitar refatorações necessárias porque "se está funcionando, melhor não mexer". A dívida técnica se acumula. O tempo entre identificação de um bug e sua correção aumenta. A velocidade de entrega de novas funcionalidades diminui. O sistema se torna um Jenga gigante onde ninguém quer ser o responsável por derrubar a torre.
+
+Testes unitários invertem essa dinâmica. Com uma boa cobertura de testes, refatorar código se torna seguro. Alterar funcionalidades não aumenta exponencialmente o tempo de validação. Bugs são detectados em minutos, não em dias. A equipe ganha confiança para fazer mudanças ousadas. A velocidade de desenvolvimento gasto na escrita de testes é ganho na manutenção, acelerando o trabalho do desenvolvedor, porque menos tempo é gasto corrigindo regressões e mais tempo é investido em criar valor.
+
+## Por Que Testes Unitários São Negligenciados?
+
+Se testes unitários são tão fundamentais para a sustentabilidade de softwares "ongoing", por que a maioria das equipes ainda não os adota? A resposta não está na falta de reconhecimento da importância, mas na ausência de educação adequada sobre como implementá-los e mantê-los efetivamente.
+
+### O Ensino Focado em Construção, Não em Sustentabilidade
+
+A educação em desenvolvimento de software tem um viés estrutural: ensina como construir, mas não como sustentar. Cursos de programação, bootcamps e até graduações focam em ensinar como criar funcionalidades (como adicionar novos blocos no topo da nossa torre de Jenga). Os alunos aprendem sintaxe, frameworks, padrões de arquitetura e boas práticas de código. Eles saem capacitados para implementar features, integrar APIs e resolver problemas técnicos complexos.
+
+O que não aprendem é como garantir que o que construíram continuará funcionando quando outros desenvolvedores modificarem o código. Não aprendem que software não é apenas um conjunto de funcionalidades que funcionam individualmente, mas um sistema interdependente onde cada mudança pode ter efeitos colaterais imprevisíveis. A diferença entre "fazer funcionar" e "fazer funcionar sustentavelmente" raramente é abordada na formação inicial.
+
+Quando testes unitários são mencionados, geralmente são apresentados como "boa prática" opcional, não como parte fundamental na manutenção. O resultado são desenvolvedores que sabem criar código, mas não sabem garantir sua longevidade.
+
+### Teoria Sem Manutenção Prática
+
+Os cursos específicos de testes unitários cometem um erro diferente, mas igualmente problemático. Eles ensinam a sintaxe dos frameworks de teste, como estruturar testes e como alcançar cobertura, mas não preparam os desenvolvedores para a realidade mais complexa: o que fazer quando os testes começam a falhar.
+
+Quando um desenvolvedor modifica código e 15 testes unitários começam a falhar, ele enfrenta uma decisão crítica: a falha indica um bug no código novo ou os testes estão desatualizados? Como distinguir entre uma regressão legítima e um teste que precisa ser atualizado? Como refatorar testes legados que se tornaram difíceis de manter? Essas questões práticas, que surgem inevitavelmente em projetos reais, raramente são abordadas na educação de desenvolvedores.
+
+A consequência é que muitos desenvolvedores, ao enfrentarem testes "flaky" ou difíceis de manter, simplesmente os removem ou ignoram. Eles não foram preparados para lidar com a manutenção contínua que testes unitários exigem. Não compreendem que testes também são código e, como tal, precisam ser refatorados, otimizados e mantidos. A falta dessa compreensão transforma testes unitários de solução em problema, criando a falsa impressão de que "atrapalham mais do que ajudam".
+
+### A Confusão Entre Testes E2E e Testes Unitários
+
+No mundo de Quality Assurance, existe um movimento compreensível de automatizar testes manuais através de testes end-to-end (E2E). Ferramentas como Selenium, Cypress e Playwright permitem que QAs automatizem fluxos completos de usuário, reduzindo o trabalho manual repetitivo. Essa é uma evolução natural e benéfica para testes de aceitação.
+
+O problema surge quando essa abordagem é apresentada como equivalente ou substituta aos testes unitários. Testes E2E automatizam o mesmo tipo de validação que seria feito manualmente, de verificar se o sistema completo funciona do ponto de vista do usuário. São excelentes para validar requisitos de negócio e fluxos críticos, mas são inadequados como rede de segurança para desenvolvedores.
+
+Testes E2E são lentos, de manutenção cara, frágeis (dependem de múltiplos componentes funcionando simultaneamente) e difíceis de debugar (quando falham, não indicam especificamente onde está o problema). Quando um desenvolvedor modifica uma função e um teste E2E falha 10 minutos depois, ele perdeu o contexto imediato da alteração. Já quando 15 testes unitários falham em 5 segundos, ele sabe exatamente qual componente foi afetado.
+
+E2E deve ser focada naturalmente na perspectiva do usuário final. Aprender a automatizar validações de negócio, não diretamente, cria redes de segurança para desenvolvimento. Isso cria uma lacuna onde testes E2E são implementados pensando em resolver o problema de sustentabilidade que apenas testes unitários podem resolver adequadamente.
+
+### Estamos Despreparados para a Realidade
+
+Essa combinação de fatores, habilidade focada em somente construção, habilidades de teste que não abordam manutenção prática, e confusão entre tipos de teste, produz profissionais tecnicamente competentes mas despreparados para a sustentabilidade de longo prazo. Eles sabem fazer código funcionar, mas não sabem garantir que continue funcionando.
+
+Quando esses profissionais se deparam com a necessidade real de testes unitários em projetos "ongoing", não têm o conhecimento prático necessário para implementá-los efetivamente. O resultado são tentativas frustradas que reforçam a percepção de que "testes unitários são complicados demais" ou "não vale a pena". Na realidade, o problema não está nos testes unitários, mas na educação inadequada sobre como utilizá-los.
+
+A solução passa por reconhecer que desenvolvimento sustentável é uma disciplina diferente de desenvolvimento funcional, com conhecimentos e práticas específicas que precisam ser ensinadas explicitamente. Não é suficiente saber programar; é preciso saber programar de forma que outros possam modificar o código com segurança. Isso é o que diferencia um software que evolui com confiança de um que vive à beira do colapso.
+
+## Como Começar a Implementar
+
+Se você está em um projeto "ongoing" que depende principalmente de testes manuais, é hora de mudar. Não espere o sistema crescer tanto que a mudança se torne impossível. Comece pequeno: escolha o módulo mais crítico do seu sistema e escreva testes unitários para ele esta semana. Estabeleça a cultura de que pull requests precisam incluir testes. Documente exemplos de como escrever bons testes unitários no seu projeto.
+
+Para gestores e líderes técnicos: aloquem tempo no planejamento para criação de testes. Não trate isso como "overhead" ou "trabalho extra", mas como parte indissociável do desenvolvimento. Um desenvolvedor que entrega código sem testes em um software "ongoing" não entregou uma funcionalidade completa, entregou uma bomba-relógio.
+
+A pergunta não é "podemos nos dar ao luxo de escrever testes unitários?", mas sim "podemos nos dar ao luxo de não escrever?". Em softwares "ongoing", a resposta é clara: testes unitários não são luxo, são investimento em sustentabilidade. São a diferença entre um sistema que escala com confiança e um jogo de Jenga infinito onde cada mudança pode ser a última.
+
+---
+
+## Mapa Mental
+
+- 🏗️ **Tipos de Software**
+	- 📦 On Demand
+		- Escopo definido
+		- Ciclo previsível
+	- 🔄 Ongoing
+		- Evolução contínua
+		- Funcionalidades em crescimento
+- ⚠️ **Problema Central**
+	- Cada modificação deixa o sistema mais instável
+	- Testes manuais não escalam junto com o software
+- 🚫 **Limitações dos Testes Manuais**
+	- Escala somente com mais testadores
+	- Impossível testar todas as combinações
+	- Risco de testes parciais
+	- Desenvolvimento fica lento e arriscado
+- 👥 **Papel dos Testes Manuais**
+	- Validação de requisitos de negócio
+	- Validação de usabilidade e intuitividade
+	- Não deve funcionar como rede de segurança técnica
+- ✨ **Solução Testes Unitários**
+	- Detecção automática de regressões
+	- Validação rápida
+	- Documentação viva como especificação executável
+	- Possibilita refatoração segura
+- 🤔 **Por Que São Negligenciados**
+	- Educação com foco em construção, não em sustentabilidade
+	- Teoria vs Prática
+	- E2E não substitui testes unitários
+	- Despreparo para realidade de manutenção contínua
+- 🚀 **Implementação Prática**
+	- Começar com módulos críticos
+	- Cultura nos PRs com testes obrigatórios
+	- Investimento de tempo no planejamento
+	- Tempo gasto em testes é ganho em manutenção
+
+---
+
+## Referências
+
+- Artigos:
+	- NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: *THE FUTURE OF SOFTWARE QUALITY ASSURANCE*. 2020. p. 111-121.
+		- [https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)
+		- Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.
+	- VOCKE, Ham. Practical Test Pyramid. *martinfowler.com*. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.
+		- Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.
+- Livros:
+	- CRISPIN, Lisa; GREGORY, Janet. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009.
+		- Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.
+	- ADZIC, Gojko. *Specification by Example: How Successful Teams Deliver the Right Software*. Manning Publications, 2011.
+		- Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.
+	- MESZAROS, Gerard. *xUnit Test Patterns: Refactoring Test Code*. Addison-Wesley Professional, 2007.
+		- Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste.
+
+---
