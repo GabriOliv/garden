@@ -7,6 +7,7 @@ draft: false
 ---
 
 import styles from '@site/src/css/styles.module.css';
+import notes from './data.ts';
 
 {frontMatter.description}<br />
 
@@ -18,14 +19,26 @@ import styles from '@site/src/css/styles.module.css';
 	<div class="pagination-nav">
 		<div class="pagination-nav__item">
 			<a class="pagination-nav__link" href="./notes/peltzman_effect">
-			<div class="pagination-nav__label">Efeito Peltzman e a Centralização da Responsabilidade</div>
-			<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode reduzir a qualidade do software?</div>
+			<div class="pagination-nav__label">{notes.peltzman_effect.title}</div>
+			<div class="pagination-nav__sublabel">{notes.peltzman_effect.description}</div>
+			</a>
+		</div>
+		<div class="pagination-nav__item">
+			<a class="pagination-nav__link" href="./notes/hawthorne_effect_on_documentation">
+			<div class="pagination-nav__label">{notes.hawthorne_effect_on_documentation.title}</div>
+			<div class="pagination-nav__sublabel">{notes.hawthorne_effect_on_documentation.description}</div>
+			</a>
+		</div>
+		<div class="pagination-nav__item">
+			<a class="pagination-nav__link" href="./notes/software_ongoing_manual_testing">
+			<div class="pagination-nav__label">{notes.software_ongoing_manual_testing.title}</div>
+			<div class="pagination-nav__sublabel">{notes.software_ongoing_manual_testing.description}</div>
 			</a>
 		</div>
 		<div class="pagination-nav__item">
 			<a class="pagination-nav__link" href="./notes/e2e_useful">
-			<div class="pagination-nav__label">E2E é Útil?</div>
-			<div class="pagination-nav__sublabel">Testes Automatizados E2E são úteis ou são apenas uma falácia de mercado em relação à qualidade de software?</div>
+			<div class="pagination-nav__label">{notes.e2e_useful.title}</div>
+			<div class="pagination-nav__sublabel">{notes.e2e_useful.description}</div>
 			</a>
 		</div>
 	</div>
@@ -34,15 +47,29 @@ import styles from '@site/src/css/styles.module.css';
 <div className={styles.mobileOnly}>
 	<div class="pagination-nav__item">
 		<a class="pagination-nav__link" href="./notes/peltzman_effect">
-		<div class="pagination-nav__label">Efeito Peltzman e a Centralização da Responsabilidade</div>
-		<div class="pagination-nav__sublabel">Incluir uma nova camada de qualidade pode reduzir a qualidade do software?</div>
+		<div class="pagination-nav__label">{notes.peltzman_effect.title}</div>
+		<div class="pagination-nav__sublabel">{notes.peltzman_effect.description}</div>
+		</a>
+	</div>
+	<br />
+	<div class="pagination-nav__item">
+		<a class="pagination-nav__link" href="./notes/hawthorne_effect_on_documentation">
+		<div class="pagination-nav__label">{notes.hawthorne_effect_on_documentation.title}</div>
+		<div class="pagination-nav__sublabel">{notes.hawthorne_effect_on_documentation.description}</div>
+		</a>
+	</div>
+	<br />
+	<div class="pagination-nav__item">
+		<a class="pagination-nav__link" href="./notes/software_ongoing_manual_testing">
+		<div class="pagination-nav__label">{notes.software_ongoing_manual_testing.title}</div>
+		<div class="pagination-nav__sublabel">{notes.software_ongoing_manual_testing.description}</div>
 		</a>
 	</div>
 	<br />
 	<div class="pagination-nav__item">
 		<a class="pagination-nav__link" href="./notes/e2e_useful">
-		<div class="pagination-nav__label">E2E é Útil?</div>
-		<div class="pagination-nav__sublabel">Testes Automatizados E2E são úteis ou são apenas uma falácia de mercado em relação à qualidade de software?</div>
+		<div class="pagination-nav__label">{notes.e2e_useful.title}</div>
+		<div class="pagination-nav__sublabel">{notes.e2e_useful.description}</div>
 		</a>
 	</div>
 </div>
@@ -53,11 +80,9 @@ import styles from '@site/src/css/styles.module.css';
 	<div class="pagination-nav">
 		<div class="pagination-nav__item">
 			<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
-			<div class="pagination-nav__label">Cobertura de Testes</div>
-			<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
+			<div class="pagination-nav__label">{notes.test_coverage_sdlc.title}</div>
+			<div class="pagination-nav__sublabel">{notes.test_coverage_sdlc.description}</div>
 			</a>
-		</div>
-		<div class="pagination-nav__item">
 		</div>
 	</div>
 </div>
@@ -65,12 +90,11 @@ import styles from '@site/src/css/styles.module.css';
 <div className={styles.mobileOnly}>
 	<div class="pagination-nav__item">
 		<a class="pagination-nav__link" href="./notes/test_coverage_sdlc">
-		<div class="pagination-nav__label">Cobertura de Testes</div>
-		<div class="pagination-nav__sublabel">Iterações de desenvolvimento com e sem cobertura de testes unitários.</div>
+		<div class="pagination-nav__label">{notes.test_coverage_sdlc.title}</div>
+		<div class="pagination-nav__sublabel">{notes.test_coverage_sdlc.description}</div>
 		</a>
 	</div>
 	<br />
 </div>
-
 
 ---

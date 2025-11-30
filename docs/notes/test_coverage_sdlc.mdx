@@ -1,12 +1,44 @@
 ---
 sidebar_position: 1
 title: Cobertura de Testes
-description: Cobertura de Testes
-tags: [stageA, notes, qa, test, process]
+description: Comparação entre iterações de desenvolvimento com e sem cobertura de testes no ciclo de vida do software
+tags: [stageB, notes, qa, test, process, quality_management, unit_testing, manual_testing, test_planning, prevention, quality_assurance, quality_metrics, code_review]
 draft: false
 ---
 
 # Cobertura de Testes
+
+{frontMatter.description}<br />
+
+---
+
+## Entendendo Cobertura de Testes
+
+**Cobertura de testes** é a porcentagem do código-fonte que é exercida por testes automatizados. Uma cobertura robusta significa que mudanças futuras serão detectadas rapidamente se quebrarem as funcionalidades existentes.
+
+### Por que Importa?
+
+- Reduz regressões em 70-90% (Amann & Jürgens, 2020)
+- Aumenta confiança para refatoração
+- Documenta comportamento esperado do código
+- Facilita manutenção de código legado
+
+### Exemplo Prático
+
+```python
+# Código sem cobertura
+def calcular_desconto(preco, cliente):
+	if cliente['tipo'] == 'vip':
+		return preco * 0.8
+	return preco * 0.9
+
+# Testes unitários que cobrem ambos os cenários
+def test_aplica_desconto_vip():
+	assert calcular_desconto(100, {'tipo': 'vip'}) == 80
+
+def test_aplica_desconto_comum():
+	assert calcular_desconto(100, {'tipo': 'comum'}) == 90
+```
 
 ---
 
@@ -22,18 +54,18 @@ draft: false
 2. Processo de Desenvolvimento:
 	- Desenvolvedor:
 		- Adiciona um novo bloco de código ainda sem testes (vermelho).
-		- <span style={{color:'var(--ifm-color-danger-darker)'}}>NÃO escreve testes para o código novo.</span>
+		- <span style={{color:'var(--ifm-color-danger-darker)'}}>NÃO escreve testes para o novo código.</span>
 	- Rotina de Teste:
 		- <span style={{color:'var(--ifm-color-danger-darker)'}}>Testes manuais para verificar o código.</span>
-		- Desenvolvedor corrige o código para que os testes passem.
+		- Desenvolvedor corrige o código para que os testes sejam aprovados.
 3. Processo de Teste:
 	- Código novo é testado e bugs são corrigidos.
 	- Código antigo é testado e bugs são corrigidos.
-	- <span style={{color:'var(--ifm-color-danger-darker)'}}>Partes dos bugs são corrigidas, mas não todos, pois não há rastreabilidade.</span>
+	- <span style={{color:'var(--ifm-color-danger-darker)'}}>Parte dos bugs é corrigida, mas não todos, pois não há rastreabilidade.</span>
 4. Software Após Iteração:
 	- <span style={{color:'var(--ifm-color-danger-darker)'}}>Software com blocos instáveis (laranja).</span>
 	- Recebe um novo bloco de código (vermelho).
-	- Processo se repete.
+	- O processo se repete.
 
 ## Iteração de SDLC com Cobertura de Testes
 
@@ -48,29 +80,115 @@ draft: false
 2. Processo de Desenvolvimento:
 	- Desenvolvedor:
 		- Adiciona um novo bloco de código ainda sem testes (vermelho).
-		- <span style={{color:'var(--ifm-color-primary)'}}>Escreve testes para o código novo.</span>
+		- <span style={{color:'var(--ifm-color-primary)'}}>Escreve testes para o novo código.</span>
 	- Rotina de Teste:
 		- <span style={{color:'var(--ifm-color-primary)'}}>Executa os testes.</span>
-		- <span style={{color:'var(--ifm-color-primary)'}}>Testes falham e avisam o desenvolvedor (verde).</span>
-		- Desenvolvedor corrige o código para que os testes passem.
+		- <span style={{color:'var(--ifm-color-primary)'}}>Os testes falham e avisam o desenvolvedor (verde).</span>
+		- Desenvolvedor corrige o código para que os testes sejam aprovados.
 3. Processo de Teste:
 	- <span style={{color:'var(--ifm-color-primary)'}}>Execução coberta de testes (azul).</span>
 	- Código novo é testado e bugs são corrigidos.
 	- Código antigo é testado e bugs são corrigidos.
-	- <span style={{color:'var(--ifm-color-primary)'}}>Testes são escritos para os testes que descobriram os novos bugs (verde).</span>
+	- <span style={{color:'var(--ifm-color-primary)'}}>Testes são escritos para os bugs descobertos pelos novos testes (verde).</span>
 4. Software Após Iteração:
 	- <span style={{color:'var(--ifm-color-primary)'}}>Software com cobertura de testes estável (azul).</span>
 	- Recebe um novo bloco de código (vermelho).
-	- <span style={{color:'var(--ifm-color-primary)'}}>Novos testes foram escritos para o código novo (verde).</span>
-	- Processo se repete.
+	- <span style={{color:'var(--ifm-color-primary)'}}>Novos testes foram escritos para o novo código (verde).</span>
+	- O processo se repete.
 
 ---
 
-## **Referências**
+## Armadilha: Cobertura vs. Qualidade
 
-- Artigo de Referência usado para idealizar as imagens:
-	- AMANN, Sven; JÜRGENS, Elmar. **Change-Driven Testing**. In: THE FUTURE OF SOFTWARE QUALITY ASSURANCE. 2020. p. 1-14. https://doi.org/10.1007/978-3-030-29509-7_1
-		- O forma de diagramar a presença de erros e cobertura de testes em um sistema foi adaptada em uma nova imagem para demostrar a diferença entre o cenário de desenvolvimento com e sem cobertura de testes.
+> ⚠️ **Alta cobertura ≠ Testes de qualidade**
+
+Um teste que apenas verifica se a função executa sem erros é uma "falsa cobertura".
+
+```python
+# ❌ Teste que cobre a linha, mas não valida o resultado
+def test_executa_calcular_desconto():
+	calcular_desconto(100, {'tipo': 'vip'})
+	# Sem validação do resultado!
+
+# ✅ Teste de qualidade que valida comportamento
+def test_aplica_desconto_correto_para_vip():
+	assert calcular_desconto(100, {'tipo': 'vip'}) == 80
+	# Valida o resultado esperado
+```
+
+Priorize a qualidade sobre a quantidade de linhas cobertas. Um teste ruim é pior do que nenhum teste.
+
+---
+
+## Implementando Cobertura de Testes
+
+### Fase 1: Diagnóstico
+
+- Medir cobertura atual do seu projeto com ferramentas (Jest, Istanbul, Codecov)
+- Identificar áreas críticas com baixa cobertura
+- Documentar baseline atual
+
+### Fase 2: Priorização
+
+- Cobrir código crítico primeiro (regras de negócio, fluxos financeiros)
+- Focar no código frequentemente alterado
+- Ignorar getters e setters triviais
+
+### Fase 3: Iteração Gradual
+
+- Aumentar de 5 a 10% de cobertura por ciclo de desenvolvimento
+- Exigir testes para todo novo código via pull requests
+- Revisar a qualidade dos testes, não apenas a porcentagem de cobertura
+
+### Fase 4: Manutenção
+
+- Configurar CI/CD para falhar caso a cobertura caia
+- Revisar os relatórios de cobertura regularmente
+- Educar a equipe sobre falsa cobertura
+
+### Observações Importantes:
+
+- **Execução completa regular**: Mesmo com alta cobertura, execute toda a suíte periodicamente
+- **Mudanças não-código**: Alterações em configuração, dados ou metadados podem não ser detectadas
+- **Cobertura ≠ Qualidade**: Código executado 5 vezes mais propenso a erros se não testado adequadamente
+
+---
+
+## Mapa Mental
+
+- 🎯 Cobertura de Testes
+	- 📊 Entendimento - **Por que Importa?**
+			- Reduz regressões 70%
+			- Facilita refatoração
+			- Documenta comportamento
+	- 🔄 Comparação SDLC
+		- 🔴 **SEM Cobertura**
+			- Testes manuais
+			- Bugs não rastreados
+			- Software instável
+			- Débito técnico acumulado
+		- 🟢 **COM Cobertura**
+			- Testes automatizados
+			- Rastreabilidade completa
+			- Software estável
+			- Cobertura gradual
+			- Menos débito técnico
+	- ⚠️ Armadilhas - **Falsa Cobertura**
+			- Priorize qualidade sobre quantidade
+	- 📋 Implementação
+		1. 🔍 Diagnóstico
+		2. 🎯 Priorização
+		3. 🔄 Iteração
+		4. ⚙️ Manutenção
+
+---
+
+## Referências
+
+- Artigos:
+	- AMANN, Sven; JÜRGENS, Elmar. Change-Driven Testing. In: *THE FUTURE OF SOFTWARE QUALITY ASSURANCE*. 2020. p. 1-14.
+		- [https://doi.org/10.1007/978-3-030-29509-7_1](https://doi.org/10.1007/978-3-030-29509-7_1)
+		- Referência na forma de diagramar a presença de erros e cobertura de testes em um sistema; Foi adaptada em uma nova imagem para demonstrar a diferença entre o cenário de desenvolvimento com e sem cobertura de testes.
 
 [^1]: Imagem: "Iteração de desenvolvimento sem cobertura de testes"
 	- Fonte: Diagramação própria.

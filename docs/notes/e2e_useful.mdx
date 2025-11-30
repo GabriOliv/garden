@@ -12,7 +12,7 @@ draft: false
 
 ---
 
-### Testes Automatizados E2E
+## Testes Automatizados E2E
 
 A Definição mais de comum do Teste E2E (end-to-end) é sendo a validação que percorre um fluxo completo de uma aplicação, de "ponta a ponta", simulando o comportamento real do usuário. A ideia principal é testar a aplicação final, com todos os componentes interagindo entre si, clicando automaticamente na tela e validando o caminho que o usuário faria nas telas para ter o resultado esperado, como fazer um login, cadastrar um produto ou finalizar uma compra.
 
@@ -24,7 +24,7 @@ Já testes de componente de interface são testes que validam partes isoladas da
 
 Em algumas literaturas e discussões, Teste de API e Componentes de Interface, são tidos como subcategorias de E2E, mas para evitar confusões entre processos de teste, vamos considerar que estes são categorias separadas. E considerando somente como E2E os testes que validam o fluxo completo da aplicação, do início ao fim de um processo, interagindo com a UI das telas, simulando o usuário.
 
-### Fluxo de Trabalho
+## Fluxo de Trabalho
 
 Trabalhar com a criação de um teste E2E é parecido com o processo geral de automação de qualquer teste.
 
@@ -68,6 +68,8 @@ Um ponto importante do fluxo é que o teste manual já precisa estar validado an
 Diferente de um teste unitário, que está no começo do processo e é mais fácil e rápido de validar e alterar, já que o desenvolvedor está diante do código. Abrindo possibilidades para outras formas de desenvolvimento como TDD. Já o teste E2E está quase na ponta final do processo e o tester não está viável de alterar o código do software quando algo quebra, precisando retornar a feature para o começo do processo de desenvolvimento para corrigir o erro.
 
 Precisar se valer de um teste manual completo e seguro faz com que o teste E2E imponha uma carga de trabalho maior para o tester, que deve se assegurar da mitigação de todos os bugs das partes do software envolvidas no fluxo com validações manuais antes de criar o teste automatizado sobre um sistema estável.
+
+## Análise de Utilidade
 
 ### Pontos Positivos
 
@@ -123,24 +125,21 @@ Precisar se valer de um teste manual completo e seguro faz com que o teste E2E i
 10. 🖼️ Não são viáveis se não houver padronização de telas.
 	 - Se não houver um padrão ou testes de componente de interface, o E2E não será confiável.
 
----
-
 > E2E não substitui outras formas de teste. Empresas precisam estar maduras para usar E2E como uma camada complementar de qualidade.
 
 ---
 
-### Referências
+## Referências
 
-- Artigos e Documentações:
-	- **VOCKE, Ham**. Practical Test Pyramid. *martinfowler.com*. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
+- Artigos:
+	- **VOCKE, Ham. Practical Test Pyramid. *martinfowler.com*. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
 		- Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.
-	- **Cypress**. Why Cypress? *Cypress Documentation*. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.
+	- Cypress. Why Cypress? *Cypress Documentation*. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.
 		- Cypress é uma ferramenta de testes E2E que possui uma seção dedicada a implementar testes de componentes de interface.
 - Livros:
-	- **AXELROD, Arnon**. *Complete Guide to Test Automation: Techniques, Practices, and Patterns for Building and Maintaining Effective Software Projects*. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
+	- AXELROD, Arnon. *Complete Guide to Test Automation: Techniques, Practices, and Patterns for Building and Maintaining Effective Software Projects*. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
 		- Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.
-	- **CRISPIN, Lisa; GREGORY, Janet**. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009.
+	- CRISPIN, Lisa; GREGORY, Janet. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009.
 		- Descreve que testes E2E foram importantes para executar validações automatizadas, mas que não seriam necessários se houvesse cobertura de testes dos componentes do sistema.
-
 
 ---
