@@ -1,8 +1,27 @@
+// SelectTextSearch.js
+// Feature: Search selected text - only for desktop with cursor support
+
 class SelectTextSearch {
   constructor() {
+    // Check if device has cursor support (desktop)
+    if (!this.isDesktopWithCursor()) {
+      return;
+    }
+
     this.selectedText = "";
     this.createButton();
     this.setupListeners();
+  }
+
+  isDesktopWithCursor() {
+    // Check if device has a pointer (cursor)
+    const hasCursor = window.matchMedia('(pointer: fine)').matches;
+    // Check if device is not touch-only
+    const notTouchOnly = !window.matchMedia('(pointer: coarse)').matches;
+    // Additional check for hover capability
+    const canHover = window.matchMedia('(hover: hover)').matches;
+
+    return hasCursor && canHover;
   }
 
   createButton() {
@@ -23,20 +42,20 @@ class SelectTextSearch {
         text-align: center;
         border-radius: var(--ifm-button-border-radius);
         cursor: pointer;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 500;
         z-index: 9999999;
         box-shadow: none;
       `;
-      this.button.textContent = "Pesquisar ...";
+      this.button.textContent = "Pesquisar";
       document.body.appendChild(this.button);
     }
   }
 
   setupListeners() {
+    // Only listen for mouse events on desktop
     document.addEventListener("mouseup", (e) => this.handleTextSelection(e));
-    document.addEventListener("touchend", (e) => this.handleTextSelection(e));
-    
+
     this.button.addEventListener("click", () => this.redirectToSearch());
     this.button.addEventListener("mouseenter", () => this.buttonHover(true));
     this.button.addEventListener("mouseleave", () => this.buttonHover(false));
@@ -57,10 +76,10 @@ class SelectTextSearch {
   showButton(e) {
     const x = e.clientX;
     const y = e.clientY;
-    
+
     this.button.style.display = "block";
-    this.button.style.left = x + 10 + "px";
-    this.button.style.top = y + 10 + "px";
+    this.button.style.left = x - 60 + "px";
+    this.button.style.top = y + 25 + "px";
   }
 
   hideButton() {
@@ -70,10 +89,10 @@ class SelectTextSearch {
 
   buttonHover(isHovering) {
     if (isHovering) {
-      this.button.style.transform = "scale(1.05)";
+      this.button.style.backgroundColor = "var(--ifm-color-primary-darkest)";
       this.button.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.25)";
     } else {
-      this.button.style.transform = "scale(1)";
+      this.button.style.backgroundColor = "var(--ifm-color-primary)";
       this.button.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.15)";
     }
   }
