@@ -41,5 +41,5 @@ yarn-error.log*
 # WIP
 # ----------------------------------------
 
-drafts/
+**/drafts/
 docs/testes/

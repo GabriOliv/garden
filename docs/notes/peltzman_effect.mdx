@@ -23,42 +23,42 @@ Com o tempo, a equipe de testes é desfeita, incapaz de alcançar os resultados 
 <figure>
 	<figcaption class="text--center">SDLC com nova camada de qualidade</figcaption>
 
-	```mermaid
-		%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
-		flowchart LR
+    ```mermaid
+    	%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
+    	flowchart LR
 
-		classDef node      stroke:#000,stroke-width:2px;
-		classDef invisible fill:#fff0,stroke:#fff0,stroke-width:0px,color:#fff0;
-		classDef green     fill:#8f8,stroke:#000,stroke-width:2px,color:#000;
+    	classDef node      stroke:#000,stroke-width:2px;
+    	classDef invisible fill:#fff0,stroke:#fff0,stroke-width:0px,color:#fff0;
+    	classDef green     fill:#8f8,stroke:#000,stroke-width:2px,color:#000;
 
-		a:::invisible; b:::invisible; c:::invisible; d:::invisible; e:::invisible; f:::invisible;
+    	a:::invisible; b:::invisible; c:::invisible; d:::invisible; e:::invisible; f:::invisible;
 
-		subgraph a[" "]; a0; a1; end
-		subgraph b[" "]; b0; b1; end
-		subgraph c[" "]; c0; c1; end
-		subgraph d[" "]; d0; d1; end
-		subgraph e[" "]; e1; end
-		subgraph f[" "]; f0; f1; end
+    	subgraph a[" "]; a0; a1; end
+    	subgraph b[" "]; b0; b1; end
+    	subgraph c[" "]; c0; c1; end
+    	subgraph d[" "]; d0; d1; end
+    	subgraph e[" "]; e1; end
+    	subgraph f[" "]; f0; f1; end
 
-		a0["Planejamento"]
-		b0["Definição"]
-		c0["Design"]
-		d0["Desenvolvimento"]
-		f0["Deploy"]
+    	a0["Planejamento"]
+    	b0["Definição"]
+    	c0["Design"]
+    	d0["Desenvolvimento"]
+    	f0["Deploy"]
 
-		a1["Planejamento"]
-		b1["Definição"]
-		c1["Design"]
-		d1["Desenvolvimento"]
-		e1@{ shape: processes, label: "Testes", green}; e1:::green;
-		f1["Deploy"]
+    	a1["Planejamento"]
+    	b1["Definição"]
+    	c1["Design"]
+    	d1["Desenvolvimento"]
+    	e1@{ shape: processes, label: "Testes", green}; e1:::green;
+    	f1["Deploy"]
 
-		a0 ==> b0 ==> c0 ==> d0 ==> f0
-		a1 ==> b1 ==> c1 ==> d1 l0@==> e1 l1@==> f1
+    	a0 ==> b0 ==> c0 ==> d0 ==> f0
+    	a1 ==> b1 ==> c1 ==> d1 l0@==> e1 l1@==> f1
 
-		l0@{ animate: true, animation: fast }
-		l1@{ animate: true, animation: slow}
-	```
+    	l0@{ animate: true, animation: fast }
+    	l1@{ animate: true, animation: slow}
+    ```
 
 </figure>
 
@@ -89,22 +89,22 @@ Ao manter uma abordagem colaborativa e uma vigilância completa sobre todas as f
 ## Mapa Mental
 
 - **Nova camada de qualidade:**
-	- 🔴 **Método A (Diminuição da qualidade):**
-		- Incluir equipe;
-		- Centralizar a responsabilidade.
-	- 🟢 **Método B (Aumento da qualidade):**
-		- Incluir equipe;
-		- Incluir monitoramento etapa por etapa;
-		- Dividir a responsabilidade.
+  - 🔴 **Método A (Diminuição da qualidade):**
+    - Incluir equipe;
+    - Centralizar a responsabilidade.
+  - 🟢 **Método B (Aumento da qualidade):**
+    - Incluir equipe;
+    - Incluir monitoramento etapa por etapa;
+    - Dividir a responsabilidade.
 
 ---
 
 ## Referências
 
 - Artigos:
-	- Peltzman, S. (1975). The Effects of Automobile Safety Regulation. *Journal of Political Economy*, 83(4), 677-725.
-		- [https://doi.org/10.1086/260352](https://doi.org/10.1086/260352)
+  - Peltzman, S. (1975). The Effects of Automobile Safety Regulation. _Journal of Political Economy_, 83(4), 677-725.
+    - [https://doi.org/10.1086/260352](https://doi.org/10.1086/260352)
 - Contexto psicológico:
-	- **THE DECISION LAB.** The Peltzman Effect. *The Decision Lab*. Disponível em: [https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect](https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect). Acesso em: 18 abr. 2025.
+  - **THE DECISION LAB.** The Peltzman Effect. _The Decision Lab_. Disponível em: [https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect](https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect). Acesso em: 18 abr. 2025.
 
 ---
