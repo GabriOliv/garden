@@ -2,7 +2,21 @@
 sidebar_position: 1
 title: Softwares Contínuos e seu Dilema com Testes Manuais
 description: Por que softwares ongoing não podem depender apenas de testes manuais para garantir qualidade?
-tags: [stageA, notes, qa, theory, unit_testing, test_planning, quality_assurance, prevention, automation, quality_management, regression_testing, manual_testing]
+tags:
+  [
+    stageA,
+    notes,
+    qa,
+    theory,
+    unit_testing,
+    test_planning,
+    quality_assurance,
+    prevention,
+    automation,
+    quality_management,
+    regression_testing,
+    manual_testing,
+  ]
 draft: false
 ---
 
@@ -123,56 +137,56 @@ A pergunta não é "podemos nos dar ao luxo de escrever testes unitários?", mas
 ## Mapa Mental
 
 - 🏗️ **Tipos de Software**
-	- 📦 On Demand
-		- Escopo definido
-		- Ciclo previsível
-	- 🔄 Ongoing
-		- Evolução contínua
-		- Funcionalidades em crescimento
+  - 📦 On Demand
+    - Escopo definido
+    - Ciclo previsível
+  - 🔄 Ongoing
+    - Evolução contínua
+    - Funcionalidades em crescimento
 - ⚠️ **Problema Central**
-	- Cada modificação deixa o sistema mais instável
-	- Testes manuais não escalam junto com o software
+  - Cada modificação deixa o sistema mais instável
+  - Testes manuais não escalam junto com o software
 - 🚫 **Limitações dos Testes Manuais**
-	- Escala somente com mais testadores
-	- Impossível testar todas as combinações
-	- Risco de testes parciais
-	- Desenvolvimento fica lento e arriscado
+  - Escala somente com mais testadores
+  - Impossível testar todas as combinações
+  - Risco de testes parciais
+  - Desenvolvimento fica lento e arriscado
 - 👥 **Papel dos Testes Manuais**
-	- Validação de requisitos de negócio
-	- Validação de usabilidade e intuitividade
-	- Não deve funcionar como rede de segurança técnica
+  - Validação de requisitos de negócio
+  - Validação de usabilidade e intuitividade
+  - Não deve funcionar como rede de segurança técnica
 - ✨ **Solução Testes Unitários**
-	- Detecção automática de regressões
-	- Validação rápida
-	- Documentação viva como especificação executável
-	- Possibilita refatoração segura
+  - Detecção automática de regressões
+  - Validação rápida
+  - Documentação viva como especificação executável
+  - Possibilita refatoração segura
 - 🤔 **Por Que São Negligenciados**
-	- Educação com foco em construção, não em sustentabilidade
-	- Teoria vs Prática
-	- E2E não substitui testes unitários
-	- Despreparo para realidade de manutenção contínua
+  - Educação com foco em construção, não em sustentabilidade
+  - Teoria vs Prática
+  - E2E não substitui testes unitários
+  - Despreparo para realidade de manutenção contínua
 - 🚀 **Implementação Prática**
-	- Começar com módulos críticos
-	- Cultura nos PRs com testes obrigatórios
-	- Investimento de tempo no planejamento
-	- Tempo gasto em testes é ganho em manutenção
+  - Começar com módulos críticos
+  - Cultura nos PRs com testes obrigatórios
+  - Investimento de tempo no planejamento
+  - Tempo gasto em testes é ganho em manutenção
 
 ---
 
 ## Referências
 
 - Artigos:
-	- NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: *THE FUTURE OF SOFTWARE QUALITY ASSURANCE*. 2020. p. 111-121.
-		- [https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)
-		- Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.
-	- VOCKE, Ham. Practical Test Pyramid. *martinfowler.com*. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.
-		- Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.
+  - NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 111-121.
+    - [https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)
+    - Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.
+  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.
+    - Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.
 - Livros:
-	- CRISPIN, Lisa; GREGORY, Janet. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009.
-		- Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.
-	- ADZIC, Gojko. *Specification by Example: How Successful Teams Deliver the Right Software*. Manning Publications, 2011.
-		- Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.
-	- MESZAROS, Gerard. *xUnit Test Patterns: Refactoring Test Code*. Addison-Wesley Professional, 2007.
-		- Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste.
+  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.
+    - Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.
+  - ADZIC, Gojko. _Specification by Example: How Successful Teams Deliver the Right Software_. Manning Publications, 2011.
+    - Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.
+  - MESZAROS, Gerard. _xUnit Test Patterns: Refactoring Test Code_. Addison-Wesley Professional, 2007.
+    - Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste.
 
 ---

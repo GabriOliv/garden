@@ -74,56 +74,56 @@ Precisar se valer de um teste manual completo e seguro faz com que o teste E2E i
 ### Pontos Positivos
 
 1. 🛠️ Garantem que o sistema funcione como um todo
-	- Testes E2E validam a aplicação do ponto de vista do usuário, cobrindo fluxos completos.
+   - Testes E2E validam a aplicação do ponto de vista do usuário, cobrindo fluxos completos.
 2. 🔄 Detectam regressões reais
-	- Quando algo quebra de verdade para o usuário, geralmente é pego por um E2E.
+   - Quando algo quebra de verdade para o usuário, geralmente é pego por um E2E.
 3. 👤 Simulam o comportamento do usuário
-	- Eles testam a interface e interações da forma mais próxima da realidade.
+   - Eles testam a interface e interações da forma mais próxima da realidade.
 4. 🔒 São independentes de implementação interna
-	- Não dependem de detalhes de código, o que evita refatorações quebrando os testes.
+   - Não dependem de detalhes de código, o que evita refatorações quebrando os testes.
 5. 🚀 Aumentam a confiança nas releases
-	- Equipes se sentem mais seguras para lançar código quando há uma suíte E2E robusta.
+   - Equipes se sentem mais seguras para lançar código quando há uma suíte E2E robusta.
 6. 🔍 Podem ser aproveitados em testes de smoke/regressão automatizados em pipelines CI/CD
-	- Servem como linha de defesa final antes do deploy.
+   - Servem como linha de defesa final antes do deploy.
 7. 🏗️ São úteis em sistemas legados ou de terceiros, onde é difícil testar por dentro
-	- Quando não há testes unitários ou de integração suficientes, os E2E ainda conseguem validar o comportamento.
+   - Quando não há testes unitários ou de integração suficientes, os E2E ainda conseguem validar o comportamento.
 8. 💎 Valem mais por teste do que testes unitários isolados
-	- Cobrem vários componentes de uma vez, sendo mais "valiosos" por execução.
+   - Cobrem vários componentes de uma vez, sendo mais "valiosos" por execução.
 9. 🌐 Facilitam testes de acessibilidade, performance e usabilidade em produção
-	- Com ferramentas como Cypress ou Playwright, é possível incluir checagens além do “funcionou ou não”.
+   - Com ferramentas como Cypress ou Playwright, é possível incluir checagens além do “funcionou ou não”.
 10. 📋 Ajudam a alinhar QA, Devs e PMs em critérios de aceitação
-	 - Servem como documentação viva dos requisitos de negócio.
+    - Servem como documentação viva dos requisitos de negócio.
 11. 🐛 Reproduzem cenários de bugs de interface impossíveis de serem reproduzidos humanamente
-	 - Como simular dois usuários interagindo ao mesmo tempo na mesma tela.
+    - Como simular dois usuários interagindo ao mesmo tempo na mesma tela.
 12. 🌍 Garantem compatibilidade entre navegadores
-	- Testam a aplicação em diferentes browsers, assegurando que funcione corretamente em todos eles.
+    - Testam a aplicação em diferentes browsers, assegurando que funcione corretamente em todos eles.
 13. 📱 Validam a responsividade da interface
-	- Verificam se a aplicação se adapta bem a diferentes tamanhos de tela e dispositivos.
+    - Verificam se a aplicação se adapta bem a diferentes tamanhos de tela e dispositivos.
 14. 🔥 Ajuda nos smoke tests
-	- Validar se a aplicação está rodando e acessível, como um teste de sanidade inicial.
+    - Validar se a aplicação está rodando e acessível, como um teste de sanidade inicial.
 
 ### Pontos Negativos
 
 1. 🐢 Teste E2E tem a execução lenta.
-	- Ele simula um usuário real tela a tela, o que consome muito tempo.
+   - Ele simula um usuário real tela a tela, o que consome muito tempo.
 2. 💰 São caros de execução.
-	- Precisam de toda a aplicação funcionando, muitas vezes com os vários micro-serviços rodando.
+   - Precisam de toda a aplicação funcionando, muitas vezes com os vários micro-serviços rodando.
 3. 🔧 Requerem manutenção constante.
-	- Mesmo usando design patterns como Page Object, a manutenção é a mesma de um software separado.
+   - Mesmo usando design patterns como Page Object, a manutenção é a mesma de um software separado.
 4. 🚨 Alta taxa de falsos negativos.
-	- Afetado por erros de timing, ambientes inconsistentes e dependências externas causam muitos falsos alarmes.
+   - Afetado por erros de timing, ambientes inconsistentes e dependências externas causam muitos falsos alarmes.
 5. 🤔 Confusão conceitual.
-	- Muitas empresas e equipes propõem fazer testes E2E, mas na prática são testes de integração ou smoke tests.
+   - Muitas empresas e equipes propõem fazer testes E2E, mas na prática são testes de integração ou smoke tests.
 6. 🚫 Considerar que E2E é o único teste necessário.
-	- Dispensando o uso de outros testes, como unitários e de integração.
+   - Dispensando o uso de outros testes, como unitários e de integração.
 7. ⏳ Pouco tempo ou maturidade para manter uma suíte E2E robusta.
-	- A falta de tempo e recursos pode levar a uma suíte E2E frágil e não confiável.
+   - A falta de tempo e recursos pode levar a uma suíte E2E frágil e não confiável.
 8. 🛠️ Não pode ser implementado se não houver outros testes abaixo da pirâmide.
-	- E2E não substitui testes unitários e de integração, apenas complementa.
+   - E2E não substitui testes unitários e de integração, apenas complementa.
 9. 👤 Simula a utilização do usuário, mas não substitui a visão do cliente.
-	- A visão de alta independência de teste do cliente ainda é necessária.
+   - A visão de alta independência de teste do cliente ainda é necessária.
 10. 🖼️ Não são viáveis se não houver padronização de telas.
-	 - Se não houver um padrão ou testes de componente de interface, o E2E não será confiável.
+    - Se não houver um padrão ou testes de componente de interface, o E2E não será confiável.
 
 > E2E não substitui outras formas de teste. Empresas precisam estar maduras para usar E2E como uma camada complementar de qualidade.
 
@@ -132,14 +132,14 @@ Precisar se valer de um teste manual completo e seguro faz com que o teste E2E i
 ## Referências
 
 - Artigos:
-	- VOCKE, Ham. Practical Test Pyramid. *martinfowler.com*. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
-		- Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.
-	- Cypress. Why Cypress? *Cypress Documentation*. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.
-		- Cypress é uma ferramenta de testes E2E que possui uma seção dedicada a implementar testes de componentes de interface.
+  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
+    - Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.
+  - Cypress. Why Cypress? _Cypress Documentation_. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.
+    - Cypress é uma ferramenta de testes E2E que possui uma seção dedicada a implementar testes de componentes de interface.
 - Livros:
-	- AXELROD, Arnon. *Complete Guide to Test Automation: Techniques, Practices, and Patterns for Building and Maintaining Effective Software Projects*. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
-		- Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.
-	- CRISPIN, Lisa; GREGORY, Janet. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009.
-		- Descreve que testes E2E foram importantes para executar validações automatizadas, mas que não seriam necessários se houvesse cobertura de testes dos componentes do sistema.
+  - AXELROD, Arnon. _Complete Guide to Test Automation: Techniques, Practices, and Patterns for Building and Maintaining Effective Software Projects_. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
+    - Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.
+  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.
+    - Descreve que testes E2E foram importantes para executar validações automatizadas, mas que não seriam necessários se houvesse cobertura de testes dos componentes do sistema.
 
 ---
