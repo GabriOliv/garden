@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+title: Independência de Teste como Mitigação do Viés de Confirmação
+description: Por que praticar independência nos testes ajuda a reduzir o viés de confirmação e melhora a qualidade do software
+tags:
+  [
+    stageB,
+    notes,
+    qa,
+    theory,
+    test_planning,
+    unit_testing,
+    quality_assurance,
+    prevention,
+    code_review,
+  ]
+draft: true
+---
+
+# Independência de Teste como Mitigação do Viés de Confirmação
+
+O viés de confirmação é uma tendência cognitiva humana que leva pessoas a buscar, interpretar e lembrar informações que reforcem crenças pré-existentes. No desenvolvimento de software, esse viés aparece quando autores de código validam suas próprias decisões e, sem perceber, deixam passar cenários que contradizem suas suposições. A independência de teste — realizar verificações por pessoas ou equipes que não sejam os autores diretos do artefato — é uma prática eficaz para mitigar esse problema, introduzindo perspectivas diferentes na investigação do comportamento do sistema.
+
+## Exemplo Prático
+
+Considere um time desenvolvendo um serviço de cálculo de descontos que combina regras de cupom, fidelidade e promoções temporárias. O autor do módulo escreve testes cobrindo os cenários mais prováveis e valida localmente. Após o deploy, surgem falhas intermitentes quando clientes aplicam cupom e pontos simultaneamente. Um tester independente detecta que a ordem de aplicação das regras está invertida em determinados casos — uma hipótese que o autor não considerou por pressupor uma ordem padrão.
+
+Testadores independentes, por não partilharem as mesmas suposições, tendem a explorar caminhos alternativos e formular perguntas diferentes: "e se o cupom for aplicado antes da fidelidade?" ou "e se o valor do frete alterar o cálculo do desconto?". Essas abordagens expõem interações e casos-limite que passam despercebidos quando só o autor testa o artefato.
+
+## Níveis de Independência
+
+> **Indicador:** cada nível (1 a 4) representa uma camada adicional de cobertura independente — quanto maior o número, mais perspectivas externas atuam sobre o artefato.
+
+| Testador                   | Independência | Indicador | Contexto Típico                                                       |
+| :------------------------- | :------------ | :-------- | :-------------------------------------------------------------------- |
+| Próprio Autor              | Nulo          | Nível 1   | Unit tests e testes de componente escritos pelo próprio desenvolvedor |
+| Membro da Equipe           | Alguma        | Níveis 2  | Code review e revisão por pares dentro do mesmo time                  |
+| Membro fora da equipe      | Alta          | Níveis 3  | Equipe de QA dedicada, testes de sistema independentes                |
+| Membro fora da organização | Muito Alta    | Níveis 4  | Auditoria externa, testes de aceitação com o cliente                  |
+
+**Pró:** várias visões de teste, aumentando a chance de encontrar defeitos de diferentes naturezas.
+
+**Contra:** pode gerar problemas de colaboração e comunicação se não for bem gerido.
+
+## Práticas Recomendadas
+
+Para reduzir efetivamente o impacto do viés de confirmação:
+
+1. **Múltiplos níveis de independência** — desenvolvedores testando componentes, revisão por pares, equipe de QA externa e auditorias externas quando possível
+2. **Integração desde a especificação** — usar técnicas como _Specification by Example_ (definir requisitos como exemplos concretos e verificáveis antes de implementar) para transformar requisitos em casos testáveis desde o início
+3. **Automação de testes repetitivos** — liberando tempo para testadores explorarem casos complexos
+4. **Rotatividade e pair testing** — _pair testing_ é a prática de dois testadores trabalhando juntos no mesmo teste, disseminando conhecimento e reduzindo o isolamento de perspectivas
+5. **Cultura de colaboração** — onde testes independentes são vistos como instrumento de qualidade, não como procura de culpados
+
+## Conclusão
+
+A independência de teste é uma ferramenta prática para mitigar o viés de confirmação e aumentar a robustez do sistema. Não elimina a necessidade de familiaridade com o produto, mas complementa essa familiaridade com olhares externos que questionam suposições e rastreiam comportamentos não previstos.
+
+**Chamada para ação:** experimente imediatamente escolhendo um módulo crítico do seu projeto, peça para um testador independente executar testes exploratórios e compare com os testes atuais. Documente os defeitos encontrados e incorpore melhorias no processo.
+
+---
+
+**Referências:**
+
+- R. S. Nickerson, "Confirmation Bias: A Ubiquitous Phenomenon in Many Guises," _Review of General Psychology_, vol. 2, no. 2, pp. 175–220, 1998.
+- ISTQB, _Certified Tester Foundation Level Syllabus_, versão 4.0, International Software Testing Qualifications Board, 2023. Seção 5.1.1 — Independence of Testing.
+
+---
