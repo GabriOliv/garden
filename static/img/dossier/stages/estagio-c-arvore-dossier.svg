@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="c-t c-d">
-  <title id="c-t">Estágio C · Pinheiro — construção em proporção, estilo Dossier</title>
-  <desc id="c-d">Pinheiro em duas camadas: triângulos equiláteros inscritos em R3 e R5. Versões finais em 48 e 16 pixels.</desc>
+  <title id="c-t">Estágio C · Árvore — construção em proporção, estilo Dossier</title>
+  <desc id="c-d">Árvore em duas camadas: triângulos equiláteros inscritos em R3 e R5. Versões finais em 48 e 16 pixels.</desc>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
     svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
@@ -87,7 +87,7 @@
   <rect class="cell" x="334.5" y="186.5" width="6" height="6"/>
   <text class="label small muted mid" x="337.5" y="204">D</text>
 
-  <text class="label muted" x="14" y="24">ESTÁGIO C — PINHEIRO</text>
+  <text class="label muted" x="14" y="24">ESTÁGIO C — ÁRVORE</text>
   <text class="label small muted end" x="346" y="24">MÓDULO 16 · R3 / R5</text>
   <text class="label muted" x="14" y="226">GARDEN · REV A</text>
   <text class="label small muted end" x="346" y="226">03 / 04</text>
