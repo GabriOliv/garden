@@ -5,6 +5,9 @@ import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
+// Seção de exemplos: só existe no build de teste (`npm run build:test`).
+const examples = process.env.GARDEN_EXAMPLES === "1";
+
 const config: Config = {
   title: "Garden",
   tagline: "Uma Coleção de Notas em Evolução",
@@ -41,6 +44,14 @@ const config: Config = {
     },
   },
   themes: ["@docusaurus/theme-mermaid"],
+  plugins: examples
+    ? [
+        [
+          "@docusaurus/plugin-content-docs",
+          { id: "exemplos", path: "exemplos", routeBasePath: "exemplos" },
+        ],
+      ]
+    : [],
 
   presets: [
     [
@@ -75,7 +86,11 @@ const config: Config = {
         // 	onUntruncatedBlogPosts: 'warn',
         // },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: [
+            require.resolve("@gabrioliv/dossier/docusaurus.css"),
+            "./src/css/custom.css",
+            "./src/css/chrome.css",
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -120,6 +135,17 @@ const config: Config = {
           position: "left",
           label: "ISTQB",
         },
+        ...(examples
+          ? [
+              {
+                type: "docSidebar",
+                docsPluginId: "exemplos",
+                sidebarId: "defaultSidebar",
+                position: "left" as const,
+                label: "Exemplos",
+              },
+            ]
+          : []),
         // {
         // 	to: '/blog',
         // 	label: 'Blog',

@@ -1,0 +1,138 @@
+/* Chrome do Docusaurus nas regras do Dossier. */
+
+/* Os seletores começam em `html[data-theme]` para vencer o Infima e os módulos CSS do tema. */
+
+/* CHROME-01: cantos retos. */
+html[data-theme] button,
+html[data-theme] .button,
+html[data-theme] .DocSearch-Button,
+html[data-theme] .DocSearch-Button-Key,
+html[data-theme] .menu__link,
+html[data-theme] .pagination-nav__link,
+html[data-theme] .alert,
+html[data-theme] .theme-code-block,
+html[data-theme] code,
+html[data-theme] a[rel="tag"],
+html[data-theme] a[rel="tag"]::before,
+html[data-theme] a[rel="tag"]::after {
+  border-radius: var(--ds-radius-none);
+}
+
+/* CHROME-02: sem sombra. */
+html[data-theme] .navbar,
+html[data-theme] .alert,
+html[data-theme] .theme-code-block,
+html[data-theme] .pagination-nav__link {
+  box-shadow: none;
+}
+
+/* CHROME-03: superfícies dos tokens. A ponte não define a superfície do Infima. */
+html[data-theme] {
+  --ifm-background-surface-color: var(--ds-paper);
+}
+
+html[data-theme] .theme-doc-sidebar-container {
+  background-color: var(--ds-panel);
+}
+
+html[data-theme] .pagination-nav__link {
+  background-color: var(--ds-paper);
+}
+
+/* CHROME-04, CHROME-05: foco de teclado com o anel do Dossier. Em cores forçadas a
+   sombra some, e o contorno volta na cor do sistema, como nos componentes do Dossier. */
+html[data-theme] a:focus-visible,
+html[data-theme] button:focus-visible,
+html[data-theme] summary:focus-visible {
+  box-shadow: var(--ds-focus-ring);
+  outline: none;
+}
+
+@media (forced-colors: active) {
+  html[data-theme] a:focus-visible,
+  html[data-theme] button:focus-visible,
+  html[data-theme] summary:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* CHROME-06, CHROME-07: chips de tag e cabeçalhos de tabela como rótulos do Dossier. */
+html[data-theme] a[rel="tag"],
+html[data-theme] .markdown th {
+  font: var(--ds-text-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* CHROME-08, CHROME-09: admonitions só com tokens. A borda e o título usam
+   --ifm-alert-border-color e --ifm-alert-foreground-color; o texto fica em ink. */
+html[data-theme] .theme-admonition-note {
+  --ifm-alert-border-color: var(--ds-ink);
+  --ifm-alert-foreground-color: var(--ds-ink);
+  --ifm-alert-background-color: var(--ds-panel);
+}
+
+html[data-theme] .theme-admonition-tip {
+  --ifm-alert-border-color: var(--ds-signal);
+  --ifm-alert-foreground-color: var(--ds-signal);
+  --ifm-alert-background-color: var(--ds-paper);
+}
+
+html[data-theme] .theme-admonition-info {
+  --ifm-alert-border-color: var(--ds-signal);
+  --ifm-alert-foreground-color: var(--ds-signal);
+  --ifm-alert-background-color: var(--ds-panel);
+}
+
+html[data-theme] .theme-admonition-warning {
+  --ifm-alert-border-color: var(--ds-signal);
+  --ifm-alert-foreground-color: var(--ds-signal);
+  --ifm-alert-background-color: var(--ds-signal-tint);
+}
+
+html[data-theme] .theme-admonition-danger {
+  --ifm-alert-border-color: var(--ds-contrast-error);
+  --ifm-alert-foreground-color: var(--ds-contrast-error);
+  --ifm-alert-background-color: var(--ds-panel);
+}
+
+html[data-theme] .theme-admonition > div:last-child {
+  color: var(--ds-ink);
+}
+
+/* CHROME-10: contraste. O item ativo do menu e o botão de busca saem das cores
+   do Infima e do DocSearch, que ficam abaixo de 4,5:1. */
+html[data-theme] {
+  --ifm-menu-color-background-active: var(--ds-signal-tint);
+}
+
+html[data-theme] .DocSearch-Button {
+  --docsearch-muted-color: var(--ds-ink-muted);
+  --docsearch-searchbox-background: var(--ds-paper);
+}
+
+/* CHROME-12: fundos dentro da navbar e do menu lateral só em tokens. As teclas da busca
+   são campos rebaixados sobre o botão em paper. O botão de recolher o menu segue o botão
+   outline do Dossier: em repouso some no panel do menu; no hover e no foco vai para paper. */
+html[data-theme] .DocSearch-Button {
+  --docsearch-key-background: var(--ds-panel);
+}
+
+html[data-theme] .theme-doc-sidebar-container {
+  --docusaurus-collapse-button-bg: var(--ds-panel);
+  --docusaurus-collapse-button-bg-hover: var(--ds-paper);
+}
+
+/* CHROME-12: o hover dos links do menu e a linha da categoria ativa usam o fundo de hover
+   do Infima. Fica em paper, o degrau visível sobre o panel do menu; signal-tint fica só no
+   link ativo. */
+html[data-theme] .theme-doc-sidebar-container {
+  --ifm-menu-color-background-hover: var(--ds-paper);
+}
+
+/* CHROME-12: o hover do botão de modo de cor usa --ifm-color-emphasis-200. Fica em panel,
+   o degrau visível sobre o paper da navbar. */
+html[data-theme] .navbar__items--right {
+  --ifm-color-emphasis-200: var(--ds-panel);
+}

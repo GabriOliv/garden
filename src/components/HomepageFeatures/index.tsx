@@ -1,55 +1,51 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import type {ReactNode} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {Grid, Stack} from '@gabrioliv/dossier';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
+  image: string;
+  description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
 	{
 		title: 'Notas',
-		Svg: require('/img/banner/6d43ec_undraw_taking-notes.svg').default,
+		image: '/img/banner/6d43ec_undraw_taking-notes.svg',
 		description: (<>Teorias e artigos sobre diversos tópicos de Garantia de Qualidade.</>),
 	},
 	{
 		title: 'Estudos de Certificações',
-		Svg: require('/img/banner/6d43ec_undraw_going-up.svg').default,
+		image: '/img/banner/6d43ec_undraw_going-up.svg',
 		description: (<>Resumos e materiais de estudo usados para fazer certificações.</>),
 	},
 	{
 		title: 'Evolução',
-		Svg: require('/img/banner/6d43ec_undraw_predictive-analytics.svg').default,
+		image: '/img/banner/6d43ec_undraw_predictive-analytics.svg',
 		description: (<>Documentação separada em níveis de evolução e experiência.</>),
 	},
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, image, description}: FeatureItem) {
+  const src = useBaseUrl(image);
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+    <Stack align="center" gap={3} className={styles.feature}>
+      <img className={styles.featureSvg} src={src} alt="" />
+      <h3 className="ds-t-heading">{title}</h3>
+      <p className="ds-t-body">{description}</p>
+    </Stack>
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
+      <Grid columns={3} gap={6}>
+        {FeatureList.map((props) => (
+          <Feature key={props.title} {...props} />
+        ))}
+      </Grid>
     </section>
   );
 }
