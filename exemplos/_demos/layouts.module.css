@@ -1,0 +1,112 @@
+/*
+ * Quatro formas de usar a largura que sobra ao lado da medida de 68ch.
+ * Cada página marca a `.markdown` com um `<div hidden>` de classe própria,
+ * e as regras valem só ali, por `:has()`.
+ * A medida é 68rch: o `ch` da raiz (16px, IBM Plex Sans), igual ao 68ch dos parágrafos.
+ */
+
+.margem,
+.alinhado,
+.vazamento,
+.total {
+  display: none;
+}
+
+:global(html[data-theme] .markdown):is(:has(> .margem), :has(> .alinhado), :has(> .vazamento)) {
+  --measure: 42.5rem;
+  --measure: 68rch;
+}
+
+/* ───────── 1. Coluna de margem (Tufte) ───────── */
+
+:global(html[data-theme] .markdown):has(> .margem) {
+  --gap: 3rem;
+  --margin-col: min(20rem, calc(100cqi - var(--measure) - var(--gap)));
+  container-type: inline-size;
+  counter-reset: sidenote;
+}
+
+.ref {
+  counter-increment: sidenote;
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  line-height: 0;
+  color: var(--ds-signal);
+}
+
+.ref::after {
+  content: counter(sidenote);
+  margin-left: 1px;
+}
+
+/* Sem espaço para a margem: a nota entra no fluxo, logo abaixo da linha, recuada. */
+.note {
+  display: block;
+  margin: var(--ds-space-2) 0 var(--ds-space-3);
+  padding-left: var(--ds-space-3);
+  border-left: var(--ds-stroke-hair) solid var(--ds-rule-soft);
+  font: var(--ds-text-body);
+  color: var(--ds-ink-muted);
+  text-align: left;
+}
+
+.note::before {
+  content: counter(sidenote) " ";
+  font-family: var(--ds-font-mono);
+  font-size: 11px;
+  color: var(--ds-signal);
+}
+
+@container (min-width: 56rem) {
+  .note {
+    float: right;
+    clear: right;
+    width: var(--margin-col);
+    margin: 0.2em calc(-1 * (var(--margin-col) + var(--gap))) var(--ds-space-4) 0;
+    padding: var(--ds-space-2) 0 0;
+    border-left: 0;
+    border-top: var(--ds-stroke-hair) solid var(--ds-rule-soft);
+  }
+}
+
+/* ───────── 2. Tudo alinhado à medida ───────── */
+
+:global(html[data-theme] .markdown):has(> .alinhado) > * {
+  max-width: var(--measure);
+}
+
+:global(html[data-theme] .markdown):has(> .alinhado)
+  > :is(:global(.docusaurus-mermaid-container), table, pre, [class*="codeBlockContainer"]) {
+  max-width: none;
+}
+
+/* ───────── 3. Grade com vazamento ───────── */
+
+/* Três trilhas centradas: texto na medida, "wide" com 8rem de cada lado, "full" na coluna toda. */
+:global(html[data-theme] .markdown):has(> .vazamento) {
+  --wide: calc(var(--measure) + 16rem);
+}
+
+:global(html[data-theme] .markdown):has(> .vazamento) > * {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:global(html[data-theme] .markdown):has(> .vazamento)
+  > :is(blockquote, table, pre, [class*="codeBlockContainer"]) {
+  max-width: var(--wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:global(html[data-theme] .markdown):has(> .vazamento) > :is(:global(.ds-header), :global(.docusaurus-mermaid-container)) {
+  max-width: none;
+}
+
+/* ───────── 4. Largura total ───────── */
+
+/* Parágrafos e listas sem a medida de 68ch: ocupam a coluna toda. */
+:global(html[data-theme] .markdown):has(> .total) > :is(p, ul, ol):not([class^="ds-"], [class*=" ds-"]) {
+  max-width: none;
+}
