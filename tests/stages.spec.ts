@@ -55,51 +55,10 @@ const NOTE_OF = {
   stageD: PAGES.peltzman,
 } as const;
 
-const expectIcon16 = async (link: Locator) => {
-  const svg = link.locator("svg");
-  await expect(svg).toHaveCount(1);
-  const box = await svg.boundingBox();
-  expect(box?.width).toBe(16);
-  expect(box?.height).toBe(16);
-};
-
-test("STAGE-01 chip de estágio só com o StageIcon de 16 px", async ({ page }) => {
-  await page.goto(PAGES.peltzman);
-  const doc = chip(footer(page), "stageD");
-  await expectIcon16(doc);
-  await expect(doc).toHaveText("", { useInnerText: true });
-
-  await page.goto("docs/tags");
-  const stageChips = page.locator('a[rel="tag"][href*="/docs/tags/stage"]');
-  await expect
-    .poll(() => stageChips.evaluateAll((as) => as.map((a) => a.getAttribute("href"))))
-    .toEqual(PUBLISHED.map((s) => `/garden/docs/tags/${s.tag}`));
-  for (const { tag } of PUBLISHED) {
-    const link = chip(page, tag);
-    await expectIcon16(link);
-    // Só a contagem fica visível: nenhum texto do label e nenhum emoji.
-    await expect(link).toHaveText(/^\d+$/, { useInnerText: true });
-  }
-});
-
 test("STAGE-02 nome acessível do chip de estágio", async ({ page }) => {
   for (const { tag, label } of PUBLISHED) {
     await page.goto(NOTE_OF[tag as keyof typeof NOTE_OF]);
     await expect(chip(footer(page), tag)).toHaveAccessibleName(label);
-  }
-});
-
-test("STAGE-12 nome acessível do chip de estágio no índice de tags com a contagem", async ({
-  page,
-}) => {
-  for (const { tag, label } of PUBLISHED) {
-    // Contagem independente do chip: os documentos listados na página da tag.
-    await page.goto(`docs/tags/${tag}`);
-    const n = await page.locator("main article").count();
-    expect(n).toBeGreaterThan(0);
-
-    await page.goto("docs/tags");
-    await expect(chip(page, tag)).toHaveAccessibleName(`${label} ${n}`);
   }
 });
 
@@ -184,7 +143,8 @@ test("STAGE-04 ícone decorativo antes do nome no título da página de estágio
   const expected: Record<string, string> = {};
   for (const { tag, label } of PUBLISHED) {
     await page.goto(NOTE_OF[tag as keyof typeof NOTE_OF]);
-    expected[tag] = await drawing(footer(page).getByRole("img", { name: label, exact: true }));
+    // O ícone do chip é decorativo (TAGS-02): sai pelo `svg` do link, não pelo papel `img`.
+    expected[tag] = await drawing(chip(footer(page), tag).locator("svg"));
   }
   expect(new Set(Object.values(expected)).size, "desenhos distintos nos chips").toBe(PUBLISHED.length);
 

@@ -1,9 +1,5 @@
-/* Sem texto, o chip de estágio guarda a altura de uma linha, como os outros chips. */
-.stage {
-  min-height: calc(var(--ifm-line-height-base) * 1em);
-}
-
-/* O ícone fica na linha do texto, como o label dos outros chips. */
+/* O ícone fica na linha do nome, com um respiro antes dele. */
 .stage svg {
   vertical-align: middle;
+  margin-inline-end: var(--ds-space-1);
 }
