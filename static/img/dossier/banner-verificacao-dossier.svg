@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="n10-t">
+  <title id="n10-t">Checklist verificado item a item — estilo Dossier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 4; }
+    .link { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 4; }
+    .plate { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .plate-soft { fill: var(--paper); stroke: var(--rule-soft); stroke-width: 1; }
+    .mut { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .sigs { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .tint { fill: var(--signal-tint); }
+    .hatch { fill: url(#n10-hatch); }
+    .dots { fill: url(#n10-dots); }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .pt-dot { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .fb { transform-box: fill-box; transform-origin: center; }
+    .w { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+    .ro { opacity: 0; }
+
+    @keyframes n10band { 0% { transform: translateY(0px); opacity: 0 } 5% { transform: translateY(0px); opacity: 0 } 6% { transform: translateY(0px); opacity: 1 } 16.5% { transform: translateY(0px); opacity: 1 } 18% { transform: translateY(24px); opacity: 1 } 28.5% { transform: translateY(24px); opacity: 1 } 30% { transform: translateY(48px); opacity: 1 } 40.5% { transform: translateY(48px); opacity: 1 } 42% { transform: translateY(72px); opacity: 1 } 52.5% { transform: translateY(72px); opacity: 1 } 54% { transform: translateY(96px); opacity: 1 } 65% { transform: translateY(96px); opacity: 1 } 67% { transform: translateY(96px); opacity: 0 } 100% { transform: translateY(96px); opacity: 0 } }
+    @keyframes n10k0 { 0% { stroke-dashoffset: 1; opacity: 1 } 12% { stroke-dashoffset: 1; opacity: 1 } 15% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n10k1 { 0% { stroke-dashoffset: 1; opacity: 1 } 24% { stroke-dashoffset: 1; opacity: 1 } 27% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n10k2 { 0% { stroke-dashoffset: 1; opacity: 1 } 36% { stroke-dashoffset: 1; opacity: 1 } 39% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n10k3 { 0% { stroke-dashoffset: 1; opacity: 1 } 48% { stroke-dashoffset: 1; opacity: 1 } 51% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n10k4 { 0% { stroke-dashoffset: 1; opacity: 1 } 60% { stroke-dashoffset: 1; opacity: 1 } 63% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n10c0 { 0% { opacity: 1 } 15% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10c1 { 0% { opacity: 0 } 15% { opacity: 1 } 27% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10c2 { 0% { opacity: 0 } 27% { opacity: 1 } 39% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10c3 { 0% { opacity: 0 } 39% { opacity: 1 } 51% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10c4 { 0% { opacity: 0 } 51% { opacity: 1 } 63% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10c5 { 0% { opacity: 0 } 63% { opacity: 1 } 96% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10st { 0% { opacity: 1 } 66% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10sp { 0% { opacity: 0 } 66% { opacity: 1 } 97% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n10spp { 0% { opacity: 0; transform: scale(0) } 66% { opacity: 0; transform: scale(0) } 66.01% { opacity: 1; transform: scale(0) } 67.2% { opacity: 1; transform: scale(1.3) } 68.4% { opacity: 1; transform: scale(1) } 97% { opacity: 1; transform: scale(1) } 97.5% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .w { stroke-dashoffset: 0; } .ro-rest { opacity: 1; } .st-test { opacity: 0; }
+    }
+  </style>
+  <defs>
+    <pattern id="n10-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="n10-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect class="pt-tint" width="5" height="5"/>
+      <circle class="pt-dot" cx="2.5" cy="2.5" r=".9"/>
+    </pattern>
+    <pattern id="n10-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8.0" cy="8.0" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#n10-grid)"/>
+  <rect class="plate" x="40" y="44" width="180" height="160"/>
+  <line class="hair" x1="40" y1="64" x2="220" y2="64"/>
+  <text class="label small" x="48" y="58">PROTOCOLO · 07</text>
+  <rect class="sig" x="206" y="51" width="6" height="6"/>
+  <rect class="tint ro" style="animation: n10band 12s cubic-bezier(.5,0,.2,1) infinite" x="41" y="74" width="178" height="20"/>
+  <rect class="plate" x="50" y="79" width="10" height="10"/>
+  <line class="mut" x1="68" y1="84" x2="98" y2="84" stroke-linecap="round"/>
+  <line class="mut" x1="103" y1="84" x2="116" y2="84" stroke-linecap="round"/>
+  <line class="mut" x1="121" y1="84" x2="146" y2="84" stroke-linecap="round"/>
+  <line class="mut" x1="151" y1="84" x2="178" y2="84" stroke-linecap="round"/>
+  <path class="w sigs" pathLength="1" style="stroke-width:1.6; animation: n10k0 12s ease-out infinite" d="M51.5 84 l3 3 l6 -7"/>
+  <rect class="plate" x="50" y="103" width="10" height="10"/>
+  <line class="mut" x1="68" y1="108" x2="98" y2="108" stroke-linecap="round"/>
+  <line class="mut" x1="103" y1="108" x2="115" y2="108" stroke-linecap="round"/>
+  <line class="mut" x1="120" y1="108" x2="138" y2="108" stroke-linecap="round"/>
+  <line class="mut" x1="143" y1="108" x2="164" y2="108" stroke-linecap="round"/>
+  <path class="w sigs" pathLength="1" style="stroke-width:1.6; animation: n10k1 12s ease-out infinite" d="M51.5 108 l3 3 l6 -7"/>
+  <rect class="plate" x="50" y="127" width="10" height="10"/>
+  <line class="mut" x1="68" y1="132" x2="95" y2="132" stroke-linecap="round"/>
+  <line class="mut" x1="100" y1="132" x2="120" y2="132" stroke-linecap="round"/>
+  <line class="mut" x1="125" y1="132" x2="157" y2="132" stroke-linecap="round"/>
+  <line class="mut" x1="162" y1="132" x2="179" y2="132" stroke-linecap="round"/>
+  <path class="w sigs" pathLength="1" style="stroke-width:1.6; animation: n10k2 12s ease-out infinite" d="M51.5 132 l3 3 l6 -7"/>
+  <rect class="plate" x="50" y="151" width="10" height="10"/>
+  <line class="mut" x1="68" y1="156" x2="81" y2="156" stroke-linecap="round"/>
+  <line class="mut" x1="86" y1="156" x2="114" y2="156" stroke-linecap="round"/>
+  <line class="mut" x1="119" y1="156" x2="146" y2="156" stroke-linecap="round"/>
+  <path class="w sigs" pathLength="1" style="stroke-width:1.6; animation: n10k3 12s ease-out infinite" d="M51.5 156 l3 3 l6 -7"/>
+  <rect class="plate" x="50" y="175" width="10" height="10"/>
+  <line class="mut" x1="68" y1="180" x2="90" y2="180" stroke-linecap="round"/>
+  <line class="mut" x1="95" y1="180" x2="109" y2="180" stroke-linecap="round"/>
+  <line class="mut" x1="114" y1="180" x2="133" y2="180" stroke-linecap="round"/>
+  <line class="mut" x1="138" y1="180" x2="161" y2="180" stroke-linecap="round"/>
+  <path class="w sigs" pathLength="1" style="stroke-width:1.6; animation: n10k4 12s ease-out infinite" d="M51.5 180 l3 3 l6 -7"/>
+  <text class="label" x="236" y="84">CHECKLIST</text>
+  <text class="label muted ro" style="animation: n10c0 12s steps(1) infinite" x="236" y="98">OK · 00/05</text>
+  <text class="label muted ro" style="animation: n10c1 12s steps(1) infinite" x="236" y="98">OK · 01/05</text>
+  <text class="label muted ro" style="animation: n10c2 12s steps(1) infinite" x="236" y="98">OK · 02/05</text>
+  <text class="label muted ro" style="animation: n10c3 12s steps(1) infinite" x="236" y="98">OK · 03/05</text>
+  <text class="label muted ro" style="animation: n10c4 12s steps(1) infinite" x="236" y="98">OK · 04/05</text>
+  <text class="label muted ro ro-rest" style="animation: n10c5 12s steps(1) infinite" x="236" y="98">OK · 05/05</text>
+  <line class="hair" x1="220" y1="158" x2="236" y2="158"/>
+  <g class="st-test" style="animation: n10st 12s steps(1) infinite"><rect class="mut" x="236" y="146" width="104" height="24" style="fill:var(--paper)"/><text class="label muted mid" x="288" y="162">EM TESTE</text></g>
+  <g class="ro ro-rest" style="animation: n10sp 12s steps(1) infinite"><g class="fb st-pass" style="animation: n10spp 12s ease-out infinite"><rect class="sigs" x="236" y="146" width="104" height="24" style="fill:var(--signal-tint); stroke-width:1.4"/><text class="label lsig mid" x="288" y="162">CONFORME</text></g></g>
+  <text class="label muted" x="14" y="24">FIG. 10 — VERIFICAÇÃO</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+</svg>

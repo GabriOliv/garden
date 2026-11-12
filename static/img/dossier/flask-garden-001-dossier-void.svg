@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="714 94 667 839" width="334" height="420" role="img" aria-labelledby="t">
-<title id="t">Flask Garden 001 — frasco girando em line art, estilo Dossier</title>
+<title id="t">Flask Garden 001 — frasco girando em line art, estilo Dossier (Void)</title>
 <style>
-svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --frost:#ffffff; --frost-op:.95; --frost-sh:#e3e5e9; --liquid-op:.72; }
-@media (prefers-color-scheme: dark) { svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --frost:#eeeeea; --frost-op:.22; --frost-sh:#eeeeea; --frost-sh-op:.12; --liquid-op:.72; } }
+svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --frost:#eeeeea; --frost-op:.22; --frost-sh:#eeeeea; --frost-sh-op:.12; --liquid-op:.72; }
 .bg { fill: var(--paper); }
 path, polyline, circle { vector-effect: non-scaling-stroke; }
 .e { fill:none; stroke:var(--ink); stroke-width:1; stroke-linecap:square; }

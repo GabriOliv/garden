@@ -191,7 +191,7 @@
         <rect class="liquid-dots" x="380" y="182" width="240" height="160"/>
         <line class="surface" x1="380" y1="182" x2="620" y2="182"/>
       </g>
-      
+
 <circle class="bubble" style="animation: b3_0 2.4s cubic-bezier(.45,.05,.55,.95) -0.4s infinite" cx="498" cy="272" r="2.2"/>      <circle class="bubble" style="animation: b3_1 2.0s cubic-bezier(.45,.05,.55,.95) -1.3s infinite" cx="514" cy="268" r="1.8"/>      <circle class="bubble" style="animation: b3_2 2.9s cubic-bezier(.45,.05,.55,.95) -2.0s infinite" cx="488" cy="275" r="1.5"/>      <circle class="bubble" style="animation: b3_3 2.2s cubic-bezier(.45,.05,.55,.95) -0.9s infinite" cx="524" cy="270" r="1.5"/>
     </g>
     <path class="hair" d="M490 55 V115 L430 280 H570 L510 115 V55 Z"/>
@@ -215,7 +215,7 @@
       <g class="wave-b"><path class="backwave" d="M120 209 q10 3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/></g>
       <g class="wave-f"><path class="liquid surface" d="M160 213 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V400 H160 Z"/></g>
     </g>
-    
+
 <circle class="bubble" style="animation: b2_0 3.0s cubic-bezier(.45,.05,.55,.95) -0.3s infinite" cx="330" cy="352" r="3.2"/>    <circle class="bubble" style="animation: b2_1 2.4s cubic-bezier(.45,.05,.55,.95) -1.2s infinite" cx="348" cy="360" r="2.4"/>    <circle class="bubble" style="animation: b2_2 3.4s cubic-bezier(.45,.05,.55,.95) -2.2s infinite" cx="362" cy="350" r="3.0"/>    <circle class="bubble" style="animation: b2_3 2.6s cubic-bezier(.45,.05,.55,.95) -0.9s infinite" cx="318" cy="344" r="2.0"/>    <circle class="bubble" style="animation: b2_4 2.1s cubic-bezier(.45,.05,.55,.95) -1.7s infinite" cx="376" cy="340" r="1.8"/>    <circle class="bubble" style="animation: b2_5 3.1s cubic-bezier(.45,.05,.55,.95) -2.6s infinite" cx="305" cy="330" r="1.6"/>    <circle class="bubble" style="animation: b2_6 2.8s cubic-bezier(.45,.05,.55,.95) -0.5s infinite" cx="388" cy="326" r="2.2"/>    <circle class="bubble" style="animation: b2_7 3.6s cubic-bezier(.45,.05,.55,.95) -3.1s infinite" cx="340" cy="368" r="1.6"/>
   </g>
   <circle class="hair" cx="345" cy="253" r="120"/>

@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="n12-t">
+  <title id="n12-t">Lupa analisando um documento e marcando achados — estilo Dossier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 4; }
+    .link { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 4; }
+    .plate { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .plate-soft { fill: var(--paper); stroke: var(--rule-soft); stroke-width: 1; }
+    .mut { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .sigs { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .tint { fill: var(--signal-tint); }
+    .hatch { fill: url(#n12-hatch); }
+    .dots { fill: url(#n12-dots); }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .pt-dot { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .fb { transform-box: fill-box; transform-origin: center; }
+    .w { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+    .ro { opacity: 0; }
+
+    @keyframes n12hl0 { 0% { opacity: 0 } 17% { opacity: 0 } 18.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12hl1 { 0% { opacity: 0 } 41% { opacity: 0 } 42.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12hl2 { 0% { opacity: 0 } 65% { opacity: 0 } 66.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12ld0 { 0% { stroke-dashoffset: 1; opacity: 1 } 18% { stroke-dashoffset: 1; opacity: 1 } 22% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n12lt0 { 0% { opacity: 0 } 21% { opacity: 0 } 22.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12ld1 { 0% { stroke-dashoffset: 1; opacity: 1 } 42% { stroke-dashoffset: 1; opacity: 1 } 46% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n12lt1 { 0% { opacity: 0 } 45% { opacity: 0 } 46.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12ld2 { 0% { stroke-dashoffset: 1; opacity: 1 } 66% { stroke-dashoffset: 1; opacity: 1 } 70% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n12lt2 { 0% { opacity: 0 } 69% { opacity: 0 } 70.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12lens { 0% { transform: translate(78px,62px) } 4% { transform: translate(78px,62px) } 15% { transform: translate(120px,94px) } 28% { transform: translate(120px,94px) } 39% { transform: translate(86px,130px) } 52% { transform: translate(86px,130px) } 63% { transform: translate(128px,178px) } 88% { transform: translate(128px,178px) } 97% { transform: translate(78px,62px) } 100% { transform: translate(78px,62px) } }
+    .lens { transform: translate(128px,178px); }
+    @keyframes n12c0 { 0% { opacity: 1 } 21% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12c1 { 0% { opacity: 0 } 21% { opacity: 1 } 45% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12c2 { 0% { opacity: 0 } 45% { opacity: 1 } 69% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n12c3 { 0% { opacity: 0 } 69% { opacity: 1 } 96% { opacity: 0 } 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .w { stroke-dashoffset: 0; } .ro-rest { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="n12-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="n12-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect class="pt-tint" width="5" height="5"/>
+      <circle class="pt-dot" cx="2.5" cy="2.5" r=".9"/>
+    </pattern>
+    <pattern id="n12-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8.0" cy="8.0" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#n12-grid)"/>
+  <path class="plate" d="M40 40 H176 L190 54 V210 H40 Z"/>
+  <path class="hair" d="M176 40 V54 H190"/>
+  <line class="hair" x1="52" y1="58" x2="122" y2="58" style="stroke-width:2.4"/>
+  <line class="mut" x1="52" y1="68" x2="98" y2="68"/>
+  <rect class="hatch ro ro-rest" style="animation: n12hl0 12s linear infinite" x="50" y="89" width="120" height="9"/>
+  <rect class="hatch ro ro-rest" style="animation: n12hl1 12s linear infinite" x="50" y="125" width="108" height="9"/>
+  <rect class="hatch ro ro-rest" style="animation: n12hl2 12s linear infinite" x="50" y="173" width="124" height="9"/>
+  <line class="mut" x1="52" y1="82" x2="81" y2="82" stroke-linecap="round"/>
+  <line class="mut" x1="86" y1="82" x2="103" y2="82" stroke-linecap="round"/>
+  <line class="mut" x1="108" y1="82" x2="135" y2="82" stroke-linecap="round"/>
+  <line class="mut" x1="140" y1="82" x2="150" y2="82" stroke-linecap="round"/>
+  <line class="mut" x1="155" y1="82" x2="174" y2="82" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="94" x2="66" y2="94" stroke-linecap="round"/>
+  <line class="mut" x1="71" y1="94" x2="95" y2="94" stroke-linecap="round"/>
+  <line class="mut" x1="100" y1="94" x2="121" y2="94" stroke-linecap="round"/>
+  <line class="mut" x1="126" y1="94" x2="141" y2="94" stroke-linecap="round"/>
+  <line class="mut" x1="146" y1="94" x2="166" y2="94" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="106" x2="68" y2="106" stroke-linecap="round"/>
+  <line class="mut" x1="73" y1="106" x2="84" y2="106" stroke-linecap="round"/>
+  <line class="mut" x1="89" y1="106" x2="117" y2="106" stroke-linecap="round"/>
+  <line class="mut" x1="122" y1="106" x2="138" y2="106" stroke-linecap="round"/>
+  <line class="mut" x1="143" y1="106" x2="155" y2="106" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="118" x2="78" y2="118" stroke-linecap="round"/>
+  <line class="mut" x1="83" y1="118" x2="103" y2="118" stroke-linecap="round"/>
+  <line class="mut" x1="108" y1="118" x2="130" y2="118" stroke-linecap="round"/>
+  <line class="mut" x1="135" y1="118" x2="147" y2="118" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="130" x2="62" y2="130" stroke-linecap="round"/>
+  <line class="mut" x1="67" y1="130" x2="78" y2="130" stroke-linecap="round"/>
+  <line class="mut" x1="83" y1="130" x2="109" y2="130" stroke-linecap="round"/>
+  <line class="mut" x1="114" y1="130" x2="131" y2="130" stroke-linecap="round"/>
+  <line class="mut" x1="136" y1="130" x2="148" y2="130" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="142" x2="75" y2="142" stroke-linecap="round"/>
+  <line class="mut" x1="80" y1="142" x2="104" y2="142" stroke-linecap="round"/>
+  <line class="mut" x1="109" y1="142" x2="122" y2="142" stroke-linecap="round"/>
+  <line class="mut" x1="127" y1="142" x2="144" y2="142" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="154" x2="66" y2="154" stroke-linecap="round"/>
+  <line class="mut" x1="71" y1="154" x2="98" y2="154" stroke-linecap="round"/>
+  <line class="mut" x1="103" y1="154" x2="123" y2="154" stroke-linecap="round"/>
+  <line class="mut" x1="128" y1="154" x2="157" y2="154" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="166" x2="79" y2="166" stroke-linecap="round"/>
+  <line class="mut" x1="84" y1="166" x2="99" y2="166" stroke-linecap="round"/>
+  <line class="mut" x1="104" y1="166" x2="115" y2="166" stroke-linecap="round"/>
+  <line class="mut" x1="120" y1="166" x2="147" y2="166" stroke-linecap="round"/>
+  <line class="mut" x1="152" y1="166" x2="167" y2="166" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="178" x2="78" y2="178" stroke-linecap="round"/>
+  <line class="mut" x1="83" y1="178" x2="95" y2="178" stroke-linecap="round"/>
+  <line class="mut" x1="100" y1="178" x2="122" y2="178" stroke-linecap="round"/>
+  <line class="mut" x1="127" y1="178" x2="156" y2="178" stroke-linecap="round"/>
+  <line class="mut" x1="161" y1="178" x2="172" y2="178" stroke-linecap="round"/>
+  <line class="mut" x1="52" y1="190" x2="81" y2="190" stroke-linecap="round"/>
+  <line class="mut" x1="86" y1="190" x2="111" y2="190" stroke-linecap="round"/>
+  <line class="mut" x1="116" y1="190" x2="141" y2="190" stroke-linecap="round"/>
+  <line class="mut" x1="146" y1="190" x2="173" y2="190" stroke-linecap="round"/>
+  <circle class="dot ro ro-rest" style="animation: n12lt0 12s linear infinite" cx="174" cy="94" r="2.2"/>
+  <line class="w hair" pathLength="1" style="animation: n12ld0 12s linear infinite" x1="174" y1="94" x2="204" y2="94"/>
+  <g class="ro ro-rest" style="animation: n12lt0 12s linear infinite"><text class="label" x="210" y="98">ACHADO 01</text><text class="label small muted" x="210" y="110">LINHA 02</text></g>
+  <circle class="dot ro ro-rest" style="animation: n12lt1 12s linear infinite" cx="162" cy="130" r="2.2"/>
+  <line class="w hair" pathLength="1" style="animation: n12ld1 12s linear infinite" x1="162" y1="130" x2="204" y2="130"/>
+  <g class="ro ro-rest" style="animation: n12lt1 12s linear infinite"><text class="label" x="210" y="134">ACHADO 02</text><text class="label small muted" x="210" y="146">LINHA 05</text></g>
+  <circle class="dot ro ro-rest" style="animation: n12lt2 12s linear infinite" cx="178" cy="178" r="2.2"/>
+  <line class="w hair" pathLength="1" style="animation: n12ld2 12s linear infinite" x1="178" y1="178" x2="204" y2="178"/>
+  <g class="ro ro-rest" style="animation: n12lt2 12s linear infinite"><text class="label" x="210" y="182">ACHADO 03</text><text class="label small muted" x="210" y="194">LINHA 09</text></g>
+  <g class="lens" style="animation: n12lens 12s cubic-bezier(.55,0,.25,1) infinite"><circle r="22" style="fill:var(--signal-tint); opacity:.35"/><rect class="plate" x="20" y="-3.5" width="24" height="7" transform="rotate(45)"/><circle class="plate" r="22" style="fill:none; stroke-width:1.4"/><circle class="dotted" r="18"/><path class="hair" d="M-4 0 H4 M0 -4 V4"/></g>
+  <text class="label ro" style="animation: n12c0 12s steps(1) infinite" x="210" y="52">ACHADOS · 00</text>
+  <text class="label ro" style="animation: n12c1 12s steps(1) infinite" x="210" y="52">ACHADOS · 01</text>
+  <text class="label ro" style="animation: n12c2 12s steps(1) infinite" x="210" y="52">ACHADOS · 02</text>
+  <text class="label ro ro-rest" style="animation: n12c3 12s steps(1) infinite" x="210" y="52">ACHADOS · 03</text>
+  <text class="label muted" x="210" y="66">DOCUMENTO 07</text>
+  <text class="label muted" x="14" y="24">FIG. 12 — ANÁLISE</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+</svg>

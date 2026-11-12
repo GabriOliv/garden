@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" aria-label="Estágio D · Fruto">
+  <title>Estágio D · Fruto</title>
+  <circle cx="8" cy="11" r="5" style="fill:var(--signal, #002fa7)"/>
+  <line x1="8" y1="6" x2="8" y2="2.5" stroke="currentColor" stroke-width="1"/>
+  <path d="M8 4.5A3 3 0 0 1 12.33 2A3 3 0 0 1 8 4.5Z" fill="currentColor"/>
+</svg>

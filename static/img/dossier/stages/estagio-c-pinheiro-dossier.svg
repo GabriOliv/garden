@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="c-t c-d">
+  <title id="c-t">Estágio C · Pinheiro — construção em proporção, estilo Dossier</title>
+  <desc id="c-d">Pinheiro em duas camadas: triângulos equiláteros inscritos em R3 e R5. Versões finais em 48 e 16 pixels.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .frame { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .guide { fill: none; stroke: var(--ink-muted); stroke-width: .75; stroke-dasharray: 2 3; }
+    .guide-sig { fill: none; stroke: var(--signal); stroke-width: .75; stroke-dasharray: 2 3; }
+    .axis { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 4 3; }
+    .leader { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .art { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: miter; }
+    .art1 { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linejoin: miter; }
+    .sigart { fill: url(#c-hatch); stroke: var(--signal); stroke-width: 1.5; }
+    .sigart1 { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .fill { fill: var(--ink); }
+    .sigfill { fill: var(--signal); }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .cell { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+  </style>
+  <defs>
+    <pattern id="c-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="c-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#c-grid)"/>
+
+  <rect class="frame" x="28" y="52" width="128" height="128"/>
+  <circle class="guide" cx="92" cy="88" r="24"/>
+  <circle class="guide" cx="92" cy="120" r="40"/>
+  <polyline class="guide" points="80.45,100 92,80 103.55,100"/>
+  <line class="axis" x1="92" y1="56.8" x2="92" y2="175.2"/>
+  <line class="axis" x1="45.6" y1="100" x2="138.4" y2="100"/>
+  <line class="axis" x1="45.6" y1="140" x2="138.4" y2="140"/>
+  <line class="hair" x1="89" y1="88" x2="95" y2="88"/><line class="hair" x1="92" y1="85" x2="92" y2="91"/>
+  <line class="hair" x1="89" y1="120" x2="95" y2="120"/><line class="hair" x1="92" y1="117" x2="92" y2="123"/>
+  <polygon class="art" points="92,64 71.22,100 112.78,100"/>
+  <polyline class="art" points="80.45,100 57.36,140 126.64,140 103.55,100"/>
+  <rect class="art" x="84" y="140" width="16" height="28"/>
+
+    <circle class="dot" cx="112.78" cy="100" r="1.6"/>
+  <polyline class="leader" points="112.78,100 128.78,84 176,84"/>
+  <text class="label small" x="180" y="87">R3 · COPA</text>
+  <circle class="dot" cx="126.64" cy="140" r="1.6"/>
+  <polyline class="leader" points="126.64,140 142.64,124 176,124"/>
+  <text class="label small" x="180" y="127">R5 · CAMADA</text>
+  <text class="label small muted" x="180" y="138">3 : 5 ≈ 1 : φ</text>
+  <circle class="dot" cx="100" cy="168" r="1.6"/>
+  <polyline class="leader" points="100,168 104,172 176,172"/>
+  <text class="label small" x="180" y="175">TRONCO · 2 × 3,5</text>
+
+  <line class="soft" x1="290" y1="52" x2="290" y2="208"/>
+  <polygon class="art1" points="322,62.5 314.21,76 329.79,76"/>
+  <polyline class="art1" points="317.67,76 309.01,91 334.99,91 326.33,76"/>
+  <rect class="art1" x="319" y="91" width="6" height="10.5"/>
+  <text class="label small muted mid" x="322" y="120">48 PX</text>
+  <polygon class="fill" points="322,137.5 317.67,145 326.33,145"/>
+  <polygon class="fill" points="322,135.5 319.4,140 324.6,140"/>
+  <rect class="fill" x="321" y="145" width="2" height="3.5"/>
+  <text class="label small muted mid" x="322" y="164">16 PX</text>
+    <rect class="cell" x="301.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="304.5" y="204">A</text>
+  <rect class="cell" x="312.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="315.5" y="204">B</text>
+  <rect class="sig" x="323" y="186" width="7" height="7"/>
+  <text class="label small mid" x="326.5" y="204">C</text>
+  <rect class="cell" x="334.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="337.5" y="204">D</text>
+
+  <text class="label muted" x="14" y="24">ESTÁGIO C — PINHEIRO</text>
+  <text class="label small muted end" x="346" y="24">MÓDULO 16 · R3 / R5</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+  <text class="label small muted end" x="346" y="226">03 / 04</text>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="d-t d-d">
+  <title id="d-t">Estágio D · Fruto — construção em proporção, estilo Dossier</title>
+  <desc id="d-d">Fruto R5 no mesmo anel de potencial do estágio A, com folha R3 a 30°. Versões finais em 48 e 16 pixels.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .frame { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .guide { fill: none; stroke: var(--ink-muted); stroke-width: .75; stroke-dasharray: 2 3; }
+    .guide-sig { fill: none; stroke: var(--signal); stroke-width: .75; stroke-dasharray: 2 3; }
+    .axis { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 4 3; }
+    .leader { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .art { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: miter; }
+    .art1 { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linejoin: miter; }
+    .sigart { fill: url(#d-hatch); stroke: var(--signal); stroke-width: 1.5; }
+    .sigart1 { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .fill { fill: var(--ink); }
+    .sigfill { fill: var(--signal); }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .cell { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+  </style>
+  <defs>
+    <pattern id="d-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="d-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#d-grid)"/>
+
+  <rect class="frame" x="28" y="52" width="128" height="128"/>
+  <circle class="guide" cx="115.95" cy="89.49" r="24"/>
+  <circle class="guide" cx="102.69" cy="66.51" r="24"/>
+  <line class="axis" x1="92" y1="88" x2="133.57" y2="64"/>
+  <line class="axis" x1="92" y1="58.4" x2="92" y2="186.4"/>
+  <line class="axis" x1="37.6" y1="140" x2="146.4" y2="140"/>
+  <line class="hair" x1="89" y1="140" x2="95" y2="140"/><line class="hair" x1="92" y1="137" x2="92" y2="143"/>
+  <circle class="sigart" cx="92" cy="140" r="40"/>
+  <line class="art" x1="92" y1="100" x2="92" y2="72"/>
+  <path class="art" d="M92 88 A24 24 0 0 1 126.64 68 A24 24 0 0 1 92 88 Z"/>
+  <circle class="guide-sig" cx="92" cy="140" r="24"/> <line class="hair" x1="89" y1="140" x2="95" y2="140"/><line class="hair" x1="92" y1="137" x2="92" y2="143"/>
+    <circle class="dot" cx="126.64" cy="68" r="1.6"/>
+  <polyline class="leader" points="126.64,68 138.64,56 176,56"/>
+  <text class="label small" x="180" y="59">30° · FOLHA R3</text>
+  <circle class="dot" cx="132" cy="140" r="1.6"/>
+  <polyline class="leader" points="132,140 148,124 176,124"/>
+  <text class="label small lsig" x="180" y="127">R5 · FRUTO</text>
+  <text class="label small muted" x="180" y="138">= ANEL DO A</text>
+  <circle class="dot" cx="92" cy="180" r="1.6"/>
+  <polyline class="leader" points="92,180 100,188 176,188"/>
+  <text class="label small" x="180" y="191">TANGENTE · BASE</text>
+
+  <line class="soft" x1="290" y1="52" x2="290" y2="208"/>
+  <circle class="sigart1" cx="322" cy="91" r="15"/>
+  <line class="art1" x1="322" y1="76" x2="322" y2="65.5"/>
+  <path class="art1" d="M322 71.5 A9 9 0 0 1 334.99 64 A9 9 0 0 1 322 71.5 Z"/>
+  <text class="label small muted mid" x="322" y="120">48 PX</text>
+  <circle class="sigfill" cx="322" cy="145" r="5"/>
+  <line class="art1" x1="322" y1="140" x2="322" y2="136.5"/>
+  <path class="fill" d="M322 138.5 A3 3 0 0 1 326.33 136 A3 3 0 0 1 322 138.5 Z"/>
+  <text class="label small muted mid" x="322" y="164">16 PX</text>
+    <rect class="cell" x="301.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="304.5" y="204">A</text>
+  <rect class="cell" x="312.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="315.5" y="204">B</text>
+  <rect class="cell" x="323.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="326.5" y="204">C</text>
+  <rect class="sig" x="334" y="186" width="7" height="7"/>
+  <text class="label small mid" x="337.5" y="204">D</text>
+
+  <text class="label muted" x="14" y="24">ESTÁGIO D — FRUTO</text>
+  <text class="label small muted end" x="346" y="24">MÓDULO 16 · R3 / R5</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+  <text class="label small muted end" x="346" y="226">04 / 04</text>
+</svg>

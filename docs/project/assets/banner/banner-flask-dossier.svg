@@ -165,13 +165,13 @@
       <rect class="liquid" x="280" y="170" width="240" height="140"/>
       <line class="surface" x1="280" y1="170" x2="520" y2="170"/>
     </g>
-    
+
 <circle class="bubble" style="animation: b1_0 2.6s cubic-bezier(.45,.05,.55,.95) -0.2s infinite" cx="392" cy="283" r="3"/>    <circle class="bubble" style="animation: b1_1 2.2s cubic-bezier(.45,.05,.55,.95) -1.1s infinite" cx="406" cy="280" r="2.2"/>    <circle class="bubble" style="animation: b1_2 3.1s cubic-bezier(.45,.05,.55,.95) -1.9s infinite" cx="384" cy="286" r="1.8"/>    <circle class="bubble" style="animation: b1_3 2.8s cubic-bezier(.45,.05,.55,.95) -0.7s infinite" cx="414" cy="284" r="2.6"/>    <circle class="bubble" style="animation: b1_4 2.0s cubic-bezier(.45,.05,.55,.95) -1.5s infinite" cx="398" cy="287" r="1.6"/>    <circle class="bubble" style="animation: b1_5 3.4s cubic-bezier(.45,.05,.55,.95) -2.6s infinite" cx="420" cy="282" r="1.6"/>    <circle class="bubble" style="animation: b1_6 2.5s cubic-bezier(.45,.05,.55,.95) -0.4s infinite" cx="378" cy="284" r="2.2"/>
   </g>
   <path class="hair" d="M388 72 V120 L300 290 H500 L412 120 V72 Z"/>
   <line class="shine" x1="420" y1="132" x2="470" y2="228"/>
   <g class="turn">
-    
+
 <line class="grad" style="animation: gm0 6s linear infinite" x1="-6.0" y1="0" x2="6.0" y2="0"/>    <line class="grad" style="animation: gm1 6s linear infinite" x1="-3.5" y1="0" x2="3.5" y2="0"/>    <line class="grad" style="animation: gm2 6s linear infinite" x1="-6.0" y1="0" x2="6.0" y2="0"/>    <line class="grad" style="animation: gm3 6s linear infinite" x1="-3.5" y1="0" x2="3.5" y2="0"/>    <line class="grad" style="animation: gm4 6s linear infinite" x1="-6.0" y1="0" x2="6.0" y2="0"/>    <g style="animation: tag 6s linear infinite"><rect class="cork" x="-14" y="-9" width="28" height="18"/><text class="tiny" x="0" y="-1">AM</text><text class="tiny" x="0" y="6">07</text></g>    <line class="shine" style="animation: seam 6s linear infinite" x1="0" y1="2" x2="0" y2="168"/>
   </g>
   <g class="grad turn-static" opacity="0">

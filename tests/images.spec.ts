@@ -4,12 +4,14 @@ import { join } from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { PAGES, openIn, rgb } from "./support/site";
 
-const PKG = join(__dirname, "..", "node_modules", "@gabrioliv", "dossier", "dist", "assets");
 const ROOT = join(__dirname, "..");
 
-/** A cópia no Garden é igual, byte a byte, ao arquivo do pacote. */
-const sameAsPackage = (copy: string, original: string) =>
-  expect(readFileSync(join(ROOT, copy)).equals(readFileSync(join(PKG, original))), copy).toBe(true);
+/** Diagrama próprio do Garden (AD-013): o SVG com tema por `prefers-color-scheme` e sem cor gravada em `style`. */
+const ownThemed = (copy: string) => {
+  const svg = readFileSync(join(ROOT, copy), "utf-8");
+  expect(svg.includes("prefers-color-scheme"), `${copy} com tema`).toBe(true);
+  expect(svg.includes('style="fill:rgb'), `${copy} sem cor gravada`).toBe(false);
+};
 
 /** Asset próprio do Garden (AD-011): o SVG original, com animação e sem cores gravadas em `style`. */
 const ownAnimated = (copy: string) => {
@@ -79,7 +81,7 @@ test("IMG-05 nota Jenga mostra diagrama-jenga-dossier.svg", async ({ page }) => 
   expect(imgs[0].src).toMatch(/\/diagrama-jenga-dossier[^/]*\.svg(#.*)?$/);
   const img = page.locator("article figure img:visible");
   await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
-  sameAsPackage("docs/notes/assets/diagrama-jenga-dossier.svg", "diagramas/diagrama-jenga-dossier.svg");
+  ownThemed("docs/notes/assets/diagrama-jenga-dossier.svg");
 });
 
 test("IMG-06 nota de cobertura mostra os dois diagramas SDLC, na ordem de hoje", async ({ page }) => {
@@ -91,12 +93,7 @@ test("IMG-06 nota de cobertura mostra os dois diagramas SDLC, na ordem de hoje",
   for (const el of await page.locator("article figure img:visible").all()) {
     await expect.poll(() => el.evaluate((i: HTMLImageElement) => i.naturalWidth)).toBeGreaterThan(0);
   }
-  for (const name of ["sem", "com"]) {
-    sameAsPackage(
-      `docs/notes/assets/diagrama-sdlc-${name}-cobertura-dossier.svg`,
-      `diagramas/diagrama-sdlc-${name}-cobertura-dossier.svg`,
-    );
-  }
+  for (const name of ["sem", "com"]) ownThemed(`docs/notes/assets/diagrama-sdlc-${name}-cobertura-dossier.svg`);
 });
 
 test("IMG-07 cada imagem trocada mantém o alt de antes", async ({ page }) => {
@@ -224,20 +221,29 @@ test("IMG-12 home e Comece a Leitura mostram banners do Dossier no lugar dos und
   for (const f of ["automato", "filotaxia", "grafo", "harmonografo"]) ownAnimated(`static/img/dossier/banner-${f}-dossier.svg`);
 });
 
-test("IMG-13 os diagramas das notas trocam para a versão void no modo escuro", async ({ page }) => {
-  const VOID = ["#0a0b0d", "#16181d", "#eeeeea", "#9ea1a8", "#2c2f36", "#2b7fff", "#101a3c", "#ff6a55"];
-  for (const name of ["jenga", "sdlc-sem-cobertura", "sdlc-com-cobertura"]) {
-    const svg = readFileSync(join(ROOT, `docs/notes/assets/diagrama-${name}-dossier-void.svg`), "utf-8");
-    const colors = new Set((svg.match(/#[0-9a-fA-F]{6}\b/g) ?? []).map((c) => c.toLowerCase()));
-    expect([...colors].filter((c) => !VOID.includes(c)), `${name} só cores do Void`).toEqual([]);
-  }
-  for (const [path, n] of [[JENGA, 1], [SDLC, 2]] as const) {
-    for (const theme of ["paper", "void"] as const) {
-      await openIn(page, path, theme);
-      const shown = await figures(page);
-      expect(shown, `${path} ${theme}`).toHaveLength(n);
-      for (const { src } of shown) expect(src.includes("-dossier-void-"), `${path} ${theme} ${src}`).toBe(theme === "void");
-    }
+test("IMG-13 os diagramas das notas seguem o modo de cor do site, não o do sistema", async ({ browser }) => {
+  // Cor de um ponto do fundo do diagrama, com o sistema num modo e o site no outro.
+  const corner = async (path: string, system: "light" | "dark", site: "light" | "dark") => {
+    const page = await browser.newPage({ colorScheme: system });
+    await page.addInitScript((m) => localStorage.setItem("theme", m), site);
+    await page.goto(path);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", site);
+    const img = page.locator("article figure img").first();
+    await img.scrollIntoViewIfNeeded();
+    await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
+    const png = await img.screenshot();
+    const color = await page.evaluate(async (b64) => {
+      const bmp = await createImageBitmap(await (await fetch(`data:image/png;base64,${b64}`)).blob());
+      const c = new OffscreenCanvas(bmp.width, bmp.height).getContext("2d")!;
+      c.drawImage(bmp, 0, 0);
+      return Array.from(c.getImageData(1, 1, 1, 1).data.slice(0, 3)).join(", ");
+    }, png.toString("base64"));
+    await page.close();
+    return `rgb(${color})`;
+  };
+  for (const path of [JENGA, SDLC]) {
+    expect(await corner(path, "dark", "light"), `${path} claro`).toBe(rgb("#f4f4f1"));
+    expect(await corner(path, "light", "dark"), `${path} escuro`).toBe(rgb("#0a0b0d"));
   }
 });
 

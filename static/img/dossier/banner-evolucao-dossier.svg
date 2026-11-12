@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="n9-t">
+  <title id="n9-t">Curva de evolução com projeção por estágios — estilo Dossier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 4; }
+    .link { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 4; }
+    .plate { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .plate-soft { fill: var(--paper); stroke: var(--rule-soft); stroke-width: 1; }
+    .mut { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .sigs { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .tint { fill: var(--signal-tint); }
+    .hatch { fill: url(#n9-hatch); }
+    .dots { fill: url(#n9-dots); }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .pt-dot { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .fb { transform-box: fill-box; transform-origin: center; }
+    .w { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+    .ro { opacity: 0; }
+
+    @keyframes n9cone { 0% { transform: scaleX(0); opacity: 0 } 38% { transform: scaleX(0); opacity: 1 } 50% { transform: scaleX(1); opacity: 1 } 88% { transform: scaleX(1); opacity: 1 } 95% { transform: scaleX(1); opacity: 0 } 100% { transform: scaleX(0); opacity: 0 } }
+    .cone { transform-origin: 200px 138px; transform: scaleX(0); }
+    @keyframes n9ln { 0% { stroke-dashoffset: 1; opacity: 1 } 4% { stroke-dashoffset: 1; opacity: 1 } 34% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n9m0 { 0% { opacity: 0; transform: scale(0) } 4% { opacity: 0; transform: scale(0) } 4.01% { opacity: 1; transform: scale(0) } 5.2% { opacity: 1; transform: scale(1.3) } 6.4% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m1 { 0% { opacity: 0; transform: scale(0) } 8.86% { opacity: 0; transform: scale(0) } 8.87% { opacity: 1; transform: scale(0) } 10.06% { opacity: 1; transform: scale(1.3) } 11.26% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m2 { 0% { opacity: 0; transform: scale(0) } 13.73% { opacity: 0; transform: scale(0) } 13.74% { opacity: 1; transform: scale(0) } 14.93% { opacity: 1; transform: scale(1.3) } 16.13% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m3 { 0% { opacity: 0; transform: scale(0) } 18.59% { opacity: 0; transform: scale(0) } 18.6% { opacity: 1; transform: scale(0) } 19.79% { opacity: 1; transform: scale(1.3) } 20.99% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m4 { 0% { opacity: 0; transform: scale(0) } 23.46% { opacity: 0; transform: scale(0) } 23.47% { opacity: 1; transform: scale(0) } 24.66% { opacity: 1; transform: scale(1.3) } 25.86% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m5 { 0% { opacity: 0; transform: scale(0) } 28.32% { opacity: 0; transform: scale(0) } 28.33% { opacity: 1; transform: scale(0) } 29.52% { opacity: 1; transform: scale(1.3) } 30.72% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9m6 { 0% { opacity: 0; transform: scale(0) } 34% { opacity: 0; transform: scale(0) } 34.01% { opacity: 1; transform: scale(0) } 35.2% { opacity: 1; transform: scale(1.3) } 36.4% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9end { 0% { opacity: 0; transform: scale(0) } 50% { opacity: 0; transform: scale(0) } 50.01% { opacity: 1; transform: scale(0) } 51.2% { opacity: 1; transform: scale(1.3) } 52.4% { opacity: 1; transform: scale(1) } 88% { opacity: 1; transform: scale(1) } 95% { opacity: 0; transform: scale(1) } 100% { opacity: 0; transform: scale(1) } }
+    @keyframes n9pg { 0% { opacity: 0; transform: scale(1) } 50.9% { opacity: 0; transform: scale(1) } 51% { opacity: .9; transform: scale(1) } 61% { opacity: 0; transform: scale(5) } 100% { opacity: 0; transform: scale(5) } }
+    @keyframes n9ld { 0% { stroke-dashoffset: 1; opacity: 1 } 52% { stroke-dashoffset: 1; opacity: 1 } 57% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n9lt { 0% { opacity: 0 } 52% { opacity: 0 } 53.5% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .w { stroke-dashoffset: 0; } .ro-rest { opacity: 1; } .cone { transform: none; }
+    }
+  </style>
+  <defs>
+    <pattern id="n9-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="n9-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect class="pt-tint" width="5" height="5"/>
+      <circle class="pt-dot" cx="2.5" cy="2.5" r=".9"/>
+    </pattern>
+    <pattern id="n9-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8.0" cy="8.0" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#n9-grid)"/>
+  <line class="soft" x1="40" y1="160" x2="336" y2="160"/>
+  <line class="soft" x1="40" y1="124" x2="336" y2="124"/>
+  <line class="soft" x1="40" y1="88" x2="336" y2="88"/>
+  <polyline class="hair" points="40,64 40,196 336,196"/>
+  <line class="hair" x1="120" y1="196" x2="120" y2="200"/>
+  <line class="hair" x1="200" y1="196" x2="200" y2="200"/>
+  <text class="label small muted mid" x="80" y="210">ESTÁGIO A</text>
+  <text class="label small muted mid" x="160" y="210">ESTÁGIO B</text>
+  <text class="label small muted mid" x="268" y="210">ESTÁGIO C</text>
+  <line class="dotted" x1="200" y1="82" x2="200" y2="196"/>
+  <text class="label small muted" x="205" y="190">HOJE</text>
+  <g class="cone" style="animation: n9cone 12s cubic-bezier(.5,0,.2,1) infinite"><path class="hatch" d="M200 138 L324 56 V100 Z"/><path class="soft" d="M324 56 L200 138 L324 100"/><line class="sigs" x1="200" y1="138" x2="324" y2="78" stroke-dasharray="3 3" style="stroke-width:1.4"/></g>
+  <path class="w hair" pathLength="1" style="animation: n9ln 12s cubic-bezier(.5,0,.5,1) infinite" d="M52 186 L76 180 L100 183 L124 168 L148 160 L172 154 L200 138"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m0 12s ease-out infinite" x="49.5" y="183.5" width="5" height="5"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m1 12s ease-out infinite" x="73.5" y="177.5" width="5" height="5"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m2 12s ease-out infinite" x="97.5" y="180.5" width="5" height="5"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m3 12s ease-out infinite" x="121.5" y="165.5" width="5" height="5"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m4 12s ease-out infinite" x="145.5" y="157.5" width="5" height="5"/>
+  <rect class="plate fb ro ro-rest" style="animation: n9m5 12s ease-out infinite" x="169.5" y="151.5" width="5" height="5"/>
+  <rect class="sig fb ro ro-rest" style="animation: n9m6 12s ease-out infinite" x="197.5" y="135.5" width="5" height="5"/>
+  <circle class="pulse" style="animation: n9pg 12s ease-out infinite" cx="324" cy="78" r="3"/>
+  <rect class="sig fb ro ro-rest" style="animation: n9end 12s ease-out infinite" x="321" y="75" width="6" height="6"/>
+  <circle class="dot ro ro-rest" style="animation: n9lt 12s linear infinite" cx="324" cy="56" r="2.5"/>
+  <polyline class="w hair" pathLength="1" style="animation: n9ld 12s linear infinite" points="324,56 310,42 256,42"/>
+  <g class="ro ro-rest" style="animation: n9lt 12s linear infinite"><text class="label end" x="250" y="46">PROJEÇÃO</text><text class="label muted end" x="250" y="60">FAIXA 90%</text></g>
+  <text class="label muted" x="14" y="24">FIG. 09 — EVOLUÇÃO</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+</svg>

@@ -94,21 +94,21 @@
   <rect width="800" height="416.4" fill="url(#grid)"/>
 
   <!-- links cruzados (não-árvore) -->
-  
+
 <path class="link" style="animation: link 12s linear infinite" d="M150 70 L140 195"/>  <path class="link" style="animation: link 12s linear infinite" d="M640 55 L690 175"/>  <path class="link" style="animation: link 12s linear infinite" d="M680 320 L500 385"/>  <path class="link" style="animation: link 12s linear infinite" d="M120 330 L300 385"/>  <path class="link" style="animation: link 12s linear infinite" d="M275 135 L525 125"/>
 
   <!-- arestas da árvore: base e percurso -->
-  
+
 <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L275 135"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L525 125"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L530 295"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L265 290"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M275 135 L150 70"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M275 135 L140 195"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M525 125 L640 55"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M525 125 L690 175"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M530 295 L680 320"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M530 295 L500 385"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M265 290 L120 330"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M265 290 L300 385"/>
-  
+
 <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L275 135"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L525 125"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L530 295"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L265 290"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M275 135 L150 70"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M275 135 L140 195"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M525 125 L640 55"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M525 125 L690 175"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M530 295 L680 320"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M530 295 L500 385"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M265 290 L120 330"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M265 290 L300 385"/>
 
   <!-- pacotes da busca -->
-  
+
 <rect class="packet" style="animation: pk1 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk2 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk3 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk4 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk5 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk6 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk7 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk8 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk9 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk10 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk11 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk12 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>
 
   <!-- notas -->
-  
+
 <circle class="pulse" style="animation: pv0 12s ease-out infinite" cx="400" cy="208" r="3"/>
   <rect class="node" x="394.0" y="202.0" width="12" height="12"/>
   <rect class="node-on" style="animation: v0 12s ease-out infinite" x="394.0" y="202.0" width="12" height="12"/>
