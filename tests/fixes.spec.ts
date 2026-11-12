@@ -129,3 +129,17 @@ test("FIX-01 .img-center com a largura do contêiner em docs/project", async ({ 
   );
   expect(declared).toContain("100%");
 });
+
+test("NAV-01 índice Nesta página só com os h2 do artigo, na ordem", async ({ page }) => {
+  for (const path of ["docs/istqb/ctfl/ctfl_01", "docs/notes/peltzman_effect"]) {
+    await page.goto(path);
+    const h2 = await page
+      .locator("article h2[id]")
+      .evaluateAll((els) => els.map((el) => [`#${el.id}`, el.textContent!.replace(/​/g, "").trim()]));
+    const toc = await page
+      .locator(".table-of-contents a")
+      .evaluateAll((els) => els.map((el) => [el.getAttribute("href"), el.textContent!.trim()]));
+    expect(h2.length).toBeGreaterThan(0);
+    expect(toc).toEqual(h2);
+  }
+});

@@ -104,6 +104,7 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
+    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
     docs: {
       sidebar: {
         hideable: true,
