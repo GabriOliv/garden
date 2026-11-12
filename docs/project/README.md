@@ -47,7 +47,7 @@ Resumos de estudo usados para certificações.
 <Grid minColumnWidth={280} gap={6}>
 	<Stack gap={3} data-item="CTFL">
 
-		![image](./assets/banner/banner_flask_default.webp)
+		![image](./assets/banner/banner-flask-dossier.svg)
 
 		<h3 className="ds-t-heading">CTFL - Certified Tester Foundation Level</h3>
 
@@ -57,7 +57,7 @@ Resumos de estudo usados para certificações.
 	</Stack>
 	<Stack gap={3} data-item="CT-TAS">
 
-		![image](./assets/banner/banner_flask_default.webp)
+		![image](./assets/banner/banner-flask-dossier.svg)
 
 		<h3 className="ds-t-heading">CT-TAS - Test Automation Strategy</h3>
 
@@ -76,7 +76,7 @@ Documentações variadas sobre Teste de Software, QA e Computação em geral.
 <Grid minColumnWidth={280} gap={6}>
 	<Stack gap={3} data-item="Notas">
 
-		![image](./assets/banner/banner_flask_qa_default.webp)
+		![image](./assets/banner/banner-flask-qa-dossier.svg)
 
 		<h3 className="ds-t-heading">Notas</h3>
 

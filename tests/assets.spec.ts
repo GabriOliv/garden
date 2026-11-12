@@ -6,7 +6,7 @@ import { PAGES, openIn } from "./support/site";
 
 type Asset = { item: number; path: string; sha256: string };
 
-/** Itens 02 a 18 e 20 a 29 de `legacy-assets.md`, com o sha256 do commit d45fc13. */
+/** Itens 04 a 18 e 20 a 29 de `legacy-assets.md`, com o sha256 do commit d45fc13. */
 const ASSETS: Asset[] = JSON.parse(
   readFileSync(join(__dirname, "support", "legacy-assets.json"), "utf-8"),
 );
@@ -33,22 +33,22 @@ async function expectLoaded(page: Page, img: Locator, label: string) {
 const imgOf = (page: Page, item: number) =>
   page.locator(`main img[src*="${stem(item)}"]`).first();
 
-test("ASSET-01 os 27 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
-  expect(ASSETS).toHaveLength(27);
+test("ASSET-01 os 25 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
+  expect(ASSETS).toHaveLength(25);
   for (const { path, sha256 } of ASSETS) {
     const digest = createHash("sha256").update(readFileSync(join(ROOT, path))).digest("hex");
     expect(digest, path).toBe(sha256);
   }
 });
 
-test("ASSET-02 as páginas de hoje exibem os itens 02 a 17", async ({ page }) => {
+test("ASSET-02 as páginas de hoje exibem os itens 04 a 17", async ({ page }) => {
   // home: itens 12 a 14 (o 01 foi trocado, IMG-01)
   await page.goto(PAGES.home);
   for (const item of [12, 13, 14]) {
     await expectLoaded(page, imgOf(page, item), `home item ${item}`);
   }
 
-  // Comece a Leitura: itens 02 e 03 sempre; banners do topo por largura e tema
+  // Comece a Leitura: banners do topo por largura e tema (os itens 02 e 03 foram trocados, IMG-03 e IMG-04)
   const banners = {
     390: { paper: [4], void: [5] },
     1280: { paper: [6, 8, 10], void: [7, 9, 11] },
@@ -57,7 +57,7 @@ test("ASSET-02 as páginas de hoje exibem os itens 02 a 17", async ({ page }) =>
     for (const theme of ["paper", "void"] as const) {
       await page.setViewportSize({ width, height: 844 });
       await openIn(page, PAGES.start, theme);
-      for (const item of [2, 3, ...banners[width][theme]]) {
+      for (const item of banners[width][theme]) {
         await expectLoaded(page, imgOf(page, item), `${width}px ${theme} item ${item}`);
       }
     }

@@ -63,9 +63,9 @@ test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ pa
 });
 
 const ITEMS = [
-  ["CTFL", "CTFL - Certified Tester Foundation Level", "Primeira certificação da ISTQB para a carreira de Teste de Software.", "banner_flask_default", "/garden/docs/istqb/ctfl"],
-  ["CT-TAS", "CT-TAS - Test Automation Strategy", "Certificação de Especialização para perspectiva estratégica sobre a automação de testes.", "banner_flask_default", "/garden/docs/istqb/cttas"],
-  ["Notas", "Notas", "Notas sobre QA, Teste ou Computação em geral.", "banner_flask_qa_default", "/garden/docs/notes"],
+  ["CTFL", "CTFL - Certified Tester Foundation Level", "Primeira certificação da ISTQB para a carreira de Teste de Software.", "banner-flask-dossier", "/garden/docs/istqb/ctfl"],
+  ["CT-TAS", "CT-TAS - Test Automation Strategy", "Certificação de Especialização para perspectiva estratégica sobre a automação de testes.", "banner-flask-dossier", "/garden/docs/istqb/cttas"],
+  ["Notas", "Notas", "Notas sobre QA, Teste ou Computação em geral.", "banner-flask-qa-dossier", "/garden/docs/notes"],
 ] as const;
 
 test("PAGE-04 home e Comece a Leitura sem card, button, shadow nem cor em style", async ({ page }) => {
@@ -106,7 +106,7 @@ test("PAGE-07 itens CTFL, CT-TAS e Notas com imagem e descrição", async ({ pag
     await expect(item.getByText(description, { exact: true })).toBeVisible();
     const img = item.locator("img");
     await expect(img).toBeVisible();
-    await expect(img).toHaveAttribute("src", new RegExp(`${image}.*\\.webp$`));
+    await expect(img).toHaveAttribute("src", new RegExp(`${image}.*\\.svg$`));
     await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
   }
 });
