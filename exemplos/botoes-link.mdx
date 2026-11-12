@@ -1,0 +1,124 @@
+---
+title: Botões de link
+sidebar_position: 11
+---
+
+import Link from "@docusaurus/Link";
+import { Contents, Grid, Icon, Stack } from "@gabrioliv/dossier";
+import { ptBR } from "@gabrioliv/dossier/locales/pt-BR";
+import s from "./_demos/buttonlink.module.css";
+
+# Botões de link
+
+Opções para as duas ações de destaque. Todas continuam um `<a>`: navegam, abrem em nova aba e são lidas como link.
+
+## Home: "Comece a Leitura"
+
+<Grid minColumnWidth={260} gap={6}>
+	<Stack gap={4} className={s.hero}>
+		<span className={`ds-t-label ${s.label}`}>Hoje · link simples</span>
+		<p className="ds-t-body">Uma Coleção de Notas em Evolução</p>
+		<Link className="ds-link ds-t-heading" to="/docs/project">Comece a Leitura</Link>
+	</Stack>
+	<Stack gap={4} className={s.hero}>
+		<span className={`ds-t-label ${s.label}`}>A · botão sólido</span>
+		<p className="ds-t-body">Uma Coleção de Notas em Evolução</p>
+		<Link className={`ds-t-label ds-btn ds-btn-solid ${s.btn}`} to="/docs/project">Comece a Leitura</Link>
+	</Stack>
+	<Stack gap={4} className={s.hero}>
+		<span className={`ds-t-label ${s.label}`}>B · botão sólido com seta</span>
+		<p className="ds-t-body">Uma Coleção de Notas em Evolução</p>
+		<Link className={`ds-t-label ds-btn ds-btn-solid ${s.btn}`} to="/docs/project">Comece a Leitura<Icon name="arrow-right" className={s.arrow} /></Link>
+	</Stack>
+	<Stack gap={4} className={s.hero}>
+		<span className={`ds-t-label ${s.label}`}>C · link tipográfico</span>
+		<p className="ds-t-body">Uma Coleção de Notas em Evolução</p>
+		<Link className={s.cta} to="/docs/project">Comece a Leitura<Icon name="arrow-right" size={24} className={s.arrow} /></Link>
+	</Stack>
+</Grid>
+
+- **A**: o `Button` `solid` do Dossier. Destaque máximo, mas texto pequeno (mono, 12 px).
+- **B**: igual ao A, com a seta dizendo "vai para outra página". A seta anda 4 px no hover.
+- **C**: no tamanho dos títulos de seção (32 px, maiúsculas), com fio azul embaixo e seta. É a mesma voz do h2 dos artigos.
+
+---
+
+## Cards: "Leia Mais"
+
+### Hoje · link simples
+
+<Grid minColumnWidth={280} gap={6}>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CTFL - Certified Tester Foundation Level</h3>
+		<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
+		<Link className="ds-link" to="/docs/istqb/ctfl">Leia Mais</Link>
+	</Stack>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CT-TAS - Test Automation Strategy</h3>
+		<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+		<Link className="ds-link" to="/docs/istqb/cttas">Leia Mais</Link>
+	</Stack>
+</Grid>
+
+### A · botão com contorno
+
+O `Button` `outline` do Dossier, com seta. Cada um ganha `aria-label` com o destino, porque o texto se repete.
+
+<Grid minColumnWidth={280} gap={6}>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CTFL - Certified Tester Foundation Level</h3>
+		<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
+		<Link className={`ds-t-label ds-btn ds-btn-outline ${s.btn}`} to="/docs/istqb/ctfl" aria-label="Leia mais sobre CTFL">Leia Mais<Icon name="arrow-right" className={s.arrow} /></Link>
+	</Stack>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CT-TAS - Test Automation Strategy</h3>
+		<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+		<Link className={`ds-t-label ds-btn ds-btn-outline ${s.btn}`} to="/docs/istqb/cttas" aria-label="Leia mais sobre CT-TAS">Leia Mais<Icon name="arrow-right" className={s.arrow} /></Link>
+	</Stack>
+</Grid>
+
+### B · card inteiro clicável
+
+Sem "Leia Mais": o título é o link e o clique vale no card todo. O fundo muda no hover e a seta anda. O link tem o nome do curso, sem `aria-label`.
+
+<Grid minColumnWidth={280} gap={6}>
+	<Stack gap={3} className={s.card}>
+		<h3 className="ds-t-heading"><Link className={s.cardLink} to="/docs/istqb/ctfl">CTFL - Certified Tester Foundation Level</Link></h3>
+		<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
+		<span className={s.cardFoot}><Icon name="arrow-right" size={24} className={s.arrow} /></span>
+	</Stack>
+	<Stack gap={3} className={s.card}>
+		<h3 className="ds-t-heading"><Link className={s.cardLink} to="/docs/istqb/cttas">CT-TAS - Test Automation Strategy</Link></h3>
+		<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+		<span className={s.cardFoot}><Icon name="arrow-right" size={24} className={s.arrow} /></span>
+	</Stack>
+</Grid>
+
+### C · índice (`Contents` do Dossier)
+
+Os cards viram linhas de um sumário numerado; o título é o link. Os números contam a ordem: CTFL vem antes de CT-TAS. Sai a imagem do card.
+
+<Contents
+	labels={ptBR.Contents}
+	items={[
+		{ index: "01", title: "CTFL - Certified Tester Foundation Level", description: "Primeira certificação da ISTQB para a carreira de Teste de Software.", href: "/garden/docs/istqb/ctfl" },
+		{ index: "02", title: "CT-TAS - Test Automation Strategy", description: "Certificação de Especialização para perspectiva estratégica sobre a automação de testes.", href: "/garden/docs/istqb/cttas" },
+	]}
+/>
+
+### D · botão de texto
+
+O `Button` `text` do Dossier: azul, mono, sem contorno. Mais discreto que o A, mais visível que o link de hoje.
+
+<Grid minColumnWidth={280} gap={6}>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CTFL - Certified Tester Foundation Level</h3>
+		<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
+		<Link className={`ds-t-label ds-btn ds-btn-text ${s.btn}`} to="/docs/istqb/ctfl" aria-label="Leia mais sobre CTFL">Leia Mais<Icon name="arrow-right" className={s.arrow} /></Link>
+	</Stack>
+	<Stack gap={3}>
+		<h3 className="ds-t-heading">CT-TAS - Test Automation Strategy</h3>
+		<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+		<Link className={`ds-t-label ds-btn ds-btn-text ${s.btn}`} to="/docs/istqb/cttas" aria-label="Leia mais sobre CT-TAS">Leia Mais<Icon name="arrow-right" className={s.arrow} /></Link>
+	</Stack>
+</Grid>
