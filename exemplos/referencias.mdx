@@ -4,6 +4,7 @@ sidebar_position: 6
 ---
 
 import { FigureNotes, RefsDefinition, RefsFootnotes, RefsHanging, RefsRecord } from "./_demos/ReferencesDemo";
+import { Referencia, Referencias } from "@site/src/components/Referencias";
 
 # Referências
 
@@ -60,3 +61,17 @@ A lista Markdown de hoje, sem mudar a escrita: só CSS do Dossier. Sem marcadore
 Para as notas de rodapé de hoje (`[^1]`, que saem sob o título "Footnotes"): o mesmo conteúdo no desenho do `Footnotes`, sem a seta de volta.
 
 <FigureNotes />
+
+## Componente escolhido
+
+O `<Referencias>` das notas (opção 2). O link desta referência tem texto próprio, que fica como está; só um link cujo texto é a própria URL fica curto.
+
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+VOCKE, Ham. [Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html). _martinfowler.com_, 2018.
+
+</Referencia>
+
+</Referencias>

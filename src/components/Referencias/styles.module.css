@@ -1,0 +1,28 @@
+/* Valor de cada linha: a citação (primeiro parágrafo que não é tema) em ink; o que vem depois e o tema são comentários. */
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+}
+
+.value > * {
+  margin: 0;
+}
+
+.tema,
+.value > p:not(.tema) ~ * {
+  color: var(--ds-ink-muted);
+  font-size: 0.9375em;
+}
+
+.value a {
+  overflow-wrap: anywhere;
+}
+
+/* O FieldList não empilha no celular: o rótulo vai para cima da citação. */
+@media (max-width: 640px) {
+  .referencias :global(.ds-field) {
+    grid-template-columns: 1fr;
+    gap: var(--ds-space-1);
+  }
+}

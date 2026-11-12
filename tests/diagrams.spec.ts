@@ -304,7 +304,8 @@ test("DIAG-03 nós e grupos sem classe com fundo paper ou panel e traço ink, em
     let clusters = 0;
     for (const path of DIAGRAM_PAGES) {
       await openIn(page, path, theme);
-      await expect(page.locator(".docusaurus-mermaid-container svg").first()).toBeAttached();
+      // Com a suíte inteira rodando, o Mermaid leva mais que os 5 s padrão para desenhar.
+      await expect(page.locator(".docusaurus-mermaid-container svg").first()).toBeAttached({ timeout: 20_000 });
       const shapes = await page.evaluate((classed) => {
         const plain = (g: Element) => !classed.some((c) => g.classList.contains(c));
         const read = (g: Element, sel: string) =>
