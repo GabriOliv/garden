@@ -1,0 +1,7 @@
+/* Ícone e nome do estágio na mesma linha, como no chip. */
+.stageLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-2);
+  white-space: nowrap;
+}
