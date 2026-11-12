@@ -1,0 +1,62 @@
+---
+title: Referências
+sidebar_position: 6
+---
+
+import { FigureNotes, RefsDefinition, RefsFootnotes, RefsHanging, RefsRecord } from "./_demos/ReferencesDemo";
+
+# Referências
+
+Cinco formas de desenhar as referências do fim das notas com o Dossier. Todas usam as referências reais de "E2E é Útil?"; a opção 5 usa as legendas de figura de "Cobertura de Testes".
+
+## Hoje
+
+- Artigos:
+  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
+    - Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.
+- Livros:
+  - AXELROD, Arnon. _Complete Guide to Test Automation_. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
+    - Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.
+
+## 1. Definição por chave
+
+`FieldList` na variante `definition`: a chave curta (autor e ano) como termo; citação, link curto e comentário como descrição. Os grupos viram um rótulo.
+
+<RefsDefinition />
+
+## 2. Registro por tipo
+
+`FieldList` na variante `record`: o tipo (artigo, livro) no rótulo em mono, uma lista só, sem grupos.
+
+<RefsRecord />
+
+## 3. Notas numeradas
+
+`Footnotes`: cada referência ganha um número, que aparece no texto onde ela é usada. Pede marcar as citações no corpo da nota.
+
+<RefsFootnotes />
+
+## 4. Bibliografia com recuo
+
+A lista Markdown de hoje, sem mudar a escrita: só CSS do Dossier. Sem marcadores, recuo pendente na citação, comentário em ink-muted, grupos como rótulo.
+
+<RefsHanging>
+
+- Artigos
+  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.
+    - Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.
+  - Cypress. Why Cypress? _Cypress Documentation_. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.
+    - Cypress é uma ferramenta de testes E2E que possui uma seção dedicada a implementar testes de componentes de interface.
+- Livros
+  - AXELROD, Arnon. _Complete Guide to Test Automation_. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).
+    - Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.
+  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing_. Addison-Wesley, 2009.
+    - Descreve que testes E2E foram importantes para executar validações automatizadas, mas que não seriam necessários se houvesse cobertura de testes dos componentes do sistema.
+
+</RefsHanging>
+
+## 5. Notas de figura
+
+Para as notas de rodapé de hoje (`[^1]`, que saem sob o título "Footnotes"): o mesmo conteúdo no desenho do `Footnotes`, sem a seta de volta.
+
+<FigureNotes />

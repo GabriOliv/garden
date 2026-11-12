@@ -9,6 +9,7 @@ services:
       - /app/.docusaurus
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - GARDEN_EXAMPLES=1
 
   test:
     image: mcr.microsoft.com/playwright:v1.64.1-noble
