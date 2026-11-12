@@ -337,3 +337,114 @@ test("CHROME-11 sem rolagem horizontal em 390 px", async ({ page }) => {
       .toBeLessThanOrEqual(390);
   }
 });
+
+/** Tokens do Dossier por tema, como terceto `r, g, b` (qualquer opacidade conta). */
+const TOKEN_RGB: Record<Theme, Set<string>> = {
+  paper: new Set(
+    ["#f4f4f1", "#e6e6e1", "#0b0c0e", "#c6c7c1", "#50535a", "#002fa7", "#d7dff3", "#b42318"].map(
+      (h) => rgb(h).slice(4, -1),
+    ),
+  ),
+  void: new Set(
+    ["#0a0b0d", "#16181d", "#eeeeea", "#2c2f36", "#9ea1a8", "#2b7fff", "#101a3c", "#ff6a55"].map(
+      (h) => rgb(h).slice(4, -1),
+    ),
+  ),
+};
+
+/** Cores de texto, fundo e borda de `root` e dos seus descendentes, sem SVG (o logo do Algolia). */
+const paints = (page: Page, root: string) =>
+  page.evaluate((r) => {
+    const top = document.querySelector(r);
+    if (!top) return [] as string[];
+    return [top, ...Array.from(top.querySelectorAll("*"))]
+      .filter((el) => !(el instanceof SVGElement))
+      .flatMap((el) => {
+        const s = getComputedStyle(el);
+        return [s.color, s.backgroundColor, s.borderTopColor];
+      });
+  }, root);
+
+/** Cor de um pintura é de token do tema ou transparente. */
+const onTokens = (color: string, theme: Theme) =>
+  /, 0\)$/.test(color) || TOKEN_RGB[theme].has(color.match(/\d+/g)!.slice(0, 3).join(", "));
+
+test("LEFT-01 raio 0 em breadcrumbs, categorias do menu, voltar ao topo e modal de busca", async ({ page }) => {
+  // As linhas de categoria do menu só existem na barra lateral da categoria CTFL.
+  await openIn(page, CATEGORY, "paper");
+  await all(page, [".theme-doc-sidebar-container .menu__list-item-collapsible"], "border-radius", "0px");
+
+  await openIn(page, DOC, "paper");
+  // O botão só aparece ao subir a página depois do limiar: desce, depois sobe um pouco.
+  await page.mouse.wheel(0, 2000);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  await page.mouse.wheel(0, -300);
+  await expect(page.locator(".theme-back-to-top-button")).toBeVisible();
+  await page.locator(".DocSearch-Button").click();
+  await expect(page.locator(".DocSearch-Modal")).toBeVisible();
+  await all(
+    page,
+    [
+      ".breadcrumbs__link",
+      ".theme-back-to-top-button",
+      ".DocSearch-Modal",
+      ".DocSearch-SearchBar",
+      ".DocSearch-Input",
+    ],
+    "border-radius",
+    "0px",
+  );
+});
+
+test("LEFT-02 sem box-shadow fora do foco no voltar ao topo e no modal de busca", async ({ page }) => {
+  await openIn(page, DOC, "paper");
+  // O botão só aparece ao subir a página depois do limiar: desce, depois sobe um pouco.
+  await page.mouse.wheel(0, 2000);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  await page.mouse.wheel(0, -300);
+  await expect(page.locator(".theme-back-to-top-button")).toBeVisible();
+  await page.locator(".DocSearch-Button").click();
+  await expect(page.locator(".DocSearch-Modal")).toBeVisible();
+  // O campo recebe o foco ao abrir; o critério vale fora do estado de foco.
+  await page.locator(".DocSearch-Input").evaluate((el) => (el as HTMLElement).blur());
+  await all(
+    page,
+    [".theme-back-to-top-button", ".DocSearch-Modal", ".DocSearch-SearchBar", ".DocSearch-Input"],
+    "box-shadow",
+    "none",
+  );
+});
+
+test("LEFT-04 modal de busca aberto pelo botão e por Ctrl+K só com tokens, em Paper e em Void", async ({ page }) => {
+  for (const theme of ["paper", "void"] as Theme[]) {
+    for (const open of ["button", "ctrl+k"] as const) {
+      await openIn(page, DOC, theme);
+      if (open === "button") await page.locator(".DocSearch-Button").click();
+      else {
+        await page.locator("h1").first().click();
+        await page.keyboard.press("Control+k");
+      }
+      await expect(page.locator(".DocSearch-Modal")).toBeVisible();
+      const colors = await paints(page, ".DocSearch-Modal");
+      expect(colors.length, `${theme} ${open}`).toBeGreaterThan(0);
+      expect(
+        colors.filter((c) => !onTokens(c, theme)),
+        `${theme} ${open} cores fora dos tokens`,
+      ).toEqual([]);
+    }
+  }
+});
+
+test("LEFT-07 cards Anterior e Próxima com borda de 1 px em ink, em Paper e em Void", async ({ page }) => {
+  for (const theme of ["paper", "void"] as Theme[]) {
+    await openIn(page, PAGES.peltzman, theme);
+    for (const side of [".pagination-nav__link--prev", ".pagination-nav__link--next"]) {
+      const card = page.locator(side);
+      await expect(card).toHaveCount(1);
+      for (const edge of ["top", "right", "bottom", "left"]) {
+        await expect(card).toHaveCSS(`border-${edge}-width`, "1px");
+        await expect(card).toHaveCSS(`border-${edge}-color`, rgb(TOKENS[theme].text));
+      }
+    }
+  }
+});
