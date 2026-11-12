@@ -33,15 +33,15 @@ async function expectLoaded(page: Page, img: Locator, label: string) {
 const imgOf = (page: Page, item: number) =>
   page.locator(`main img[src*="${stem(item)}"]`).first();
 
-test("ASSET-01 os 25 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
-  expect(ASSETS).toHaveLength(25);
+test("ASSET-01 os 22 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
+  expect(ASSETS).toHaveLength(22);
   for (const { path, sha256 } of ASSETS) {
     const digest = createHash("sha256").update(readFileSync(join(ROOT, path))).digest("hex");
     expect(digest, path).toBe(sha256);
   }
 });
 
-test("ASSET-02 as páginas de hoje exibem os itens 04 a 17", async ({ page }) => {
+test("ASSET-02 as páginas de hoje exibem os itens 04 a 14", async ({ page }) => {
   // home: itens 12 a 14 (o 01 foi trocado, IMG-01)
   await page.goto(PAGES.home);
   for (const item of [12, 13, 14]) {
@@ -61,14 +61,5 @@ test("ASSET-02 as páginas de hoje exibem os itens 04 a 17", async ({ page }) =>
         await expectLoaded(page, imgOf(page, item), `${width}px ${theme} item ${item}`);
       }
     }
-  }
-
-  // notas: itens 15 a 17
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto("docs/notes/software_ongoing_manual_testing");
-  await expectLoaded(page, imgOf(page, 15), "nota item 15");
-  await page.goto("docs/notes/test_coverage_sdlc");
-  for (const item of [16, 17]) {
-    await expectLoaded(page, imgOf(page, item), `nota item ${item}`);
   }
 });

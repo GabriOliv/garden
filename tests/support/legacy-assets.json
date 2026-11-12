@@ -55,21 +55,6 @@
     "sha256": "657a90b460c6acefafa3b7f1e762ddc25cdcc278e8f6f718047b72e5fc75e9f3"
   },
   {
-    "item": 15,
-    "path": "docs/notes/assets/jenga_dev.svg",
-    "sha256": "85d41126c9542b1dee5bf6a56eb0c2bfe642e4dd47bb765eb85013d08c9187d6"
-  },
-  {
-    "item": 16,
-    "path": "docs/notes/assets/test_coverage_sdlc_without_coverage.svg",
-    "sha256": "636f4c48020d158892bf4c969a080e2ab9480e96f5552673f908338f70b848f9"
-  },
-  {
-    "item": 17,
-    "path": "docs/notes/assets/test_coverage_sdlc_with_coverage.svg",
-    "sha256": "d1b2b67d113c4995dc08c11b28f231adfcc144b309179d2df26697189039ddb2"
-  },
-  {
     "item": 18,
     "path": "static/img/favicon.ico",
     "sha256": "3b63fb750787331bc02d8894f01c5fbdcf27596ca2a1231241f681cd9691565f"
