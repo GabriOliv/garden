@@ -1,0 +1,142 @@
+[
+  {
+    "item": 1,
+    "path": "static/animation/flask-garden-001.gif",
+    "sha256": "8bd262cbc77c10b91619249d8363a84a224cdb15a1a32dc41fa4a1d5cd70a2bf"
+  },
+  {
+    "item": 2,
+    "path": "docs/project/assets/banner/banner_flask_default.webp",
+    "sha256": "c9010d99fcb917c6035b5cd66f7aaa125fe2d50aa95017139dce8571d4737d79"
+  },
+  {
+    "item": 3,
+    "path": "docs/project/assets/banner/banner_flask_qa_default.webp",
+    "sha256": "b8c17d819a03397bb70025753671520b4b7db2b257beb0bb2de066a177f95855"
+  },
+  {
+    "item": 4,
+    "path": "static/img/banner/3f3fd9_undraw_art-museum.svg",
+    "sha256": "15d97198c9c98754a8e394a4574f19e9210910cb2386f0dc0e62464947328cd9"
+  },
+  {
+    "item": 5,
+    "path": "static/img/banner/9a47ff_undraw_art-museum.svg",
+    "sha256": "666e2f60646c099830394419fdd8ee3db6be3fd79b4bc6664176e6b68692ca26"
+  },
+  {
+    "item": 6,
+    "path": "static/img/banner/3f3fd9_undraw_done-checking.svg",
+    "sha256": "c2fdf474749c0825cf71dea9ae030ede2b0fb1ef4290a81f30fe42f401c5d58e"
+  },
+  {
+    "item": 7,
+    "path": "static/img/banner/9a47ff_undraw_done-checking.svg",
+    "sha256": "870345bc2738b9770db75939f11d340fd588a3724b42ff8c169877862366c3ca"
+  },
+  {
+    "item": 8,
+    "path": "static/img/banner/3f3fd9_undraw_creative-team.svg",
+    "sha256": "8c30c686defebcb0eed199644383c3aba9f1b260191016cc4c1353e9e7958712"
+  },
+  {
+    "item": 9,
+    "path": "static/img/banner/9a47ff_undraw_creative-team.svg",
+    "sha256": "35d30460cc4f9cd685eced64c96ef92c438c622f1673a6d01747d4bdade40f07"
+  },
+  {
+    "item": 10,
+    "path": "static/img/banner/3f3fd9_undraw_file-analysis.svg",
+    "sha256": "4defac719f70d671f674a26996cc36dd276a8602dcab84f0bb100c4d6d04e7ad"
+  },
+  {
+    "item": 11,
+    "path": "static/img/banner/9a47ff_undraw_file-analysis.svg",
+    "sha256": "d4136c22bb296dc3d9176c3e68cda9a7837943dbee14cbe760512cdcefff6a56"
+  },
+  {
+    "item": 12,
+    "path": "static/img/banner/6d43ec_undraw_taking-notes.svg",
+    "sha256": "2867388539e1097d4df5ffabb2638bf0588a08dc3b20bf0e875dfa8fade584f3"
+  },
+  {
+    "item": 13,
+    "path": "static/img/banner/6d43ec_undraw_going-up.svg",
+    "sha256": "6a0636f3b2ea62af43c79f373f95d2f844d0c8487aee43d10ca1a29310d439c2"
+  },
+  {
+    "item": 14,
+    "path": "static/img/banner/6d43ec_undraw_predictive-analytics.svg",
+    "sha256": "657a90b460c6acefafa3b7f1e762ddc25cdcc278e8f6f718047b72e5fc75e9f3"
+  },
+  {
+    "item": 15,
+    "path": "docs/notes/assets/jenga_dev.svg",
+    "sha256": "85d41126c9542b1dee5bf6a56eb0c2bfe642e4dd47bb765eb85013d08c9187d6"
+  },
+  {
+    "item": 16,
+    "path": "docs/notes/assets/test_coverage_sdlc_without_coverage.svg",
+    "sha256": "636f4c48020d158892bf4c969a080e2ab9480e96f5552673f908338f70b848f9"
+  },
+  {
+    "item": 17,
+    "path": "docs/notes/assets/test_coverage_sdlc_with_coverage.svg",
+    "sha256": "d1b2b67d113c4995dc08c11b28f231adfcc144b309179d2df26697189039ddb2"
+  },
+  {
+    "item": 18,
+    "path": "static/img/favicon.ico",
+    "sha256": "3b63fb750787331bc02d8894f01c5fbdcf27596ca2a1231241f681cd9691565f"
+  },
+  {
+    "item": 20,
+    "path": "static/img/banner_flask_default.webp",
+    "sha256": "c9010d99fcb917c6035b5cd66f7aaa125fe2d50aa95017139dce8571d4737d79"
+  },
+  {
+    "item": 21,
+    "path": "static/img/logo.svg",
+    "sha256": "d5c8cc551f77b73efbd180a7eb9354518a1771f42df4c008596dc2fb414b61b2"
+  },
+  {
+    "item": 22,
+    "path": "static/img/garden_logo.png",
+    "sha256": "f98c33284f4c266541f02b8184b6489334909bcf06d9d406212df331d57f8036"
+  },
+  {
+    "item": 23,
+    "path": "static/img/old_logo/favicon.ico",
+    "sha256": "daaae75eae832479f69b60f8025a2af3e7935c56bcc7d18e7010d7592fadcf96"
+  },
+  {
+    "item": 24,
+    "path": "static/img/old_logo/garden_logo.png",
+    "sha256": "5dcc44f6c0e3bc9c667b4e5ba4644b2bfaca9c3031a88432fc6614d80c7c7b39"
+  },
+  {
+    "item": 25,
+    "path": "static/img/old_logo/logo.svg",
+    "sha256": "ff176a6ea30d9b539dce8cde55158d2290b1dfa90d3c215045dce66be557d9b0"
+  },
+  {
+    "item": 26,
+    "path": "static/models/jenga_structure.drawio",
+    "sha256": "e42b911ade3097ba3d3f62cfcde68e390d0b4668f5b4d5e35b5a3dbc816c5378"
+  },
+  {
+    "item": 27,
+    "path": "static/models/test_coverage_sdlc_by_coverage.drawio",
+    "sha256": "bc20f051304cbc606f149d14ef3a4a87946cdb475a2561326ca563f1b88ca279"
+  },
+  {
+    "item": 28,
+    "path": "static/models/logo_diagram.drawio",
+    "sha256": "7b1ded807437d600ecf2d289c1c9df00e44818631a70a734d55d09c09fc8ff06"
+  },
+  {
+    "item": 29,
+    "path": "blog/2021-08-26-welcome/docusaurus-plushie-banner.jpeg",
+    "sha256": "5e20efd3f3f0f393fedf3e13da9371968b20994f36b41bd29a70079f48d8fd8f"
+  }
+]

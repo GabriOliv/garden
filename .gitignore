@@ -7,6 +7,11 @@
 # Production
 /build
 
+# Testes
+/build-test
+/test-results
+/playwright-report
+
 # Generated files
 .docusaurus
 .cache-loader

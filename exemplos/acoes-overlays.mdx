@@ -1,0 +1,41 @@
+---
+title: Ações e overlays
+sidebar_position: 4
+---
+
+import { Button, Icon, IconButton, Link, Tooltip } from "@gabrioliv/dossier";
+import { DialogDemo } from "./_demos/DialogDemo";
+import { MenuDemo } from "./_demos/MenuDemo";
+import { PopoverDemo } from "./_demos/PopoverDemo";
+
+# Ações e overlays
+
+Botões, link e painéis que abrem sobre a página.
+
+<section data-component="Button">
+  <Button>Padrão</Button> <Button variant="solid">Sólido</Button> <Button variant="text">Texto</Button> <Button tone="danger">Perigo</Button> <Button loading>Carregando</Button>
+</section>
+
+<section data-component="IconButton">
+  <IconButton label="Copiar"><Icon name="copy" /></IconButton>
+</section>
+
+<section data-component="Link">
+  <Link href="/garden/">Voltar ao Garden</Link>
+</section>
+
+<section data-component="Dialog">
+  <DialogDemo />
+</section>
+
+<section data-component="Popover">
+  <PopoverDemo />
+</section>
+
+<section data-component="Tooltip">
+  <Tooltip content="Texto da dica"><Button>Passe o foco aqui</Button></Tooltip>
+</section>
+
+<section data-component="Menu">
+  <MenuDemo />
+</section>

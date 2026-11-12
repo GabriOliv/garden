@@ -1,0 +1,49 @@
+---
+title: Formulários
+sidebar_position: 3
+---
+
+import { Checkbox, RadioGroup, Select, Switch, TextField } from "@gabrioliv/dossier";
+import { ptBR } from "@gabrioliv/dossier/locales/pt-BR";
+
+# Formulários
+
+Campos de entrada. Nenhum envia dados.
+
+<section data-component="TextField">
+  <TextField label="Relatório" name="relatorio" placeholder="Digite o nome" hint="Use o código do relatório." required labels={ptBR.TextField} />
+</section>
+
+<section data-component="Checkbox">
+  <Checkbox label="Aceito os termos" required labels={ptBR.Checkbox} />
+</section>
+
+<section data-component="Switch">
+  <Switch label="Notificações por e-mail" labels={ptBR.Switch} />
+</section>
+
+<section data-component="RadioGroup">
+  <RadioGroup
+    label="Ambiente"
+    name="ambiente"
+    labels={ptBR.RadioGroup}
+    options={[
+      { value: "dev", label: "Desenvolvimento" },
+      { value: "hom", label: "Homologação" },
+      { value: "prod", label: "Produção" },
+    ]}
+  />
+</section>
+
+<section data-component="Select">
+  <Select
+    label="Estágio"
+    placeholder="Escolha um estágio"
+    labels={ptBR.Select}
+    options={[
+      { value: "A", label: "Semente" },
+      { value: "B", label: "Broto" },
+      { value: "C", label: "Árvore" },
+    ]}
+  />
+</section>
