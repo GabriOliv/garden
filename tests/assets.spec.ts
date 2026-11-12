@@ -6,7 +6,7 @@ import { PAGES, openIn } from "./support/site";
 
 type Asset = { item: number; path: string; sha256: string };
 
-/** Itens 01 a 18 e 20 a 29 de `legacy-assets.md`, com o sha256 do commit d45fc13. */
+/** Itens 02 a 18 e 20 a 29 de `legacy-assets.md`, com o sha256 do commit d45fc13. */
 const ASSETS: Asset[] = JSON.parse(
   readFileSync(join(__dirname, "support", "legacy-assets.json"), "utf-8"),
 );
@@ -33,18 +33,18 @@ async function expectLoaded(page: Page, img: Locator, label: string) {
 const imgOf = (page: Page, item: number) =>
   page.locator(`main img[src*="${stem(item)}"]`).first();
 
-test("ASSET-01 os 28 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
-  expect(ASSETS).toHaveLength(28);
+test("ASSET-01 os 27 arquivos legado existem no caminho e com o sha256 de d45fc13", () => {
+  expect(ASSETS).toHaveLength(27);
   for (const { path, sha256 } of ASSETS) {
     const digest = createHash("sha256").update(readFileSync(join(ROOT, path))).digest("hex");
     expect(digest, path).toBe(sha256);
   }
 });
 
-test("ASSET-02 as páginas de hoje exibem os itens 01 a 17", async ({ page }) => {
-  // home: itens 01 e 12 a 14
+test("ASSET-02 as páginas de hoje exibem os itens 02 a 17", async ({ page }) => {
+  // home: itens 12 a 14 (o 01 foi trocado, IMG-01)
   await page.goto(PAGES.home);
-  for (const item of [1, 12, 13, 14]) {
+  for (const item of [12, 13, 14]) {
     await expectLoaded(page, imgOf(page, item), `home item ${item}`);
   }
 

@@ -1,10 +1,5 @@
 [
   {
-    "item": 1,
-    "path": "static/animation/flask-garden-001.gif",
-    "sha256": "8bd262cbc77c10b91619249d8363a84a224cdb15a1a32dc41fa4a1d5cd70a2bf"
-  },
-  {
     "item": 2,
     "path": "docs/project/assets/banner/banner_flask_default.webp",
     "sha256": "c9010d99fcb917c6035b5cd66f7aaa125fe2d50aa95017139dce8571d4737d79"

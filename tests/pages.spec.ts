@@ -8,7 +8,7 @@ test("PAGE-01 home mostra título, frase, animação e o link", async ({ page })
   const main = page.locator("main");
   await expect(main.getByRole("heading", { level: 1, name: "QA Garden" })).toBeVisible();
   await expect(main.getByText("Uma Coleção de Notas em Evolução")).toBeVisible();
-  const flask = main.locator('img[src$="/animation/flask-garden-001.gif"]');
+  const flask = main.locator('img[alt="Site Logo"]:visible');
   await expect(flask).toBeVisible();
   await expect
     .poll(() => flask.evaluate((img: HTMLImageElement) => img.naturalWidth))
