@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 416.4" width="2048" height="1066" role="img" aria-labelledby="t">
+  <title id="t">Banner grafo de notas — estilo Dossier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 5; }
+    .ticks line { stroke: var(--ink); stroke-width: 1; }
+    .glass { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .cork { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .shine { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .liquid { fill: url(#hatch); }
+    .liquid-dots { fill: url(#dots); }
+    .surface { stroke: var(--signal); stroke-width: 2; }
+    .grad line, line.grad { stroke: var(--ink); stroke-width: 1; }
+    .bubble { fill: var(--paper); stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; fill: var(--ink); }
+    .tiny { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 7px; font-weight: 500; letter-spacing: 0.06em; fill: var(--ink); text-anchor: middle; }
+    .muted { fill: var(--ink-muted); }
+    .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.2s cubic-bezier(.6,0,.2,1) .3s forwards; }
+    .ro { opacity: 0; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .seed { fill: var(--paper); stroke: var(--ink); stroke-width: .8; transform-box: fill-box; transform-origin: center; }
+    .seed.fib { fill: var(--signal); stroke: var(--signal); }
+    .arm { fill: none; stroke: var(--signal); stroke-width: .8; opacity: .75; stroke-dasharray: 1; stroke-dashoffset: 0; }
+    .ray { stroke: var(--signal); stroke-width: 1.5; }
+    .ray-ref { stroke: var(--ink-muted); stroke-width: 1; }
+    .gdot { fill: var(--ink); transform-box: fill-box; transform-origin: center; }
+    .edge { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+    .edge-on { fill: none; stroke: var(--signal); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .link { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 4; }
+    .node { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .node-on { fill: var(--signal); stroke: var(--signal); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .packet { fill: var(--signal); opacity: 0; }
+    .gridpt { fill: var(--rule-soft); }
+    .nl { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+    @keyframes edge { 0% { stroke-dashoffset: 1; opacity: 1 } 2.5% { stroke-dashoffset: 1; opacity: 1 } 14.17% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96.67% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes link { 0% { opacity: 0 } 55% { opacity: 0 } 56.25% { opacity: 1 } 57.5% { opacity: .2 } 58.75% { opacity: 1 } 90% { opacity: 1 } 96.67% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes on1 { 0% { stroke-dashoffset: 1; opacity: 1 } 20% { stroke-dashoffset: 1; opacity: 1 } 32.5% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96.67% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes on2 { 0% { stroke-dashoffset: 1; opacity: 1 } 37.5% { stroke-dashoffset: 1; opacity: 1 } 50% { stroke-dashoffset: 0; opacity: 1 } 90% { stroke-dashoffset: 0; opacity: 1 } 96.67% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes v0 { 0% { transform: scale(0); opacity: 0 } 16.67% { transform: scale(0); opacity: 1 } 18.67% { transform: scale(1.6); opacity: 1 } 20.67% { transform: scale(1); opacity: 1 } 90% { transform: scale(1); opacity: 1 } 96.67% { transform: scale(1); opacity: 0 } 100% { transform: scale(0); opacity: 0 } }
+    @keyframes pv0 { 0% { transform: scale(1); opacity: 0 } 16.67% { transform: scale(1); opacity: .9 } 28.67% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes v1 { 0% { transform: scale(0); opacity: 0 } 32.5% { transform: scale(0); opacity: 1 } 34.5% { transform: scale(1.6); opacity: 1 } 36.5% { transform: scale(1); opacity: 1 } 90% { transform: scale(1); opacity: 1 } 96.67% { transform: scale(1); opacity: 0 } 100% { transform: scale(0); opacity: 0 } }
+    @keyframes pv1 { 0% { transform: scale(1); opacity: 0 } 32.5% { transform: scale(1); opacity: .9 } 44.5% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes v2 { 0% { transform: scale(0); opacity: 0 } 50% { transform: scale(0); opacity: 1 } 52% { transform: scale(1.6); opacity: 1 } 54% { transform: scale(1); opacity: 1 } 90% { transform: scale(1); opacity: 1 } 96.67% { transform: scale(1); opacity: 0 } 100% { transform: scale(0); opacity: 0 } }
+    @keyframes pv2 { 0% { transform: scale(1); opacity: 0 } 50% { transform: scale(1); opacity: .9 } 62% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes pk1 { 0% { transform: translate(400px,208px); opacity: 0 } 20% { transform: translate(400px,208px); opacity: 1 } 32.5% { transform: translate(275px,135px); opacity: 1 } 33% { transform: translate(275px,135px); opacity: 0 } 100% { transform: translate(275px,135px); opacity: 0 } }
+    @keyframes pk2 { 0% { transform: translate(400px,208px); opacity: 0 } 20% { transform: translate(400px,208px); opacity: 1 } 32.5% { transform: translate(525px,125px); opacity: 1 } 33% { transform: translate(525px,125px); opacity: 0 } 100% { transform: translate(525px,125px); opacity: 0 } }
+    @keyframes pk3 { 0% { transform: translate(400px,208px); opacity: 0 } 20% { transform: translate(400px,208px); opacity: 1 } 32.5% { transform: translate(530px,295px); opacity: 1 } 33% { transform: translate(530px,295px); opacity: 0 } 100% { transform: translate(530px,295px); opacity: 0 } }
+    @keyframes pk4 { 0% { transform: translate(400px,208px); opacity: 0 } 20% { transform: translate(400px,208px); opacity: 1 } 32.5% { transform: translate(265px,290px); opacity: 1 } 33% { transform: translate(265px,290px); opacity: 0 } 100% { transform: translate(265px,290px); opacity: 0 } }
+    @keyframes pk5 { 0% { transform: translate(275px,135px); opacity: 0 } 37.5% { transform: translate(275px,135px); opacity: 1 } 50% { transform: translate(150px,70px); opacity: 1 } 50.5% { transform: translate(150px,70px); opacity: 0 } 100% { transform: translate(150px,70px); opacity: 0 } }
+    @keyframes pk6 { 0% { transform: translate(275px,135px); opacity: 0 } 37.5% { transform: translate(275px,135px); opacity: 1 } 50% { transform: translate(140px,195px); opacity: 1 } 50.5% { transform: translate(140px,195px); opacity: 0 } 100% { transform: translate(140px,195px); opacity: 0 } }
+    @keyframes pk7 { 0% { transform: translate(525px,125px); opacity: 0 } 37.5% { transform: translate(525px,125px); opacity: 1 } 50% { transform: translate(640px,55px); opacity: 1 } 50.5% { transform: translate(640px,55px); opacity: 0 } 100% { transform: translate(640px,55px); opacity: 0 } }
+    @keyframes pk8 { 0% { transform: translate(525px,125px); opacity: 0 } 37.5% { transform: translate(525px,125px); opacity: 1 } 50% { transform: translate(690px,175px); opacity: 1 } 50.5% { transform: translate(690px,175px); opacity: 0 } 100% { transform: translate(690px,175px); opacity: 0 } }
+    @keyframes pk9 { 0% { transform: translate(530px,295px); opacity: 0 } 37.5% { transform: translate(530px,295px); opacity: 1 } 50% { transform: translate(680px,320px); opacity: 1 } 50.5% { transform: translate(680px,320px); opacity: 0 } 100% { transform: translate(680px,320px); opacity: 0 } }
+    @keyframes pk10 { 0% { transform: translate(530px,295px); opacity: 0 } 37.5% { transform: translate(530px,295px); opacity: 1 } 50% { transform: translate(500px,385px); opacity: 1 } 50.5% { transform: translate(500px,385px); opacity: 0 } 100% { transform: translate(500px,385px); opacity: 0 } }
+    @keyframes pk11 { 0% { transform: translate(265px,290px); opacity: 0 } 37.5% { transform: translate(265px,290px); opacity: 1 } 50% { transform: translate(120px,330px); opacity: 1 } 50.5% { transform: translate(120px,330px); opacity: 0 } 100% { transform: translate(120px,330px); opacity: 0 } }
+    @keyframes pk12 { 0% { transform: translate(265px,290px); opacity: 0 } 37.5% { transform: translate(265px,290px); opacity: 1 } 50% { transform: translate(300px,385px); opacity: 1 } 50.5% { transform: translate(300px,385px); opacity: 0 } 100% { transform: translate(300px,385px); opacity: 0 } }
+    @keyframes vc00 { 0% { opacity: 1 } 16.67% { opacity: 0 } 96.67% { opacity: 1 } 100% { opacity: 0 } }
+    @keyframes vc01 { 0% { opacity: 0 } 16.67% { opacity: 1 } 32.5% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes vc05 { 0% { opacity: 0 } 32.5% { opacity: 1 } 50% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes vc13 { 0% { opacity: 0 } 50% { opacity: 1 } 96.67% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes dc0 { 0% { opacity: 1 } 16.67% { opacity: 0 } 96.67% { opacity: 1 } 100% { opacity: 0 } }
+    @keyframes dc1 { 0% { opacity: 0 } 16.67% { opacity: 1 } 32.5% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes dc2 { 0% { opacity: 0 } 32.5% { opacity: 1 } 50% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes dc3 { 0% { opacity: 0 } 50% { opacity: 1 } 96.67% { opacity: 0 } 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .ro-rest, .node-on, .link { opacity: 1; }
+      .edge-on { stroke-dashoffset: 0; }
+    }
+  </style>
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="var(--signal-tint)"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="var(--signal)" stroke-width="1"/>
+    </pattern>
+    <pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect width="5" height="5" fill="var(--signal-tint)"/>
+      <circle cx="2.5" cy="2.5" r="0.9" fill="var(--signal)"/>
+    </pattern>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="10" cy="10" r=".7"/></pattern>
+  </defs>
+
+  <rect class="bg" width="800" height="416.4"/>
+  <rect width="800" height="416.4" fill="url(#grid)"/>
+
+  <!-- links cruzados (não-árvore) -->
+  
+<path class="link" style="animation: link 12s linear infinite" d="M150 70 L140 195"/>  <path class="link" style="animation: link 12s linear infinite" d="M640 55 L690 175"/>  <path class="link" style="animation: link 12s linear infinite" d="M680 320 L500 385"/>  <path class="link" style="animation: link 12s linear infinite" d="M120 330 L300 385"/>  <path class="link" style="animation: link 12s linear infinite" d="M275 135 L525 125"/>
+
+  <!-- arestas da árvore: base e percurso -->
+  
+<path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L275 135"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L525 125"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L530 295"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M400 208 L265 290"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M275 135 L150 70"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M275 135 L140 195"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M525 125 L640 55"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M525 125 L690 175"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M530 295 L680 320"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M530 295 L500 385"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M265 290 L120 330"/>  <path class="edge" pathLength="1" style="animation: edge 12s cubic-bezier(.6,0,.3,1) infinite" d="M265 290 L300 385"/>
+  
+<path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L275 135"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L525 125"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L530 295"/>  <path class="edge-on" pathLength="1" style="animation: on1 12s cubic-bezier(.45,0,.55,1) infinite" d="M400 208 L265 290"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M275 135 L150 70"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M275 135 L140 195"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M525 125 L640 55"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M525 125 L690 175"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M530 295 L680 320"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M530 295 L500 385"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M265 290 L120 330"/>  <path class="edge-on" pathLength="1" style="animation: on2 12s cubic-bezier(.45,0,.55,1) infinite" d="M265 290 L300 385"/>
+
+  <!-- pacotes da busca -->
+  
+<rect class="packet" style="animation: pk1 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk2 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk3 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk4 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk5 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk6 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk7 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk8 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk9 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk10 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk11 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>  <rect class="packet" style="animation: pk12 12s cubic-bezier(.45,0,.55,1) infinite" x="-3" y="-3" width="6" height="6"/>
+
+  <!-- notas -->
+  
+<circle class="pulse" style="animation: pv0 12s ease-out infinite" cx="400" cy="208" r="3"/>
+  <rect class="node" x="394.0" y="202.0" width="12" height="12"/>
+  <rect class="node-on" style="animation: v0 12s ease-out infinite" x="394.0" y="202.0" width="12" height="12"/>
+  <text class="label nl" x="412.0" y="212">ÍNDICE</text>  <circle class="pulse" style="animation: pv1 12s ease-out infinite" cx="275" cy="135" r="3"/>
+  <rect class="node" x="271.0" y="131.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v1 12s ease-out infinite" x="271.0" y="131.0" width="8" height="8"/>
+  <text class="label nl muted" x="285.0" y="139">TESTES</text>  <circle class="pulse" style="animation: pv1 12s ease-out infinite" cx="525" cy="125" r="3"/>
+  <rect class="node" x="521.0" y="121.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v1 12s ease-out infinite" x="521.0" y="121.0" width="8" height="8"/>
+  <text class="label nl muted" x="535.0" y="129">AUTOMAÇÃO</text>  <circle class="pulse" style="animation: pv1 12s ease-out infinite" cx="530" cy="295" r="3"/>
+  <rect class="node" x="526.0" y="291.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v1 12s ease-out infinite" x="526.0" y="291.0" width="8" height="8"/>
+  <text class="label nl muted" x="540.0" y="299">CI/CD</text>  <circle class="pulse" style="animation: pv1 12s ease-out infinite" cx="265" cy="290" r="3"/>
+  <rect class="node" x="261.0" y="286.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v1 12s ease-out infinite" x="261.0" y="286.0" width="8" height="8"/>
+  <text class="label nl muted" x="275.0" y="294">MÉTRICAS</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="150" cy="70" r="3"/>
+  <rect class="node" x="146.0" y="66.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="146.0" y="66.0" width="8" height="8"/>
+  <text class="label nl muted" x="160.0" y="74">UNIDADE</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="140" cy="195" r="3"/>
+  <rect class="node" x="136.0" y="191.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="136.0" y="191.0" width="8" height="8"/>
+  <text class="label nl muted" x="150.0" y="199">E2E</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="640" cy="55" r="3"/>
+  <rect class="node" x="636.0" y="51.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="636.0" y="51.0" width="8" height="8"/>
+  <text class="label nl muted" x="650.0" y="59">PLAYWRIGHT</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="690" cy="175" r="3"/>
+  <rect class="node" x="686.0" y="171.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="686.0" y="171.0" width="8" height="8"/>
+  <text class="label nl muted" x="700.0" y="179">SCRIPTS</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="680" cy="320" r="3"/>
+  <rect class="node" x="676.0" y="316.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="676.0" y="316.0" width="8" height="8"/>
+  <text class="label nl muted" x="690.0" y="324">PIPELINE</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="500" cy="385" r="3"/>
+  <rect class="node" x="496.0" y="381.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="496.0" y="381.0" width="8" height="8"/>
+  <text class="label nl muted" x="510.0" y="389">DEPLOY</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="120" cy="330" r="3"/>
+  <rect class="node" x="116.0" y="326.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="116.0" y="326.0" width="8" height="8"/>
+  <text class="label nl muted" x="130.0" y="334">COBERTURA</text>  <circle class="pulse" style="animation: pv2 12s ease-out infinite" cx="300" cy="385" r="3"/>
+  <rect class="node" x="296.0" y="381.0" width="8" height="8"/>
+  <rect class="node-on" style="animation: v2 12s ease-out infinite" x="296.0" y="381.0" width="8" height="8"/>
+  <text class="label nl muted" x="310.0" y="389">DEFEITOS</text>
+
+  <!-- legenda e contadores -->
+  <text class="label muted" x="20" y="28">FIG. 04 — GRAFO DE NOTAS</text>
+  <text class="label muted" x="20" y="44">BUSCA EM LARGURA · RAIZ ÍNDICE</text>
+  <text class="label ro" style="animation: vc00 12s steps(1) infinite" x="20" y="373">VISITADOS · 00/13</text>
+  <text class="label ro" style="animation: vc01 12s steps(1) infinite" x="20" y="373">VISITADOS · 01/13</text>
+  <text class="label ro" style="animation: vc05 12s steps(1) infinite" x="20" y="373">VISITADOS · 05/13</text>
+  <text class="label ro ro-rest" style="animation: vc13 12s steps(1) infinite" x="20" y="373">VISITADOS · 13/13</text>
+  <text class="label muted ro" style="animation: dc0 12s steps(1) infinite" x="20" y="357">PROFUNDIDADE · —</text>
+  <text class="label muted ro" style="animation: dc1 12s steps(1) infinite" x="20" y="357">PROFUNDIDADE · 0</text>
+  <text class="label muted ro" style="animation: dc2 12s steps(1) infinite" x="20" y="357">PROFUNDIDADE · 1</text>
+  <text class="label muted ro ro-rest" style="animation: dc3 12s steps(1) infinite" x="20" y="357">PROFUNDIDADE · 2</text>
+  <text class="label muted" x="20" y="396">GARDEN · REV A</text>
+
+  <rect class="sig" x="640" y="365" width="8" height="8"/>
+  <text class="label" x="656" y="373">VISITADO</text>
+  <rect class="node" x="640" y="381" width="8" height="8"/>
+  <text class="label muted" x="656" y="389">PENDENTE</text>
+  <line class="link" x1="636" y1="401" x2="650" y2="401" style="opacity:1"/>
+  <text class="label muted" x="656" y="405">LINK</text>
+</svg>

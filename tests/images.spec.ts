@@ -42,7 +42,7 @@ test("IMG-02 home em Void mostra o frasco -void.svg", async ({ page }) => {
 const expectBanner = async (page: Page, item: string, stem: string) => {
   const img = page.locator(`main [data-item="${item}"] img`);
   await expect(img).toBeVisible();
-  await expect(img).toHaveAttribute("src", new RegExp(`/${stem}[^/]*\\.svg$`));
+  await expect(img).toHaveAttribute("src", new RegExp(`/${stem}[^/]*\\.svg(#.*)?$`));
   await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
 };
 
@@ -65,14 +65,19 @@ const SDLC = "docs/notes/test_coverage_sdlc";
 const figures = (page: Page) =>
   page
     .locator("article figure img")
-    .evaluateAll((imgs) => imgs.map((i) => ({ src: i.getAttribute("src")!, alt: i.getAttribute("alt")! })));
+    .evaluateAll((imgs) =>
+      imgs
+        // Só a do tema ativo: a outra versão do diagrama fica escondida (IMG-13).
+        .filter((i) => i.getClientRects().length > 0)
+        .map((i) => ({ src: i.getAttribute("src")!, alt: i.getAttribute("alt")! })),
+    );
 
 test("IMG-05 nota Jenga mostra diagrama-jenga-dossier.svg", async ({ page }) => {
   await page.goto(JENGA);
   const imgs = await figures(page);
   expect(imgs).toHaveLength(1);
-  expect(imgs[0].src).toMatch(/\/diagrama-jenga-dossier[^/]*\.svg$/);
-  const img = page.locator("article figure img");
+  expect(imgs[0].src).toMatch(/\/diagrama-jenga-dossier[^/]*\.svg(#.*)?$/);
+  const img = page.locator("article figure img:visible");
   await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth)).toBeGreaterThan(0);
   sameAsPackage("docs/notes/assets/diagrama-jenga-dossier.svg", "diagramas/diagrama-jenga-dossier.svg");
 });
@@ -81,9 +86,9 @@ test("IMG-06 nota de cobertura mostra os dois diagramas SDLC, na ordem de hoje",
   await page.goto(SDLC);
   const imgs = await figures(page);
   expect(imgs).toHaveLength(2);
-  expect(imgs[0].src).toMatch(/\/diagrama-sdlc-sem-cobertura-dossier[^/]*\.svg$/);
-  expect(imgs[1].src).toMatch(/\/diagrama-sdlc-com-cobertura-dossier[^/]*\.svg$/);
-  for (const el of await page.locator("article figure img").all()) {
+  expect(imgs[0].src).toMatch(/\/diagrama-sdlc-sem-cobertura-dossier[^/]*\.svg(#.*)?$/);
+  expect(imgs[1].src).toMatch(/\/diagrama-sdlc-com-cobertura-dossier[^/]*\.svg(#.*)?$/);
+  for (const el of await page.locator("article figure img:visible").all()) {
     await expect.poll(() => el.evaluate((i: HTMLImageElement) => i.naturalWidth)).toBeGreaterThan(0);
   }
   for (const name of ["sem", "com"]) {
@@ -188,4 +193,67 @@ test("IMG-11 os banners de Comece a Leitura seguem o modo de cor do site, não o
   };
   expect(await corner("dark", "light")).toBe(rgb("#f4f4f1"));
   expect(await corner("light", "dark")).toBe(rgb("#0a0b0d"));
+});
+
+test("IMG-12 home e Comece a Leitura mostram banners do Dossier no lugar dos undraw", async ({ page }) => {
+  const visible = (sel: string) =>
+    page.locator(sel).evaluateAll((els) =>
+      els
+        .filter((el) => el.getClientRects().length > 0)
+        // Sem o hash que o webpack põe no nome das imagens do Markdown.
+        .map((el) => el.getAttribute("src")!.split("/").pop()!.replace(/-[0-9a-f]{32}(?=\.svg)/, "")),
+    );
+  for (const theme of ["paper", "void"] as const) {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await openIn(page, PAGES.home, theme);
+    expect(await visible("main img")).toEqual(
+      expect.arrayContaining(["banner-grafo-dossier.svg", "banner-automato-dossier.svg", "banner-filotaxia-dossier.svg"]),
+    );
+    expect((await visible("main img")).filter((s) => s.includes("undraw")), `home ${theme}`).toEqual([]);
+    for (const [width, want] of [
+      [1280, ["banner-automato-dossier.svg", "banner-harmonografo-dossier.svg", "banner-grafo-dossier.svg"]],
+      [390, ["banner-harmonografo-dossier.svg"]],
+    ] as const) {
+      await page.setViewportSize({ width, height: 900 });
+      await openIn(page, PAGES.start, theme);
+      const top = (await visible("main img")).filter((s) => s.startsWith("banner-") && !s.startsWith("banner-flask"));
+      expect(top, `start ${width} ${theme}`).toEqual([...want]);
+      expect((await visible("main img")).filter((s) => s.includes("undraw")), `start ${width} ${theme}`).toEqual([]);
+    }
+  }
+  for (const f of ["automato", "filotaxia", "grafo", "harmonografo"]) ownAnimated(`static/img/dossier/banner-${f}-dossier.svg`);
+});
+
+test("IMG-13 os diagramas das notas trocam para a versão void no modo escuro", async ({ page }) => {
+  const VOID = ["#0a0b0d", "#16181d", "#eeeeea", "#9ea1a8", "#2c2f36", "#2b7fff", "#101a3c", "#ff6a55"];
+  for (const name of ["jenga", "sdlc-sem-cobertura", "sdlc-com-cobertura"]) {
+    const svg = readFileSync(join(ROOT, `docs/notes/assets/diagrama-${name}-dossier-void.svg`), "utf-8");
+    const colors = new Set((svg.match(/#[0-9a-fA-F]{6}\b/g) ?? []).map((c) => c.toLowerCase()));
+    expect([...colors].filter((c) => !VOID.includes(c)), `${name} só cores do Void`).toEqual([]);
+  }
+  for (const [path, n] of [[JENGA, 1], [SDLC, 2]] as const) {
+    for (const theme of ["paper", "void"] as const) {
+      await openIn(page, path, theme);
+      const shown = await figures(page);
+      expect(shown, `${path} ${theme}`).toHaveLength(n);
+      for (const { src } of shown) expect(src.includes("-dossier-void-"), `${path} ${theme} ${src}`).toBe(theme === "void");
+    }
+  }
+});
+
+test("IMG-14 figuras dos cubos guardadas: SVG estático em img/cubes e página animada em embeds", async ({ page, request }) => {
+  for (const name of ["cube-test-rig", "esteira-cubo-magico"]) {
+    const svg = readFileSync(join(ROOT, `static/img/cubes/${name}.svg`), "utf-8");
+    expect(svg.includes("<script"), `${name}.svg sem script`).toBe(false);
+    expect((await request.get(`img/cubes/${name}.svg`)).status(), `${name}.svg`).toBe(200);
+    // A página animada desenha a figura por script: depois de carregar, o SVG tem peças e muda com o tempo.
+    // Sem ".html": o `docusaurus serve` dos testes redireciona o .html para fora do baseUrl.
+    await page.goto(`embeds/${name}`);
+    const rig = page.locator("svg#rig");
+    await expect.poll(() => rig.evaluate((el) => el.querySelectorAll("*").length)).toBeGreaterThan(100);
+    // O script só anima com a figura na tela.
+    await rig.scrollIntoViewIfNeeded();
+    const a = await rig.evaluate((el) => el.innerHTML);
+    await expect.poll(() => rig.evaluate((el) => el.innerHTML), { message: `${name} anima`, timeout: 10_000 }).not.toBe(a);
+  }
 });

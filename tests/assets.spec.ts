@@ -41,25 +41,10 @@ test("ASSET-01 os 22 arquivos legado existem no caminho e com o sha256 de d45fc1
   }
 });
 
-test("ASSET-02 as páginas de hoje exibem os itens 04 a 14", async ({ page }) => {
-  // home: itens 12 a 14 (o 01 foi trocado, IMG-01)
-  await page.goto(PAGES.home);
-  for (const item of [12, 13, 14]) {
-    await expectLoaded(page, imgOf(page, item), `home item ${item}`);
-  }
-
-  // Comece a Leitura: banners do topo por largura e tema (os itens 02 e 03 foram trocados, IMG-03 e IMG-04)
-  const banners = {
-    390: { paper: [4], void: [5] },
-    1280: { paper: [6, 8, 10], void: [7, 9, 11] },
-  } as const;
-  for (const width of [390, 1280] as const) {
-    for (const theme of ["paper", "void"] as const) {
-      await page.setViewportSize({ width, height: 844 });
-      await openIn(page, PAGES.start, theme);
-      for (const item of banners[width][theme]) {
-        await expectLoaded(page, imgOf(page, item), `${width}px ${theme} item ${item}`);
-      }
-    }
+test("ASSET-02 os itens 04 a 14 seguem servidos no caminho de hoje", async ({ request }) => {
+  // As páginas trocaram esses undraw por banners do Dossier (IMG-12, AD-012); os arquivos ficam no site.
+  for (const { item, path } of ASSETS.filter((a) => a.item >= 4 && a.item <= 14)) {
+    const url = path.replace(/^static\//, "");
+    expect((await request.get(url)).status(), `item ${item} ${url}`).toBe(200);
   }
 });

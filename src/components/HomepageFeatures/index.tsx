@@ -12,17 +12,17 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
 	{
 		title: 'Notas',
-		image: '/img/banner/6d43ec_undraw_taking-notes.svg',
+		image: '/img/dossier/banner-grafo-dossier.svg',
 		description: (<>Teorias e artigos sobre diversos tópicos de Garantia de Qualidade.</>),
 	},
 	{
 		title: 'Estudos de Certificações',
-		image: '/img/banner/6d43ec_undraw_going-up.svg',
+		image: '/img/dossier/banner-automato-dossier.svg',
 		description: (<>Resumos e materiais de estudo usados para fazer certificações.</>),
 	},
 	{
 		title: 'Evolução',
-		image: '/img/banner/6d43ec_undraw_predictive-analytics.svg',
+		image: '/img/dossier/banner-filotaxia-dossier.svg',
 		description: (<>Documentação separada em níveis de evolução e experiência.</>),
 	},
 ];

@@ -42,9 +42,9 @@ test("PAGE-05 um único link Comece a Leitura em 390 px e em 1280 px", async ({ 
 test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ page }) => {
   await page.goto(PAGES.home);
   const blocks = [
-    ["Notas", "taking-notes", "Teorias e artigos sobre diversos tópicos de Garantia de Qualidade."],
-    ["Estudos de Certificações", "going-up", "Resumos e materiais de estudo usados para fazer certificações."],
-    ["Evolução", "predictive-analytics", "Documentação separada em níveis de evolução e experiência."],
+    ["Notas", "banner-grafo-dossier", "Teorias e artigos sobre diversos tópicos de Garantia de Qualidade."],
+    ["Estudos de Certificações", "banner-automato-dossier", "Resumos e materiais de estudo usados para fazer certificações."],
+    ["Evolução", "banner-filotaxia-dossier", "Documentação separada em níveis de evolução e experiência."],
   ];
   const main = page.locator("main");
   for (const [title, art, phrase] of blocks) {
@@ -54,7 +54,7 @@ test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ pa
       })
       .first();
     await expect(block.getByText(phrase)).toBeVisible();
-    const img = block.locator(`img[src$="6d43ec_undraw_${art}.svg"]`);
+    const img = block.locator(`img[src$="/${art}.svg"]`);
     await expect(img).toBeVisible();
     await expect
       .poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth))
