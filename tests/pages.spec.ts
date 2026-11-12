@@ -112,10 +112,15 @@ test("PAGE-07 itens CTFL, CT-TAS e Notas com imagem e descrição", async ({ pag
   }
 });
 
-test("PAGE-08 Leia Mais abre CTFL, CT-TAS e Notas", async ({ page }) => {
-  for (const [key, , , , url] of ITEMS) {
+test("PAGE-08 o título de CTFL, CT-TAS e Notas é o link, e o card todo abre a página", async ({ page }) => {
+  for (const [key, title, description, , url] of ITEMS) {
     await page.goto(PAGES.start);
-    await page.locator(`main [data-item="${key}"]`).getByRole("link", { name: "Leia Mais" }).click();
+    const item = page.locator(`main [data-item="${key}"]`);
+    await expect(item.getByRole("link", { name: "Leia Mais" })).toHaveCount(0);
+    await expect(item.getByRole("heading", { level: 3 }).getByRole("link", { name: title, exact: true })).toBeVisible();
+    // Clique na descrição, fora do título: o ::after do link cobre o card, então o clique cai no link.
+    // `force` pula a checagem de alvo do Playwright, que acusaria o link por cima da descrição.
+    await item.getByText(description, { exact: true }).click({ force: true });
     await expect(page).toHaveURL(new RegExp(`${url}/?$`));
   }
 });
@@ -199,7 +204,7 @@ test("PAGE-09 legenda com os quatro estágios em ordem, ícone de 48 px, nome, l
   for (const [i, [stage, name, reading, definition]] of LEGEND.entries()) {
     const item = items.nth(i);
     await expect(item).toHaveAttribute("data-stage", stage);
-    await expect(item.getByRole("heading", { level: 3, name, exact: true })).toBeVisible();
+    await expect(item.getByRole("link", { name, exact: true })).toBeVisible();
     await expect(item.getByText(reading, { exact: true })).toBeVisible();
     await expect(item.getByText(definition, { exact: true })).toBeVisible();
     const icon = item.locator("svg").first();
@@ -214,7 +219,7 @@ test("PAGE-09 legenda com os quatro estágios em ordem, ícone de 48 px, nome, l
 
 test("PAGE-10 definições dos estágios de A a D", async ({ page }) => {
   await page.goto(PAGES.start);
-  const texts = await page.locator("main [data-stage] p").allInnerTexts();
+  const texts = await page.locator("main [data-stage] .ds-toc-desc").allInnerTexts();
   expect(texts.filter((t) => LEGEND.some((l) => l[3] === t))).toEqual(LEGEND.map((l) => l[3]));
 });
 
@@ -227,10 +232,10 @@ test("PAGE-11 ícones de 48 px da legenda com aria-hidden", async ({ page }) => 
   }
 });
 
-test("PAGE-12 Veja Todos abre a página da tag de cada estágio, inclusive o D", async ({ page }) => {
-  for (const [stage] of LEGEND) {
+test("PAGE-12 o nome do estágio abre a página da tag de cada estágio, inclusive o D", async ({ page }) => {
+  for (const [stage, name] of LEGEND) {
     await page.goto(PAGES.start);
-    await page.locator(`main [data-stage="${stage}"]`).getByRole("link", { name: "Veja Todos" }).click();
+    await page.locator(`main [data-stage="${stage}"]`).getByRole("link", { name, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`/garden/docs/tags/stage${stage}/?$`));
     if (stage === "C") {
       // nenhum documento tem a tag stageC: a página é o 404 do Docusaurus

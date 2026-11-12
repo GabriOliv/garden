@@ -20,3 +20,53 @@
 		display: block;
 	}
 }
+/*
+ * Card inteiro clicável: o título é o link e o ::after estende o clique ao card.
+ * O fundo muda no hover e a seta anda; o foco do teclado contorna o card.
+ */
+.linkCard {
+	position: relative;
+	padding: var(--ds-space-4);
+	border-top: var(--ds-stroke-rule) solid var(--ds-rule);
+	transition: background-color 160ms ease-out;
+}
+
+.linkCard:hover {
+	background: var(--ds-panel);
+}
+
+.linkCard:has(a:focus-visible) {
+	box-shadow: var(--ds-focus-ring);
+}
+
+.linkCard h3 a,
+.linkCard h3 a:hover {
+	color: var(--ds-ink);
+	text-decoration: none;
+}
+
+.linkCard h3 a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.linkCard h3 a:focus-visible {
+	outline: none;
+}
+
+.linkCardFoot {
+	display: flex;
+	justify-content: flex-end;
+	color: var(--ds-signal);
+}
+
+.linkCard:hover :global(.link-arrow) {
+	transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.linkCard {
+		transition: none;
+	}
+}

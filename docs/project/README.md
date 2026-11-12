@@ -9,7 +9,7 @@ hide_table_of_contents: true
 ---
 
 import Link from '@docusaurus/Link';
-import {Grid, Stack} from '@gabrioliv/dossier';
+import {Grid, Icon, Stack} from '@gabrioliv/dossier';
 
 import StageLegend from '@site/src/components/StageLegend';
 
@@ -19,20 +19,20 @@ import styles from '@site/src/css/styles.module.css';
 
 <div className={styles.mobileOnly}>
 	<div className="img-center">
-		![Banner](/img/dossier/banner-harmonografo-dossier.svg)
+		![Banner](/img/dossier/banner-acervo-dossier.svg)
 	</div>
 </div>
 <div className={styles.desktopOnly}>
 	<div className="container">
 		<div className="row">
 			<div className="col col--4">
-				![Banner](/img/dossier/banner-automato-dossier.svg)
-			</div>
-			<div className="col col--4">
-				![Banner](/img/dossier/banner-harmonografo-dossier.svg)
+				![Banner](/img/dossier/banner-filotaxia-dossier.svg)
 			</div>
 			<div className="col col--4">
 				![Banner](/img/dossier/banner-grafo-dossier.svg)
+			</div>
+			<div className="col col--4">
+				![Banner](/img/dossier/banner-harmonografo-dossier.svg)
 			</div>
 		</div>
 	</div>
@@ -45,26 +45,27 @@ import styles from '@site/src/css/styles.module.css';
 Resumos de estudo usados para certificações.
 
 <Grid minColumnWidth={280} gap={6}>
-	<Stack gap={3} data-item="CTFL">
+	<Stack gap={3} data-item="CTFL" className={styles.linkCard}>
 
-		![image](./assets/banner/banner-flask-dossier.svg)
+    	![image](./assets/banner/banner-flask-dossier.svg)
 
-		<h3 className="ds-t-heading">CTFL - Certified Tester Foundation Level</h3>
+    	<h3 className="ds-t-heading"><Link to="/docs/istqb/ctfl">CTFL - Certified Tester Foundation Level</Link></h3>
 
-		<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
+    	<p className="ds-t-body">Primeira certificação da ISTQB para a carreira de Teste de Software.</p>
 
-		<Link className="ds-link" to="/docs/istqb/ctfl">Leia Mais</Link>
-	</Stack>
-	<Stack gap={3} data-item="CT-TAS">
+    	<span className={styles.linkCardFoot}><Icon name="arrow-right" size={24} className="link-arrow" /></span>
+    </Stack>
+    <Stack gap={3} data-item="CT-TAS" className={styles.linkCard}>
 
-		![image](./assets/banner/banner-flask-dossier.svg)
+    	![image](./assets/banner/banner-flask-dossier.svg)
 
-		<h3 className="ds-t-heading">CT-TAS - Test Automation Strategy</h3>
+    	<h3 className="ds-t-heading"><Link to="/docs/istqb/cttas">CT-TAS - Test Automation Strategy</Link></h3>
 
-		<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+    	<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
 
-		<Link className="ds-link" to="/docs/istqb/cttas">Leia Mais</Link>
-	</Stack>
+    	<span className={styles.linkCardFoot}><Icon name="arrow-right" size={24} className="link-arrow" /></span>
+    </Stack>
+
 </Grid>
 
 ---
@@ -74,16 +75,17 @@ Resumos de estudo usados para certificações.
 Documentações variadas sobre Teste de Software, QA e Computação em geral.
 
 <Grid columns={2} gap={6}>
-	<Stack gap={3} data-item="Notas">
+	<Stack gap={3} data-item="Notas" className={styles.linkCard}>
 
-		![image](./assets/banner/banner-flask-qa-dossier.svg)
+    	![image](./assets/banner/banner-flask-qa-dossier.svg)
 
-		<h3 className="ds-t-heading">Notas</h3>
+    	<h3 className="ds-t-heading"><Link to="/docs/notes">Notas</Link></h3>
 
-		<p className="ds-t-body">Notas sobre QA, Teste ou Computação em geral.</p>
+    	<p className="ds-t-body">Notas sobre QA, Teste ou Computação em geral.</p>
 
-		<Link className="ds-link" to="/docs/notes">Leia Mais</Link>
-	</Stack>
+    	<span className={styles.linkCardFoot}><Icon name="arrow-right" size={24} className="link-arrow" /></span>
+    </Stack>
+
 </Grid>
 
 ---
