@@ -1,7 +1,7 @@
 /**
  * Cópia de `@docusaurus/theme-classic/lib/theme/DocTagDocListPage` (3.9.2).
  * Muda só o `<Heading as="h1">`: numa tag de estágio, o StageIcon de 16 px,
- * decorativo, vem antes do nome do estágio.
+ * decorativo, vem antes do nome do estágio, e o desenho do estágio vem sob o título.
  */
 import type { ReactNode } from "react";
 import clsx from "clsx";
@@ -16,8 +16,9 @@ import Translate, { translate } from "@docusaurus/Translate";
 import SearchMetadata from "@theme/SearchMetadata";
 import Unlisted from "@theme/ContentVisibility/Unlisted";
 import Heading from "@theme/Heading";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import type { Props } from "@theme/DocTagDocListPage";
-import { StageIcon } from "@gabrioliv/dossier";
+import { StageIcon, type Stage } from "@gabrioliv/dossier";
 import { stageOfLabel } from "@site/src/lib/stages";
 
 type Tag = Props["tag"];
@@ -71,6 +72,22 @@ function TagTitle({ title, label }: { title: string; label: string }): ReactNode
   );
 }
 
+/** Desenho de cada estágio em `static/img/dossier/stages/`. */
+const STAGE_ART: Record<Stage, string> = {
+  A: "/img/dossier/stages/estagio-a-semente-dossier.svg",
+  B: "/img/dossier/stages/estagio-b-broto-dossier.svg",
+  C: "/img/dossier/stages/estagio-c-arvore-dossier.svg",
+  D: "/img/dossier/stages/estagio-d-fruto-dossier.svg",
+};
+
+/** O desenho do estágio da tag; nada para outra tag. */
+function StageArt({ label }: { label: string }): ReactNode {
+  const stage = stageOfLabel(label);
+  const src = useBaseUrl(stage ? STAGE_ART[stage] : "");
+  if (!stage) return null;
+  return <img src={src} alt="" style={{ display: "block", width: "100%", height: "auto" }} />;
+}
+
 function DocItem({ doc }: { doc: Tag["items"][number] }) {
   return (
     <article className="margin-vert--lg">
@@ -102,6 +119,7 @@ function DocTagDocListPageContent({ tag, title }: Props & { title: string }) {
               <Heading as="h1">
                 <TagTitle title={title} label={tag.label} />
               </Heading>
+              <StageArt label={tag.label} />
               {tag.description && <p>{tag.description}</p>}
               <Link href={tag.allTagsPath}>
                 <Translate
