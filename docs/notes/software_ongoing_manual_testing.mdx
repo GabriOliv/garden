@@ -20,6 +20,8 @@ tags:
 draft: false
 ---
 
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
 # {frontMatter.title}
 
 {frontMatter.description}<br />
@@ -183,18 +185,50 @@ A pergunta relevante nunca foi "podemos nos dar ao luxo de escrever testes unit�
 
 ## Referências
 
-- Artigos:
-  - NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 111-121.
-    - [https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)
-    - Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.
-  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.
-    - Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.
-- Livros:
-  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.
-    - Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.
-  - ADZIC, Gojko. _Specification by Example: How Successful Teams Deliver the Right Software_. Manning Publications, 2011.
-    - Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.
-  - MESZAROS, Gerard. _xUnit Test Patterns: Refactoring Test Code_. Addison-Wesley Professional, 2007.
-    - Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste.
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 111-121.
+
+[https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)
+
+Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.
+
+Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.
+
+Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+ADZIC, Gojko. _Specification by Example: How Successful Teams Deliver the Right Software_. Manning Publications, 2011.
+
+Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+MESZAROS, Gerard. _xUnit Test Patterns: Refactoring Test Code_. Addison-Wesley Professional, 2007.
+
+Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste.
+
+</Referencia>
+
+</Referencias>
 
 ---

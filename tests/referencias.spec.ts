@@ -141,3 +141,43 @@ test("REF-12 link com texto próprio fica como está", async ({ page }) => {
   await expect(link).toHaveText("Practical Test Pyramid");
   await expect(link).toHaveAttribute("href", "https://martinfowler.com/articles/practical-test-pyramid.html");
 });
+
+test("REF-02 rótulos da nota Peltzman: ARTIGO e CONTEXTO PSICOLÓGICO", async ({ page }) => {
+  await page.goto("docs/notes/peltzman_effect");
+  expect(await rows(page).locator(".ds-field-label").allInnerTexts()).toEqual(["ARTIGO", "CONTEXTO PSICOLÓGICO"]);
+});
+
+test("REF-03 READMEs do CTFL e do CT-TAS: rótulo REFERÊNCIA em toda linha, inclusive a frase final", async ({ page }) => {
+  for (const path of ["docs/istqb/ctfl", "docs/istqb/cttas"]) {
+    await page.goto(path);
+    const r = rows(page);
+    await expect(r).toHaveCount(4);
+    expect(await r.locator(".ds-field-label").allInnerTexts(), path).toEqual(Array(4).fill("REFERÊNCIA"));
+    await expect(r.nth(3).locator(".ds-field-value")).toHaveText(
+      "As demais bibliografias já estão referenciadas adequadamente nos Syllabus.",
+    );
+  }
+});
+
+for (const theme of ["paper", "void"] as Theme[]) {
+  test(`REF-07 subtemas do Hawthorne como comentário acima da citação, em ${theme}`, async ({ page }) => {
+    await openIn(page, "docs/notes/hawthorne_effect_on_documentation", theme);
+    const r = rows(page);
+    await expect(r).toHaveCount(2);
+    for (const [i, [tema, cite]] of [
+      ["Efeito Hawthorne:", "Gordon Diaper (1990)"],
+      ["Documentação e Qualidade de Software", "D. L. Parnas and P. C. Clements"],
+    ].entries()) {
+      const [first, second] = await r
+        .nth(i)
+        .locator(".ds-field-value p")
+        .evaluateAll((ps) =>
+          ps.slice(0, 2).map((p) => ({ text: p.textContent!.trim(), top: p.getBoundingClientRect().top, color: getComputedStyle(p).color })),
+        );
+      expect(first.text).toBe(tema);
+      expect(first.color).toBe(rgb(T[theme].inkMuted));
+      expect(second.text.startsWith(cite)).toBe(true);
+      expect(second.top).toBeGreaterThan(first.top);
+    }
+  });
+}

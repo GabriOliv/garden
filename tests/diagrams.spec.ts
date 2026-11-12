@@ -297,6 +297,8 @@ test("DIAG-02 todo preenchimento, traço e texto dos diagramas só com tokens ou
 });
 
 test("DIAG-03 nós e grupos sem classe com fundo paper ou panel e traço ink, em Paper e em Void", async ({ page }) => {
+  // 8 páginas em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
+  test.setTimeout(180_000);
   // Classes do "Mapa de cores dos diagramas": esses nós e grupos têm cor própria (DIAG-04).
   const CLASSED = ["ctal", "gra", "green", "invi", "invisible", "ora", "red", "yel", "error"];
   for (const theme of ["paper", "void"] as Theme[]) {
@@ -349,7 +351,7 @@ test("DIAG-06 zero color-contrast nos diagramas das páginas com diagrama, em Pa
   for (const theme of ["paper", "void"] as Theme[]) {
     for (const path of DIAGRAM_PAGES) {
       await openIn(page, path, theme);
-      await expect(page.locator(".docusaurus-mermaid-container svg").first()).toBeAttached();
+      await expect(page.locator(".docusaurus-mermaid-container svg").first()).toBeAttached({ timeout: 20_000 });
       const results = await new AxeBuilder({ page } as unknown as AxeOptions)
         .include(".docusaurus-mermaid-container")
         .withRules(["color-contrast"])
