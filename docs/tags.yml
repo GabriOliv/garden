@@ -3,21 +3,21 @@
 # ==============================================================================
 
 stageA:
-  label: "[🌱]"
+  label: "Estágio A · Semente"
   permalink: "/stageA"
-  description: "🌱 Artigos Iniciais"
+  description: "Artigos Iniciais"
 stageB:
-  label: "[🌿]"
+  label: "Estágio B · Broto"
   permalink: "/stageB"
-  description: "🌿 Artigos Melhorados"
+  description: "Artigos Melhorados"
 stageC:
-  label: "[🌲]"
+  label: "Estágio C · Árvore"
   permalink: "/stageC"
-  description: "🌲 Artigos Intermediários"
+  description: "Artigos Intermediários"
 stageD:
-  label: "[🍎]"
+  label: "Estágio D · Fruto"
   permalink: "/stageD"
-  description: "🍎 Artigos Completos"
+  description: "Artigos Completos"
 
 # ==============================================================================
 # Tipos de Conteúdo
