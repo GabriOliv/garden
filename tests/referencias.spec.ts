@@ -181,3 +181,25 @@ for (const theme of ["paper", "void"] as Theme[]) {
     }
   });
 }
+
+test("REF-10 os 10 documentos escrevem as referências com <Referencias>, sem lista Markdown sob o título", () => {
+  expect(Object.keys(BEFORE)).toHaveLength(10);
+  for (const file of Object.keys(BEFORE)) {
+    const now = section(file);
+    expect(now.trim().startsWith("<Referencias>"), file).toBe(true);
+    expect(now.trim().endsWith("</Referencias>"), file).toBe(true);
+    expect(/^\s*- /m.test(now), `${file} sem lista Markdown`).toBe(false);
+  }
+});
+
+test("REF-03 rascunhos com lista ABNT simples: toda referência com tipo Referência", () => {
+  for (const file of [
+    "docs/notes/metas_reducao_bugs_efeito_cobra.mdx",
+    "docs/notes/testes_flaky_efeito_nocebo.mdx",
+    "docs/notes/suite_testes_zeigarnik_cronico.mdx",
+  ]) {
+    const tipos = [...section(file).matchAll(/<Referencia tipo="([^"]*)"/g)].map((m) => m[1]);
+    expect(tipos.length, file).toBeGreaterThan(4);
+    expect(new Set(tipos), file).toEqual(new Set(["Referência"]));
+  }
+});
