@@ -8,8 +8,10 @@
   margin: 0 auto;
 }
 
+/* A altura cabe no que sobra da tela (24rem: navbar, título, subtítulo, link e espaços).
+   0.795 = 667/839, a proporção do viewBox do frasco. */
 .flask {
-  width: 500px;
+  width: clamp(200px, calc((100svh - 24rem) * 0.795), 500px);
   max-width: 100%;
   height: auto;
   pointer-events: none;

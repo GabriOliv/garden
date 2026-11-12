@@ -3,7 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import ThemedImage from '@theme/ThemedImage';
-import {Stack} from '@gabrioliv/dossier';
+import {Icon, Stack} from '@gabrioliv/dossier';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
@@ -27,8 +27,9 @@ function HomepageHeader() {
 					alt="Site Logo"
 					onDragStart={(e) => e.preventDefault()}
 				/>
-				<Link className="ds-link ds-t-heading" to="/docs/project">
+				<Link className="ds-t-label ds-btn ds-btn-solid" to="/docs/project">
 					Comece a Leitura
+					<Icon name="arrow-right" className="link-arrow" />
 				</Link>
 			</Stack>
 		</header>

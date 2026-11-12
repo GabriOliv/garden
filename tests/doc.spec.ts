@@ -207,7 +207,7 @@ test("DOC-16 links do texto do artigo sublinhados em signal, em Paper e em Void"
   }
 });
 
-test("DOC-17 a 1280 px, parágrafos e listas com no máximo 68ch e texto de 16 px", async ({ page }) => {
+test("DOC-17 a 1280 px, parágrafos e listas na largura da coluna, texto de 16 px e parágrafos justificados", async ({ page }) => {
   await page.setViewportSize({ width: WIDE, height: 900 });
   await page.goto(CTFL_01);
   const blocks = page.locator(".markdown > :is(p, ul, ol)");
@@ -215,18 +215,18 @@ test("DOC-17 a 1280 px, parágrafos e listas com no máximo 68ch e texto de 16 p
   expect(n).toBeGreaterThan(0);
   for (let i = 0; i < n; i++) {
     const m = await blocks.nth(i).evaluate((el) => {
-      // Um "0" com a fonte do bloco mede 1ch; o limite do bloco tem de ser 68 desses.
-      const probe = document.createElement("span");
-      probe.style.font = getComputedStyle(el).font;
-      probe.style.position = "absolute";
-      probe.textContent = "0".repeat(100);
-      el.appendChild(probe);
-      const ch = probe.getBoundingClientRect().width / 100;
-      probe.remove();
-      return { maxWidth: parseFloat(getComputedStyle(el).maxWidth), ch, size: getComputedStyle(el).fontSize };
+      const s = getComputedStyle(el);
+      return {
+        tag: el.tagName,
+        width: el.getBoundingClientRect().width,
+        column: el.parentElement!.clientWidth,
+        size: s.fontSize,
+        align: s.textAlign,
+      };
     });
     expect(m.size).toBe("16px");
-    expect(Math.abs(m.maxWidth - 68 * m.ch)).toBeLessThanOrEqual(1);
+    expect(Math.abs(m.width - m.column)).toBeLessThanOrEqual(1);
+    if (m.tag === "P") expect(m.align).toBe("justify");
   }
 });
 

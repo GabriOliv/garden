@@ -40,6 +40,55 @@
 	width: 100%;
 }
 
+/* Parágrafos dos artigos justificados. */
+html[data-theme] .markdown > p:not([class^="ds-"], [class*=" ds-"]) {
+	text-align: justify;
+}
+
+/* Parágrafos e listas na largura toda da coluna, sem a medida de 68ch do Dossier. */
+html[data-theme] .markdown > :is(p, ul, ol):not([class^="ds-"], [class*=" ds-"]) {
+	max-width: none;
+}
+
+/*
+ * Link com a aparência do Button do Dossier (`<Link className="ds-t-label ds-btn ds-btn-solid">`).
+ * As classes `.ds-btn` foram feitas para `<button>`: num `<a>` faltam o display,
+ * tirar o sublinhado e manter a cor no hover do Infima.
+ */
+a.ds-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--ds-space-2);
+	text-decoration: none;
+}
+a.ds-btn:hover {
+	text-decoration: none;
+}
+a.ds-btn.ds-btn-outline:hover {
+	color: var(--ds-btn-ink);
+}
+a.ds-btn.ds-btn-text:hover {
+	color: var(--ds-btn-accent);
+}
+a.ds-btn.ds-btn-solid:hover {
+	color: var(--ds-on-signal);
+}
+
+/* Seta de "vai para outra página": anda 4px no hover do link. */
+.link-arrow {
+	flex: none;
+	transition: transform 160ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+a:hover > .link-arrow {
+	transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.link-arrow {
+		transition: none;
+	}
+}
+
 [data-theme='light'] img[src$='#gh-dark-mode-only'],
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
