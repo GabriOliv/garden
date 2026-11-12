@@ -61,7 +61,7 @@ const groups = (page: Page) =>
   page.locator("main article").evaluateAll((els) =>
     els.map((el) => ({
       title: el.querySelector("h2")!.textContent!.replace(/​/g, "").trim(),
-      hrefs: [...el.querySelectorAll('a[rel="tag"]')].map((a) => a.getAttribute("href")),
+      hrefs: Array.from(el.querySelectorAll('a[rel="tag"]')).map((a) => a.getAttribute("href")),
     })),
   );
 

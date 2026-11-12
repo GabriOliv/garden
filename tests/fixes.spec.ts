@@ -122,8 +122,8 @@ test("FIX-01 .img-center com a largura do contêiner em docs/project", async ({ 
   expect(own).toBe(parent);
   // O navegador descarta `width: 100%,`: a regra publicada tem de trazer a largura.
   const declared = await page.evaluate(() =>
-    [...document.styleSheets]
-      .flatMap((sheet) => [...sheet.cssRules])
+    Array.from(document.styleSheets)
+      .flatMap((sheet) => Array.from(sheet.cssRules))
       .filter((r): r is CSSStyleRule => r instanceof CSSStyleRule && r.selectorText === ".img-center")
       .map((r) => r.style.width),
   );
