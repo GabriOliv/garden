@@ -50,7 +50,7 @@ test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ pa
   for (const [title, art, phrase] of blocks) {
     const block = main
       .locator("section > div > div", {
-        has: page.getByRole("heading", { level: 3, name: title, exact: true }),
+        has: page.getByRole("heading", { level: 2, name: title, exact: true }),
       })
       .first();
     await expect(block.getByText(phrase)).toBeVisible();

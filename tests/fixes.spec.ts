@@ -1,4 +1,15 @@
+import { readFileSync } from "node:fs";
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+
+type AxeOptions = ConstructorParameters<typeof AxeBuilder>[0];
+
+/** Toda página do `sitemap.xml` do build de teste, relativa ao `baseURL`. */
+const sitemapPaths = () =>
+  [...readFileSync("build-test/sitemap.xml", "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+    (m) => new URL(m[1]).pathname.replace(/^\/garden\/?/, ""),
+  );
+
 
 /** Nível, `id` e texto de cada título do artigo, sem o link de âncora. */
 const headings = (page: Page) =>
@@ -44,4 +55,21 @@ test("FIX-04 título e âncora mantidos nos títulos que mudaram de nível", asy
   expect(await headings(page)).toEqual(CTFL_01);
   await page.goto("docs/istqb/cttas");
   expect(await headings(page)).toEqual(CTTAS_README);
+});
+
+test("FIX-03 zero heading-order do axe em toda página do sitemap", async ({ page }) => {
+  test.setTimeout(240_000);
+  const paths = sitemapPaths();
+  expect(paths.length).toBeGreaterThan(50);
+  const found: string[] = [];
+  for (const path of paths) {
+    await page.goto(path);
+    const { violations } = await new AxeBuilder({ page } as unknown as AxeOptions)
+      .withRules(["heading-order"])
+      .analyze();
+    for (const v of violations) {
+      for (const n of v.nodes) found.push(`${path}: ${n.target.join(" ")}`);
+    }
+  }
+  expect(found).toEqual([]);
 });

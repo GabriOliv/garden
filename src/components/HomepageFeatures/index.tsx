@@ -32,7 +32,7 @@ function Feature({title, image, description}: FeatureItem) {
   return (
     <Stack align="center" gap={3} className={styles.feature}>
       <img className={styles.featureSvg} src={src} alt="" />
-      <h3 className="ds-t-heading">{title}</h3>
+      <h2 className="ds-t-heading">{title}</h2>
       <p className="ds-t-body">{description}</p>
     </Stack>
   );
