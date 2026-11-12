@@ -5,7 +5,6 @@ description: Página Inicial
 custom_edit_url: null
 tags: [stageB, projeto, garden, readme]
 draft: false
-hide_title: true
 hide_table_of_contents: true
 ---
 

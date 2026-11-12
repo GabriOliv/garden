@@ -88,3 +88,19 @@ test("DOC-18 título longo quebra dentro da faixa, sem rolagem horizontal em 390
   expect(m.inside).toBe(true);
   expect(m.scroll).toBeLessThanOrEqual(0);
 });
+
+test("DOC-04 sem rótulo quando o título é igual a ele, com um único h1 na faixa", async ({
+  page,
+}) => {
+  // Título sintético "Notas" = rótulo da navbar: sem kicker.
+  await page.goto("docs/notes");
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("header.ds-header .ds-header-band h1")).toHaveText("Notas");
+  await expect(page.locator(".ds-header-kicker")).toHaveCount(0);
+
+  // Título sintético "Comece a Leitura" difere de "Sobre": com kicker.
+  await page.goto("docs/project");
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("header.ds-header .ds-header-band h1")).toHaveText("Comece a Leitura");
+  await expect(page.locator(".ds-header-kicker")).toHaveText("Sobre");
+});
