@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
-import { PAGES } from "./support/site";
+import { PAGES, TOKENS, openIn, rgb, type Theme } from "./support/site";
 
 /** Os estágios com página de tag (nenhuma nota usa `stageC`), com os textos da spec. */
 const STAGES = [
@@ -82,5 +82,102 @@ test("TAGS-08 nenhum chip de estágio nos grupos de letra", async ({ page }) => 
     expect(g.title).toMatch(/^\p{L}$/u);
     expect(g.hrefs.filter((h) => /\/docs\/tags\/stage[A-D]$/.test(h!))).toEqual([]);
     expect(g.hrefs.length).toBeGreaterThan(0);
+  }
+});
+
+/** Os chips de cada tema (`index` e notas), com os tokens de texto e de sinal do tema. */
+const THEMES: Theme[] = ["paper", "void"];
+
+test("TAGS-03 ícones A, B e C em ink e o fruto D em signal, nos dois temas", async ({ page }) => {
+  for (const theme of THEMES) {
+    for (const { tag, note } of STAGES) {
+      await openIn(page, note, theme);
+      const link = chip(footer(page), tag);
+      if (tag === "stageD") {
+        const fruit = link.locator("svg circle");
+        await expect(fruit).toHaveCount(1);
+        await expect(fruit).toHaveCSS("fill", rgb(TOKENS[theme].signal));
+      } else {
+        const paints = await link.evaluate((a) =>
+          Array.from(a.querySelectorAll("svg *:not(title)")).map((el) => {
+            const s = getComputedStyle(el);
+            return s.stroke !== "none" ? s.stroke : s.fill;
+          }),
+        );
+        expect(paints.length).toBeGreaterThan(0);
+        for (const paint of paints) expect(paint).toBe(rgb(TOKENS[theme].text));
+      }
+    }
+  }
+});
+
+test("TAGS-04 texto e borda de 1 px de todo chip em ink, com fundo transparente, nos dois temas", async ({ page }) => {
+  for (const theme of THEMES) {
+    await openIn(page, "docs/tags", theme);
+    const chips = page.locator('a[rel="tag"]');
+    const n = await chips.count();
+    expect(n).toBeGreaterThan(0);
+    for (let i = 0; i < n; i++) {
+      const c = chips.nth(i);
+      await expect(c).toHaveCSS("color", rgb(TOKENS[theme].text));
+      await expect(c).toHaveCSS("background-color", /^rgba\(\d+, \d+, \d+, 0\)$/);
+      for (const edge of ["top", "right", "bottom", "left"]) {
+        await expect(c).toHaveCSS(`border-${edge}-width`, "1px");
+        await expect(c).toHaveCSS(`border-${edge}-color`, rgb(TOKENS[theme].text));
+      }
+    }
+  }
+});
+
+test("TAGS-05 chip é retângulo, sem ponta nem furo dos pseudo-elementos do Infima", async ({ page }) => {
+  await openIn(page, "docs/tags", "paper");
+  const chips = page.locator('a[rel="tag"]');
+  const n = await chips.count();
+  expect(n).toBeGreaterThan(0);
+  for (let i = 0; i < n; i++) {
+    const c = chips.nth(i);
+    await expect(c).toHaveCSS("border-radius", "0px");
+    for (const pseudo of ["::before", "::after"] as const) {
+      const content = await c.evaluate((el, ps) => getComputedStyle(el, ps).content, pseudo);
+      expect(["none", "normal"], `${pseudo} do chip ${i}`).toContain(content);
+    }
+  }
+});
+
+test("TAGS-06 contagem de documentos dentro do chip, depois do nome, no índice de tags", async ({ page }) => {
+  await openIn(page, "docs/tags", "paper");
+  const chips = page.locator('a[rel="tag"]');
+  const n = await chips.count();
+  expect(n).toBeGreaterThan(0);
+  for (let i = 0; i < n; i++) {
+    // Último texto do chip é a contagem; o texto anterior com letras é o nome.
+    const m = await chips.nth(i).evaluate((el) => {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const texts: Text[] = [];
+      for (let t = walker.nextNode(); t; t = walker.nextNode()) {
+        if (t.textContent!.trim()) texts.push(t as Text);
+      }
+      const last = texts[texts.length - 1];
+      const name = texts.slice(0, -1).reverse().find((t) => /\p{L}/u.test(t.textContent!));
+      const rect = (t: Text) => {
+        const r = document.createRange();
+        r.selectNodeContents(t);
+        const b = r.getBoundingClientRect();
+        return { left: b.left, right: b.right };
+      };
+      const c = el.getBoundingClientRect();
+      return {
+        lastText: last?.textContent?.trim() ?? "",
+        hasName: Boolean(name),
+        name: name ? rect(name) : null,
+        count: rect(last),
+        chip: { left: c.left, right: c.right },
+      };
+    });
+    expect(m.lastText, `chip ${i} termina em número`).toMatch(/^\d+$/);
+    expect(m.hasName, `chip ${i} tem nome antes da contagem`).toBe(true);
+    expect(m.count.left, `chip ${i} contagem depois do nome`).toBeGreaterThanOrEqual(m.name!.right - 1);
+    expect(m.count.left, `chip ${i} contagem dentro do chip`).toBeGreaterThanOrEqual(m.chip.left);
+    expect(m.count.right, `chip ${i} contagem dentro do chip`).toBeLessThanOrEqual(m.chip.right + 1);
   }
 });
