@@ -57,6 +57,27 @@ test("FIX-04 título e âncora mantidos nos títulos que mudaram de nível", asy
   expect(await headings(page)).toEqual(CTTAS_README);
 });
 
+test("FIX-04 nos 14 arquivos do ISTQB, o texto de cada título é o de antes e o nível segue a regra", () => {
+  // Textos de antes de T1 (81cee50^). A âncora vem do texto, então texto igual = âncora igual.
+  const before = JSON.parse(readFileSync("tests/support/istqb-headings.json", "utf8")) as Record<string, string[]>;
+  expect(Object.keys(before)).toHaveLength(14);
+  for (const [file, texts] of Object.entries(before)) {
+    const now: { level: number; text: string }[] = [];
+    let fence = false;
+    for (const line of readFileSync(file, "utf8").split("\n")) {
+      if (line.trim().startsWith("```")) fence = !fence;
+      const m = !fence && line.match(/^(#{2,6})\s+(.*\S)\s*$/);
+      if (m) now.push({ level: m[1].length, text: m[2] });
+    }
+    expect(now.map((h) => h.text), file).toEqual(texts);
+    for (const h of now) {
+      // Três partes (1.2.3) ficam h3; duas partes (1.2) e sem número sobem para h2.
+      const want = /^\d+\.\d+\.\d+/.test(h.text) ? 3 : 2;
+      expect(h.level, `${file}: ${h.text}`).toBe(want);
+    }
+  }
+});
+
 test("FIX-03 zero heading-order do axe em toda página do sitemap", async ({ page }) => {
   test.setTimeout(240_000);
   const paths = sitemapPaths();

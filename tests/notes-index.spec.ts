@@ -64,13 +64,13 @@ test("IDX-04 linhas separadas por fio de 1 px em rule-soft, sem caixa nem sombra
       const cs = getComputedStyle(el);
       return {
         bottom: `${cs.borderBottomWidth} ${cs.borderBottomStyle} ${cs.borderBottomColor}`,
-        sides: [cs.borderLeftStyle, cs.borderRightStyle],
+        sides: [cs.borderTopStyle, cs.borderLeftStyle, cs.borderRightStyle],
         shadow: cs.boxShadow,
         bg: cs.backgroundColor,
       };
     });
     expect(s.bottom).toBe(`1px solid ${rgb("#c6c7c1")}`);
-    expect(s.sides).toEqual(["none", "none"]);
+    expect(s.sides).toEqual(["none", "none", "none"]);
     expect(s.shadow).toBe("none");
     expect(s.bg).toBe("rgba(0, 0, 0, 0)");
   }

@@ -352,7 +352,7 @@ const TOKEN_RGB: Record<Theme, Set<string>> = {
   ),
 };
 
-/** Cores de texto, fundo e borda de `root` e dos seus descendentes, sem SVG (o logo do Algolia). */
+/** Cores de texto, fundo e das quatro bordas de `root` e dos seus descendentes, sem SVG (o logo do Algolia). */
 const paints = (page: Page, root: string) =>
   page.evaluate((r) => {
     const top = document.querySelector(r);
@@ -361,7 +361,7 @@ const paints = (page: Page, root: string) =>
       .filter((el) => !(el instanceof SVGElement))
       .flatMap((el) => {
         const s = getComputedStyle(el);
-        return [s.color, s.backgroundColor, s.borderTopColor];
+        return [s.color, s.backgroundColor, s.borderTopColor, s.borderRightColor, s.borderBottomColor, s.borderLeftColor];
       });
   }, root);
 

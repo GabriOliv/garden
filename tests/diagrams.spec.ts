@@ -183,7 +183,9 @@ const foreignPaints = (page: Page, scope: string, tokens: string[], skipSvg: boo
           } else {
             if (ownText) paints.push(st.color);
             if (st.backgroundColor !== "transparent") paints.push(st.backgroundColor);
-            if (parseFloat(st.borderTopWidth) > 0) paints.push(st.borderTopColor);
+            for (const side of ["Top", "Right", "Bottom", "Left"] as const) {
+              if (parseFloat(st[`border${side}Width`]) > 0) paints.push(st[`border${side}Color`]);
+            }
           }
           for (const c of paints) {
             if (c && !isToken(c)) bad.push(`${el.tagName} ${el.getAttribute("class") ?? ""}: ${c}`);
@@ -295,18 +297,37 @@ test("DIAG-02 todo preenchimento, traço e texto dos diagramas só com tokens ou
 });
 
 test("DIAG-03 nós e grupos sem classe com fundo paper ou panel e traço ink, em Paper e em Void", async ({ page }) => {
+  // Classes do "Mapa de cores dos diagramas": esses nós e grupos têm cor própria (DIAG-04).
+  const CLASSED = ["ctal", "gra", "green", "invi", "invisible", "ora", "red", "yel", "error"];
   for (const theme of ["paper", "void"] as Theme[]) {
+    let nodes = 0;
+    let clusters = 0;
     for (const path of DIAGRAM_PAGES) {
       await openIn(page, path, theme);
-      const shapes = page.locator(".docusaurus-mermaid-container svg g.node.default :is(rect, path, polygon, circle)");
-      const n = await shapes.count();
-      if (n === 0) continue;
-      for (let i = 0; i < n; i++) {
-        const s = await shapes.nth(i).evaluate((el) => getComputedStyle(el));
+      await expect(page.locator(".docusaurus-mermaid-container svg").first()).toBeAttached();
+      const shapes = await page.evaluate((classed) => {
+        const plain = (g: Element) => !classed.some((c) => g.classList.contains(c));
+        const read = (g: Element, sel: string) =>
+          Array.from(g.querySelectorAll(`:scope > ${sel}`)).map((el) => {
+            const cs = getComputedStyle(el);
+            return { fill: cs.fill, stroke: cs.stroke };
+          });
+        const svgs = Array.from(document.querySelectorAll(".docusaurus-mermaid-container svg"));
+        const all = (sel: string) => svgs.flatMap((svg) => Array.from(svg.querySelectorAll(sel)));
+        return {
+          nodes: all("g.node").filter(plain).flatMap((g) => read(g, ":is(rect, path, polygon, circle)")),
+          clusters: all("g.cluster").filter(plain).flatMap((g) => read(g, "rect")),
+        };
+      }, CLASSED);
+      nodes += shapes.nodes.length;
+      clusters += shapes.clusters.length;
+      for (const s of [...shapes.nodes, ...shapes.clusters]) {
         expect([rgb(T[theme].paper), rgb(T[theme].panel)], `${theme} ${path} fundo`).toContain(s.fill);
         expect(s.stroke, `${theme} ${path} traço`).toBe(rgb(T[theme].ink));
       }
     }
+    expect(nodes, `${theme} nós sem classe`).toBeGreaterThan(0);
+    expect(clusters, `${theme} grupos sem classe`).toBeGreaterThan(0);
   }
 });
 
