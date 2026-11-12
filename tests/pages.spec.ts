@@ -90,7 +90,8 @@ test("PAGE-04 home e Comece a Leitura sem card, button, shadow nem cor em style"
 
 test("PAGE-06 seções Certificações, Documentações e Organização por Evolução em ordem", async ({ page }) => {
   await page.goto(PAGES.start);
-  const titles = await page.locator("main h2").allInnerTexts();
+  // textContent: o texto do DOM como escrito (DOC-06); innerText segue o text-transform: uppercase.
+  const titles = await page.locator("main h2").allTextContents();
   expect(titles.map((t) => t.replace(/[\s​]+$/, ""))).toEqual([
     "Certificações",
     "Documentações",
