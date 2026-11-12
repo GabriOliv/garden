@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
@@ -72,4 +72,38 @@ test("FIX-03 zero heading-order do axe em toda página do sitemap", async ({ pag
     }
   }
   expect(found).toEqual([]);
+});
+
+/** Arquivos `.md` e `.mdx` de `docs/`, em qualquer profundidade. */
+const docFiles = (dir = "docs"): string[] =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory()
+      ? docFiles(`${dir}/${e.name}`)
+      : /\.mdx?$/.test(e.name)
+        ? [`${dir}/${e.name}`]
+        : [],
+  );
+
+test("FIX-02 nenhum class= em tag JSX dos documentos", async ({ page }) => {
+  const found: string[] = [];
+  for (const file of docFiles()) {
+    let fenced = false;
+    readFileSync(file, "utf8")
+      .split("\n")
+      .forEach((line, i) => {
+        if (line.trimStart().startsWith("```")) fenced = !fenced;
+        if (!fenced && /<[A-Za-z][^>]*\sclass=/.test(line)) found.push(`${file}:${i + 1}`);
+      });
+  }
+  expect(found).toEqual([]);
+
+  const warnings: string[] = [];
+  page.on("console", (m) => {
+    if (m.text().includes("Invalid DOM property `class`")) warnings.push(m.text());
+  });
+  for (const path of ["docs/notes", "docs/notes/test_coverage_sdlc"]) {
+    await page.goto(path);
+    await page.waitForLoadState("networkidle");
+  }
+  expect(warnings).toEqual([]);
 });
