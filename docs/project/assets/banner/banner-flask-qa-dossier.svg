@@ -1,194 +1,273 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 416.4" width="2048" height="1066" role="img" aria-labelledby="t" style="fill:rgb(0, 0, 0);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;font-family:&#34;Times New Roman&#34;;font-size:16px;font-weight:400;font-style:normal;letter-spacing:normal;text-anchor:start;dominant-baseline:auto;paint-order:normal;visibility:visible;clip-rule:nonzero;color:rgb(0, 0, 0);display:block">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 416.4" width="2048" height="1066" role="img" aria-labelledby="t">
   <title id="t">Banner frascos de QA — estilo Dossier</title>
-  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 5; }
+    .ticks line { stroke: var(--ink); stroke-width: 1; }
+    .glass { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .cork { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .shine { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .liquid { fill: url(#hatch); }
+    .liquid-dots { fill: url(#dots); }
+    .surface { stroke: var(--signal); stroke-width: 2; }
+    .grad line, line.grad { stroke: var(--ink); stroke-width: 1; }
+    .bubble { fill: var(--paper); stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; fill: var(--ink); }
+    .tiny { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 7px; font-weight: 500; letter-spacing: 0.06em; fill: var(--ink); text-anchor: middle; }
+    .muted { fill: var(--ink-muted); }
+    .draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.2s cubic-bezier(.6,0,.2,1) .3s forwards; }
+    .ro { opacity: 0; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes ring2 { 0% { transform: rotate(0deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 3.5% { transform: rotate(36deg) } 10% { transform: rotate(36deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 13.5% { transform: rotate(72deg) } 20% { transform: rotate(72deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 23.5% { transform: rotate(108deg) } 30% { transform: rotate(108deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 33.5% { transform: rotate(144deg) } 40% { transform: rotate(144deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 43.5% { transform: rotate(180deg) } 50% { transform: rotate(180deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 53.5% { transform: rotate(216deg) } 60% { transform: rotate(216deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 63.5% { transform: rotate(252deg) } 70% { transform: rotate(252deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 73.5% { transform: rotate(288deg) } 80% { transform: rotate(288deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 83.5% { transform: rotate(324deg) } 90% { transform: rotate(324deg); animation-timing-function: cubic-bezier(.5,0,.15,1) } 93.5% { transform: rotate(360deg) } 100% { transform: rotate(360deg) } }
+    .ring { transform-origin: 400px 208px; animation: ring2 10s linear infinite; }
+    @keyframes ro2 { 0% { opacity: 1 } 10% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes scan { 0% { transform: translateY(8px); opacity: 0 } 2% { opacity: 1 } 59% { opacity: 1 } 60% { transform: translateY(408px); opacity: 0 } 100% { transform: translateY(408px); opacity: 0 } }
+    .scan { animation: scan 10s linear infinite; }
+    .scan-band { fill: var(--signal-tint); opacity: .7; }
+    .scan-line { stroke: var(--signal); stroke-width: 1.5; }
+    @keyframes slosh2 { 0% { transform: rotate(-5deg) } 100% { transform: rotate(5deg) } }
+    @keyframes wave-f { 0% { transform: translateX(0) } 100% { transform: translateX(-40px) } }
+    @keyframes wave-b { 0% { transform: translateX(-40px) } 100% { transform: translateX(0) } }
+    .slosh2 { transform-origin: 345px 253px; animation: slosh2 2.8s ease-in-out infinite alternate; }
+    .wave-f { animation: wave-f 2.2s linear infinite; }
+    .wave-b { animation: wave-b 3.3s linear infinite; }
+    .backwave { fill: none; stroke: var(--signal); stroke-width: 1; opacity: .45; }
+    @keyframes b2_0 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(4.22px,-12.8px) scale(1.02); opacity: 1 } 22.4% { transform: translate(4.52px,-25.6px) scale(1.05); opacity: 1 } 30.6% { transform: translate(0.63px,-38.4px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-3.85px,-51.2px) scale(1.1); opacity: 1 } 47% { transform: translate(-4.76px,-64px) scale(1.12); opacity: 1 } 55.2% { transform: translate(-1.24px,-76.8px) scale(1.15); opacity: 1 } 63.4% { transform: translate(3.42px,-89.6px) scale(1.18); opacity: 1 } 71.6% { transform: translate(4.91px,-102.4px) scale(1.2); opacity: 1 } 79.8% { transform: translate(1.84px,-115.2px) scale(1.23); opacity: 1 } 88% { transform: translate(-2.94px,-128px) scale(1.25); opacity: 1 } 100% { transform: translate(-2.94px,-128px) scale(2.4); opacity: 0 } }
+    @keyframes b2_1 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(3.44px,-13.6px) scale(1.02); opacity: 1 } 22.4% { transform: translate(0.12px,-27.2px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-3.31px,-40.8px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-3.67px,-54.4px) scale(1.1); opacity: 1 } 47% { transform: translate(-0.62px,-68px) scale(1.12); opacity: 1 } 55.2% { transform: translate(3px,-81.6px) scale(1.15); opacity: 1 } 63.4% { transform: translate(3.84px,-95.2px) scale(1.18); opacity: 1 } 71.6% { transform: translate(1.11px,-108.8px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-2.65px,-122.4px) scale(1.23); opacity: 1 } 88% { transform: translate(-3.95px,-136px) scale(1.25); opacity: 1 } 100% { transform: translate(-3.95px,-136px) scale(2.4); opacity: 0 } }
+    @keyframes b2_2 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(0.82px,-12.6px) scale(1.02); opacity: 1 } 22.4% { transform: translate(-4.58px,-25.2px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-5.73px,-37.8px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-1.55px,-50.4px) scale(1.1); opacity: 1 } 47% { transform: translate(4.06px,-63px) scale(1.12); opacity: 1 } 55.2% { transform: translate(5.91px,-75.6px) scale(1.15); opacity: 1 } 63.4% { transform: translate(2.27px,-88.2px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-3.47px,-100.8px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-5.99px,-113.4px) scale(1.23); opacity: 1 } 88% { transform: translate(-2.95px,-126px) scale(1.25); opacity: 1 } 100% { transform: translate(-2.95px,-126px) scale(2.4); opacity: 0 } }
+    @keyframes b2_3 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-3.67px,-12px) scale(1.02); opacity: 1 } 22.4% { transform: translate(-3.31px,-24px) scale(1.05); opacity: 1 } 30.6% { transform: translate(0.13px,-36px) scale(1.07); opacity: 1 } 38.8% { transform: translate(3.45px,-48px) scale(1.1); opacity: 1 } 47% { transform: translate(3.56px,-60px) scale(1.12); opacity: 1 } 55.2% { transform: translate(0.37px,-72px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-3.16px,-84px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-3.76px,-96px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-0.87px,-108px) scale(1.23); opacity: 1 } 88% { transform: translate(2.83px,-120px) scale(1.25); opacity: 1 } 100% { transform: translate(2.83px,-120px) scale(2.4); opacity: 0 } }
+    @keyframes b2_4 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-2.31px,-11.6px) scale(1.02); opacity: 1 } 22.4% { transform: translate(0.38px,-23.2px) scale(1.05); opacity: 1 } 30.6% { transform: translate(2.72px,-34.8px) scale(1.07); opacity: 1 } 38.8% { transform: translate(2.53px,-46.4px) scale(1.1); opacity: 1 } 47% { transform: translate(-0.01px,-58px) scale(1.12); opacity: 1 } 55.2% { transform: translate(-2.54px,-69.6px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-2.71px,-81.2px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-0.37px,-92.8px) scale(1.2); opacity: 1 } 79.8% { transform: translate(2.31px,-104.4px) scale(1.23); opacity: 1 } 88% { transform: translate(2.85px,-116px) scale(1.25); opacity: 1 } 100% { transform: translate(2.85px,-116px) scale(2.4); opacity: 0 } }
+    @keyframes b2_5 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-1.37px,-10.4px) scale(1.02); opacity: 1 } 22.4% { transform: translate(3.32px,-20.8px) scale(1.05); opacity: 1 } 30.6% { transform: translate(4.93px,-31.2px) scale(1.07); opacity: 1 } 38.8% { transform: translate(1.96px,-41.6px) scale(1.1); opacity: 1 } 47% { transform: translate(-2.83px,-52px) scale(1.12); opacity: 1 } 55.2% { transform: translate(-5px,-62.4px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-2.52px,-72.8px) scale(1.18); opacity: 1 } 71.6% { transform: translate(2.29px,-83.2px) scale(1.2); opacity: 1 } 79.8% { transform: translate(4.98px,-93.6px) scale(1.23); opacity: 1 } 88% { transform: translate(3.05px,-104px) scale(1.25); opacity: 1 } 100% { transform: translate(3.05px,-104px) scale(2.4); opacity: 0 } }
+    @keyframes b2_6 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(4px,-10.2px) scale(1.02); opacity: 1 } 22.4% { transform: translate(2.03px,-20.4px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-1.83px,-30.6px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-3.98px,-40.8px) scale(1.1); opacity: 1 } 47% { transform: translate(-2.44px,-51px) scale(1.12); opacity: 1 } 55.2% { transform: translate(1.37px,-61.2px) scale(1.15); opacity: 1 } 63.4% { transform: translate(3.91px,-71.4px) scale(1.18); opacity: 1 } 71.6% { transform: translate(2.82px,-81.6px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-0.88px,-91.8px) scale(1.23); opacity: 1 } 88% { transform: translate(-3.77px,-102px) scale(1.25); opacity: 1 } 100% { transform: translate(-3.77px,-102px) scale(2.4); opacity: 0 } }
+    @keyframes b2_7 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-3.21px,-14px) scale(1.02); opacity: 1 } 22.4% { transform: translate(-6px,-28px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-3.22px,-42px) scale(1.07); opacity: 1 } 38.8% { transform: translate(2.55px,-56px) scale(1.1); opacity: 1 } 47% { transform: translate(5.95px,-70px) scale(1.12); opacity: 1 } 55.2% { transform: translate(3.83px,-84px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-1.84px,-98px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-5.81px,-112px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-4.38px,-126px) scale(1.23); opacity: 1 } 88% { transform: translate(1.11px,-140px) scale(1.25); opacity: 1 } 100% { transform: translate(1.11px,-140px) scale(2.4); opacity: 0 } }
+    @keyframes rock { 0% { transform: rotate(-11deg) } 100% { transform: rotate(-5deg) } }
+    @keyframes level { 0% { transform: rotate(13deg) } 100% { transform: rotate(3deg) } }
+    .rock { transform-origin: 500px 280px; animation: rock 2.6s ease-in-out infinite alternate; }
+    .level { transform-origin: 500px 182px; animation: level 2.6s ease-in-out .35s infinite alternate; }
+    @keyframes b3_0 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(2.53px,-8.2px) scale(1.02); opacity: 1 } 22.4% { transform: translate(2.71px,-16.4px) scale(1.05); opacity: 1 } 30.6% { transform: translate(0.38px,-24.6px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-2.31px,-32.8px) scale(1.1); opacity: 1 } 47% { transform: translate(-2.85px,-41px) scale(1.12); opacity: 1 } 55.2% { transform: translate(-0.75px,-49.2px) scale(1.15); opacity: 1 } 63.4% { transform: translate(2.05px,-57.4px) scale(1.18); opacity: 1 } 71.6% { transform: translate(2.95px,-65.6px) scale(1.2); opacity: 1 } 79.8% { transform: translate(1.1px,-73.8px) scale(1.23); opacity: 1 } 88% { transform: translate(-1.76px,-82px) scale(1.25); opacity: 1 } 100% { transform: translate(-1.76px,-82px) scale(2.4); opacity: 0 } }
+    @keyframes b3_1 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(1.27px,-7.8px) scale(1.02); opacity: 1 } 22.4% { transform: translate(-1.62px,-15.6px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-3px,-23.4px) scale(1.07); opacity: 1 } 38.8% { transform: translate(-1.6px,-31.2px) scale(1.1); opacity: 1 } 47% { transform: translate(1.29px,-39px) scale(1.12); opacity: 1 } 55.2% { transform: translate(2.98px,-46.8px) scale(1.15); opacity: 1 } 63.4% { transform: translate(1.9px,-54.6px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-0.94px,-62.4px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-2.91px,-70.2px) scale(1.23); opacity: 1 } 88% { transform: translate(-2.18px,-78px) scale(1.25); opacity: 1 } 100% { transform: translate(-2.18px,-78px) scale(2.4); opacity: 0 } }
+    @keyframes b3_2 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-3.29px,-8.6px) scale(1.02); opacity: 1 } 22.4% { transform: translate(-3.69px,-17.2px) scale(1.05); opacity: 1 } 30.6% { transform: translate(-0.67px,-25.8px) scale(1.07); opacity: 1 } 38.8% { transform: translate(2.97px,-34.4px) scale(1.1); opacity: 1 } 47% { transform: translate(3.85px,-43px) scale(1.12); opacity: 1 } 55.2% { transform: translate(1.15px,-51.6px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-2.61px,-60.2px) scale(1.18); opacity: 1 } 71.6% { transform: translate(-3.96px,-68.8px) scale(1.2); opacity: 1 } 79.8% { transform: translate(-1.63px,-77.4px) scale(1.23); opacity: 1 } 88% { transform: translate(2.21px,-86px) scale(1.25); opacity: 1 } 100% { transform: translate(2.21px,-86px) scale(2.4); opacity: 0 } }
+    @keyframes b3_3 { 0% { transform: translate(0px,0px) scale(.3); opacity: 0 } 14.2% { transform: translate(-1.88px,-8px) scale(1.02); opacity: 1 } 22.4% { transform: translate(0.96px,-16px) scale(1.05); opacity: 1 } 30.6% { transform: translate(2.92px,-24px) scale(1.07); opacity: 1 } 38.8% { transform: translate(2.16px,-32px) scale(1.1); opacity: 1 } 47% { transform: translate(-0.6px,-40px) scale(1.12); opacity: 1 } 55.2% { transform: translate(-2.8px,-48px) scale(1.15); opacity: 1 } 63.4% { transform: translate(-2.4px,-56px) scale(1.18); opacity: 1 } 71.6% { transform: translate(0.23px,-64px) scale(1.2); opacity: 1 } 79.8% { transform: translate(2.65px,-72px) scale(1.23); opacity: 1 } 88% { transform: translate(2.61px,-80px) scale(1.25); opacity: 1 } 100% { transform: translate(2.61px,-80px) scale(2.4); opacity: 0 } }
+    @keyframes pp-rot { 0% { transform: scale(1); opacity: 0 } 14.9% { transform: scale(1); opacity: 0 } 15% { transform: scale(1); opacity: .9 } 29% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes pp-ctl { 0% { transform: scale(1); opacity: 0 } 35.9% { transform: scale(1); opacity: 0 } 36% { transform: scale(1); opacity: .9 } 50% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes pp-amo { 0% { transform: scale(1); opacity: 0 } 43.7% { transform: scale(1); opacity: 0 } 43.8% { transform: scale(1); opacity: .9 } 57.8% { transform: scale(6); opacity: 0 } 100% { transform: scale(6); opacity: 0 } }
+    @keyframes ck-ctl { 0% { stroke-dashoffset: 14; opacity: 1 } 36% { stroke-dashoffset: 14; opacity: 1 } 39% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 1 } 99% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 14; opacity: 0 } }
+    @keyframes ck-amo { 0% { stroke-dashoffset: 14; opacity: 1 } 43.8% { stroke-dashoffset: 14; opacity: 1 } 46.8% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 1 } 99% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 14; opacity: 0 } }
+    .check { fill: none; stroke: var(--signal); stroke-width: 1.6; stroke-linecap: square; stroke-dasharray: 14; stroke-dashoffset: 14; }
+    @keyframes st-test { 0% { opacity: 1 } 60% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes st-pass { 0% { opacity: 0 } 60% { opacity: 1 } 100% { opacity: 1 } }
+    @keyframes sq { 0% { opacity: 1 } 4% { opacity: 0 } 6% { opacity: 1 } 10% { opacity: 0 } 12% { opacity: 1 } 16% { opacity: 0 } 18% { opacity: 1 } 22% { opacity: 0 } 24% { opacity: 1 } 28% { opacity: 0 } 30% { opacity: 1 } 34% { opacity: 0 } 36% { opacity: 1 } 40% { opacity: 0 } 42% { opacity: 1 } 46% { opacity: 0 } 48% { opacity: 1 } 52% { opacity: 0 } 54% { opacity: 1 } 58% { opacity: 0 } 60% { opacity: 1 } 60% { opacity: 1 } 100% { opacity: 1 } }
+    .st-test { animation: st-test 10s steps(1) infinite; }
+    .st-pass { opacity: 0; animation: st-pass 10s steps(1) infinite; }
+    .sq { animation: sq 10s steps(1) infinite; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: .8 } 40% { transform: scale(5); opacity: 0 } 100% { transform: scale(5); opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .draw { stroke-dashoffset: 0; }
+      .ro-rest, .st-pass { opacity: 1; }
+      .st-test, .scan { opacity: 0; }
+      .check { stroke-dashoffset: 0; }
+      .rock { transform: rotate(-8deg); } .level { transform: rotate(8deg); }
+    }
+  </style>
   <defs>
     <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <rect width="6" height="6" fill="var(--signal-tint)" style="fill:rgb(215, 223, 243)"></rect>
-      <line x1="0" y1="0" x2="0" y2="6" stroke="var(--signal)" stroke-width="1" style="stroke:rgb(0, 47, 167)"></line>
+      <rect width="6" height="6" fill="var(--signal-tint)"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="var(--signal)" stroke-width="1"/>
     </pattern>
     <pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse">
-      <rect width="5" height="5" fill="var(--signal-tint)" style="fill:rgb(215, 223, 243)"></rect>
-      <circle cx="2.5" cy="2.5" r="0.9" fill="var(--signal)" style="fill:rgb(0, 47, 167)"></circle>
+      <rect width="5" height="5" fill="var(--signal-tint)"/>
+      <circle cx="2.5" cy="2.5" r="0.9" fill="var(--signal)"/>
     </pattern>
-    <clipPath id="sphere-in"><circle cx="345" cy="253" r="117"></circle></clipPath>
-    <clipPath id="cone2"><path d="M490.5 116 L430.8 279.5 H569.2 L509.5 116 Z"></path></clipPath>
-    <clipPath id="instrument"><circle cx="400" cy="208" r="199"></circle></clipPath>
+    <clipPath id="sphere-in"><circle cx="345" cy="253" r="117"/></clipPath>
+    <clipPath id="cone2"><path d="M490.5 116 L430.8 279.5 H569.2 L509.5 116 Z"/></clipPath>
+    <clipPath id="instrument"><circle cx="400" cy="208" r="199"/></clipPath>
   </defs>
 
-  <rect class="bg" width="800" height="416.4" style="fill:rgb(244, 244, 241)"></rect>
+  <rect class="bg" width="800" height="416.4"/>
 
-  
-  <line class="soft" x1="190" y1="208" x2="610" y2="208" style="fill:none;stroke:rgb(198, 199, 193)"></line>
-  <line class="soft" x1="400" y1="0" x2="400" y2="416.4" style="fill:none;stroke:rgb(198, 199, 193)"></line>
-  <circle class="hair" cx="400" cy="208" r="200" style="fill:none;stroke:rgb(11, 12, 14)"></circle>
-  <circle class="dotted" cx="400" cy="208" r="170" style="fill:none;stroke:rgb(11, 12, 14);stroke-dasharray:1px, 5px"></circle>
+  <!-- crosshair + anéis -->
+  <line class="soft" x1="190" y1="208" x2="610" y2="208"/>
+  <line class="soft" x1="400" y1="0" x2="400" y2="416.4"/>
+  <circle class="hair" cx="400" cy="208" r="200"/>
+  <circle class="dotted" cx="400" cy="208" r="170"/>
 
-  
+  <!-- régua de graus: avança em passos de 36° -->
   <g class="ring">
     <g class="ticks">
-      <line x1="400.0" y1="8.0" x2="400.0" y2="22.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="417.4" y1="8.8" x2="416.9" y2="14.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="434.7" y1="11.0" x2="433.7" y2="16.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="451.8" y1="14.8" x2="450.2" y2="20.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="468.4" y1="20.1" x2="466.4" y2="25.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="484.5" y1="26.7" x2="482.0" y2="32.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="500.0" y1="34.8" x2="493.0" y2="46.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="514.7" y1="44.2" x2="511.3" y2="49.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="528.6" y1="54.8" x2="524.7" y2="59.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="541.4" y1="66.6" x2="537.2" y2="70.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="553.2" y1="79.4" x2="548.6" y2="83.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="563.8" y1="93.3" x2="558.9" y2="96.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="573.2" y1="108.0" x2="561.1" y2="115.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="581.3" y1="123.5" x2="575.8" y2="126.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="587.9" y1="139.6" x2="582.3" y2="141.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="593.2" y1="156.2" x2="587.4" y2="157.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="597.0" y1="173.3" x2="591.1" y2="174.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="599.2" y1="190.6" x2="593.3" y2="191.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="600.0" y1="208.0" x2="586.0" y2="208.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="599.2" y1="225.4" x2="593.3" y2="224.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="597.0" y1="242.7" x2="591.1" y2="241.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="593.2" y1="259.8" x2="587.4" y2="258.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="587.9" y1="276.4" x2="582.3" y2="274.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="581.3" y1="292.5" x2="575.8" y2="290.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="573.2" y1="308.0" x2="561.1" y2="301.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="563.8" y1="322.7" x2="558.9" y2="319.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="553.2" y1="336.6" x2="548.6" y2="332.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="541.4" y1="349.4" x2="537.2" y2="345.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="528.6" y1="361.2" x2="524.7" y2="356.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="514.7" y1="371.8" x2="511.3" y2="366.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="500.0" y1="381.2" x2="493.0" y2="369.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="484.5" y1="389.3" x2="482.0" y2="383.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="468.4" y1="395.9" x2="466.4" y2="390.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="451.8" y1="401.2" x2="450.2" y2="395.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="434.7" y1="405.0" x2="433.7" y2="399.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="417.4" y1="407.2" x2="416.9" y2="401.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="400.0" y1="408.0" x2="400.0" y2="394.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="382.6" y1="407.2" x2="383.1" y2="401.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="365.3" y1="405.0" x2="366.3" y2="399.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="348.2" y1="401.2" x2="349.8" y2="395.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="331.6" y1="395.9" x2="333.6" y2="390.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="315.5" y1="389.3" x2="318.0" y2="383.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="300.0" y1="381.2" x2="307.0" y2="369.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="285.3" y1="371.8" x2="288.7" y2="366.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="271.4" y1="361.2" x2="275.3" y2="356.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="258.6" y1="349.4" x2="262.8" y2="345.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="246.8" y1="336.6" x2="251.4" y2="332.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="236.2" y1="322.7" x2="241.1" y2="319.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="226.8" y1="308.0" x2="238.9" y2="301.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="218.7" y1="292.5" x2="224.2" y2="290.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="212.1" y1="276.4" x2="217.7" y2="274.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="206.8" y1="259.8" x2="212.6" y2="258.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="203.0" y1="242.7" x2="208.9" y2="241.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="200.8" y1="225.4" x2="206.7" y2="224.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="200.0" y1="208.0" x2="214.0" y2="208.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="200.8" y1="190.6" x2="206.7" y2="191.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="203.0" y1="173.3" x2="208.9" y2="174.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="206.8" y1="156.2" x2="212.6" y2="157.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="212.1" y1="139.6" x2="217.7" y2="141.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="218.7" y1="123.5" x2="224.2" y2="126.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="226.8" y1="108.0" x2="238.9" y2="115.0" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="236.2" y1="93.3" x2="241.1" y2="96.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="246.8" y1="79.4" x2="251.4" y2="83.3" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="258.6" y1="66.6" x2="262.8" y2="70.8" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="271.4" y1="54.8" x2="275.3" y2="59.4" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="285.3" y1="44.2" x2="288.7" y2="49.1" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="300.0" y1="34.8" x2="307.0" y2="46.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="315.5" y1="26.7" x2="318.0" y2="32.2" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="331.6" y1="20.1" x2="333.6" y2="25.7" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="348.2" y1="14.8" x2="349.8" y2="20.6" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="365.3" y1="11.0" x2="366.3" y2="16.9" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="382.6" y1="8.8" x2="383.1" y2="14.7" style="stroke:rgb(11, 12, 14)"></line>
+      <line x1="400.0" y1="8.0" x2="400.0" y2="22.0"/>
+      <line x1="417.4" y1="8.8" x2="416.9" y2="14.7"/>
+      <line x1="434.7" y1="11.0" x2="433.7" y2="16.9"/>
+      <line x1="451.8" y1="14.8" x2="450.2" y2="20.6"/>
+      <line x1="468.4" y1="20.1" x2="466.4" y2="25.7"/>
+      <line x1="484.5" y1="26.7" x2="482.0" y2="32.2"/>
+      <line x1="500.0" y1="34.8" x2="493.0" y2="46.9"/>
+      <line x1="514.7" y1="44.2" x2="511.3" y2="49.1"/>
+      <line x1="528.6" y1="54.8" x2="524.7" y2="59.4"/>
+      <line x1="541.4" y1="66.6" x2="537.2" y2="70.8"/>
+      <line x1="553.2" y1="79.4" x2="548.6" y2="83.3"/>
+      <line x1="563.8" y1="93.3" x2="558.9" y2="96.7"/>
+      <line x1="573.2" y1="108.0" x2="561.1" y2="115.0"/>
+      <line x1="581.3" y1="123.5" x2="575.8" y2="126.0"/>
+      <line x1="587.9" y1="139.6" x2="582.3" y2="141.6"/>
+      <line x1="593.2" y1="156.2" x2="587.4" y2="157.8"/>
+      <line x1="597.0" y1="173.3" x2="591.1" y2="174.3"/>
+      <line x1="599.2" y1="190.6" x2="593.3" y2="191.1"/>
+      <line x1="600.0" y1="208.0" x2="586.0" y2="208.0"/>
+      <line x1="599.2" y1="225.4" x2="593.3" y2="224.9"/>
+      <line x1="597.0" y1="242.7" x2="591.1" y2="241.7"/>
+      <line x1="593.2" y1="259.8" x2="587.4" y2="258.2"/>
+      <line x1="587.9" y1="276.4" x2="582.3" y2="274.4"/>
+      <line x1="581.3" y1="292.5" x2="575.8" y2="290.0"/>
+      <line x1="573.2" y1="308.0" x2="561.1" y2="301.0"/>
+      <line x1="563.8" y1="322.7" x2="558.9" y2="319.3"/>
+      <line x1="553.2" y1="336.6" x2="548.6" y2="332.7"/>
+      <line x1="541.4" y1="349.4" x2="537.2" y2="345.2"/>
+      <line x1="528.6" y1="361.2" x2="524.7" y2="356.6"/>
+      <line x1="514.7" y1="371.8" x2="511.3" y2="366.9"/>
+      <line x1="500.0" y1="381.2" x2="493.0" y2="369.1"/>
+      <line x1="484.5" y1="389.3" x2="482.0" y2="383.8"/>
+      <line x1="468.4" y1="395.9" x2="466.4" y2="390.3"/>
+      <line x1="451.8" y1="401.2" x2="450.2" y2="395.4"/>
+      <line x1="434.7" y1="405.0" x2="433.7" y2="399.1"/>
+      <line x1="417.4" y1="407.2" x2="416.9" y2="401.3"/>
+      <line x1="400.0" y1="408.0" x2="400.0" y2="394.0"/>
+      <line x1="382.6" y1="407.2" x2="383.1" y2="401.3"/>
+      <line x1="365.3" y1="405.0" x2="366.3" y2="399.1"/>
+      <line x1="348.2" y1="401.2" x2="349.8" y2="395.4"/>
+      <line x1="331.6" y1="395.9" x2="333.6" y2="390.3"/>
+      <line x1="315.5" y1="389.3" x2="318.0" y2="383.8"/>
+      <line x1="300.0" y1="381.2" x2="307.0" y2="369.1"/>
+      <line x1="285.3" y1="371.8" x2="288.7" y2="366.9"/>
+      <line x1="271.4" y1="361.2" x2="275.3" y2="356.6"/>
+      <line x1="258.6" y1="349.4" x2="262.8" y2="345.2"/>
+      <line x1="246.8" y1="336.6" x2="251.4" y2="332.7"/>
+      <line x1="236.2" y1="322.7" x2="241.1" y2="319.3"/>
+      <line x1="226.8" y1="308.0" x2="238.9" y2="301.0"/>
+      <line x1="218.7" y1="292.5" x2="224.2" y2="290.0"/>
+      <line x1="212.1" y1="276.4" x2="217.7" y2="274.4"/>
+      <line x1="206.8" y1="259.8" x2="212.6" y2="258.2"/>
+      <line x1="203.0" y1="242.7" x2="208.9" y2="241.7"/>
+      <line x1="200.8" y1="225.4" x2="206.7" y2="224.9"/>
+      <line x1="200.0" y1="208.0" x2="214.0" y2="208.0"/>
+      <line x1="200.8" y1="190.6" x2="206.7" y2="191.1"/>
+      <line x1="203.0" y1="173.3" x2="208.9" y2="174.3"/>
+      <line x1="206.8" y1="156.2" x2="212.6" y2="157.8"/>
+      <line x1="212.1" y1="139.6" x2="217.7" y2="141.6"/>
+      <line x1="218.7" y1="123.5" x2="224.2" y2="126.0"/>
+      <line x1="226.8" y1="108.0" x2="238.9" y2="115.0"/>
+      <line x1="236.2" y1="93.3" x2="241.1" y2="96.7"/>
+      <line x1="246.8" y1="79.4" x2="251.4" y2="83.3"/>
+      <line x1="258.6" y1="66.6" x2="262.8" y2="70.8"/>
+      <line x1="271.4" y1="54.8" x2="275.3" y2="59.4"/>
+      <line x1="285.3" y1="44.2" x2="288.7" y2="49.1"/>
+      <line x1="300.0" y1="34.8" x2="307.0" y2="46.9"/>
+      <line x1="315.5" y1="26.7" x2="318.0" y2="32.2"/>
+      <line x1="331.6" y1="20.1" x2="333.6" y2="25.7"/>
+      <line x1="348.2" y1="14.8" x2="349.8" y2="20.6"/>
+      <line x1="365.3" y1="11.0" x2="366.3" y2="16.9"/>
+      <line x1="382.6" y1="8.8" x2="383.1" y2="14.7"/>
     </g>
-    <rect class="dot" x="396" y="4" width="8" height="8" style="fill:rgb(11, 12, 14)"></rect>
+    <rect class="dot" x="396" y="4" width="8" height="8"/>
   </g>
 
-  
-  <g class="rock" transform="translate(500 280) matrix(0.99027 -0.13917 0.13917 0.99027 0 0) translate(-500 -280)">
-    <path class="glass" d="M490 55 V115 L430 280 H570 L510 115 V55 Z" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></path>
-    <path class="glass" d="M480 45 H520 L512 55 H488 Z" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></path>
-    <rect class="cork" x="486" y="36" width="28" height="9" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></rect>
-    <g clip-path="url(#cone2)" style="clip-path:url(#cone2)">
-      <g class="level" transform="translate(500 182) matrix(0.99027 0.13917 -0.13917 0.99027 0 0) translate(-500 -182)">
-        <rect class="liquid-dots" x="380" y="182" width="240" height="160" style="fill:url(#dots)"></rect>
-        <line class="surface" x1="380" y1="182" x2="620" y2="182" style="stroke:rgb(0, 47, 167);stroke-width:2px"></line>
+  <!-- frasco cônico ao fundo: balança, líquido se mantém nivelado com atraso -->
+  <g class="rock">
+    <path class="glass" d="M490 55 V115 L430 280 H570 L510 115 V55 Z"/>
+    <path class="glass" d="M480 45 H520 L512 55 H488 Z"/>
+    <rect class="cork" x="486" y="36" width="28" height="9"/>
+    <g clip-path="url(#cone2)">
+      <g class="level">
+        <rect class="liquid-dots" x="380" y="182" width="240" height="160"/>
+        <line class="surface" x1="380" y1="182" x2="620" y2="182"/>
       </g>
       
-<circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="498" cy="272" r="2.2"></circle>      <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="514" cy="268" r="1.8"></circle>      <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="488" cy="275" r="1.5"></circle>      <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="524" cy="270" r="1.5"></circle>
+<circle class="bubble" style="animation: b3_0 2.4s cubic-bezier(.45,.05,.55,.95) -0.4s infinite" cx="498" cy="272" r="2.2"/>      <circle class="bubble" style="animation: b3_1 2.0s cubic-bezier(.45,.05,.55,.95) -1.3s infinite" cx="514" cy="268" r="1.8"/>      <circle class="bubble" style="animation: b3_2 2.9s cubic-bezier(.45,.05,.55,.95) -2.0s infinite" cx="488" cy="275" r="1.5"/>      <circle class="bubble" style="animation: b3_3 2.2s cubic-bezier(.45,.05,.55,.95) -0.9s infinite" cx="524" cy="270" r="1.5"/>
     </g>
-    <path class="hair" d="M490 55 V115 L430 280 H570 L510 115 V55 Z" style="fill:none;stroke:rgb(11, 12, 14)"></path>
+    <path class="hair" d="M490 55 V115 L430 280 H570 L510 115 V55 Z"/>
     <g class="grad">
-      <line x1="462.1" y1="200" x2="472.1" y2="200" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="454.8" y1="220" x2="460.8" y2="220" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="447.5" y1="240" x2="457.5" y2="240" style="stroke:rgb(11, 12, 14)"></line>
-      <line x1="440.3" y1="260" x2="446.3" y2="260" style="stroke:rgb(11, 12, 14)"></line>
+      <line x1="462.1" y1="200" x2="472.1" y2="200"/>
+      <line x1="454.8" y1="220" x2="460.8" y2="220"/>
+      <line x1="447.5" y1="240" x2="457.5" y2="240"/>
+      <line x1="440.3" y1="260" x2="446.3" y2="260"/>
     </g>
   </g>
 
-  
-  <g transform="translate(0 0) matrix(0.78801 -0.61566 0.61566 0.78801 -82.6261 266.036) translate(0 0)">
-    <rect class="glass" x="333" y="60" width="24" height="80" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></rect>
-    <path class="glass" d="M323 48 H367 L357 60 H333 Z" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></path>
-    <rect class="cork" x="327" y="38" width="36" height="10" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></rect>
+  <!-- balão redondo -->
+  <g transform="rotate(-38 345 253)">
+    <rect class="glass" x="333" y="60" width="24" height="80"/>
+    <path class="glass" d="M323 48 H367 L357 60 H333 Z"/>
+    <rect class="cork" x="327" y="38" width="36" height="10"/>
   </g>
-  <circle class="glass" cx="345" cy="253" r="120" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14)"></circle>
-  <g clip-path="url(#sphere-in)" style="clip-path:url(#sphere-in)">
+  <circle class="glass" cx="345" cy="253" r="120"/>
+  <g clip-path="url(#sphere-in)">
     <g class="slosh2">
-      <g class="wave-b"><path class="backwave" d="M120 209 q10 3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" style="fill:none;stroke:rgb(0, 47, 167);opacity:0.45"></path></g>
-      <g class="wave-f"><path class="liquid surface" d="M160 213 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V400 H160 Z" style="fill:url(#hatch);stroke:rgb(0, 47, 167);stroke-width:2px"></path></g>
+      <g class="wave-b"><path class="backwave" d="M120 209 q10 3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/></g>
+      <g class="wave-f"><path class="liquid surface" d="M160 213 q10 -4 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V400 H160 Z"/></g>
     </g>
     
-<circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="330" cy="352" r="3.2"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="348" cy="360" r="2.4"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="362" cy="350" r="3.0"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="318" cy="344" r="2.0"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="376" cy="340" r="1.8"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="305" cy="330" r="1.6"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="388" cy="326" r="2.2"></circle>    <circle class="bubble" style="fill:rgb(244, 244, 241);stroke:rgb(11, 12, 14);opacity:0" cx="340" cy="368" r="1.6"></circle>
+<circle class="bubble" style="animation: b2_0 3.0s cubic-bezier(.45,.05,.55,.95) -0.3s infinite" cx="330" cy="352" r="3.2"/>    <circle class="bubble" style="animation: b2_1 2.4s cubic-bezier(.45,.05,.55,.95) -1.2s infinite" cx="348" cy="360" r="2.4"/>    <circle class="bubble" style="animation: b2_2 3.4s cubic-bezier(.45,.05,.55,.95) -2.2s infinite" cx="362" cy="350" r="3.0"/>    <circle class="bubble" style="animation: b2_3 2.6s cubic-bezier(.45,.05,.55,.95) -0.9s infinite" cx="318" cy="344" r="2.0"/>    <circle class="bubble" style="animation: b2_4 2.1s cubic-bezier(.45,.05,.55,.95) -1.7s infinite" cx="376" cy="340" r="1.8"/>    <circle class="bubble" style="animation: b2_5 3.1s cubic-bezier(.45,.05,.55,.95) -2.6s infinite" cx="305" cy="330" r="1.6"/>    <circle class="bubble" style="animation: b2_6 2.8s cubic-bezier(.45,.05,.55,.95) -0.5s infinite" cx="388" cy="326" r="2.2"/>    <circle class="bubble" style="animation: b2_7 3.6s cubic-bezier(.45,.05,.55,.95) -3.1s infinite" cx="340" cy="368" r="1.6"/>
   </g>
-  <circle class="hair" cx="345" cy="253" r="120" style="fill:none;stroke:rgb(11, 12, 14)"></circle>
-  <path class="shine" d="M380.6 155.3 A104 104 0 0 1 439.3 209.0" style="fill:none;stroke:rgb(80, 83, 90)"></path>
+  <circle class="hair" cx="345" cy="253" r="120"/>
+  <path class="shine" d="M380.6 155.3 A104 104 0 0 1 439.3 209.0"/>
   <g class="grad">
-    <line x1="232.7" y1="233" x2="244.7" y2="233" style="stroke:rgb(11, 12, 14)"></line>
-    <line x1="231.1" y1="258" x2="238.1" y2="258" style="stroke:rgb(11, 12, 14)"></line>
-    <line x1="234.9" y1="283" x2="246.9" y2="283" style="stroke:rgb(11, 12, 14)"></line>
-    <line x1="244.9" y1="308" x2="251.9" y2="308" style="stroke:rgb(11, 12, 14)"></line>
+    <line x1="232.7" y1="233" x2="244.7" y2="233"/>
+    <line x1="231.1" y1="258" x2="238.1" y2="258"/>
+    <line x1="234.9" y1="283" x2="246.9" y2="283"/>
+    <line x1="244.9" y1="308" x2="251.9" y2="308"/>
   </g>
 
-  
-  <g clip-path="url(#instrument)" style="clip-path:url(#instrument)">
-    <g class="scan" style="opacity:0">
-      <rect class="scan-band" x="190" y="-22" width="420" height="22" style="fill:rgb(215, 223, 243);opacity:0.7"></rect>
-      <line class="scan-line" x1="190" y1="0" x2="610" y2="0" style="stroke:rgb(0, 47, 167);stroke-width:1.5px"></line>
+  <!-- varredura de inspeção (dentro do instrumento) -->
+  <g clip-path="url(#instrument)">
+    <g class="scan">
+      <rect class="scan-band" x="190" y="-22" width="420" height="22"/>
+      <line class="scan-line" x1="190" y1="0" x2="610" y2="0"/>
     </g>
   </g>
 
-  
-  <circle class="pulse" style="fill:none;stroke:rgb(11, 12, 14);opacity:0" cx="573.2" cy="108" r="3"></circle>
-  <circle class="dot" cx="573.2" cy="108" r="3" style="fill:rgb(11, 12, 14)"></circle>
-  <polyline class="hair draw " style="fill:none;stroke:rgb(11, 12, 14);stroke-dasharray:44px" points="573.2,108 600,81 606,81"></polyline>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 036°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 072°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 108°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 144°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 180°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 216°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 252°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 288°</text>
-  <text class="label ro" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block" x="612" y="85">ROTAÇÃO · 324°</text>
-  <text class="label ro ro-rest" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block" x="612" y="85">ROTAÇÃO · 000°</text>
-  <text class="label muted" x="612" y="101" style="fill:rgb(80, 83, 90);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">PASSO 36° · 10 S</text>
+  <!-- callouts -->
+  <circle class="pulse" style="animation: pp-rot 10s ease-out infinite" cx="573.2" cy="108" r="3"/>
+  <circle class="dot" cx="573.2" cy="108" r="3"/>
+  <polyline class="hair draw " style="--len:44.0" points="573.2,108 600,81 606,81"/>
+  <text class="label ro" style="animation: ro2 10s steps(1) -9.65s infinite" x="612" y="85">ROTAÇÃO · 036°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -8.65s infinite" x="612" y="85">ROTAÇÃO · 072°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -7.65s infinite" x="612" y="85">ROTAÇÃO · 108°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -6.65s infinite" x="612" y="85">ROTAÇÃO · 144°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -5.65s infinite" x="612" y="85">ROTAÇÃO · 180°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -4.65s infinite" x="612" y="85">ROTAÇÃO · 216°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -3.65s infinite" x="612" y="85">ROTAÇÃO · 252°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -2.65s infinite" x="612" y="85">ROTAÇÃO · 288°</text>
+  <text class="label ro" style="animation: ro2 10s steps(1) -1.65s infinite" x="612" y="85">ROTAÇÃO · 324°</text>
+  <text class="label ro ro-rest" style="animation: ro2 10s steps(1) -0.65s infinite" x="612" y="85">ROTAÇÃO · 000°</text>
+  <text class="label muted" x="612" y="101">PASSO 36° · 10 S</text>
 
-  <circle class="pulse" style="fill:none;stroke:rgb(11, 12, 14);opacity:0" cx="522" cy="248" r="3"></circle>
-  <circle class="dot" cx="522" cy="248" r="3" style="fill:rgb(11, 12, 14)"></circle>
-  <polyline class="hair draw " style="fill:none;stroke:rgb(11, 12, 14);stroke-dasharray:92.3px" points="522,248 542,228 606,228"></polyline>
-  <text class="label" x="612" y="224" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">CONTROLE</text>
-  <path class="check" style="fill:none;stroke:rgb(0, 47, 167);stroke-width:1.6px;stroke-dasharray:14px;stroke-linecap:square" d="M684 218 l3 3 l6 -7"></path>
-  <text class="label muted" x="612" y="240" style="fill:rgb(80, 83, 90);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">250 ML · NÍVEL 60%</text>
+  <circle class="pulse" style="animation: pp-ctl 10s ease-out infinite" cx="522" cy="248" r="3"/>
+  <circle class="dot" cx="522" cy="248" r="3"/>
+  <polyline class="hair draw " style="--len:92.3" points="522,248 542,228 606,228"/>
+  <text class="label" x="612" y="224">CONTROLE</text>
+  <path class="check" style="animation: ck-ctl 10s linear infinite" d="M684 218 l3 3 l6 -7"/>
+  <text class="label muted" x="612" y="240">250 ML · NÍVEL 60%</text>
 
-  <circle class="pulse" style="fill:none;stroke:rgb(11, 12, 14);opacity:0" cx="345" cy="300" r="3"></circle>
-  <circle class="dot" cx="345" cy="300" r="3" style="fill:rgb(11, 12, 14)"></circle>
-  <polyline class="hair draw " style="fill:none;stroke:rgb(11, 12, 14);stroke-dasharray:292.1px" points="345,300 420,375 606,375"></polyline>
-  <text class="label" x="612" y="371" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">AMOSTRA 02</text>
-  <path class="check" style="fill:none;stroke:rgb(0, 47, 167);stroke-width:1.6px;stroke-dasharray:14px;stroke-linecap:square" d="M700 365 l3 3 l6 -7"></path>
-  <text class="label muted" x="612" y="387" style="fill:rgb(80, 83, 90);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">1000 ML · NÍVEL 70%</text>
+  <circle class="pulse" style="animation: pp-amo 10s ease-out infinite" cx="345" cy="300" r="3"/>
+  <circle class="dot" cx="345" cy="300" r="3"/>
+  <polyline class="hair draw " style="--len:292.1" points="345,300 420,375 606,375"/>
+  <text class="label" x="612" y="371">AMOSTRA 02</text>
+  <path class="check" style="animation: ck-amo 10s linear infinite" d="M700 365 l3 3 l6 -7"/>
+  <text class="label muted" x="612" y="387">1000 ML · NÍVEL 70%</text>
 
-  <text class="label muted" x="20" y="28" style="fill:rgb(80, 83, 90);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">FIG. 02 — CONTROLE DE QUALIDADE</text>
-  <rect class="sig sq" x="20" y="365" width="8" height="8" style="fill:rgb(0, 47, 167)"></rect>
-  <text class="label st-test" x="36" y="373" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;opacity:0;display:block">STATUS · EM TESTE</text>
-  <text class="label st-pass" x="36" y="373" style="fill:rgb(11, 12, 14);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">STATUS · PASS</text>
-  <text class="label muted" x="20" y="396" style="fill:rgb(80, 83, 90);font-family:&#34;IBM Plex Mono&#34;, ui-monospace, Menlo, monospace;font-size:11px;font-weight:500;letter-spacing:1.54px;display:block">GARDEN · QA · REV A</text>
+  <text class="label muted" x="20" y="28">FIG. 02 — CONTROLE DE QUALIDADE</text>
+  <rect class="sig sq" x="20" y="365" width="8" height="8"/>
+  <text class="label st-test" x="36" y="373">STATUS · EM TESTE</text>
+  <text class="label st-pass" x="36" y="373">STATUS · PASS</text>
+  <text class="label muted" x="20" y="396">GARDEN · QA · REV A</text>
 </svg>
