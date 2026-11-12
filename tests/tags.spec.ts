@@ -55,3 +55,32 @@ test("TAGS-09 nome acessível do chip no índice com o número de documentos", a
     await expect(chip(page, tag)).toHaveAccessibleName(new RegExp(`^${label} ${n}$`));
   }
 });
+
+/** Os grupos do índice de tags: título e `href` dos chips, em ordem. */
+const groups = (page: Page) =>
+  page.locator("main article").evaluateAll((els) =>
+    els.map((el) => ({
+      title: el.querySelector("h2")!.textContent!.replace(/​/g, "").trim(),
+      hrefs: [...el.querySelectorAll('a[rel="tag"]')].map((a) => a.getAttribute("href")),
+    })),
+  );
+
+test("TAGS-07 primeiro grupo Estágios, com A, B e D nesta ordem e sem C", async ({ page }) => {
+  await page.goto("docs/tags");
+  const [first] = await groups(page);
+  expect(first.title).toBe("Estágios");
+  expect(first.hrefs).toEqual(
+    ["stageA", "stageB", "stageD"].map((t) => `/garden/docs/tags/${t}`),
+  );
+});
+
+test("TAGS-08 nenhum chip de estágio nos grupos de letra", async ({ page }) => {
+  await page.goto("docs/tags");
+  const [, ...letters] = await groups(page);
+  expect(letters.length).toBeGreaterThan(0);
+  for (const g of letters) {
+    expect(g.title).toMatch(/^\p{L}$/u);
+    expect(g.hrefs.filter((h) => /\/docs\/tags\/stage[A-D]$/.test(h!))).toEqual([]);
+    expect(g.hrefs.length).toBeGreaterThan(0);
+  }
+});
