@@ -44,3 +44,65 @@
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+
+/*
+ * SPEC_DEVIATION: classDef com var(--ds-*) nos artigos (tasks.md, T14)
+ * Reason: o Mermaid rejeita var() em `classDef` e o diagrama deixa de renderizar;
+ * caminho aprovado pelo usuário: os artigos só marcam o nó (`:::classe`) e a cor sai daqui.
+ * Cores dos diagramas Mermaid (DIAG-04).
+ * Cada classe: fundo, traço e texto da tabela "Mapa de cores dos diagramas".
+ */
+.docusaurus-mermaid-container .node :is(rect, path, polygon),
+.docusaurus-mermaid-container .cluster.error rect {
+	fill: var(--ds-panel) !important;
+	stroke: var(--ds-ink) !important;
+}
+.docusaurus-mermaid-container .node :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container .node.gra :is(rect, path, polygon) {
+	fill: var(--ds-paper) !important;
+}
+.docusaurus-mermaid-container .node.yel :is(rect, path, polygon) {
+	fill: var(--ds-panel) !important;
+}
+.docusaurus-mermaid-container .node.ora :is(rect, path, polygon) {
+	fill: var(--ds-ink-muted) !important;
+}
+.docusaurus-mermaid-container .node.ora :is(span, p, .nodeLabel) {
+	color: var(--ds-paper) !important;
+}
+.docusaurus-mermaid-container .node.red :is(rect, path, polygon) {
+	fill: var(--ds-inverse) !important;
+}
+.docusaurus-mermaid-container .node.red :is(span, p, .nodeLabel) {
+	color: var(--ds-on-inverse) !important;
+}
+
+.docusaurus-mermaid-container .cluster.error rect {
+	fill: var(--ds-paper) !important;
+	stroke: var(--ds-contrast-error) !important;
+	stroke-width: 2px !important;
+}
+.docusaurus-mermaid-container .cluster.error :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container :is(.node.green, .node.ctal) :is(rect, path, polygon) {
+	fill: var(--ds-signal-tint) !important;
+	stroke: var(--ds-signal) !important;
+	stroke-width: 2px !important;
+}
+.docusaurus-mermaid-container :is(.node.green, .node.ctal) :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container :is(.cluster.invisible, .cluster.invi) rect {
+	fill: transparent !important;
+	stroke: transparent !important;
+	stroke-width: 0 !important;
+}
+.docusaurus-mermaid-container :is(.cluster.invisible, .cluster.invi) :is(span, p, .nodeLabel) {
+	color: transparent !important;
+}

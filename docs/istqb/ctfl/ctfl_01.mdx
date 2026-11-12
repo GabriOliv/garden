@@ -81,7 +81,6 @@ Teste de confirmação é feito posteriormente à alteração de correção;
 ```mermaid
 %%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
 flowchart TB
-	classDef error		fill:#922,stroke:#0000,color:#FFF
 
 	b:::error; e:::error
 
@@ -145,11 +144,6 @@ Nem todo ERRO gera um DEFEITO, e assim por diante.
 
 ```mermaid
 flowchart LR
-	classDef node	stroke:#0000,color:#000
-	classDef yel	fill:#FF9E00
-	classDef ora	fill:#F35B04
-	classDef red	fill:#DD1C1A
-	classDef gra	fill:#9D9D9D
 
 	a(<b>Causa Raiz</b>):::gra;
 	b(<b>Erro / Equívoco</b>):::yel;
