@@ -6,7 +6,8 @@ tags: [stageB, notes, readme]
 draft: false
 ---
 
-import styles from '@site/src/css/styles.module.css';
+import { Contents } from '@gabrioliv/dossier';
+import { ptBR } from '@gabrioliv/dossier/locales/pt-BR';
 import notes from './data.ts';
 
 {frontMatter.description}<br />
@@ -15,86 +16,24 @@ import notes from './data.ts';
 
 ## Teorias
 
-<div className={styles.desktopOnly}>
-	<div className="pagination-nav">
-		<div className="pagination-nav__item">
-			<a className="pagination-nav__link" href="./notes/peltzman_effect">
-			<div className="pagination-nav__label">{notes.peltzman_effect.title}</div>
-			<div className="pagination-nav__sublabel">{notes.peltzman_effect.description}</div>
-			</a>
-		</div>
-		<div className="pagination-nav__item">
-			<a className="pagination-nav__link" href="./notes/hawthorne_effect_on_documentation">
-			<div className="pagination-nav__label">{notes.hawthorne_effect_on_documentation.title}</div>
-			<div className="pagination-nav__sublabel">{notes.hawthorne_effect_on_documentation.description}</div>
-			</a>
-		</div>
-		<div className="pagination-nav__item">
-			<a className="pagination-nav__link" href="./notes/software_ongoing_manual_testing">
-			<div className="pagination-nav__label">{notes.software_ongoing_manual_testing.title}</div>
-			<div className="pagination-nav__sublabel">{notes.software_ongoing_manual_testing.description}</div>
-			</a>
-		</div>
-		<div className="pagination-nav__item">
-			<a className="pagination-nav__link" href="./notes/e2e_useful">
-			<div className="pagination-nav__label">{notes.e2e_useful.title}</div>
-			<div className="pagination-nav__sublabel">{notes.e2e_useful.description}</div>
-			</a>
-		</div>
-	</div>
-</div>
-
-<div className={styles.mobileOnly}>
-	<div className="pagination-nav__item">
-		<a className="pagination-nav__link" href="./notes/peltzman_effect">
-		<div className="pagination-nav__label">{notes.peltzman_effect.title}</div>
-		<div className="pagination-nav__sublabel">{notes.peltzman_effect.description}</div>
-		</a>
-	</div>
-	<br />
-	<div className="pagination-nav__item">
-		<a className="pagination-nav__link" href="./notes/hawthorne_effect_on_documentation">
-		<div className="pagination-nav__label">{notes.hawthorne_effect_on_documentation.title}</div>
-		<div className="pagination-nav__sublabel">{notes.hawthorne_effect_on_documentation.description}</div>
-		</a>
-	</div>
-	<br />
-	<div className="pagination-nav__item">
-		<a className="pagination-nav__link" href="./notes/software_ongoing_manual_testing">
-		<div className="pagination-nav__label">{notes.software_ongoing_manual_testing.title}</div>
-		<div className="pagination-nav__sublabel">{notes.software_ongoing_manual_testing.description}</div>
-		</a>
-	</div>
-	<br />
-	<div className="pagination-nav__item">
-		<a className="pagination-nav__link" href="./notes/e2e_useful">
-		<div className="pagination-nav__label">{notes.e2e_useful.title}</div>
-		<div className="pagination-nav__sublabel">{notes.e2e_useful.description}</div>
-		</a>
-	</div>
-</div>
+<Contents
+	labels={ptBR.Contents}
+	items={["peltzman_effect", "hawthorne_effect_on_documentation", "software_ongoing_manual_testing", "e2e_useful"].map((id) => ({
+		title: notes[id].title,
+		description: notes[id].description,
+		href: `./notes/${id}`,
+	}))}
+/>
 
 ## Processos
 
-<div className={styles.desktopOnly}>
-	<div className="pagination-nav">
-		<div className="pagination-nav__item">
-			<a className="pagination-nav__link" href="./notes/test_coverage_sdlc">
-			<div className="pagination-nav__label">{notes.test_coverage_sdlc.title}</div>
-			<div className="pagination-nav__sublabel">{notes.test_coverage_sdlc.description}</div>
-			</a>
-		</div>
-	</div>
-</div>
-
-<div className={styles.mobileOnly}>
-	<div className="pagination-nav__item">
-		<a className="pagination-nav__link" href="./notes/test_coverage_sdlc">
-		<div className="pagination-nav__label">{notes.test_coverage_sdlc.title}</div>
-		<div className="pagination-nav__sublabel">{notes.test_coverage_sdlc.description}</div>
-		</a>
-	</div>
-	<br />
-</div>
+<Contents
+	labels={ptBR.Contents}
+	items={["test_coverage_sdlc"].map((id) => ({
+		title: notes[id].title,
+		description: notes[id].description,
+		href: `./notes/${id}`,
+	}))}
+/>
 
 ---
