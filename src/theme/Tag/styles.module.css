@@ -1,5 +1,5 @@
-/* O ícone fica na linha do nome, com um respiro antes dele. */
-.stage svg {
-  vertical-align: middle;
-  margin-inline-end: var(--ds-space-1);
+/* O chip é inline-flex: a linha de base vem do primeiro item, que aqui seria o ícone e subiria o chip.
+   O nome em align-self: baseline passa a dar a linha de base, alinhada com os outros chips. */
+.stage > span {
+  align-self: baseline;
 }

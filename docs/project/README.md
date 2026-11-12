@@ -73,7 +73,7 @@ Resumos de estudo usados para certificações.
 
 Documentações variadas sobre Teste de Software, QA e Computação em geral.
 
-<Grid minColumnWidth={280} gap={6}>
+<Grid columns={2} gap={6}>
 	<Stack gap={3} data-item="Notas">
 
 		![image](./assets/banner/banner-flask-qa-dossier.svg)
