@@ -369,16 +369,24 @@ const paints = (page: Page, root: string) =>
 const onTokens = (color: string, theme: Theme) =>
   /, 0\)$/.test(color) || TOKEN_RGB[theme].has(color.match(/\d+/g)!.slice(0, 3).join(", "));
 
+/** O botão de voltar ao topo só aparece ao subir a página: desce, espera o quadro, sobe um pouco. */
+async function scrollBackUp(page: Page) {
+  // Sem hidratação, o ouvinte de rolagem do botão ainda não está preso.
+  await page.waitForLoadState("networkidle");
+  await page.evaluate(() => window.scrollTo(0, 2000));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(2000);
+  await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await page.evaluate(() => window.scrollTo(0, 1500));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(1500);
+}
+
 test("LEFT-01 raio 0 em breadcrumbs, categorias do menu, voltar ao topo e modal de busca", async ({ page }) => {
   // As linhas de categoria do menu só existem na barra lateral da categoria CTFL.
   await openIn(page, CATEGORY, "paper");
   await all(page, [".theme-doc-sidebar-container .menu__list-item-collapsible"], "border-radius", "0px");
 
   await openIn(page, DOC, "paper");
-  // O botão só aparece ao subir a página depois do limiar: desce, depois sobe um pouco.
-  await page.mouse.wheel(0, 2000);
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
-  await page.mouse.wheel(0, -300);
+  await scrollBackUp(page);
   await expect(page.locator(".theme-back-to-top-button")).toBeVisible();
   await page.locator(".DocSearch-Button").click();
   await expect(page.locator(".DocSearch-Modal")).toBeVisible();
@@ -398,10 +406,7 @@ test("LEFT-01 raio 0 em breadcrumbs, categorias do menu, voltar ao topo e modal 
 
 test("LEFT-02 sem box-shadow fora do foco no voltar ao topo e no modal de busca", async ({ page }) => {
   await openIn(page, DOC, "paper");
-  // O botão só aparece ao subir a página depois do limiar: desce, depois sobe um pouco.
-  await page.mouse.wheel(0, 2000);
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
-  await page.mouse.wheel(0, -300);
+  await scrollBackUp(page);
   await expect(page.locator(".theme-back-to-top-button")).toBeVisible();
   await page.locator(".DocSearch-Button").click();
   await expect(page.locator(".DocSearch-Modal")).toBeVisible();
