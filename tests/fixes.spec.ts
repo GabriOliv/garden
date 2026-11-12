@@ -107,3 +107,25 @@ test("FIX-02 nenhum class= em tag JSX dos documentos", async ({ page }) => {
   }
   expect(warnings).toEqual([]);
 });
+
+test("FIX-01 .img-center com a largura do contêiner em docs/project", async ({ page }) => {
+  // O bloco só aparece no celular (`mobileOnly`).
+  await page.setViewportSize({ width: 390, height: 800 });
+  await page.goto("docs/project");
+  const box = page.locator(".img-center");
+  await expect(box).toBeVisible();
+  const [own, parent] = await box.evaluate((el) => [
+    el.getBoundingClientRect().width,
+    el.parentElement!.getBoundingClientRect().width,
+  ]);
+  expect(own).toBeGreaterThan(0);
+  expect(own).toBe(parent);
+  // O navegador descarta `width: 100%,`: a regra publicada tem de trazer a largura.
+  const declared = await page.evaluate(() =>
+    [...document.styleSheets]
+      .flatMap((sheet) => [...sheet.cssRules])
+      .filter((r): r is CSSStyleRule => r instanceof CSSStyleRule && r.selectorText === ".img-center")
+      .map((r) => r.style.width),
+  );
+  expect(declared).toContain("100%");
+});
