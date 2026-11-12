@@ -27,6 +27,7 @@ const read = (page: import("@playwright/test").Page) =>
       ),
       maxWidth: getComputedStyle(ol).maxWidth,
       rule: [rule.borderTopWidth, rule.borderTopStyle, rule.borderTopColor, rule.width],
+      backCount: section.querySelectorAll("a.data-footnote-backref").length,
       backVisible: Array.from(section.querySelectorAll("a.data-footnote-backref")).filter((a) => a.getClientRects().length > 0)
         .length,
       mark: [mark.fontFamily, mark.color, mark.textDecorationLine],
@@ -76,7 +77,10 @@ for (const theme of ["paper", "void"] as Theme[]) {
 
 test("FN-04 nenhuma seta de volta visível nas notas de rodapé", async ({ page }) => {
   await openIn(page, SDLC, "paper");
-  expect((await read(page)).backVisible).toBe(0);
+  const fn = await read(page);
+  // As setas existem no HTML (uma por nota); só não aparecem.
+  expect(fn.backCount).toBe(2);
+  expect(fn.backVisible).toBe(0);
 });
 
 test("FN-06 o bloco das notas de rodapé mantém o título Footnotes", async ({ page }) => {
