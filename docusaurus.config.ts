@@ -89,7 +89,6 @@ const config: Config = {
           customCss: [
             require.resolve("@gabrioliv/dossier/docusaurus.css"),
             "./src/css/custom.css",
-            "./src/css/chrome.css",
           ],
         },
       } satisfies Preset.Options,

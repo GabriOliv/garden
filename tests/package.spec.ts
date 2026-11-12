@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import config from "../docusaurus.config";
 
@@ -19,4 +19,8 @@ test("PKG-01 Dossier declarado pelo tarball local, com integridade no lockfile",
 
 test("PKG-02 build falha em link quebrado: onBrokenLinks é \"throw\"", () => {
   expect(config.onBrokenLinks).toBe("throw");
+});
+
+test("BRIDGE-08 o Garden não tem src/css/chrome.css", () => {
+  expect(existsSync("src/css/chrome.css")).toBe(false);
 });
