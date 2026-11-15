@@ -14,9 +14,6 @@ Revisão de `15/09/2024`.
 	%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
 	flowchart LR
 
-		classDef node fill:#000F,color:#FFFF,stroke:#0000;
-		classDef ctal fill:#F60,stroke:#333,stroke-width:2px;
-		classDef invi fill:#0000,stroke:#0000;
 
 		S1:::invi
 
