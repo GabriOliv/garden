@@ -12,7 +12,7 @@ const THEMES: Theme[] = ["paper", "void"];
 const CTFL_01 = "docs/istqb/ctfl/ctfl_01";
 const E2E = "docs/notes/e2e_useful";
 const ABOUT = "docs/project/about";
-// O documento de 61 caracteres (suite_testes_zeigarnik_cronico) não é publicado; este é o título mais longo do build.
+// O título mais longo do build.
 const LONG = "docs/istqb/cttas/cttas_04";
 
 test("DOC-01 título em um único h1, em faixa inversa", async ({ page }) => {

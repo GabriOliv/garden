@@ -12,7 +12,6 @@ const THEMES: Theme[] = ["paper", "void"];
 const CTFL_01 = "docs/istqb/ctfl/ctfl_01";
 const E2E = "docs/notes/e2e_useful";
 const GETTING = "docs/project/getting_started";
-// independence_test_article é draft: true, então não é publicado; os critérios usam as páginas publicadas.
 
 const H2 = ".markdown h2";
 const WIDE = 1280;
