@@ -204,12 +204,12 @@ test("IMG-12 home e Comece a Leitura mostram banners do Dossier no lugar dos und
     await page.setViewportSize({ width: 1280, height: 900 });
     await openIn(page, PAGES.home, theme);
     expect(await visible("main img")).toEqual(
-      expect.arrayContaining(["banner-grafo-dossier.svg", "banner-automato-dossier.svg", "banner-filotaxia-dossier.svg"]),
+      expect.arrayContaining(["banner-notas-dossier.svg", "banner-niveis-dossier.svg", "banner-evolucao-dossier.svg"]),
     );
     expect((await visible("main img")).filter((s) => s.includes("undraw")), `home ${theme}`).toEqual([]);
     for (const [width, want] of [
-      [1280, ["banner-automato-dossier.svg", "banner-harmonografo-dossier.svg", "banner-grafo-dossier.svg"]],
-      [390, ["banner-harmonografo-dossier.svg"]],
+      [1280, ["banner-filotaxia-dossier.svg", "banner-grafo-dossier.svg", "banner-harmonografo-dossier.svg"]],
+      [390, ["banner-acervo-dossier.svg"]],
     ] as const) {
       await page.setViewportSize({ width, height: 900 });
       await openIn(page, PAGES.start, theme);
@@ -218,7 +218,7 @@ test("IMG-12 home e Comece a Leitura mostram banners do Dossier no lugar dos und
       expect((await visible("main img")).filter((s) => s.includes("undraw")), `start ${width} ${theme}`).toEqual([]);
     }
   }
-  for (const f of ["automato", "filotaxia", "grafo", "harmonografo"]) ownAnimated(`static/img/dossier/banner-${f}-dossier.svg`);
+  for (const f of ["acervo", "evolucao", "filotaxia", "grafo", "harmonografo", "niveis", "notas"]) ownAnimated(`static/img/dossier/banner-${f}-dossier.svg`);
 });
 
 test("IMG-13 os diagramas das notas seguem o modo de cor do site, não o do sistema", async ({ browser }) => {
