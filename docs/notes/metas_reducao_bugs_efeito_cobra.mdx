@@ -1,0 +1,150 @@
+---
+sidebar_position: 30
+title: Metas de Redução de Bugs e o Efeito Cobra
+description: Quando o bônus depende de registrar menos bugs, a contagem cai antes de o software melhorar. Como saber se a queda é real e como desenhar uma meta que não estrague a própria medida.
+tags: [stageA, notes, qa, theory, snake_effect, cobra_effect, goodhart_law, metrics, bugs, incentives, perverse_incentive]
+draft: false
+---
+
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
+# Metas de Redução de Bugs e o Efeito Cobra
+
+{frontMatter.description}<br />
+
+---
+
+## O trimestre em que os bugs sumiram
+
+Em janeiro, a diretoria de uma empresa de software anuncia a meta do trimestre: reduzir em 30% os _bugs_ registrados no rastreador, com parte do bônus de cada time atrelada ao resultado. A empresa e os números desta história são inventados para ilustrar. Em abril, o painel mostra queda de 34% e a apresentação ganha um slide verde. No mesmo andar, o suporte continua atendendo os chamados de sempre, como a nota fiscal que não sai quando o cliente tem filial.
+
+Em fevereiro, a QA Marina encontrou um campo de data que aceitava 31 de fevereiro; o _tech lead_ lembrou que aquela validação nunca tinha sido especificada, e o _ticket_ foi reclassificado como melhoria. Um desenvolvedor viu um erro de arredondamento no frete, avisou no canal do time que corrigiria depois e não abriu registro. Em março, três falhas de tempo esgotado em telas diferentes viraram um único ticket, porque a causa parecia ser a mesma.
+
+## Ninguém mentiu, e o número mudou de sentido
+
+Cada uma dessas decisões tem defesa, mas em dezembro não custava nada a ninguém e em março pesava no bônus. Antes da meta, a contagem era um subproduto do trabalho e acompanhava, com algum ruído, os problemas do software. Depois, cada registro passou a ter um preço, e a contagem passou a refletir também quanto as pessoas aceitavam pagar por ele. Diante do slide verde, a pergunta é se o software melhorou 34% ou se o time só parou de anotar. Esse padrão tem história longe do rastreador, e ela ajuda a responder.
+
+## Cobras, moeda e indicadores sociais
+
+Conta-se que o governo britânico, na Délhi colonial, pagava uma recompensa por cobra morta, e que os moradores passaram a criar cobras para entregá-las e as soltaram quando o programa foi cancelado. Há pouca evidência histórica disso, e o caso funciona como lenda. Foi com ela que o economista alemão Horst Siebert batizou, no livro _Der Kobra-Effekt_ (Siebert, 2001), o efeito cobra: uma medida criada para resolver um problema que, pelo incentivo que oferece, produz o oposto do que se queria.
+
+A lenda descreve um incentivo perverso, ou seja, uma recompensa que torna lucrativo o comportamento contrário ao objetivo de quem a criou: o governo queria menos cobras e pagava por cobra entregue. A diretoria da nossa história queria menos defeitos e pagava por menos registros, e o jeito mais barato de ter menos registros é registrar menos. O incentivo não obriga ninguém; só inclina cada decisão ambígua para o lado que conta a favor.
+
+Muito antes de Siebert, o economista britânico Charles Goodhart tinha descrito o mecanismo com mais precisão, numa conferência de 1975 sobre a política monetária do Reino Unido, depois reimpressa em livro (Goodhart, 1984). As autoridades se apoiavam em relações aparentemente estáveis entre a quantidade de moeda e outras variáveis da economia, e Goodhart notou que qualquer regularidade estatística observada tende a desmoronar quando alguém passa a pressioná-la para fins de controle. O rótulo "lei de Goodhart" veio depois. No rastreador, a correlação que importa liga bugs registrados a problemas que os clientes encontram. Em dezembro os dois números andavam juntos; em abril, um caiu 34% e o outro, a julgar pelo suporte, ficou onde estava.
+
+Na mesma década, o psicólogo social americano Donald Campbell chegou a uma conclusão parecida estudando a avaliação de programas sociais. Numa formulação publicada em 1979 (Campbell, 1979), mas que circulava desde meados da década, ele afirmou que quanto mais um indicador social quantitativo é usado para tomar decisões, mais sujeito fica a pressões de corrupção e mais tende a distorcer e corromper os processos que deveria monitorar. A lei de Campbell acrescenta a Goodhart que o próprio processo medido muda, como numa escola avaliada só por um exame que passa a gastar as aulas treinando para ele. Na empresa da cena, o que mudou foi a triagem, porque decidir o que é bug passou a envolver quanto cada ticket custa ao time.
+
+A frase que quase todo mundo conhece é mais recente. Em 1997, a antropóloga britânica Marilyn Strathern escreveu sobre o sistema universitário britânico, em que as universidades passavam a ser auditadas e avaliadas em ensino, pesquisa e administração (Strathern, 1997). Nesse texto aparece a forma popular: quando uma medida se torna um alvo, deixa de ser uma boa medida. Strathern a apresentou como generalização da lei de Goodhart, e por isso a frase costuma circular com o nome dele. É o caso do painel de abril, calculado do mesmo jeito e sem o significado que tinha.
+
+Dentro das empresas, a mesma ideia já tinha aparecido em 1975, num artigo do pesquisador de administração Steven Kerr cujo título resume o argumento: "On the folly of rewarding A, while hoping for B", a tolice de premiar A esperando B (Kerr, 1975). Kerr reuniu casos de organizações que premiavam um comportamento enquanto torciam por outro e mostrou que as pessoas entregavam o premiado. A diretoria esperava software melhor, premiou uma contagem menor e recebeu a contagem menor.
+
+## O bug não é uma unidade natural
+
+Cobra é cobra, mas um bug não tem fronteira nítida. Alguém decide se o comportamento é defeito ou funcionalidade nunca pedida, se duas falhas parecidas contam como uma ou duas e se vale abrir registro. Cem Kaner e Walter Bond trataram disso ao discutir a validade das métricas de engenharia de software (Kaner; Bond, 2004). Validade, aqui, é o número acompanhar de fato o atributo que dizemos medir, como um termômetro que sobe quando esquenta. Eles citam a contagem de bugs como exemplo de medida de validade questionável, e a cena mostra por quê: entre o defeito no código e o número no painel há uma pessoa decidindo o que registrar.
+
+Os três gestos da cena são três maneiras de influenciar essa decisão. A reclassificação muda o rótulo de um registro que existe, como o campo de data que virou melhoria. A subnotificação impede que o registro nasça, como o erro de frete que ficou no canal do time. A agregação junta vários defeitos num registro só, como as três falhas de tempo esgotado. Nenhuma exige mentir, e todas reduzem a contagem sem melhora proporcional do software.
+
+<figure>
+	<figcaption className="text--center">Como a meta reduz a contagem sem passar pelo software</figcaption>
+
+    ```mermaid
+    	%%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
+    	flowchart LR
+    	meta["Bônus por menos bugs registrados"]
+    	rec["Reclassificação: bug vira melhoria"]
+    	sub["Subnotificação: ticket não é aberto"]
+    	agr["Agregação: três falhas viram um registro"]
+    	cont["Contagem no painel cai"]
+    	soft["Defeitos no software"]
+    	sup["Chamados do suporte"]
+    	meta --> rec --> cont
+    	meta --> sub --> cont
+    	meta --> agr --> cont
+    	soft --> sup
+    ```
+
+</figure>
+
+## Um terço dos bugs registrados nem era bug
+
+Em 2013, Kim Herzig, Sascha Just e Andreas Zeller apresentaram na _International Conference on Software Engineering_ (ICSE) um estudo chamado "It's not a bug, it's a feature" (Herzig; Just; Zeller, 2013). Eles se preocupavam com os modelos de predição de bugs, que usam o histórico de um projeto para estimar quais arquivos devem conter defeitos e dependem de registros bem rotulados. Para conferi-los, classificaram à mão mais de 7.000 relatórios de cinco projetos de código aberto. Dos relatórios marcados como bug, 33,8% eram outra coisa, como pedidos de funcionalidade nova, atualizações de documentação ou refatorações internas, e em média 39% dos arquivos apontados como defeituosos nunca tinham tido um bug.
+
+Nenhum daqueles projetos tinha meta de redução de bugs. Esse terço é erro sem incentivo nenhum, e ele derruba a auditoria ingênua. Se a diretoria achar o campo de data rotulado como melhoria, não provou nada: em qualquer trimestre uma parte grande dos rótulos já estaria trocada. O sinal de que a meta corrompeu o registro é a reclassificação subir acima do que era normal antes dela.
+
+Esse normal de antes se chama linha de base: como um processo se comporta antes de uma intervenção, para comparar com o depois. Um médico só se preocupa com 37,8 graus porque sabe que a temperatura normal fica perto de 36,5. Para medir a linha de base dos rótulos, usa-se a avaliação às cegas, comum na pesquisa clínica há décadas: quem julga o resultado não sabe a que grupo pertence cada paciente, para que a expectativa não puxe o julgamento. No caso dos tickets, o avaliador não sabe de que período cada um veio nem que rótulo recebeu. O procedimento fica assim:
+
+1. Antes de anunciar a meta, sorteie tickets dos últimos meses, incluindo os marcados como melhoria ou duplicado.
+2. Peça a alguém de fora do time, que não ganha nem perde com a meta, para classificá-los sem ver o rótulo original.
+3. Calcule em quantos tickets a classificação dele discorda do rótulo original. Essa proporção é a linha de base.
+4. Durante a meta, repita o processo com tickets novos misturados a antigos, sem que o avaliador saiba quais são quais.
+5. Se a parcela de defeitos rotulados como outra coisa subir bem acima da linha de base, a meta está mexendo no registro.
+
+Isso pega a reclassificação e, com leitura cuidadosa, a agregação. A subnotificação escapa, porque o erro de frete não deixou ticket para sortear; para vê-la, é preciso um número que a meta não alcance.
+
+## Uma meta que não destrói a própria medida
+
+A primeira providência é separar a métrica que diagnostica da que avalia pessoas. Pela lei de Campbell, o indicador se corrompe na medida em que decide coisas, então a contagem de bugs pode continuar mostrando ao time quais módulos dão mais problema, desde que fique fora do bônus. Para premiar qualidade, a diretoria precisa de um critério que o time não consiga mover sozinho.
+
+A segunda é medir a linha de base antes de anunciar. Depois do anúncio, todo registro já está sob o incentivo. Uma amostra classificada às cegas em dezembro teria dado à diretoria uma resposta em abril.
+
+A terceira é parear a contagem interna com os bugs que escaparam para produção, ou seja, defeitos encontrados por clientes ou pelo suporte e registrados por gente fora da meta. Se a contagem do time cai e os escapes ficam no mesmo patamar, como os chamados da nota fiscal, a queda está no registro. O pareamento não impede a manipulação, mas a deixa visível.
+
+A quarta é premiar o registro bem feito. Enquanto registrar um bug custar pontos, alguém paga por cada registro. Tratar um bom relatório como contribuição inverte o sinal do incentivo. Marina deveria terminar o trimestre elogiada pelo campo de data.
+
+## Até onde vai esse argumento
+
+Goodhart, Campbell e Kerr observaram moeda, programas sociais e organizações, então a passagem para software é um argumento por analogia; nenhuma das fontes usadas aqui mediu quanto metas de bugs distorcem o registro. Herzig, Just e Zeller mediram erro de classificação, não manipulação. E nem toda reclassificação durante uma meta é trapaça: às vezes a pressão leva o time a limpar duplicados e pedidos que estavam mesmo no lugar errado. A linha de base serve para separar essa limpeza do desvio, e por isso vem antes de qualquer acusação.
+
+## De volta ao painel de abril
+
+A queda de 34% no slide verde pode ser melhora real, pode ser registro ou uma mistura dos dois, e o painel sozinho não os separa. Os chamados de suporte que não mudaram indicam que parte da queda está no registro, e uma amostra classificada às cegas diria quanto. Como ninguém mediu a linha de base em dezembro, a resposta honesta à pergunta "melhoramos ou só paramos de anotar?" é que, com os dados de abril, não dá para saber. No próximo trimestre a ordem precisa ser a inversa: medir primeiro, anunciar depois e deixar o bônus longe do número que o time usa para enxergar os próprios defeitos.
+
+---
+
+## Referências Bibliográficas
+
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+CAMPBELL, D. T. Assessing the impact of planned social change. _Evaluation and Program Planning_, v. 2, n. 1, p. 67-90, 1979. DOI: [10.1016/0149-7189(79)90048-X](https://doi.org/10.1016/0149-7189(79)90048-X).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+GOODHART, C. A. E. Problems of monetary management: the U.K. experience. In: _Monetary Theory and Practice_. Londres: Macmillan, 1984. p. 91-121. DOI: [10.1007/978-1-349-17295-5_4](https://doi.org/10.1007/978-1-349-17295-5_4). Originalmente apresentado em conferência em 1975 e publicado em: _Papers in Monetary Economics_, v. I. Sydney: Reserve Bank of Australia.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+HERZIG, K.; JUST, S.; ZELLER, A. It's not a bug, it's a feature: how misclassification impacts bug prediction. In: INTERNATIONAL CONFERENCE ON SOFTWARE ENGINEERING (ICSE), 35., 2013. _Anais [...]_. p. 392-401. DOI: [10.1109/icse.2013.6606585](https://doi.org/10.1109/icse.2013.6606585).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+KANER, C.; BOND, W. P. Software engineering metrics: what do they measure and how do we know? In: INTERNATIONAL SOFTWARE METRICS SYMPOSIUM, 10., 2004, Chicago. _Anais [...]_. p. 1-12. Disponível em: [https://www.kaner.com/pdfs/metrics2004.pdf](https://www.kaner.com/pdfs/metrics2004.pdf). Acesso em: 14 nov. 2026.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+KERR, S. On the folly of rewarding A, while hoping for B. _Academy of Management Journal_, v. 18, n. 4, p. 769-783, 1975. DOI: [10.5465/255378](https://doi.org/10.5465/255378).
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+SIEBERT, H. _Der Kobra-Effekt: Wie man Irrwege der Wirtschaftspolitik vermeidet_. Stuttgart: Deutsche Verlags-Anstalt, 2001.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+STRATHERN, M. 'Improving ratings': audit in the British University system. _European Review_, v. 5, n. 3, p. 305-321, 1997. DOI: [10.1017/S1062798700002660](https://doi.org/10.1017/S1062798700002660).
+
+</Referencia>
+
+</Referencias>

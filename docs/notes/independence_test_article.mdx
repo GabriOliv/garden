@@ -1,0 +1,150 @@
+---
+sidebar_position: 1
+title: Independência de Teste como Mitigação do Viés de Confirmação
+description: Se você sabe como o seu código funciona, por que outra pessoa encontra nele bugs que você não encontra, e quando essa vantagem desaparece?
+tags: [stageB, notes, qa, theory, test_planning, unit_testing, quality_assurance, prevention, code_review, confirmation_bias]
+draft: false
+---
+
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
+# Independência de Teste como Mitigação do Viés de Confirmação
+
+{frontMatter.description}<br />
+
+---
+
+## Cupom, pontos e uma pergunta de fora
+
+Pense num time que mantém o serviço de descontos de uma loja online. Rafael escreveu a parte que combina cupons, pontos de fidelidade e promoções, e também os testes: cada desconto sozinho e um caso combinado, em que uma compra de 200 reais recebe um cupom de 10% e 20 reais em pontos. O teste esperava 162 reais, o código devolvia 162 reais, e o recurso foi para produção com a suíte verde.
+
+Na semana seguinte, o suporte recebeu reclamações de clientes que viam um total no carrinho e pagavam outro, um pouco maior. Quem achou a causa foi Lívia, testadora do time de _checkout_, que nunca tinha aberto o código do serviço. Ela leu o caso combinado e perguntou: e se o cupom vier antes? Com o cupom primeiro, os 200 reais viram 180 e os pontos levam a 160 reais. Com os pontos primeiro, como fazia o código de Rafael, o total fecha em 162 reais. O requisito dizia apenas que os descontos eram cumulativos, e o carrinho, mantido pelo time de Lívia, sempre aplicou o cupom antes.
+
+## O autor não estava distraído
+
+O incômodo é que Rafael fez tudo o que se costuma pedir: conhecia o serviço melhor que ninguém e escreveu o caso combinado justamente porque desconfiava dele. Só que o teste conferia o número que Rafael esperava, e esse número vinha da mesma leitura do requisito que tinha guiado o código.
+
+Lívia também não era mais atenta nem mais experiente. Ela chegou com outra imagem do sistema, porque passava os dias olhando o carrinho, e essa imagem fez surgir uma pergunta que para Rafael não existia. A psicologia estuda esse jeito de testar ideias desde 1960, com um experimento que dá para fazer de cabeça.
+
+## Três números e uma regra escondida
+
+O psicólogo britânico Peter Wason mostrava aos participantes a trinca 2, 4, 6 e dizia que ela obedecia a uma regra (Wason, 1960). A pessoa podia propor outras trincas, uma de cada vez, e ouvia apenas se cada uma obedecia ou não. Quando se sentisse segura, anunciava a regra.
+
+A hipótese que aparece quase sozinha é "pares que sobem de dois em dois". Para conferir, a pessoa propõe 8, 10, 12, ouve que sim, tenta 20, 22, 24, ouve sim de novo e anuncia a regra com confiança. A regra de Wason, porém, era "qualquer sequência crescente", que aceita também 1, 2, 3. Só uma trinca que a própria hipótese proibisse revelaria o engano, e a maioria dos participantes anunciou uma regra errada depois de testar apenas trincas que a hipótese aprovava.
+
+Isso se chama viés de confirmação, que Raymond Nickerson, numa revisão ampla, descreveu como a tendência de buscar e interpretar evidências de um jeito que reforça aquilo em que já se acredita (Nickerson, 1998).
+
+Uma década antes dessa revisão, Joshua Klayman e Young-Won Ha tinham proposto uma leitura mais precisa (Klayman; Ha, 1987). Para eles, muito do que se chama viés de confirmação é uma estratégia de teste positivo: escolher casos em que a hipótese prevê um "sim" e ver se o "sim" vem. A heurística costuma informar bem, mas fica cega quando a hipótese é mais estreita que a verdade, como no 2-4-6. Ali, todo caso que a hipótese aprova a regra real também aprova, e o "não" que mostraria o erro mora numa região que ninguém visita. A diferença serve a quem testa software, porque teste positivo é um jeito de escolher casos: até quem quer muito ver a própria hipótese cair escolhe os casos assim.
+
+Rafael fez com o desconto o que os participantes fizeram com 8, 10, 12. A hipótese dele era "pontos primeiro, cupom depois", o caso combinado era um caso que ela aprovava, e a ordem de aplicação, que ele tratava como dada, ficou fora de todos os testes.
+
+## Testadores de software fazem o mesmo
+
+Barbee Teasley, Laura Leventhal e colegas levaram a pergunta de Wason para o teste de software (Teasley et al., 1994). Em dois estudos aplicados, observaram como as pessoas montavam casos de teste e encontraram o mesmo padrão: mais casos que confirmavam o comportamento esperado do programa do que casos que tentavam mostrar uma falha. Outro trabalho do grupo analisou fatores que poderiam alterar esse viés de teste positivo, e ele apareceu em todas as condições estudadas (Leventhal; Teasley; Rohlman, 1994).
+
+Se o próprio ato de testar puxa para o caso que confirma, a saída óbvia é entregar o teste a outra pessoa, que chegue com outra hipótese.
+
+## O que a independência de teste promete
+
+O ISTQB (_International Software Testing Qualifications Board_) mantém uma certificação de testadores, e o _syllabus_ do nível básico trata do tema na seção 1.5.3 (ISTQB, 2023). Ele organiza a independência em graus, conforme a distância entre quem escreveu e quem testa:
+
+| Quem testa | Grau de independência |
+| :-- | :-- |
+| O próprio autor | Nenhuma |
+| Colegas do mesmo time | Alguma |
+| Testadores de outro time, na mesma organização | Alta |
+| Testadores de fora da organização | Muito alta |
+
+Segundo o syllabus, o ganho vem de perspectivas diferentes, que encontram defeitos de natureza diferente daqueles que o autor acha. O texto também lista os custos: o testador pode ficar isolado e se comunicar mal com o desenvolvimento, os desenvolvedores podem perder o senso de responsabilidade pela qualidade, e quem testa passa a ser visto como gargalo ou culpado pelos atrasos.
+
+Lívia, de outro time, estaria na linha de independência alta. A tabela, porém, mede distância no organograma, e o que ajudou nos descontos foi Lívia saber como o carrinho calculava. Independência organizacional diz onde a pessoa senta. Independência de premissas diz de onde vêm as hipóteses que ela usa para imaginar o sistema. As duas costumam andar juntas, e um estudo feito fora do mundo do teste mostra o que acontece quando se separam.
+
+## Quando duas cabeças erram no mesmo lugar
+
+Nos anos 1970 e 1980, a programação em N versões era estudada para sistemas críticos. Equipes sem contato entre si escrevem programas para a mesma especificação, e um componente compara as saídas durante a execução e fica com a resposta da maioria. A aposta é que equipes separadas cometem erros independentes, de modo que várias versões raramente falhariam no mesmo caso.
+
+John Knight e Nancy Leveson mediram essa aposta (Knight; Leveson, 1986). Vinte e sete programadores, em duas universidades, escreveram cada um sua versão do mesmo programa a partir da mesma especificação, e os autores rodaram as 27 versões em um milhão de casos de teste, contando quantas vezes mais de uma falhava no mesmo caso. Essas falhas coincidentes apareceram bem acima do que seria esperado se os erros fossem independentes: pessoas que nunca conversaram tropeçaram nos mesmos casos.
+
+O estudo trata de quem desenvolve, e não de quem testa, por isso entra aqui como analogia. Ela é próxima: uma testadora que recebe o mesmo requisito e imagina os mesmos casos funciona como uma segunda versão escrita da mesma especificação.
+
+## Como trocar as premissas, além da pessoa
+
+Quatro mudanças ajudam a trocar as premissas, e as duas primeiras mexem no requisito. O testador que lê o código antes do requisito importa a hipótese do autor, já escrita em cada condição, e por isso vale ler o requisito e anotar os próprios exemplos antes de abrir o código. Melhor ainda é pô-los na especificação. "Descontos são cumulativos" admite duas leituras que convivem em paz até a produção, mas "compra de 200 reais, cupom de 10%, 20 reais em pontos: total de 160 reais" não admite, e obriga o time a decidir a ordem no refinamento, quando decidir ainda é barato.
+
+As outras duas trazem premissas de fora. Uma é dar a quem testa fontes que o autor não usou, como chamados do suporte, logs de produção e sistemas vizinhos. A outra é o _pair testing_, em que duas pessoas testam juntas o mesmo recurso, uma no teclado e outra observando. Com os papéis trocados, a testadora conduz e escolhe os casos, e o autor explica em voz alta por que espera cada resultado, expondo premissas que nunca tinha formulado, como "os pontos sempre entram primeiro".
+
+## Medindo a sobreposição no seu time
+
+Para saber se a independência do time é de premissas ou só de organograma, dá para emprestar uma técnica da ecologia, a captura-recaptura. Imagine contar os peixes de um lago. Você pesca 50, marca todos e devolve à água; dias depois, pesca 40 e encontra 10 marcados. Se um quarto da segunda pescaria tinha marca, os 50 marcados devem ser um quarto do lago, que teria uns 200 peixes. A conta é o estimador de Lincoln-Petersen, N ≈ (n1 × n2) / m, em que n1 e n2 são as duas amostras e m é o que aparece nas duas.
+
+Lionel Briand e colegas avaliaram modelos de captura-recaptura em inspeções de documentos de software, com cada inspetor no papel de uma pescaria e cada defeito no de um peixe (Briand et al., 2000). A precisão dependia do número de inspetores, e com poucos a subestimação podia ser grande. No time, autor e testador são as duas pescarias:
+
+1. Num mesmo recurso, autor e testador registram separadamente os defeitos que encontraram.
+2. Os dois combinam quando dois registros são o mesmo defeito e contam os comuns.
+3. O time calcula a estimativa a cada entrega e acompanha a proporção de comuns.
+
+Com números ilustrativos: se Rafael achou 12 defeitos, Lívia achou 9 e 3 eram os mesmos, a estimativa é 12 × 9 / 3 = 36, dos quais o time viu 18. Com só duas pessoas, o número tende a ficar abaixo do real, pelo que Briand e colegas encontraram. Há também o motivo de Knight e Leveson, já que a fórmula supõe amostras independentes. Quando autor e testador leem a mesma fonte, acham os mesmos defeitos, m cresce e a estimativa encolhe, justamente quando a independência é mais fraca. A proporção de comuns, portanto, já é um sinal: uma testadora que acha quase só o que o autor achou provavelmente olha com os olhos dele.
+
+## O que este argumento não prova
+
+A tarefa 2-4-6 é um experimento de laboratório com números abstratos e não prova, sozinha, que todo desenvolvedor testa assim. Os estudos de Teasley, Leventhal e colegas observaram participantes em condições controladas, longe de um time de produto. Nenhuma das fontes mede se a independência organizacional reduz os defeitos que escapam para produção. Elas sustentam o mecanismo, e a contagem acima serve para cada time juntar a própria evidência.
+
+## De volta aos descontos
+
+Rafael tinha testes, e Lívia ajudou porque sabia algo que ele não sabia. Quem escreve o código testa a própria hipótese, e outra pessoa acha bugs quando chega com outra hipótese, mas deixa de achar quando bebe da mesma fonte. Na hora de decidir quem testa o quê, a pergunta útil é o que essa pessoa sabe que o autor não sabe.
+
+---
+
+## Referências Bibliográficas
+
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+BRIAND, L. C.; EL EMAM, K.; FREIMUT, B. G.; LAITENBERGER, O. A comprehensive evaluation of capture-recapture models for estimating software defect content. _IEEE Transactions on Software Engineering_, v. 26, n. 6, p. 518-540, 2000. DOI: [10.1109/32.852741](https://doi.org/10.1109/32.852741).
+
+</Referencia>
+
+<Referencia tipo="Referência">
+
+INTERNATIONAL SOFTWARE TESTING QUALIFICATIONS BOARD (ISTQB). _Certified Tester Foundation Level Syllabus_, v4.0. 2023. Seção 1.5.3 Independence of Testing. Disponível em: [https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+KLAYMAN, J.; HA, Y.-W. Confirmation, disconfirmation, and information in hypothesis testing. _Psychological Review_, v. 94, n. 2, p. 211-228, 1987. DOI: [10.1037/0033-295X.94.2.211](https://doi.org/10.1037/0033-295X.94.2.211).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+KNIGHT, J. C.; LEVESON, N. G. An experimental evaluation of the assumption of independence in multiversion programming. _IEEE Transactions on Software Engineering_, v. SE-12, n. 1, p. 96-109, 1986. DOI: [10.1109/TSE.1986.6312924](https://doi.org/10.1109/TSE.1986.6312924).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+LEVENTHAL, L. M.; TEASLEY, B. E.; ROHLMAN, D. S. Analyses of factors related to positive test bias in software testing. _International Journal of Human-Computer Studies_, v. 41, n. 5, p. 717-749, 1994. DOI: [10.1006/ijhc.1994.1079](https://doi.org/10.1006/ijhc.1994.1079).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+NICKERSON, R. S. Confirmation bias: a ubiquitous phenomenon in many guises. _Review of General Psychology_, v. 2, n. 2, p. 175-220, 1998. DOI: [10.1037/1089-2680.2.2.175](https://doi.org/10.1037/1089-2680.2.2.175).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+TEASLEY, B. E.; LEVENTHAL, L. M.; MYNATT, C. R.; ROHLMAN, D. S. Why software testing is sometimes ineffective: two applied studies of positive test strategy. _Journal of Applied Psychology_, v. 79, n. 1, p. 142-155, 1994. DOI: [10.1037/0021-9010.79.1.142](https://doi.org/10.1037/0021-9010.79.1.142).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+WASON, P. C. On the failure to eliminate hypotheses in a conceptual task. _Quarterly Journal of Experimental Psychology_, v. 12, n. 3, p. 129-140, 1960. DOI: [10.1080/17470216008416717](https://doi.org/10.1080/17470216008416717).
+
+</Referencia>
+
+</Referencias>

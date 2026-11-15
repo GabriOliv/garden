@@ -1,0 +1,172 @@
+---
+sidebar_position: 27
+title: Testes Flaky, Alarmes Falsos e a Calibração da Confiança
+description: Por que clicar em "rodar de novo" num build vermelho costuma ser a decisão certa, em que situação ela deixa passar um defeito real e o que mudar no CI para enxergar a diferença.
+tags: [stageA, notes, qa, theory, flaky_tests, nocebo_effect, confidence, testing, false_alarm, trust_calibration]
+draft: false
+---
+
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
+# Testes Flaky, Alarmes Falsos e a Calibração da Confiança
+
+_Um alarme que erra muito ensina a ignorá-lo, inclusive no dia em que ele acerta_
+
+{frontMatter.description}
+
+---
+
+## Sexta-feira, quatro e meia da tarde
+
+Na sexta, às quatro e meia da tarde, Marina abre um _pull request_ que muda a validação de CEP no cadastro. A revisão já foi aprovada e só falta o _build_ da integração contínua (CI), o processo que compila o código e roda os testes automáticos a cada mudança. O _build_ volta vermelho. Falhou o teste `total_do_carrinho_com_cupom`: total esperado de 90 reais, obtido de 80. Marina não mexeu em carrinho nem em cupom.
+
+Ela clica em "rodar de novo". Doze minutos depois o _build_ está verde, ela faz o _merge_ e vai para casa.
+
+Três semanas depois, o financeiro percebe pedidos com o desconto do cupom aplicado duas vezes. A causa é uma condição de corrida, em que duas partes do sistema alteram o mesmo dado ao mesmo tempo e o resultado depende de qual termina primeiro. Aqui eram o serviço de cupons e o recálculo do carrinho, numa mudança que outra pessoa tinha integrado dias antes. No histórico do CI, alguém encontra o vermelho de Marina, com os mesmos 80 reais no lugar dos 90. O teste tinha visto o defeito semanas antes de qualquer cliente, e a segunda execução apagou o aviso.
+
+## Ninguém errou de um jeito óbvio
+
+A análise do incidente não acha culpado. Aquele teste já tinha ficado vermelho várias vezes, quase sempre por tempo de espera estourado no simulador de pagamentos, e em todas elas a segunda execução passou sem mudança no código. No canal do time, "esse aí é flaky, roda de novo" aparecia toda semana, dito por gente experiente e confirmado pelos fatos. Naquela sexta a mensagem era outra, uma diferença de valores em vez de um tempo estourado, mas ninguém no time lia mais as mensagens daquele teste.
+
+O reflexo que deixou o defeito passar é o mesmo que, nas outras vezes, economizou horas. Daí a pergunta: clicar em "rodar de novo" sem pensar é preguiça, é sensatez ou é perigo? A resposta começa pelo que é um teste flaky.
+
+## O teste que muda de ideia
+
+Um teste _flaky_ (instável) passa e falha sobre o mesmo código, sem que nada mude entre uma execução e outra. O teste do carrinho é um exemplo: passava quase sempre e, de vez em quando, estourava o tempo porque o simulador demorou a responder.
+
+Num dos primeiros estudos grandes sobre o assunto, Luo et al. (2014) leram 201 _commits_ que corrigiam testes flaky em 51 projetos de código aberto da fundação Apache. A causa mais comum foi a espera assíncrona, quando o teste confere o resultado de uma operação antes de ela terminar, como olhar a caixa de entrada enquanto o e-mail ainda está sendo enviado. Depois vieram a concorrência, em que duas tarefas disputam o mesmo recurso, e a dependência de ordem, em que um teste só passa se outro rodou antes e deixou o banco no estado certo.
+
+John Micco mostrou o tamanho do problema no blog de testes do Google (Micco, 2016). Quase 16% dos testes tinham algum grau de instabilidade, e 84% das transições observadas de passar para falhar envolviam um teste flaky. Para ver o que esse ruído faz com quem lê o resultado, vale olhar para quem convive com alarmes há décadas.
+
+## O build como alarme
+
+O _build_ vermelho é um alarme, e todo alarme erra de dois jeitos. O falso positivo toca sem motivo, como o teste do carrinho nos dias em que o simulador atrasou. O falso negativo fica quieto quando havia motivo, como um _build_ verde sobre código com defeito.
+
+A área de fatores humanos, que estuda como pessoas trabalham com máquinas, se ocupa desses dois erros há décadas em cabines de avião, salas de controle de usinas e UTIs. Em 1997, Raja Parasuraman e Victor Riley chamaram de _disuse_ (desuso) o caso em que o operador passa a ignorar ou desligar um sistema automático, e apontaram o alarme falso como causa frequente: depois de muitos avisos sem motivo, o operador aprende que o aviso não vale a interrupção (Parasuraman; Riley, 1997).
+
+Eles notaram também que quem projeta um alarme costuma ignorar a taxa-base do evento, isto é, com que frequência o problema procurado acontece de verdade. Quando o evento é raro, até um bom detector dá mais alarmes falsos que verdadeiros, como o detector de fumaça que toca centenas de vezes por torrada queimada numa casa que pega fogo uma vez em décadas.
+
+Nos hospitais, o fenômeno ganhou nome próprio. Maria Cvach revisou 72 artigos sobre alarmes de monitores clínicos e reuniu as evidências sob o nome de fadiga de alarme: equipes expostas a muitos alarmes falsos se dessensibilizam (Cvach, 2012). A enfermeira aprende o que o monitor costuma querer dizer, como Marina aprendeu com aquele teste, e esse aprendizado tem uma conta por trás.
+
+## Quanto vale um vermelho
+
+A conta se chama valor preditivo positivo, ou VPP, e vem da avaliação de exames médicos: dos exames que dão positivo, em quantos a pessoa tem mesmo a doença? No CI, a pergunta é quantos _builds_ vermelhos tinham um defeito de verdade.
+
+Com números inventados, só para ilustrar, imagine 1000 execuções de um teste, 30 delas sobre código com defeito real. O teste é bom e pega 28 desses 30. Nas 970 execuções sem defeito, ele fica vermelho por instabilidade em 5% das vezes, cerca de 49 vermelhos espúrios. O time vê 77 vermelhos, só 28 apontam defeito, e o VPP fica perto de 36%. Quase dois em cada três vermelhos (49 de 77, cerca de 64%) não indicam defeito nenhum. Mudando só a instabilidade, o VPP cai depressa:
+
+| Espúrio nas 970 sem defeito | Vermelhos espúrios | Total de vermelhos | VPP |
+| :-- | --: | --: | --: |
+| 1% | cerca de 10 | cerca de 38 | cerca de 74% |
+| 5% | cerca de 49 | cerca de 77 | cerca de 36% |
+| 10% | cerca de 97 | cerca de 125 | cerca de 22% |
+
+O teste pega 28 de 30 em todas as linhas, e só o significado do vermelho muda: com 1% de instabilidade ele é motivo forte para parar, e com 10% a aposta mais segura é que seja ruído. Um defeito determinístico, que falha toda vez, falha de novo na segunda execução, então ela só engana quando o próprio defeito é intermitente, como a condição de corrida do cupom, ou quando alguém repete até passar.
+
+## Confiar o quanto o sistema merece
+
+John Lee e Katrina See, da mesma área, deram nome ao que Marina faz quando clica em "rodar de novo". Numa revisão, eles defenderam que a confiança na automação seja calibrada, ou seja, ajustada à capacidade real do sistema (Lee; See, 2004). Acima da capacidade, a pessoa aceita os erros da máquina; abaixo, descarta um sistema que funcionaria.
+
+O _retry_ (a nova execução do mesmo _build_) num teste com VPP de 36% é a resposta calibrada. Se dois de cada três vermelhos são ruído, rodar de novo é um exame barato: o defeito determinístico falha outra vez e o ruído some. Na maior parte das vezes o clique é sensato: é a conta da tabela feita de cabeça.
+
+O preço aparece no falso negativo. Quando a segunda execução passa, o primeiro vermelho some de vista, e um defeito intermitente que o teste tinha visto vira um _build_ verde. Parry et al. (2022) analisaram 170 respostas a um questionário com desenvolvedores e 38 discussões do Stack Overflow e encontraram esse padrão: quem convive mais com testes flaky tende a ignorar falhas que podem ser genuínas. A calibração acerta na média, e o defeito do cupom era o caso raro.
+
+O alarme falso cobra ainda outro preço. No experimento de Dixon, Wickens e McCarley (2007), participantes faziam uma tarefa simulada com um alerta automático cujo tipo de erro variava, e os autores mediram duas formas de confiar: a obediência (_compliance_), que é agir quando o alarme toca, e a dependência (_reliance_), que é seguir tranquilo quando ele fica quieto. O alerta propenso a alarmes falsos prejudicou as duas, e o propenso a omissões prejudicou só a dependência. Para o CI, isso sugere que um teste que grita à toa faz mais estrago que um que às vezes deixa passar.
+
+## Sobra alguma desconfiança?
+
+Resta uma dúvida, e ela volta ao canal do time onde "esse aí é flaky, roda de novo" circulava toda semana. A medicina estuda algo parecido com o que essa frase talvez faça.
+
+O efeito nocebo é o avesso do placebo: em vez de melhorar porque espera melhorar, a pessoa sente um sintoma, ou sente mais, porque espera passar mal. Fabrizio Benedetti e colegas revisaram os mecanismos do nocebo a partir sobretudo de experimentos de dor em laboratório, em que a sugestão verbal de que um estímulo vai doer aumenta a dor relatada (Benedetti et al., 2007).
+
+Um caso clínico muito citado vem das estatinas, remédios para colesterol que muita gente abandona por dor muscular. Gupta et al. (2017) analisaram o estudo ASCOT-LLA, cuja primeira fase foi cega: os pacientes tomavam atorvastatina ou placebo sem saber qual, e as queixas musculares foram iguais nos dois grupos. Na fase seguinte, aberta e sem sorteio, cada paciente sabia se tomava a estatina, e só então apareceu um excesso de queixas entre quem tomava, que os autores interpretaram como nocebo.
+
+Quando um sênior diz a um júnior "ignora, é flaky", passa uma informação que quase sempre está certa, mas que chega antes de o júnior ter o próprio histórico com aquele teste. Essa frase deixa uma desconfiança maior do que o histórico justifica? Ninguém mediu isso em times de software, mas o próprio CI tem os dados para medir.
+
+O histórico mostra a taxa real de instabilidade de cada teste (em quantas execuções sobre o mesmo código o resultado mudou) e a latência de investigação, o tempo entre um vermelho e alguém abrir o log. Se o time demora o mesmo tanto para olhar um teste que falha à toa uma vez em quinhentas e um que falha uma vez em cinco, há desconfiança sobrando. Se a demora acompanha a taxa, a confiança está calibrada e não há nocebo para tratar.
+
+## O que mudar no CI
+
+Quatro mudanças impedem que um vermelho como o de sexta-feira suma sem deixar registro.
+
+1. Ponha cada teste instável em quarentena, com dono e prazo: ele sai do caminho que bloqueia o _merge_, mas continua rodando, e o ruído para de treinar o time a ignorar o vermelho.
+2. Mostre a taxa de instabilidade de cada teste ao lado do resultado, para que se saiba se aquele vermelho pede parada ou só um _retry_.
+3. Limite os _retries_ automáticos, em geral a um, e registre cada um, para que ninguém repita até passar sem deixar rastro.
+4. Guarde o vermelho que passou no _retry_, com a mensagem de erro, na estatística do teste. Alguém precisa olhar quando ele aparece num teste estável ou quando um teste instável falha de um jeito novo, como uma diferença de valores no lugar do tempo estourado.
+
+Os próprios desenvolvedores pedem esse histórico: os 335 profissionais ouvidos por Gruber e Fraser (2022) puseram a perda de confiança e de tempo entre os piores efeitos dos testes flaky e pediram visualizações do histórico de resultados de cada teste.
+
+## Os limites desse raciocínio
+
+Os números da tabela servem para mostrar o mecanismo, e o VPP do seu CI só sai do seu histórico. As pesquisas sobre testes flaky analisam correções e questionários, e nenhuma mediu quantos defeitos reais o _retry_ deixa passar. Os estudos de fatores humanos vêm de cabines, hospitais e laboratórios, e levá-los ao CI é uma analogia que ninguém testou diretamente.
+
+## De volta à sexta-feira
+
+Marina não foi preguiçosa. Com o histórico daquele teste, o clique era a aposta certa. O perigo foi a segunda execução apagar o único registro de que um teste que costumava falhar por tempo de espera tinha falhado, dessa vez, com um valor errado. Num CI que conta _retries_ e guarda cada falha com sua mensagem, a diferença entre 80 e 90 reais teria chamado a atenção de alguém antes do financeiro. Rodar de novo é sensato quando o histórico do teste justifica e vira perigo quando ninguém mais consegue ver o que o primeiro vermelho dizia. O conserto é fazer o CI lembrar daquilo que as pessoas, com razão, deixaram de olhar.
+
+---
+
+## Referências Bibliográficas
+
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+BENEDETTI, F. et al. When words are painful: Unraveling the mechanisms of the nocebo effect. _Neuroscience_, v. 147, n. 2, p. 260-271, 2007. DOI: 10.1016/j.neuroscience.2007.02.020.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+CVACH, M. Monitor alarm fatigue: an integrative review. _Biomedical Instrumentation & Technology_, v. 46, n. 4, p. 268-277, jul./ago. 2012. DOI: 10.2345/0899-8205-46.4.268.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+DIXON, S. R.; WICKENS, C. D.; MCCARLEY, J. S. On the independence of compliance and reliance: are automation false alarms worse than misses? _Human Factors_, v. 49, n. 4, p. 564-572, 2007. DOI: 10.1518/001872007X215656.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+GRUBER, M.; FRASER, G. A survey on how test flakiness affects developers and what support they need to address it. In: IEEE CONFERENCE ON SOFTWARE TESTING, VERIFICATION AND VALIDATION (ICST), 2022. _Anais_ [...], p. 82-92. DOI: 10.1109/ICST53961.2022.00020. Disponível também em: https://arxiv.org/abs/2203.00483.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+GUPTA, A. et al. Adverse events associated with unblinded, but not with blinded, statin therapy in the Anglo-Scandinavian Cardiac Outcomes Trial-Lipid-Lowering Arm (ASCOT-LLA): a randomised double-blind placebo-controlled trial and its non-randomised non-blind extension phase. _The Lancet_, v. 389, n. 10088, p. 2473-2481, 2017. DOI: 10.1016/S0140-6736(17)31075-9.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+LEE, J. D.; SEE, K. A. Trust in automation: designing for appropriate reliance. _Human Factors_, v. 46, n. 1, p. 50-80, 2004. DOI: 10.1518/hfes.46.1.50_30392.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+LUO, Q. et al. An empirical analysis of flaky tests. In: FSE, 22., 2014. _Anais_ [...], p. 643-653. DOI: 10.1145/2635868.2635920.
+
+</Referencia>
+
+<Referencia tipo="Referência">
+
+MICCO, J. Flaky tests at Google and how we mitigate them. _Google Testing Blog_, 27 maio 2016. Disponível em: https://testing.googleblog.com/2016/05/flaky-tests-at-google-and-how-we.html. Acesso em: 14 nov. 2026.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+PARASURAMAN, R.; RILEY, V. Humans and automation: use, misuse, disuse, abuse. _Human Factors_, v. 39, n. 2, p. 230-253, 1997. DOI: 10.1518/001872097778543886.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+PARRY, O. et al. Surveying the developer experience of flaky tests. In: ICSE-SEIP, 2022. _Anais_ [...], p. 253-262. DOI: 10.1145/3510457.3513037.
+
+</Referencia>
+
+</Referencias>

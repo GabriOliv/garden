@@ -1,0 +1,170 @@
+---
+sidebar_position: 36
+title: A Suite Vermelha que Ninguém Conserta
+description: Se qualquer pessoa do time conserta um teste vermelho assim que o vê, como uma suite chega a duzentas falhas que ninguém mais olha?
+tags:
+  [
+    stageA,
+    notes,
+    qa,
+    theory,
+    zeigarnik_effect,
+    test_suite,
+    cognitive_overload,
+    paralysis,
+    alarm_fatigue,
+    normalization_of_deviance,
+    bystander_effect,
+  ]
+draft: false
+---
+
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
+# A Suite Vermelha que Ninguém Conserta
+
+_Zeigarnik explica o incômodo do primeiro teste vermelho, mas não o silêncio diante do ducentésimo_
+
+{frontMatter.description}
+
+---
+
+## Duzentos e doze testes vermelhos
+
+Imagine a Júlia no primeiro dia num time novo. Ela abre a página da integração contínua (a _CI_, o servidor que roda a suite de testes automatizados a cada mudança enviada ao repositório) e encontra 212 testes falhando num total de uns três mil. Os números são inventados, mas quem herdou uma suite antiga reconhece a ordem de grandeza. Ela pergunta no canal se aqueles testes deveriam estar passando e recebe três respostas: "esses aí já estavam assim quando eu cheguei", "acho que é problema de ambiente" e "tem uma tarefa aberta sobre isso em algum lugar".
+
+Na quinta-feira, uma mudança no cálculo de frete quebra um teste que passava. O contador vai a 213, a página continua do mesmo vermelho e ninguém comenta. O defeito chega à produção, e só quando alguém investiga a reclamação de um cliente se descobre que um teste avisou nove dias antes.
+
+Ninguém naquele time é desleixado. Mostre a qualquer uma daquelas pessoas um único teste vermelho num projeto limpo e ela vai parar o que está fazendo para entender o que houve, porque um teste quebrado incomoda. Fica a pergunta que a Júlia não fez em voz alta: como um time em que todo mundo se incomoda com um teste vermelho deixa a conta chegar a 213? A explicação popular para esse incômodo começa num restaurante de Berlim.
+
+## O garçom que só lembrava das contas abertas
+
+Conta-se que, nos anos 1920, o psicólogo Kurt Lewin e seus alunos frequentavam um restaurante de Berlim e repararam num garçom que guardava de cabeça os pedidos de todas as mesas. Depois de paga a conta, ele já não lembrava o que o cliente tinha pedido. A memória parecia durar enquanto a conta estava aberta, e foi essa a pergunta que Bluma Zeigarnik, aluna de Lewin, levou ao laboratório.
+
+Zeigarnik (1927) deu aos participantes uma série de tarefas curtas, interrompeu algumas antes do fim e deixou as outras serem concluídas. Depois pediu que cada um contasse de quais se lembrava. As interrompidas apareciam com mais frequência na lembrança, e o resultado ficou conhecido como efeito Zeigarnik: o que ficou pela metade gruda na memória. Lewin (1935) leu o achado como tensão psicológica. Começar uma tarefa criaria uma tensão interna que só se desfaz quando ela termina, e até lá a tarefa continua ativa na cabeça.
+
+A imagem seduz quem olha uma suite vermelha: cada teste falhando seria uma conta aberta na cabeça de cada pessoa, e duzentas contas pesariam tanto que o jeito seria parar de olhar. Ghibellini e Meier (2025) puseram essa base à prova numa meta-análise, um estudo que junta os resultados de muitos experimentos para estimar o efeito médio, e não encontraram vantagem consistente de memória para tarefas inacabadas. O que se sustentou foi outro fenômeno, estudado por Maria Ovsiankina, colega de Zeigarnik no grupo de Lewin: a tendência de voltar a uma tarefa interrompida quando surge a chance, mesmo sem ninguém pedir.
+
+O efeito Ovsiankina descreve bem o incômodo do primeiro teste vermelho, a vontade de retomar o que ficou quebrado, mas não explica um time que convive com 213 falhas. Para isso é preciso olhar o que acontece com o vermelho ao longo dos meses.
+
+## Como o vermelho vira normal
+
+Em 28 de janeiro de 1986, o ônibus espacial Challenger se desintegrou pouco mais de um minuto depois do lançamento. A falha estava nos anéis de vedação das juntas dos foguetes auxiliares, e a socióloga Diane Vaughan passou anos reconstruindo como a NASA chegou a autorizar aquele voo. Vaughan (1996) mostrou que os engenheiros já tinham encontrado erosão nesses anéis em voos anteriores, e que a cada vez que o problema aparecia e o ônibus voltava inteiro, a erosão era discutida, explicada e incorporada um pouco mais à faixa do aceitável. Ela chamou isso de normalização do desvio: uma anomalia repetida que não causa desastre imediato vai sendo redefinida, decisão a decisão, como risco aceitável.
+
+Uma suite faz o mesmo caminho em escala menor. O primeiro teste que falha sem motivo claro ganha uma investigação, e quando ela não leva a nada e o _deploy_ (a publicação da versão nova) sai sem problema, o teste ganha o rótulo de "falha conhecida". Depois alguém marca outro com `@Ignore`, a anotação que faz o _framework_ pular aquele caso, para destravar uma entrega urgente. Com o tempo o time chama de "verde" o _build_ (a execução completa da CI para uma mudança) em que falham só os testes de sempre, e a definição de verde muda sem que ninguém decida mudá-la.
+
+Assim o teste do frete se perdeu: quebrou numa página em que vermelho já significava normal. Mesmo quem nunca rotulou falha nenhuma sofre um segundo desgaste, o da repetição do próprio alarme.
+
+## O alarme que toca o tempo todo
+
+Hospitais conhecem esse desgaste de perto. Numa UTI, cada paciente fica ligado a monitores que apitam quando a frequência cardíaca, a saturação ou a pressão saem de uma faixa, e muitos apitos não pedem ação nenhuma. Cvach (2012) revisou 72 artigos sobre esses monitores e descreveu a fadiga de alarme: a equipe passa a responder menos porque os alarmes são tantos que produzem sobrecarga sensorial e, com o tempo, dessensibilização. Nenhuma enfermeira decide ignorar o monitor: a reação diminui porque o som quase nunca queria dizer nada, e o alarme de verdade soa igual aos outros.
+
+Um painel de CI vermelho há semanas é um monitor que apita sem parar. A notificação de build quebrado chega todo dia e fala sempre dos mesmos testes, então as pessoas aprendem que ela não traz novidade e passam a filtrá-la, às vezes com uma regra na caixa de entrada. A normalização do desvio muda o que o time aceita, e a fadiga de alarme muda o que cada pessoa percebe. Juntas explicam por que o vermelho virou paisagem, mas não por que nenhuma das pessoas incomodadas vai lá e conserta.
+
+## O vermelho que é de todos
+
+Em 1968, John Darley e Bibb Latané puseram cada participante sozinho numa sala, conversando com outros estudantes por um interfone. No meio da conversa, uma das vozes parecia ter uma crise convulsiva e pedia socorro. Darley e Latané (1968) variaram apenas quantas pessoas o participante achava que estavam ouvindo, e quem acreditava ser o único saía para ajudar com muito mais frequência, e mais depressa, do que quem acreditava haver outros na linha. Os autores chamaram o mecanismo de difusão de responsabilidade: quando a obrigação de agir se divide entre muitos, cada um sente só uma fração dela e supõe que outra pessoa já está cuidando.
+
+O fenômeno ficou conhecido como efeito espectador, em que a presença de outras testemunhas reduz a chance de alguém intervir. Fischer et al. (2011) reuniram décadas desses estudos numa meta-análise e confirmaram o efeito, modesto e consistente. Acharam também que, quando a situação é claramente perigosa, o efeito fica menor, embora não se inverta, e é na situação ambígua que cada um mais espera pelo outro.
+
+Um teste vermelho numa suite compartilhada é uma emergência ambígua: não derruba a produção na hora, está à vista de todo o time e não traz o nome de ninguém. A Júlia perguntou no canal, ou seja, a um grupo, e cada pessoa que leu pôde supor que outra saberia responder. O incômodo de Ovsiankina estava em cada uma delas, mas nenhuma tinha aquele teste como problema seu.
+
+Pelo mesmo raciocínio, cinquenta testes quebrados por uma causa só, como um serviço de pagamento fora do ar no ambiente de testes, tendem a ser consertados rápido: viram um problema único com cara de emergência e alguém assume. Cinquenta falhas soltas, cada uma com causa própria, viram cinquenta ambiguidades esperando alguém dizer "isso é comigo".
+
+<figure>
+	<figcaption className="text--center">Como uma falha nova se perde numa suite sem dono</figcaption>
+
+    ```mermaid
+    	flowchart LR
+    	a["Teste quebra"] --> b{"Tem dono?"}
+    	b -- "não" --> c["Fica no painel geral"]
+    	c --> d["Vira falha conhecida"]
+    	d --> e["Painel sempre vermelho"]
+    	e --> f["Alarme perde o sentido"]
+    	f --> a
+    	b -- "sim" --> g["Dono é avisado e corrige ou põe em quarentena"]
+    ```
+
+</figure>
+
+## Dar dono ao vermelho
+
+Se o que falta é dono, o primeiro passo é cada teste ter um responsável conhecido antes de quebrar. No GitHub ou no GitLab, o jeito mais simples é o arquivo `CODEOWNERS`, uma lista que associa pastas e arquivos a pessoas ou equipes. A plataforma a usa para pedir a revisão dos donos a cada mudança naqueles arquivos, e a CI pode usá-la para avisar quem cuida de um teste que falhou. O alarme sai do canal geral e chega a uma pessoa com nome, condição em que o participante de Darley e Latané se levantava para ajudar.
+
+O dono cuida da falha nova, mas alguém precisa olhar o build inteiro. Em times grandes circula a figura do _build cop_ (ou _build sheriff_), uma pessoa que durante uma semana responde pela saúde da suite: olha cada falha nova no mesmo dia, descobre de quem é, abre a tarefa para o dono ou reverte a mudança que quebrou. A função roda pelo time, e ninguém carrega a vigilância para sempre.
+
+Para os testes que já estão vermelhos, a saída é a quarentena: tirar o teste do conjunto que bloqueia a entrega e levá-lo para um conjunto separado, que continua rodando mas não trava ninguém. Sem regra, a quarentena vira um `@Ignore` com outro nome. Por isso cada teste entra nela com dono, prazo e critério de saída escrito, como "volta depois de vinte execuções seguidas sem falhar" ou "é apagado se ninguém consertar em trinta dias", números que cada time ajusta. O critério obriga alguém a decidir, numa data marcada, se o teste volta ou morre.
+
+Por fim, o estoque antigo precisa de ritmo. Um orçamento fixo de correção por ciclo, como reservar em cada _sprint_ um número pequeno e combinado de testes da quarentena para consertar ou apagar, transforma a pilha de 212 numa fila que anda. Um estudo de laboratório sugere que isso alivia também o incômodo. Masicampo e Baumeister (2011) viram que metas importantes não cumpridas geravam pensamentos intrusivos e pioravam o desempenho numa tarefa seguinte, e que o efeito sumia quando a pessoa fazia um plano específico de como e quando cumprir a meta, mesmo sem cumpri-la. É um estudo único, sem replicação independente, mas indica que a tarefa aberta pesa menos quando tem data e responsável.
+
+## Como saber se funcionou
+
+A medida mais direta é o tempo entre um teste quebrar e alguém consertá-lo ou colocá-lo em quarentena com dono. Se a base tiver muitos módulos, dá para atribuir dono primeiro a metade deles e à outra metade um mês depois. Nesse mês as duas rodam na mesma CI, com as mesmas pessoas, e a diferença no tempo de correção mostra quanto o dono pesa naquele time. Vale olhar também quantas falhas novas são resolvidas na mesma semana.
+
+Se o time topar, dá para injetar uma falha. Todos combinam que, nos meses seguintes, alguém vai quebrar de propósito um teste, sem anunciar qual nem quando, e anotar quanto tempo passa até alguém perceber. No caso do teste do frete, esse tempo foi de nove dias. O acordo prévio importa: um experimento escondido corrói a confiança no alarme que o time quer recuperar.
+
+## Até onde esse raciocínio vai
+
+Nenhum dos estudos usados aqui foi feito com times de software. Vaughan estudou uma organização de engenharia diante de risco de vida, Cvach revisou pesquisas com equipes clínicas e os experimentos de espectador põem desconhecidos diante de uma emergência, enquanto um time convive com colegas e com falhas raramente urgentes. A cadeia que liga esses achados à suite vermelha é uma analogia, coerente com o que se vê em projetos reais, mas não testada diretamente, e o estudo sobre planos é um só. Por isso as práticas valem o que as medições do próprio time mostrarem.
+
+## De volta à pergunta da Júlia
+
+A Júlia perguntou se aqueles testes deveriam estar passando, e ninguém respondeu porque a pergunta não tinha destinatário. Os 212 testes não ficaram vermelhos por excesso de tarefas abertas na cabeça de cada pessoa. Cada falha foi virando "conhecida" aos poucos e o painel apitou até ninguém mais ouvir. Como o vermelho era de todos, ninguém o tomou para si.
+
+Num time com dono por teste e um build cop na semana, o teste do frete teria gerado, na quinta-feira, uma mensagem para uma pessoa com nome, separada das falhas antigas. A pergunta da Júlia também teria resposta, porque cada um dos 212 estaria na quarentena com prazo ou na fila de alguém. O incômodo que Zeigarnik e Ovsiankina estudaram continua em cada pessoa do time, e o dono é quem dá a ele um lugar para virar correção.
+
+---
+
+## Referências Bibliográficas
+
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+CVACH, M. Monitor alarm fatigue: an integrative review. _Biomedical Instrumentation & Technology_, v. 46, n. 4, p. 268-277, 2012. DOI: [10.2345/0899-8205-46.4.268](https://doi.org/10.2345/0899-8205-46.4.268).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+DARLEY, J. M.; LATANÉ, B. Bystander intervention in emergencies: diffusion of responsibility. _Journal of Personality and Social Psychology_, v. 8, n. 4, p. 377-383, 1968. DOI: [10.1037/h0025589](https://doi.org/10.1037/h0025589).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+FISCHER, P. et al. The bystander-effect: a meta-analytic review on bystander intervention in dangerous and non-dangerous emergencies. _Psychological Bulletin_, v. 137, n. 4, p. 517-537, 2011. DOI: [10.1037/a0023304](https://doi.org/10.1037/a0023304).
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+GHIBELLINI, R.; MEIER, B. Interruption, recall and resumption: a meta-analysis of the Zeigarnik and Ovsiankina effects. _Humanities and Social Sciences Communications_, v. 12, n. 1, art. 962, 2025. DOI: [10.1057/s41599-025-05000-w](https://doi.org/10.1057/s41599-025-05000-w).
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+LEWIN, K. _A dynamic theory of personality: selected papers_. Tradução de D. K. Adams e K. E. Zener. New York: McGraw-Hill, 1935. 286 p.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+MASICAMPO, E. J.; BAUMEISTER, R. F. Consider it done! Plan making can eliminate the cognitive effects of unfulfilled goals. _Journal of Personality and Social Psychology_, v. 101, n. 4, p. 667-683, 2011. DOI: [10.1037/a0024192](https://doi.org/10.1037/a0024192).
+
+</Referencia>
+
+<Referencia tipo="Livro">
+
+VAUGHAN, D. _The Challenger Launch Decision: Risky Technology, Culture, and Deviance at NASA_. Chicago: University of Chicago Press, 1996.
+
+</Referencia>
+
+<Referencia tipo="Artigo">
+
+ZEIGARNIK, B. Das Behalten erledigter und unerledigter Handlungen. _Psychologische Forschung_, v. 9, p. 1-85, 1927.
+
+</Referencia>
+
+</Referencias>
