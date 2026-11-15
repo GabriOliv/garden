@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="b-t b-d">
+  <title id="b-t">Estágio B · Broto — construção em proporção, estilo Dossier</title>
+  <desc id="b-d">Broto com duas folhas alternadas a 45°, cada uma lente de dois arcos R5. Versões finais em 48 e 16 pixels.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .frame { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .guide { fill: none; stroke: var(--ink-muted); stroke-width: .75; stroke-dasharray: 2 3; }
+    .guide-sig { fill: none; stroke: var(--signal); stroke-width: .75; stroke-dasharray: 2 3; }
+    .axis { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 4 3; }
+    .leader { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .art { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: miter; }
+    .art1 { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linejoin: miter; }
+    .sigart { fill: url(#b-hatch); stroke: var(--signal); stroke-width: 1.5; }
+    .sigart1 { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .fill { fill: var(--ink); }
+    .sigfill { fill: var(--signal); }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .cell { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+  </style>
+  <defs>
+    <pattern id="b-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="b-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#b-grid)"/>
+
+  <rect class="frame" x="28" y="52" width="128" height="128"/>
+  <circle class="guide" cx="92.4" cy="96" r="40"/>
+  <circle class="guide" cx="52" cy="136.4" r="40"/>
+  <line class="axis" x1="92" y1="136" x2="45.27" y2="89.27"/>
+  <circle class="guide" cx="132" cy="120.4" r="40"/>
+  <circle class="guide" cx="91.6" cy="80" r="40"/>
+  <line class="axis" x1="92" y1="120" x2="138.73" y2="73.27"/>
+  <line class="axis" x1="92" y1="61.6" x2="92" y2="183.2"/>
+  <line class="axis" x1="72.8" y1="136" x2="111.2" y2="136"/>
+  <line class="axis" x1="72.8" y1="120" x2="111.2" y2="120"/>
+  <line class="art" x1="92" y1="172" x2="92" y2="116"/>
+  <path class="art" d="M92 136 A40 40 0 0 1 52.4 96.4 A40 40 0 0 1 92 136 Z"/>
+  <path class="art" d="M92 120 A40 40 0 0 1 131.6 80.4 A40 40 0 0 1 92 120 Z"/>
+
+    <circle class="dot" cx="131.6" cy="80.4" r="1.6"/>
+  <polyline class="leader" points="131.6,80.4 144,68 176,68"/>
+  <text class="label small" x="180" y="71">45° · EIXO</text>
+  <circle class="dot" cx="172" cy="120.4" r="1.6"/>
+  <polyline class="leader" points="172,120.4 172.4,120 176,120"/>
+  <text class="label small" x="180" y="123">R5 · ARCO FOLHA</text>
+  <text class="label small muted" x="180" y="134">= R5 DO A</text>
+  <circle class="dot" cx="92" cy="136" r="1.6"/>
+  <polyline class="leader" points="92,136 112,156 176,156"/>
+  <text class="label small" x="180" y="159">Δ2 · ALTERNADAS</text>
+
+  <line class="soft" x1="290" y1="52" x2="290" y2="208"/>
+  <line class="art1" x1="322" y1="103" x2="322" y2="82"/>
+  <path class="art1" d="M322 89.5 A15 15 0 0 1 307.15 74.65 A15 15 0 0 1 322 89.5 Z"/>
+  <path class="art1" d="M322 83.5 A15 15 0 0 1 336.85 68.65 A15 15 0 0 1 322 83.5 Z"/>
+  <text class="label small muted mid" x="322" y="120">48 PX</text>
+  <line class="art1" x1="322" y1="149" x2="322" y2="142"/>
+  <path class="fill" d="M322 144.5 A5 5 0 0 1 317.05 139.55 A5 5 0 0 1 322 144.5 Z"/>
+  <path class="fill" d="M322 142.5 A5 5 0 0 1 326.95 137.55 A5 5 0 0 1 322 142.5 Z"/>
+  <text class="label small muted mid" x="322" y="164">16 PX</text>
+    <rect class="cell" x="301.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="304.5" y="204">A</text>
+  <rect class="sig" x="312" y="186" width="7" height="7"/>
+  <text class="label small mid" x="315.5" y="204">B</text>
+  <rect class="cell" x="323.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="326.5" y="204">C</text>
+  <rect class="cell" x="334.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="337.5" y="204">D</text>
+
+  <text class="label muted" x="14" y="24">ESTÁGIO B — BROTO</text>
+  <text class="label small muted end" x="346" y="24">MÓDULO 16 · R3 / R5</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+  <text class="label small muted end" x="346" y="226">02 / 04</text>
+</svg>
