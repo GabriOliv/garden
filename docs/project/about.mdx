@@ -6,6 +6,9 @@ tags: [stageA, projeto, garden]
 draft: false
 ---
 
+import {StageIcon} from '@gabrioliv/dossier';
+import {ptBR} from '@gabrioliv/dossier/locales/pt-BR';
+
 # Sobre o Projeto
 
 Objetivos, conceitos e organização do projeto.
@@ -52,9 +55,9 @@ Os conteúdos estão organizados em capítulos ou tópicos, seguindo uma evoluç
 
 | Status |  |
 | :---: | :--- |
-| <h1><code>🌱</code></h1> | Iniciais<br />Artigos em construção que começam a explorar um tema. |
-| <h1><code>🌿</code></h1> | Melhorados<br />Artigos que foram revisados e melhorados. |
-| <h1><code>🌲</code></h1> | Intermediários<br />Artigos que estão em um nível intermediário de revisão. |
-| <h1><code>🍎</code></h1> | Completos<br />Artigos que estão maduros e completos. |
+| <StageIcon stage="A" size="lg" labels={ptBR.StageIcon} /> | Iniciais<br />Artigos em construção que começam a explorar um tema. |
+| <StageIcon stage="B" size="lg" labels={ptBR.StageIcon} /> | Melhorados<br />Artigos que foram revisados e melhorados. |
+| <StageIcon stage="C" size="lg" labels={ptBR.StageIcon} /> | Intermediários<br />Artigos que estão em um nível intermediário de revisão. |
+| <StageIcon stage="D" size="lg" labels={ptBR.StageIcon} /> | Completos<br />Artigos que estão maduros e completos. |
 
 ---

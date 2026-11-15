@@ -29,34 +29,6 @@
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 } */
 
-/* Custom Colors */
-:root {
-	--ifm-color-primary: #3f3fd9;
-	--ifm-color-primary-dark: #2a2ad2;
-	--ifm-color-primary-darker: #2727c7;
-	--ifm-color-primary-darkest: #2020a4;
-	--ifm-color-primary-light: #5656de;
-	--ifm-color-primary-lighter: #6262e0;
-	--ifm-color-primary-lightest: #8585e7;
-	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-	--ifm-background-color: #f5f5f5;
-}
-
-[data-theme='dark'] {
-	--ifm-color-primary: #9a47ff;
-	--ifm-color-primary-dark: #8826ff;
-	--ifm-color-primary-darker: #7f16ff;
-	--ifm-color-primary-darkest: #6700e4;
-	--ifm-color-primary-light: #ac68ff;
-	--ifm-color-primary-lighter: #b578ff;
-	--ifm-color-primary-lightest: #d0a9ff;
-	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
-
-html[data-theme='dark'] {
-	background-color: #0D1117;	/* dark mode background */
-}
-
 /* Custom Footer */
 .footer--dark {
 	padding: 0px;	/* minimize footer */
@@ -65,10 +37,121 @@ html[data-theme='dark'] {
 .img-center {
 	display: flex;
 	justify-content: center;
-	width: 100%,
+	width: 100%;
+}
+
+/* Parágrafos dos artigos justificados. */
+html[data-theme] .markdown > p:not([class^="ds-"], [class*=" ds-"]) {
+	text-align: justify;
+}
+
+/* Parágrafos e listas na largura toda da coluna, sem a medida de 68ch do Dossier. */
+html[data-theme] .markdown > :is(p, ul, ol):not([class^="ds-"], [class*=" ds-"]) {
+	max-width: none;
+}
+
+/*
+ * Link com a aparência do Button do Dossier (`<Link className="ds-t-label ds-btn ds-btn-solid">`).
+ * As classes `.ds-btn` foram feitas para `<button>`: num `<a>` faltam o display,
+ * tirar o sublinhado e manter a cor no hover do Infima.
+ */
+a.ds-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--ds-space-2);
+	text-decoration: none;
+}
+a.ds-btn:hover {
+	text-decoration: none;
+}
+a.ds-btn.ds-btn-outline:hover {
+	color: var(--ds-btn-ink);
+}
+a.ds-btn.ds-btn-text:hover {
+	color: var(--ds-btn-accent);
+}
+a.ds-btn.ds-btn-solid:hover {
+	color: var(--ds-on-signal);
+}
+
+/* Seta de "vai para outra página": anda 4px no hover do link. */
+.link-arrow {
+	flex: none;
+	transition: transform 160ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+a:hover > .link-arrow {
+	transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+	.link-arrow {
+		transition: none;
+	}
 }
 
 [data-theme='light'] img[src$='#gh-dark-mode-only'],
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
+}
+
+/*
+ * SPEC_DEVIATION: classDef com var(--ds-*) nos artigos (tasks.md, T14)
+ * Reason: o Mermaid rejeita var() em `classDef` e o diagrama deixa de renderizar;
+ * caminho aprovado pelo usuário: os artigos só marcam o nó (`:::classe`) e a cor sai daqui.
+ * Cores dos diagramas Mermaid (DIAG-04).
+ * Cada classe: fundo, traço e texto da tabela "Mapa de cores dos diagramas".
+ */
+.docusaurus-mermaid-container .node :is(rect, path, polygon),
+.docusaurus-mermaid-container .cluster.error rect {
+	fill: var(--ds-panel) !important;
+	stroke: var(--ds-ink) !important;
+}
+.docusaurus-mermaid-container .node :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container .node.gra :is(rect, path, polygon) {
+	fill: var(--ds-paper) !important;
+}
+.docusaurus-mermaid-container .node.yel :is(rect, path, polygon) {
+	fill: var(--ds-panel) !important;
+}
+.docusaurus-mermaid-container .node.ora :is(rect, path, polygon) {
+	fill: var(--ds-ink-muted) !important;
+}
+.docusaurus-mermaid-container .node.ora :is(span, p, .nodeLabel) {
+	color: var(--ds-paper) !important;
+}
+.docusaurus-mermaid-container .node.red :is(rect, path, polygon) {
+	fill: var(--ds-inverse) !important;
+}
+.docusaurus-mermaid-container .node.red :is(span, p, .nodeLabel) {
+	color: var(--ds-on-inverse) !important;
+}
+
+.docusaurus-mermaid-container .cluster.error rect {
+	fill: var(--ds-paper) !important;
+	stroke: var(--ds-contrast-error) !important;
+	stroke-width: 2px !important;
+}
+.docusaurus-mermaid-container .cluster.error :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container :is(.node.green, .node.ctal) :is(rect, path, polygon) {
+	fill: var(--ds-signal-tint) !important;
+	stroke: var(--ds-signal) !important;
+	stroke-width: 2px !important;
+}
+.docusaurus-mermaid-container :is(.node.green, .node.ctal) :is(span, p, .nodeLabel) {
+	color: var(--ds-ink) !important;
+}
+
+.docusaurus-mermaid-container :is(.cluster.invisible, .cluster.invi) rect {
+	fill: transparent !important;
+	stroke: transparent !important;
+	stroke-width: 0 !important;
+}
+.docusaurus-mermaid-container :is(.cluster.invisible, .cluster.invi) :is(span, p, .nodeLabel) {
+	color: transparent !important;
 }

@@ -1,0 +1,123 @@
+---
+title: Diagramas
+sidebar_position: 2
+---
+
+import {
+  BarChart,
+  Connector,
+  Dimension,
+  Hierarchy,
+  LineChart,
+  ProportionDial,
+  Schematic,
+  Timeline,
+} from "@gabrioliv/dossier";
+import { ptBR } from "@gabrioliv/dossier/locales/pt-BR";
+
+# Diagramas
+
+Gráficos e desenhos técnicos. O último bloco usa o tema Blueprint.
+
+<section data-component="BarChart">
+  <BarChart
+    title="Execuções por semana"
+    labels={ptBR.BarChart}
+    unit="exec."
+    format={(v) => v.toLocaleString("pt-BR")}
+    data={[
+      { label: "S1", value: 120 },
+      { label: "S2", value: 180, active: true },
+      { label: "S3", value: 90 },
+      { label: "S4", value: 150 },
+    ]}
+  />
+</section>
+
+<section data-component="LineChart">
+  <LineChart
+    title="Taxa de aprovação"
+    labels={ptBR.LineChart}
+    unit="%"
+    format={(v) => v.toLocaleString("pt-BR")}
+    data={[
+      { x: "Jan", y: 91 },
+      { x: "Fev", y: 94 },
+      { x: "Mar", y: 93 },
+      { x: "Abr", y: 98, callout: true },
+    ]}
+  />
+</section>
+
+<section data-component="ProportionDial">
+  <ProportionDial
+    title="Cobertura"
+    labels={ptBR.ProportionDial}
+    value={72}
+    label="72%"
+    segments={[
+      { angle: 0, label: "Unidade" },
+      { angle: 120, label: "Integração" },
+    ]}
+  />
+</section>
+
+<section data-component="Timeline">
+  <Timeline
+    events={[
+      { at: "01/11", label: "Planejamento", note: "Escopo definido" },
+      { at: "05/11", label: "Execução", active: true },
+      { at: "11/11", label: "Relatório" },
+    ]}
+  />
+</section>
+
+<section data-component="Schematic">
+  <Schematic
+    title="Camadas de teste"
+    labels={ptBR.Schematic}
+    rings={3}
+    nodes={[
+      { ring: 1, angle: 0, label: "Unidade" },
+      { ring: 2, angle: 120, label: "Integração", active: true },
+      { ring: 3, angle: 240, label: "Ponta a ponta" },
+    ]}
+  />
+</section>
+
+<section data-component="Hierarchy">
+  <Hierarchy
+    title="Plano de testes"
+    labels={ptBR.Hierarchy}
+    root={{
+      label: "Produto",
+      code: "P",
+      children: [
+        { label: "Login", code: "P1", active: true },
+        { label: "Pagamento", code: "P2", children: [{ label: "Cartão" }, { label: "Pix" }] },
+      ],
+    }}
+  />
+</section>
+
+<section data-component="Dimension">
+  <Dimension length={160} label="160 mm" />
+</section>
+
+<section data-component="Connector">
+  <Connector width={80} height={60} from="top-left" first="horizontal" />
+</section>
+
+<div data-theme="blueprint" style={{ background: "var(--ds-paper)", color: "var(--ds-ink)", padding: "1.5rem", marginTop: "1.5rem" }}>
+  <section data-component="Schematic">
+    <Schematic
+      title="Camadas de teste em Blueprint"
+      labels={ptBR.Schematic}
+      rings={3}
+      nodes={[
+        { ring: 1, angle: 0, label: "Unidade" },
+        { ring: 2, angle: 120, label: "Integração" },
+      ]}
+    />
+  </section>
+</div>

@@ -1,0 +1,30 @@
+{
+  "docs/notes/e2e_useful.mdx": {
+    "heading": "## Referências",
+    "text": "- Artigos:\n  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 18 abr. 2025.\n    - Descreve a separação entre testes E2E e testes de componentes de interface, e como alguns pensadores da área consideram como uma única abordagem.\n  - Cypress. Why Cypress? _Cypress Documentation_. Disponível em: [https://docs.cypress.io/app/get-started/why-cypress#Component-Testing](https://docs.cypress.io/app/get-started/why-cypress#Component-Testing). Acesso em: 18 abr. 2025.\n    - Cypress é uma ferramenta de testes E2E que possui uma seção dedicada a implementar testes de componentes de interface.\n- Livros:\n  - AXELROD, Arnon. _Complete Guide to Test Automation: Techniques, Practices, and Patterns for Building and Maintaining Effective Software Projects_. Apress, 2018. [https://doi.org/10.1007/978-1-4842-3832-5](https://doi.org/10.1007/978-1-4842-3832-5).\n    - Aborda o processo e escopos de testes que funcionam melhor ou não com testes E2E.\n  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.\n    - Descreve que testes E2E foram importantes para executar validações automatizadas, mas que não seriam necessários se houvesse cobertura de testes dos componentes do sistema."
+  },
+  "docs/notes/hawthorne_effect_on_documentation.mdx": {
+    "heading": "## Referências",
+    "text": "- Artigos:\n  - Efeito Hawthorne:\n    - Gordon Diaper (1990) The Hawthorne Effect: a fresh examination, _Educational Studies_, 16:3, 261-267.\n      - [https://doi.org/10.1080/0305569900160305](https://doi.org/10.1080/0305569900160305)\n  - Documentação e Qualidade de Software\n    - D. L. Parnas and P. C. Clements, \"A rational design process: How and why to fake it,\" in _IEEE Transactions on Software Engineering_, vol. SE-12, no. 2, pp. 251-257, Feb. 1986.\n      - [https://doi.org/10.1109/TSE.1986.6312940](https://doi.org/10.1109/TSE.1986.6312940)"
+  },
+  "docs/notes/peltzman_effect.mdx": {
+    "heading": "## Referências",
+    "text": "- Artigos:\n  - Peltzman, S. (1975). The Effects of Automobile Safety Regulation. _Journal of Political Economy_, 83(4), 677-725.\n    - [https://doi.org/10.1086/260352](https://doi.org/10.1086/260352)\n- Contexto psicológico:\n  - **THE DECISION LAB.** The Peltzman Effect. _The Decision Lab_. Disponível em: [https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect](https://thedecisionlab.com/reference-guide/psychology/the-peltzman-effect). Acesso em: 18 abr. 2025."
+  },
+  "docs/notes/software_ongoing_manual_testing.mdx": {
+    "heading": "## Referências",
+    "text": "- Artigos:\n  - NIKOLOVA, Zornitsa. Testing Strategies in an Agile Context. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 111-121.\n    - [https://doi.org/10.1007/978-3-030-29509-7_9](https://doi.org/10.1007/978-3-030-29509-7_9)\n    - Investir em automação é essencial para o sucesso a longo prazo. Testes unitários ajudam o desenvolvedor a receber feedback imediato e os bugs são removidos rapidamente como parte do processo regular de desenvolvimento.\n  - VOCKE, Ham. Practical Test Pyramid. _martinfowler.com_. Publicado em: 26 fevereiro 2018. Disponível em: [https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests](https://martinfowler.com/articles/practical-test-pyramid.html#End-to-endTests). Acesso em: 26 nov. 2025.\n    - Um grande benefício dos testes unitários é que eles servem como uma rede de segurança para alterações de código.\n- Livros:\n  - CRISPIN, Lisa; GREGORY, Janet. _Agile Testing: A Practical Guide for Testers and Agile Teams_. Addison-Wesley, 2009.\n    - Testes manuais não são o bastante para alcançar qualidade de software, pois configura somente um dos quadrantes de teste.\n  - ADZIC, Gojko. _Specification by Example: How Successful Teams Deliver the Right Software_. Manning Publications, 2011.\n    - Com ciclos de entrega curtos (semanas ou até dias), testes manuais extensivos são impossíveis. Os testes então se acumulam no final de uma iteração e transbordam para a próxima, interrompendo o fluxo. A automação de testes funcionais remove esse gargalo e engaja testadores com desenvolvedores, motivando-os a participar da mudança de processo.\n  - MESZAROS, Gerard. _xUnit Test Patterns: Refactoring Test Code_. Addison-Wesley Professional, 2007.\n    - Testes manuais são longos e complexos com múltiplas condições devido à sobrecarga envolvida na configuração das pré-condições de cada teste."
+  },
+  "docs/notes/test_coverage_sdlc.mdx": {
+    "heading": "## Referências",
+    "text": "- Artigos:\n  - AMANN, Sven; JÜRGENS, Elmar. Change-Driven Testing. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 1-14.\n    - [https://doi.org/10.1007/978-3-030-29509-7_1](https://doi.org/10.1007/978-3-030-29509-7_1)\n    - Referência na forma de diagramar a presença de erros e cobertura de testes em um sistema; Foi adaptada em uma nova imagem para demonstrar a diferença entre o cenário de desenvolvimento com e sem cobertura de testes."
+  },
+  "docs/istqb/ctfl/README.mdx": {
+    "heading": "## Referências",
+    "text": "- Syllabus CTFL 4.0 (BSTQB pt_BR) — Utilizado para a criação deste material;\n- Syllabus CTFL 4.0 (ISTQB en) — Documento oficial da ISTQB, utilizado para desambiguação de termos;\n- MermaidJS — Utilizado para a criação de diagramas no markdown;\n- As demais bibliografias já estão referenciadas adequadamente nos Syllabus."
+  },
+  "docs/istqb/cttas/README.mdx": {
+    "heading": "## Referências",
+    "text": "- Syllabus CT-TAS 1.0 (BSTQB pt_BR) — Utilizado para a criação deste material.\n- Syllabus CT-TAS 1.0 (ISTQB en) — Documento oficial da ISTQB, utilizado para desambiguação de termos.\n- MermaidJS — Utilizado para a criação de diagramas no markdown.\n- As demais bibliografias já estão referenciadas adequadamente nos Syllabus."
+  }
+}

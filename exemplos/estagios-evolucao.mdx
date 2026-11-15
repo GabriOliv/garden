@@ -1,0 +1,41 @@
+---
+title: Estágios de evolução
+sidebar_position: 12
+---
+
+import StageLegend from "@site/src/components/StageLegend";
+import { StagesCombo, StagesContents, StagesTable, StagesTimeline } from "./_demos/StagesDemo";
+
+# Estágios de evolução
+
+Componentes do Dossier para a listagem de estágios em "Organização por Evolução", de [Comece a Leitura](/docs/project). Todos usam os dados de `src/lib/stages.ts`.
+
+## Hoje
+
+`Grid` 2×2 com ícone de 48 px, nome, leitura, definição e "Veja Todos".
+
+<StageLegend />
+
+## 1. DataTable
+
+Ícone de 16 px, o mesmo dos chips, ao lado do nome, que é o link para a página do estágio. Leitura e definição nas outras colunas.
+
+<StagesTable />
+
+## 2. Timeline
+
+A progressão de A a D num eixo com seta; o fruto (D) é o marcador em azul. Só texto: sem ícone e sem link.
+
+<StagesTimeline />
+
+## 3. Contents
+
+Sumário com a letra do estágio no lugar do número. O nome é o link; a definição fica ao lado. Sem ícone.
+
+<StagesContents />
+
+## 4. Timeline e DataTable
+
+A linha do tempo mostra a ordem; a tabela, logo abaixo, leva às páginas.
+
+<StagesCombo />
