@@ -1,0 +1,156 @@
+---
+title: Documento
+sidebar_position: 1
+---
+
+import {
+  Assertion,
+  CheckLog,
+  Comparison,
+  Contents,
+  DataHeader,
+  DataTable,
+  ErrorNotice,
+  FieldList,
+  Footnotes,
+  Meter,
+  Quote,
+  Readout,
+  Redacted,
+  SectionTitle,
+  StageIcon,
+  StatusFlag,
+  Tag,
+  ToleranceBar,
+  Transcript,
+} from "@gabrioliv/dossier";
+import { ptBR } from "@gabrioliv/dossier/locales/pt-BR";
+
+# Documento
+
+Componentes sem estado de estrutura, dados, texto, status e estágios.
+
+<section data-component="DataHeader">
+  <DataHeader title="Relatório 0427" code="Arquivo 0427 · Rev. B" kicker="Seção 01" meta="Atualizado em 11/11/2026" level={2} />
+</section>
+
+<section data-component="SectionTitle">
+  <SectionTitle index={2} title="Resultados" meta="3 páginas" level={3} labels={ptBR.SectionTitle} />
+</section>
+
+<section data-component="Contents">
+  <Contents
+    labels={ptBR.Contents}
+    items={[
+      { index: "01", title: "Introdução", description: "Escopo do teste", page: 1 },
+      { index: "02", title: "Resultados", description: "Execuções e taxas", page: 4, active: true },
+      { index: "03", title: "Conclusão", page: 9 },
+    ]}
+  />
+</section>
+
+<section data-component="Footnotes">
+  <Footnotes notes={[{ text: "Taxa medida sobre 500 execuções." }, { text: "Ambiente de homologação." }]} />
+</section>
+
+<section data-component="Readout">
+  <Readout label="Taxa de aprovação" value="98,6" unit="%" tone="signal" trend="up" delta="+1,2" note="Últimos 30 dias" labels={ptBR.Readout} />
+</section>
+
+<section data-component="Tag">
+  <Tag>Rascunho</Tag> <Tag variant="solid">Revisado</Tag> <Tag variant="inverse">Final</Tag>
+</section>
+
+<section data-component="DataTable">
+  <DataTable
+    caption="Execuções por suíte"
+    columns={[
+      { key: "suite", label: "Suíte" },
+      { key: "runs", label: "Execuções", numeric: true },
+      { key: "rate", label: "Aprovação (%)", numeric: true },
+    ]}
+    rows={[
+      { suite: "Login", runs: 120, rate: "99,1" },
+      { suite: "Pagamento", runs: 80, rate: "96,3" },
+      { suite: "Busca", runs: 300, rate: "98,9" },
+    ]}
+    highlightRows={[1]}
+  />
+</section>
+
+<section data-component="FieldList">
+  <FieldList
+    columns={2}
+    fields={[
+      { label: "Responsável", value: "Equipe de QA" },
+      { label: "Código", value: "RUN-0427", mono: true },
+      { label: "Ambiente", value: "Homologação" },
+    ]}
+  />
+</section>
+
+<section data-component="Meter">
+  <Meter label="Cobertura de testes" value={72} max={100} tone="signal" />
+</section>
+
+<section data-component="Quote">
+  <Quote source="Ditado popular" kicker="Citação">Testar não prova a ausência de falhas, só a sua presença.</Quote>
+</section>
+
+<section data-component="Comparison">
+  <Comparison
+    level={3}
+    columns={[
+      { code: "A", title: "Teste manual", lead: "Exploratório", items: ["Flexível", "Lento"] },
+      { code: "B", title: "Teste automatizado", lead: "Repetível", items: ["Rápido", "Exige manutenção"], active: true },
+    ]}
+  />
+</section>
+
+<section data-component="Transcript">
+  <Transcript
+    title="Revisão do plano"
+    lines={[
+      { time: "00:01", speaker: "Ana", text: "Vamos começar pelo login." },
+      { time: "00:09", speaker: "Bruno", text: "Antes, confirmo o ambiente.", active: true },
+    ]}
+  />
+</section>
+
+<section data-component="Redacted">
+  <p>Senha de acesso: <Redacted length={8} labels={ptBR.Redacted} /></p>
+</section>
+
+<section data-component="StatusFlag">
+  <StatusFlag status="pass" labels={ptBR.StatusFlag} /> <StatusFlag status="fail" labels={ptBR.StatusFlag} /> <StatusFlag status="skip" labels={ptBR.StatusFlag} /> <StatusFlag status="pending" labels={ptBR.StatusFlag} />
+</section>
+
+<section data-component="ErrorNotice">
+  <ErrorNotice title="Falha na conexão" code="E-504" meta="11/11/2026" action="Tente de novo em instantes." level={3} labels={ptBR.ErrorNotice}>
+    O servidor de homologação não respondeu a tempo.
+  </ErrorNotice>
+</section>
+
+<section data-component="CheckLog">
+  <CheckLog
+    labels={ptBR.CheckLog}
+    checks={[
+      { id: "C1", label: "Login com senha válida", result: "pass", duration: "0,4 s" },
+      { id: "C2", label: "Login com senha inválida", result: "fail", detail: "Esperado erro 401" },
+      { id: "C3", label: "Recuperar senha", result: "skip" },
+      { id: "C4", label: "Sair da conta", result: "pending" },
+    ]}
+  />
+</section>
+
+<section data-component="Assertion">
+  <Assertion label="Total do pedido" expected="R$ 120,00" actual="R$ 118,00" pass={false} location="pedido.spec.ts:42" labels={ptBR.Assertion} />
+</section>
+
+<section data-component="ToleranceBar">
+  <ToleranceBar label="Tempo de resposta" value={180} min={100} max={200} scaleMin={0} scaleMax={300} unit="ms" labels={ptBR.ToleranceBar} />
+</section>
+
+<section data-component="StageIcon">
+  <StageIcon stage="A" labels={ptBR.StageIcon} /> <StageIcon stage="B" labels={ptBR.StageIcon} /> <StageIcon stage="C" labels={ptBR.StageIcon} /> <StageIcon stage="D" size="lg" labels={ptBR.StageIcon} />
+</section>

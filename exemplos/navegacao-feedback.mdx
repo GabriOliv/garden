@@ -1,0 +1,73 @@
+---
+title: Navegação e feedback
+sidebar_position: 5
+---
+
+import { Accordion, Divider, Grid, Icon, Skeleton, Spinner, Stack, Tabs } from "@gabrioliv/dossier";
+import { ptBR } from "@gabrioliv/dossier/locales/pt-BR";
+import { PaginationDemo } from "./_demos/PaginationDemo";
+import { ToasterDemo } from "./_demos/ToasterDemo";
+
+# Navegação e feedback
+
+Abas, seções recolhíveis, paginação, avisos, estados de carga e layout.
+
+<section data-component="Tabs">
+  <Tabs
+    label="Resumo da suíte"
+    defaultValue="visao"
+    tabs={[
+      { value: "visao", label: "Visão geral", content: <p>Painel da visão geral.</p> },
+      { value: "falhas", label: "Falhas", content: <p>Painel das falhas.</p> },
+    ]}
+  />
+</section>
+
+<section data-component="Accordion">
+  <Accordion
+    items={[
+      { title: "O que é um teste de regressão?", content: <p>Repete casos antigos para achar defeitos novos.</p> },
+      { title: "Quando automatizar?", content: <p>Quando o caso se repete e o resultado é estável.</p> },
+    ]}
+  />
+</section>
+
+<section data-component="Pagination">
+  <PaginationDemo />
+</section>
+
+<section data-component="Toaster">
+  <ToasterDemo />
+</section>
+
+<section data-component="Spinner">
+  <Spinner labels={ptBR.Spinner} />
+</section>
+
+<section data-component="Skeleton">
+  <Skeleton variant="text" /> <Skeleton variant="block" height={48} />
+</section>
+
+<section data-component="Stack">
+  <Stack direction="row" gap={3} align="center">
+    <span>Um</span>
+    <span>Dois</span>
+    <span>Três</span>
+  </Stack>
+</section>
+
+<section data-component="Grid">
+  <Grid columns={3} gap={3}>
+    <span>A</span>
+    <span>B</span>
+    <span>C</span>
+  </Grid>
+</section>
+
+<section data-component="Divider">
+  <Divider />
+</section>
+
+<section data-component="Icon">
+  <Icon name="check" size={24} label="Concluído" />
+</section>
