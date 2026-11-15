@@ -1,0 +1,87 @@
+/* Exemplos de referências: só o que os componentes do Dossier não trazem. */
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+}
+
+.cite {
+  color: var(--ds-ink);
+}
+
+/* Em `em`: segue o texto em volta (corpo no FieldList, legenda no Footnotes). */
+.meta {
+  font-family: var(--ds-font-mono);
+  font-size: 0.8125em;
+  color: var(--ds-ink-muted);
+  overflow-wrap: anywhere;
+}
+
+.note {
+  color: var(--ds-ink-muted);
+  font-size: 0.9375em;
+}
+
+.group + .group {
+  margin-top: var(--ds-space-6);
+}
+
+.groupLabel {
+  margin: 0 0 var(--ds-space-2);
+  color: var(--ds-ink-muted);
+}
+
+.sample {
+  max-width: 68ch;
+}
+
+/* FieldList não empilha no celular; aqui o termo vai para cima do valor. */
+@media (max-width: 640px) {
+  .stackMobile :global(.ds-field) {
+    grid-template-columns: 1fr;
+    gap: var(--ds-space-1);
+  }
+}
+
+/* 4: a lista Markdown de hoje, sem marcadores, com recuo pendente e o comentário em ink-muted. */
+.hanging ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hanging > ul > li {
+  margin-bottom: var(--ds-space-6);
+  font-family: var(--ds-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-ink-muted);
+}
+
+.hanging > ul > li > ul {
+  margin-top: var(--ds-space-2);
+  border-top: 1px solid var(--ds-rule-soft);
+}
+
+.hanging > ul > li > ul > li {
+  padding: var(--ds-space-3) 0 var(--ds-space-3) 2em;
+  text-indent: -2em;
+  border-bottom: 1px solid var(--ds-rule-soft);
+  font-family: var(--ds-font-sans);
+  font-size: 1rem;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ds-ink);
+}
+
+.hanging > ul > li > ul > li > ul > li {
+  margin-top: var(--ds-space-1);
+  padding: 0;
+  text-indent: 0;
+  border: 0;
+  font-size: 0.875rem;
+  color: var(--ds-ink-muted);
+  overflow-wrap: anywhere;
+}
