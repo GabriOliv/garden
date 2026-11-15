@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="a-t a-d">
+  <title id="a-t">Estágio A · Semente — construção em proporção, estilo Dossier</title>
+  <desc id="a-d">Semente sob a linha de terra: círculo R3 dentro do anel de potencial R5. Versões finais em 48 e 16 pixels.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .frame { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .guide { fill: none; stroke: var(--ink-muted); stroke-width: .75; stroke-dasharray: 2 3; }
+    .guide-sig { fill: none; stroke: var(--signal); stroke-width: .75; stroke-dasharray: 2 3; }
+    .axis { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 4 3; }
+    .leader { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .art { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: miter; }
+    .art1 { fill: none; stroke: var(--ink); stroke-width: 1; stroke-linejoin: miter; }
+    .sigart { fill: url(#a-hatch); stroke: var(--signal); stroke-width: 1.5; }
+    .sigart1 { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .fill { fill: var(--ink); }
+    .sigfill { fill: var(--signal); }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .cell { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+  </style>
+  <defs>
+    <pattern id="a-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="a-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#a-grid)"/>
+
+  <rect class="frame" x="28" y="52" width="128" height="128"/>
+  <circle class="guide" cx="92" cy="140" r="40"/>
+  <line class="axis" x1="92" y1="93.6" x2="92" y2="186.4"/>
+  <line class="axis" x1="37.6" y1="140" x2="146.4" y2="140"/>
+  <line class="hair" x1="89" y1="140" x2="95" y2="140"/><line class="hair" x1="92" y1="137" x2="92" y2="143"/>
+  <circle class="dot" cx="92" cy="100" r="1.6"/>
+  <circle class="dot" cx="92" cy="180" r="1.6"/>
+  <line class="art" x1="52" y1="100" x2="132" y2="100"/>
+  <circle class="art" cx="92" cy="140" r="24"/>
+
+    <circle class="dot" cx="132" cy="100" r="1.6"/>
+  <polyline class="leader" points="132,100 148,84 176,84"/>
+  <text class="label small" x="180" y="87">TERRA · TANGENTE</text>
+  <circle class="dot" cx="108.97" cy="123.03" r="1.6"/>
+  <polyline class="leader" points="108.97,123.03 120,112 176,112"/>
+  <text class="label small" x="180" y="115">R3 · SEMENTE</text>
+  <circle class="dot" cx="132" cy="140" r="1.6"/>
+  <polyline class="leader" points="132,140 148,156 176,156"/>
+  <text class="label small" x="180" y="159">R5 · POTENCIAL</text>
+  <text class="label small muted" x="180" y="170">3 : 5 ≈ 1 : φ</text>
+
+  <line class="soft" x1="290" y1="52" x2="290" y2="208"/>
+  <line class="art1" x1="307" y1="76" x2="337" y2="76"/>
+  <circle class="art1" cx="322" cy="91" r="9"/>
+  <text class="label small muted mid" x="322" y="120">48 PX</text>
+  <line class="art1" x1="317" y1="140" x2="327" y2="140"/>
+  <circle class="art1" cx="322" cy="145" r="3"/>
+  <text class="label small muted mid" x="322" y="164">16 PX</text>
+    <rect class="sig" x="301" y="186" width="7" height="7"/>
+  <text class="label small mid" x="304.5" y="204">A</text>
+  <rect class="cell" x="312.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="315.5" y="204">B</text>
+  <rect class="cell" x="323.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="326.5" y="204">C</text>
+  <rect class="cell" x="334.5" y="186.5" width="6" height="6"/>
+  <text class="label small muted mid" x="337.5" y="204">D</text>
+
+  <text class="label muted" x="14" y="24">ESTÁGIO A — SEMENTE</text>
+  <text class="label small muted end" x="346" y="24">MÓDULO 16 · R3 / R5</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+  <text class="label small muted end" x="346" y="226">01 / 04</text>
+</svg>

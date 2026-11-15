@@ -1,0 +1,787 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cube Test Rig</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Isometric figure: a system of four cubes tested step by step — unit, integration, system — on a gantry test rig.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one figure card (header · drawing plate · hint/readout), then controls, a three-step strip, legend and caption. Dossier tokens; Paper / Void / Blueprint. */
+:root {
+  --paper: #f4f4f1; --panel: #e6e6e1; --ink: #0b0c0e; --ink-muted: #50535a; --rule-soft: #c6c7c1;
+  --signal: #002fa7; --signal-tint: #d7dff3; --on-signal: #ffffff; --error: #b42318;
+  /* drawing materials (derived from paper/ink) */
+  --f-top: #fafaf8; --f-y: #e6e6e3; --f-x: #d3d4d1; --f-cyl: #dddeda; --f-cap: #f1f1ee; --f-deep: #aeaead;
+  --ln-hi: #0b0c0e; --ln-mid: #2a2c31; --ln-lo: #5c5f66; --ln-soft: #b9bab4; --dot: #cfd0ca;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0a0b0d; --panel: #16181d; --ink: #eeeeea; --ink-muted: #9ea1a8; --rule-soft: #2c2f36;
+    --signal: #2b7fff; --signal-tint: #101a3c; --on-signal: #0a0b0d; --error: #ff6a55;
+    --f-top: #38383a; --f-y: #232425; --f-x: #18191a; --f-cyl: #1f2022; --f-cap: #2e2f31; --f-deep: #0e0f11;
+    --ln-hi: #eeeeea; --ln-mid: #cfd0cd; --ln-lo: #8f9299; --ln-soft: #3a3d44; --dot: #23262c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0a0b0d; --panel: #16181d; --ink: #eeeeea; --ink-muted: #9ea1a8; --rule-soft: #2c2f36;
+  --signal: #2b7fff; --signal-tint: #101a3c; --on-signal: #0a0b0d; --error: #ff6a55;
+  --f-top: #38383a; --f-y: #232425; --f-x: #18191a; --f-cyl: #1f2022; --f-cap: #2e2f31; --f-deep: #0e0f11;
+  --ln-hi: #eeeeea; --ln-mid: #cfd0cd; --ln-lo: #8f9299; --ln-soft: #3a3d44; --dot: #23262c;
+  color-scheme: dark;
+}
+:root[data-skin="paper"] {
+  --paper: #f4f4f1; --panel: #e6e6e1; --ink: #0b0c0e; --ink-muted: #50535a; --rule-soft: #c6c7c1;
+  --signal: #002fa7; --signal-tint: #d7dff3; --on-signal: #ffffff; --error: #b42318;
+  --f-top: #fafaf8; --f-y: #e6e6e3; --f-x: #d3d4d1; --f-cyl: #dddeda; --f-cap: #f1f1ee; --f-deep: #aeaead;
+  --ln-hi: #0b0c0e; --ln-mid: #2a2c31; --ln-lo: #5c5f66; --ln-soft: #b9bab4; --dot: #cfd0ca;
+  color-scheme: light;
+}
+:root[data-skin="void"] {
+  --paper: #0a0b0d; --panel: #16181d; --ink: #eeeeea; --ink-muted: #9ea1a8; --rule-soft: #2c2f36;
+  --signal: #2b7fff; --signal-tint: #101a3c; --on-signal: #0a0b0d; --error: #ff6a55;
+  --f-top: #38383a; --f-y: #232425; --f-x: #18191a; --f-cyl: #1f2022; --f-cap: #2e2f31; --f-deep: #0e0f11;
+  --ln-hi: #eeeeea; --ln-mid: #cfd0cd; --ln-lo: #8f9299; --ln-soft: #3a3d44; --dot: #23262c;
+  color-scheme: dark;
+}
+:root[data-skin="blueprint"] {
+  --paper: #0f3270; --panel: #163b80; --ink: #f1f5ff; --ink-muted: #b4c7ec; --rule-soft: #2f5aa3;
+  --signal: #7fdcff; --signal-tint: #1d4a96; --on-signal: #0f3270; --error: #ff9282;
+  --f-top: #2f4d85; --f-y: #21427b; --f-x: #183a75; --f-cyl: #1d3e79; --f-cap: #284882; --f-deep: #0b2654;
+  --ln-hi: #f1f5ff; --ln-mid: #d6e1f8; --ln-lo: #9fb6e2; --ln-soft: #3a63ab; --dot: #22468a;
+  color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+.page {
+  max-width: 1120px; margin: 0 auto;
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 24px;
+}
+.label { font-family: var(--mono); font-size: 11px; line-height: 14px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+.muted { color: var(--ink-muted); }
+
+/* Card */
+.card { border: 1px solid var(--ink); background: var(--paper); }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--ink); flex-wrap: wrap; }
+.fig-n { display: inline-flex; align-items: center; gap: 8px; }
+.fig-n::before { content: ""; width: 8px; height: 8px; background: var(--signal); }
+.card-title { font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: .02em; text-transform: uppercase; margin: 0; text-wrap: balance; }
+.plate { position: relative; cursor: pointer; }
+.plate svg { display: block; width: 100%; height: auto; }
+.plate:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 4px var(--signal); }
+.card-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 10px 16px; border-top: 1px solid var(--rule-soft); flex-wrap: wrap; }
+.readout { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; line-height: 16px; letter-spacing: .06em; text-transform: uppercase; font-variant-numeric: tabular-nums; min-width: 0; }
+.readout #ro-text { min-width: 0; }
+.flag { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border: 1px solid var(--ink); font-family: var(--mono); font-size: 11px; line-height: 14px; font-weight: 500; letter-spacing: .14em; }
+.flag::before { content: ""; width: 7px; height: 7px; background: var(--ink); }
+.flag[data-s="run"] { border-color: var(--signal); color: var(--signal); }
+.flag[data-s="run"]::before { background: var(--signal); }
+.flag[data-s="fail"] { background: var(--error); border-color: var(--error); color: var(--on-signal); }
+.flag[data-s="fail"]::before { background: var(--on-signal); }
+.flag[data-s="skip"], .flag[data-s="idle"] { border-style: dashed; border-color: var(--ink-muted); color: var(--ink-muted); }
+.flag[data-s="skip"]::before, .flag[data-s="idle"]::before { background: none; outline: 1px solid var(--ink-muted); outline-offset: -1px; }
+
+/* Controls */
+.controls { display: flex; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; }
+.ctl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.seg { display: inline-flex; flex-wrap: wrap; }
+.seg button { font: inherit; font-family: var(--mono); font-size: 11px; line-height: 14px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--ink); margin: 0 -1px 0 0; padding: 7px 12px; cursor: pointer; }
+.seg button:hover { text-decoration: underline; text-decoration-color: var(--signal); text-underline-offset: 3px; }
+.seg button[aria-pressed="true"] { background: var(--signal); border-color: var(--signal); color: var(--on-signal); position: relative; }
+.seg button:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--signal); position: relative; z-index: 1; }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.step { border-top: 2px solid var(--ink); padding-top: 12px; display: grid; gap: 6px; align-content: start; position: relative; min-width: 0; }
+.step::before { content: ""; position: absolute; top: -2px; left: 0; width: 48px; height: 6px; background: transparent; transform: translateY(-2px); }
+.step[data-state="active"]::before { background: var(--signal); }
+.step[data-state="pass"]::before { background: var(--ink); }
+.step[data-state="fail"]::before { background: var(--error); }
+.step-k { display: flex; justify-content: space-between; gap: 8px; }
+.step-h { font-family: var(--sans); font-size: 16px; line-height: 20px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+.step p { margin: 0; font-size: 14px; line-height: 21px; max-width: 46ch; }
+.step .st { color: var(--ink-muted); }
+.step[data-state="active"] .st { color: var(--signal); }
+.step[data-state="fail"] .st { color: var(--error); }
+
+/* Legend + caption */
+.notes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px 24px; border-top: 1px solid var(--rule-soft); padding-top: 16px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 16px; align-content: start; margin: 0; padding: 0; list-style: none; }
+.legend li { display: inline-flex; align-items: center; gap: 8px; }
+.sw { width: 10px; height: 10px; border: 1px solid var(--ink); flex: none; }
+.sw.pend { background: var(--paper); border-color: var(--ink-muted); }
+.sw.run { background: var(--signal); border-color: var(--signal); }
+.sw.pass { background: var(--ink); }
+.sw.fail { background: var(--error); border-color: var(--error); }
+.sw.skip { background: linear-gradient(to top right, transparent calc(50% - .5px), var(--ink-muted) calc(50% - .5px), var(--ink-muted) calc(50% + .5px), transparent calc(50% + .5px)); border-color: var(--ink-muted); border-style: dashed; }
+figcaption { font-size: 12px; line-height: 18px; color: var(--ink-muted); max-width: 72ch; margin: 0; }
+figcaption b { color: var(--ink); font-weight: 600; }
+figure { margin: 0; display: grid; gap: 24px; }
+
+@media (max-width: 720px) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .notes { grid-template-columns: minmax(0, 1fr); }
+  .card-title { font-size: 17px; line-height: 20px; }
+}
+
+/* ---- drawing ---- */
+.rig path, .rig ellipse, .rig line { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.rig .ft { fill: var(--f-top); } .rig .fy { fill: var(--f-y); } .rig .fx { fill: var(--f-x); }
+.rig .fc { fill: var(--f-cyl); } .rig .fk { fill: var(--f-cap); } .rig .fd { fill: var(--f-deep); }
+.rig .lo { stroke: var(--ln-lo); stroke-width: 1; }
+.rig .mid { stroke: var(--ln-mid); stroke-width: 1; }
+.rig .hi { stroke: var(--ln-hi); stroke-width: 1.3; }
+.rig .ln { fill: none; }
+.rig .soft { stroke: var(--ln-soft); }
+.rig .dotf { fill: var(--ln-mid); stroke: none; }
+.rig .ink { fill: var(--ln-mid); stroke: none; }
+.rig .eng { fill: var(--ln-lo); font-family: var(--mono); font-weight: 500; letter-spacing: .08em; }
+.rig .let { fill: var(--ln-hi); font-family: var(--mono); font-weight: 500; }
+.rig .grid-dot { fill: var(--dot); }
+.rig .reg { stroke: var(--rule-soft); stroke-width: 1; fill: none; }
+.rig .cable-o { fill: none; stroke: var(--ln-mid); stroke-width: 4.2; stroke-linecap: butt; vector-effect: none; }
+.rig .cable-i { fill: none; stroke: var(--f-cyl); stroke-width: 2.2; stroke-linecap: butt; vector-effect: none; }
+.rig .trace { fill: none; stroke: var(--signal); stroke-width: 2.25; }
+.rig .seam-act { fill: none; stroke: var(--signal); stroke-width: 2.25; }
+.rig .fail-mark { fill: none; stroke: var(--error); stroke-width: 2.25; }
+.rig .face-bad { fill: none; stroke: var(--error); stroke-width: 2.25; display: none; }
+.rig .face-bad.on { display: inline; }
+.rig .lid.act { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1.6; }
+.rig .lid.bad { stroke: var(--error); stroke-width: 2; }
+.rig .pad.act { fill: var(--signal); stroke: var(--signal); }
+/* lamps */
+.rig .lamp { stroke: var(--ln-lo); stroke-width: 1; fill: var(--f-top); }
+.rig .lamp[data-s="run"] { fill: var(--signal); stroke: var(--signal); }
+.rig .lamp[data-s="pass"] { fill: var(--ln-hi); stroke: var(--ln-hi); }
+.rig .lamp[data-s="fail"] { fill: var(--error); stroke: var(--error); }
+.rig .lamp[data-s="skip"] { stroke-dasharray: 2 2; }
+.rig .lamp-x { stroke: var(--ln-lo); stroke-width: 1; fill: none; visibility: hidden; }
+.rig .lamp-x[data-s="skip"] { visibility: visible; }
+.rig [data-hide="1"] { display: none; }
+</style>
+
+<main class="page">
+  <figure id="fig">
+    <div class="card">
+      <header class="card-head">
+        <span class="label fig-n">Fig. 01</span>
+        <h1 class="card-title">Testing a system of cubes</h1>
+      </header>
+      <div class="plate" id="plate" tabindex="0" role="button" aria-label="Test rig drawing. Activate to run the test again.">
+        <svg class="rig" id="rig" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rig-t">
+          <title id="rig-t">A gantry test rig with four cubes on a rail. A probe checks each cube, then each joint, then the whole row.</title>
+        </svg>
+      </div>
+      <footer class="card-foot">
+        <span class="label muted" id="hint">Click the rig to run again · pick a fault below</span>
+        <div class="readout" aria-live="off"><span id="ro-text">Ready · 8 checks in 3 steps</span><span class="flag" id="ro-flag" data-s="idle">Pending</span></div>
+      </footer>
+    </div>
+
+    <div class="controls">
+      <div class="ctl">
+        <span class="label muted" id="fault-l">Fault</span>
+        <div class="seg" role="group" aria-labelledby="fault-l">
+          <button type="button" id="m-none" data-mode="none" aria-pressed="true">None</button>
+          <button type="button" id="m-cube" data-mode="cube" aria-pressed="false">Cube C · lid proud</button>
+          <button type="button" id="m-joint" data-mode="joint" aria-pressed="false">Joint B–C · pin offset</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="label muted" id="theme-l">Theme</span>
+        <div class="seg" role="group" aria-labelledby="theme-l">
+          <button type="button" id="t-paper" data-skin="paper" aria-pressed="false">Paper</button>
+          <button type="button" id="t-void" data-skin="void" aria-pressed="false">Void</button>
+          <button type="button" id="t-blueprint" data-skin="blueprint" aria-pressed="false">Blueprint</button>
+        </div>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li class="step" id="step-1" data-state="idle">
+        <div class="step-k"><span class="label">Step 01</span><span class="label st" id="st-1">Pending</span></div>
+        <h2 class="step-h">Unit</h2>
+        <p>Each cube alone, cubes apart. The probe lands on every lid and reads its height: 28.0&nbsp;mm ±0.2. Four checks.</p>
+      </li>
+      <li class="step" id="step-2" data-state="idle">
+        <div class="step-k"><span class="label">Step 02</span><span class="label st" id="st-2">Pending</span></div>
+        <h2 class="step-h">Integration</h2>
+        <p>The screw closes the row. The probe lands on each joint and reads the gap: 0.2&nbsp;mm or less. Three checks.</p>
+      </li>
+      <li class="step" id="step-3" data-state="idle">
+        <div class="step-k"><span class="label">Step 03</span><span class="label st" id="st-3">Pending</span></div>
+        <h2 class="step-h">System</h2>
+        <p>The whole row, end to end. The probe stays down and sweeps 100&nbsp;mm across all four lids. One check.</p>
+      </li>
+    </ol>
+
+    <div class="notes">
+      <ul class="legend" aria-label="Lamp panel key">
+        <li><span class="sw pend"></span><span class="label muted">Pending</span></li>
+        <li><span class="sw run"></span><span class="label muted">Running</span></li>
+        <li><span class="sw pass"></span><span class="label muted">Pass</span></li>
+        <li><span class="sw fail"></span><span class="label muted">Fail</span></li>
+        <li><span class="sw skip"></span><span class="label muted">Skipped</span></li>
+      </ul>
+      <figcaption><b>Fig. 1 — A system of four cubes, tested bottom up.</b> The lamp panel on the bench is the test pyramid: 4 unit checks, 3 integration checks, 1 system check. A failed step stops the run, so every later check is skipped. The offset pin on cube B passes all four unit checks; only the joint check finds it.</figcaption>
+    </div>
+  </figure>
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const svg = document.getElementById("rig");
+
+  /* ---------- camera ---------- */
+  const AZ = 32 * Math.PI / 180, EL = 30 * Math.PI / 180;
+  const ca = Math.cos(AZ), sa = Math.sin(AZ), ce = Math.cos(EL), se = Math.sin(EL);
+  const S = 2.3;
+  let OX = 0, OY = 0;
+  const VIEW = [sa * ce, ca * ce, se];               // unit vector toward the viewer
+  const P = (x, y, z) => [OX + S * (x * ca - y * sa), OY + S * ((x * sa + y * ca) * se - z * ce)];
+  const off = (dx, dy, dz) => [S * (dx * ca - dy * sa), S * ((dx * sa + dy * ca) * se - dz * ce)];
+  const r2 = n => Math.round(n * 100) / 100;
+  const D = (pts, close = true) => pts.length ? "M" + pts.map(p => r2(p[0]) + " " + r2(p[1])).join("L") + (close ? "Z" : "") : "";
+  const proj = arr => arr.map(p => P(p[0], p[1], p[2]));
+  const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const mul = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const nrm = a => mul(a, 1 / Math.hypot(a[0], a[1], a[2]));
+
+  function hull(pts) {
+    const p = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const q of p) { while (lo.length > 1 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+    for (let i = p.length - 1; i >= 0; i--) { const q = p[i]; while (up.length > 1 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+    up.pop(); lo.pop(); return lo.concat(up);
+  }
+
+  /* ---------- primitives (return SVG strings) ---------- */
+  const path = (d, cls, extra = "") => `<path class="${cls}" d="${d}"${extra}/>`;
+
+  function box(x0, x1, y0, y1, z0, z1, line = "mid", o = {}) {
+    let s = "";
+    s += path(D(proj([[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]])), `fy ${line}`);
+    s += path(D(proj([[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1]])), `fx ${line}`);
+    s += path(D(proj([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]])), `ft ${o.topCls || ""} ${line}`, o.topAttr || "");
+    if (o.bevel) {
+      const b = o.bevel;
+      s += path(D(proj([[x0, y1, z1 - b], [x1, y1, z1 - b], [x1, y0, z1 - b]]), false), `ln soft`);
+    }
+    return s;
+  }
+  // flat rectangle lying in plane z
+  const flat = (x0, x1, y0, y1, z, cls, attr = "") => path(D(proj([[x0, y0, z], [x1, y0, z], [x1, y1, z], [x0, y1, z]])), cls, attr);
+  const seg3 = (pts, cls) => path(D(proj(pts), false), cls);
+
+  function basis(axis) {
+    const a = nrm(axis);
+    const t = Math.abs(a[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0];
+    const u = nrm(cross(a, t)); const v = cross(a, u);
+    return { a, u, v };
+  }
+  function ring(c, axis, r, N = 40) {
+    const { u, v } = basis(axis); const out = [];
+    for (let i = 0; i < N; i++) { const t = 2 * Math.PI * i / N; out.push(P(...add(c, add(mul(u, r * Math.cos(t)), mul(v, r * Math.sin(t)))))); }
+    return out;
+  }
+  function cylGeom(c0, c1, r, N = 44) {
+    const ax = sub(c1, c0); const { a } = basis(ax);
+    const r0 = ring(c0, ax, r, N), r1 = ring(c1, ax, r, N);
+    return { side: D(hull(r0.concat(r1))), cap: D(dot(a, VIEW) >= 0 ? r1 : r0) };
+  }
+  function cyl(c0, c1, r, line = "mid", o = {}) {
+    const g = cylGeom(c0, c1, r);
+    return path(g.side, `fc ${line}`) + path(g.cap, `${o.capCls || "fk"} ${line}`, o.capAttr || "");
+  }
+  // visible half of a ring around an axis (seams, threads)
+  function arc(c, axis, r, n = 18) {
+    const { u, v } = basis(axis);
+    const phi = Math.atan2(dot(v, VIEW), dot(u, VIEW));
+    const out = [];
+    for (let i = 0; i <= n; i++) { const t = phi - Math.PI / 2 + Math.PI * i / n; out.push(P(...add(c, add(mul(u, r * Math.cos(t)), mul(v, r * Math.sin(t)))))); }
+    return D(out, false);
+  }
+  // lines along a cylinder's visible side (knurl)
+  function knurl(c0, c1, r, count, phase, minVis = 0.18) {
+    const { u, v } = basis(sub(c1, c0)); let d = "";
+    for (let k = 0; k < count; k++) {
+      const t = phase + 2 * Math.PI * k / count;
+      const nv = add(mul(u, Math.cos(t)), mul(v, Math.sin(t)));
+      if (dot(nv, VIEW) < minVis) continue;
+      d += D(proj([add(c0, mul(nv, r)), add(c1, mul(nv, r))]), false);
+    }
+    return d;
+  }
+  // screw head: ring + dot on a plane with normal `axis`
+  function screw(c, axis = [0, 0, 1], r = 1.5) {
+    return path(D(ring(c, axis, r, 24)), "ft lo") + path(D(ring(c, axis, r * 0.38, 12)), "dotf");
+  }
+  function textOn(x, y, z, str, size, cls, plane) {
+    const o = P(x, y, z);
+    const ex = sub(P(x + 1, y, z), o);
+    const ey = plane === "top" ? sub(P(x, y + 1, z), o) : sub(P(x, y, z - 1), o);
+    return `<text class="${cls}" transform="matrix(${r2(ex[0])} ${r2(ex[1])} ${r2(ey[0])} ${r2(ey[1])} ${r2(o[0])} ${r2(o[1])})" font-size="${size}" text-anchor="middle" dominant-baseline="central">${str}</text>`;
+  }
+
+  /* ---------- model (mm) ---------- */
+  const CUBE = 28, GAP = 12, PIN = 5;
+  const LET = ["A", "B", "C", "D"];
+  const X_APART = [24, 64, 104, 144];
+  const ROW_Y = 56, PIN_Z = 33, PIN_Z_BAD = 40;
+  const LID_TOP = 48, LID_PROUD = 1.5;
+  const TIP_REST = 64;
+  const SCREW_L = 75, KNOB_L = 7, BRACKET_X = 200;
+  const HOME = 30;
+
+  function cubeXs(s, mode) {
+    const finalCB = mode === "joint" ? PIN : 0;
+    const closeCB = GAP - finalCB;
+    return [
+      X_APART[0],
+      X_APART[1] - Math.max(0, s - GAP - closeCB),
+      X_APART[2] - Math.max(0, s - GAP),
+      X_APART[3] - s,
+    ];
+  }
+  const sMax = mode => GAP + (GAP - (mode === "joint" ? PIN : 0)) + GAP;
+
+  /* ---------- fit the view ---------- */
+  const bounds = [
+    [0, 0, -4], [262, 0, -4], [0, 120, -4], [262, 120, -4], [0, 120, 10], [262, 120, 10],
+    [2, 2, 112], [260, 2, 112], [260, 20, 112], [243, 11, 140], [40, 29, 140], [160, 29, 140], [262, 64, 34],
+  ].map(p => P(...p));
+  const bx0 = Math.min(...bounds.map(p => p[0])), bx1 = Math.max(...bounds.map(p => p[0]));
+  const by0 = Math.min(...bounds.map(p => p[1])), by1 = Math.max(...bounds.map(p => p[1]));
+  OX = -bx0; OY = -by0;
+  const DW = bx1 - bx0, DH = by1 - by0;
+
+  /* ---------- build static layers ---------- */
+  let base = "", rail = "", cubes = "", push = "", brk = "", gantry = "", carr = "";
+
+  // feet, back first
+  for (const [x0, y0] of [[8, 8], [238, 8], [8, 96], [238, 96]]) base += box(x0, x0 + 16, y0, y0 + 16, -4, 0, "lo");
+  base += box(0, 262, 0, 120, 0, 10, "mid", { bevel: 1.6 });
+  // groove and base screws
+  base += path(D(proj([[5, 5, 10], [257, 5, 10], [257, 115, 10], [5, 115, 10]])), "ln soft");
+  base += screw([10, 111, 10]) + screw([252, 111, 10]);
+  // ruler inlay with ticks hanging from its back edge (minor 4 mm, major every 28 mm)
+  base += flat(22, 218, 75.5, 80.5, 10, "fy lo");
+  let ticks = "";
+  for (let x = 24; x <= 216; x += 4) { const major = (x - 24) % 28 === 0; ticks += D(proj([[x, 75.5, 10], [x, 75.5 + (major ? 3.4 : 1.8), 10]]), false); }
+  base += path(ticks, "ln lo");
+  // lamp panel: the test pyramid (4 unit / 3 integration / 1 system)
+  base += box(24, 66, 83, 111, 10, 11.4, "mid");
+  for (const [sx, sy] of [[26.5, 85.5], [63.5, 85.5], [26.5, 108.5], [63.5, 108.5]]) base += screw([sx, sy, 11.4], [0, 0, 1], 1.1);
+  const lampRows = [{ n: 1, y: 86, key: "s" }, { n: 3, y: 94, key: "i" }, { n: 4, y: 102, key: "u" }];
+  for (const row of lampRows) {
+    const w = (row.n - 1) * 8 + 5.6; const x0 = 45 - w / 2;
+    for (let k = 0; k < row.n; k++) {
+      const lx = x0 + k * 8;
+      base += flat(lx, lx + 5.6, row.y, row.y + 5.6, 11.4, "lamp", ` id="lamp-${row.key}${k}" data-s="pend"`);
+      base += path(D(proj([[lx + 0.9, row.y + 4.7, 11.4], [lx + 4.7, row.y + 0.9, 11.4]]), false), "lamp-x", ` id="lampx-${row.key}${k}" data-s="pend"`);
+    }
+  }
+  // label plate with one engraved label
+  base += box(76, 124, 91, 108, 10, 11.2, "mid");
+  for (const [sx, sy] of [[78.4, 93.4], [121.6, 93.4], [78.4, 105.6], [121.6, 105.6]]) base += screw([sx, sy, 11.2], [0, 0, 1], 1.0);
+  base += textOn(100, 97.2, 11.2, "CUBE TEST RIG", 3.3, "eng", "top");
+  base += path(D(proj([[83, 101.4, 11.2], [117, 101.4, 11.2]]), false) + D(proj([[83, 104, 11.2], [109, 104, 11.2]]), false), "ln soft");
+  // gantry posts (behind everything on the bench)
+  for (const x of [1, 239]) {
+    base += box(x, x + 22, 1, 23, 10, 13, "mid");
+    base += screw([x + 2.6, 20.4, 13], [0, 0, 1], 1.2) + screw([x + 19.4, 20.4, 13], [0, 0, 1], 1.2) + screw([x + 19.4, 3.6, 13], [0, 0, 1], 1.2);
+    base += box(x + 5, x + 17, 6, 18, 13, 100, "mid", { bevel: 1.2 });
+    base += seg3([[x + 5, 18, 92], [x + 17, 18, 92], [x + 17, 6, 92]], "ln soft");
+  }
+
+  // rail with screws, and the left end stop
+  rail += box(12, 200, 50, 62, 10, 16, "mid", { bevel: 1 });
+  for (const x of [58, 98, 138, 190]) rail += screw([x, 56, 16], [0, 0, 1], 1.3);
+  rail += box(12, 24, 47, 65, 16, 30, "mid", { bevel: 1.2 });
+  rail += screw([18, 56, 30], [0, 0, 1], 1.4);
+
+  // cubes on sleds, built at their apart positions; moved by transform
+  for (let i = 0; i < 4; i++) {
+    const x = X_APART[i]; let g = "";
+    g += box(x, x + CUBE, 38, 74, 16, 20, "mid", { bevel: 0.8 });
+    for (const [sx, sy] of [[x + 4, 40], [x + 24, 40], [x + 4, 72], [x + 24, 72]]) g += screw([sx, sy, 20], [0, 0, 1], 1.1);
+    g += box(x, x + CUBE, 42, 70, 20, 46, "hi");
+    // seam band round the body
+    g += seg3([[x, 70, 26], [x + CUBE, 70, 26], [x + CUBE, 42, 26]], "ln lo");
+    g += textOn(x + 14, 70, 35.5, LET[i], 9, "let", "front");
+    // lid (C has a proud variant for the cube fault)
+    const lid = (z1, extra) => box(x + 1.5, x + CUBE - 1.5, 43.5, 68.5, 46, z1, "hi", { topCls: "lid", topAttr: ` data-lid="${i}"` }) +
+      [[x + 4.5, 46.5], [x + 23.5, 46.5], [x + 4.5, 65.5], [x + 23.5, 65.5]].map(([sx, sy]) => screw([sx, sy, z1], [0, 0, 1], 1.1)).join("");
+    if (i === 2) {
+      g += `<g data-variant="lid-ok">${lid(LID_TOP)}</g><g data-variant="lid-proud" data-hide="1">${lid(LID_TOP + LID_PROUD)}</g>`;
+    } else g += lid(LID_TOP);
+    // joint pin on the +x face (D carries the pusher's contact plate instead)
+    if (i < 3) {
+      g += path(D(proj([[x + CUBE, 42, 20], [x + CUBE, 70, 20], [x + CUBE, 70, 46], [x + CUBE, 42, 46]])), "face-bad", ` data-face="${i}"`);
+      const pin = z => cyl([x + CUBE, ROW_Y, z], [x + CUBE + PIN, ROW_Y, z], 2.5, "hi") + path(arc([x + CUBE + PIN - 1.2, ROW_Y, z], [1, 0, 0], 2.5), "ln lo");
+      if (i === 1) g += `<g data-variant="pin-ok">${pin(PIN_Z)}</g><g data-variant="pin-bad" data-hide="1">${pin(PIN_Z_BAD)}</g>`;
+      else g += pin(PIN_Z);
+    } else {
+      g += box(x + CUBE, x + CUBE + 1, 49, 63, 26, 40, "mid");
+    }
+    cubes += `<g id="cube${i}">${g}</g>`;
+  }
+
+  // pusher block (rides the rail behind D)
+  const PX0 = X_APART[3] + CUBE + 1;
+  push += box(PX0, PX0 + 10, 46, 66, 16, 36, "mid", { bevel: 1.2 });
+  push += screw([PX0 + 5, 50, 36], [0, 0, 1], 1.2) + screw([PX0 + 5, 62, 36], [0, 0, 1], 1.2);
+  push += seg3([[PX0, 66, 22], [PX0 + 10, 66, 22], [PX0 + 10, 46, 22]], "ln soft");
+
+  // bracket with the nut boss
+  brk += box(BRACKET_X, BRACKET_X + 10, 44, 68, 10, 40, "mid", { bevel: 1.4 });
+  brk += screw([BRACKET_X + 5, 48, 40], [0, 0, 1], 1.3) + screw([BRACKET_X + 5, 64, 40], [0, 0, 1], 1.3);
+  brk += cyl([BRACKET_X + 10, ROW_Y, 26], [BRACKET_X + 13, ROW_Y, 26], 5.5, "mid");
+
+  // beam, guide rail, stops, ruler, junction box
+  gantry += box(2, 260, 2, 20, 100, 112, "mid", { bevel: 1.4 });
+  let bt = "";
+  for (let x = 24; x <= 216; x += 4) { const major = (x - 24) % 28 === 0; bt += D(proj([[x, 20, 112], [x, 20 - (major ? 3.6 : 1.9), 112]]), false); }
+  gantry += path(bt, "ln lo");
+  gantry += box(8, 254, 20, 23, 104, 109, "mid");
+  gantry += box(8, 13, 20, 26, 102.5, 110.5, "mid") + box(249, 254, 20, 26, 102.5, 110.5, "mid");
+  gantry += box(234, 252, 5, 17, 112, 122, "mid", { bevel: 1 });
+  gantry += screw([237, 14, 122], [0, 0, 1], 1.1) + screw([249, 8, 122], [0, 0, 1], 1.1);
+  gantry += box(240, 246, 8, 14, 122, 125, "mid");
+
+  // carriage, built at cx = 0
+  carr += box(-16, 16, 23, 35, 98, 118, "mid", { bevel: 1.2 });
+  carr += seg3([[-16, 35, 108], [16, 35, 108], [16, 23, 108]], "ln soft");
+  for (const [sx, sz] of [[-12.5, 101.5], [12.5, 101.5], [-12.5, 114.5], [12.5, 114.5]]) carr += screw([sx, 35, sz], [0, 1, 0], 1.2);
+  carr += cyl([-8, 29, 118], [-8, 29, 123], 4, "mid") + `<path id="carr-knurl" class="ln lo" d="${knurl([-8, 29, 118], [-8, 29, 123], 4, 22, 0)}"/>`;
+  carr += box(5, 11, 26, 32, 118, 122, "mid");
+  // plunger (tip at z = 0), split round the spring
+  const plA = cyl([0, ROW_Y, 0], [0, ROW_Y, 2.5], 4.5, "hi", { capCls: "fk pad", capAttr: ' id="pad"' }) +
+    cyl([0, ROW_Y, 2.5], [0, ROW_Y, 8], 1.6, "mid") + cyl([0, ROW_Y, 8], [0, ROW_Y, 10], 3.2, "mid");
+  const plB = cyl([0, ROW_Y, 10], [0, ROW_Y, 40], 1.6, "mid");
+  carr += `<g id="plA">${plA}</g><path id="spB" class="ln lo"/>` + `<g id="plB">${plB}</g><path id="spF" class="ln hi" style="stroke-width:1.15"/>`;
+  carr += cyl([0, ROW_Y, 80], [0, ROW_Y, 86], 3.6, "mid");
+  carr += cyl([0, ROW_Y, 86], [0, ROW_Y, 104], 6.5, "mid") + path(arc([0, ROW_Y, 95], [0, 0, 1], 6.5), "ln lo") + path(arc([0, ROW_Y, 89], [0, 0, 1], 6.5), "ln soft");
+  carr += box(-6, 6, 35, 64, 104, 112, "mid", { bevel: 1 });
+  carr += screw([0, 40, 112], [0, 0, 1], 1.3) + screw([0, 56, 112], [0, 0, 1], 1.3);
+
+  /* ---------- assemble ---------- */
+  const pad = { l: 0, r: 0, t: 0, b: 0 };
+  svg.innerHTML += `
+  <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle class="grid-dot" cx="10" cy="10" r="0.9"/></pattern></defs>
+  <rect id="bg" fill="url(#grid)"/>
+  <path id="reg" class="reg"/>
+  <g id="L-base">${base}</g>
+  <g id="L-rail">${rail}</g>
+  <g id="L-cubes">${cubes}</g>
+  <g id="L-push"><g id="pusher">${push}</g></g>
+  <g id="L-screwL"><path id="sl-side" class="fc mid"/><path id="sl-th" class="ln lo"/></g>
+  <g id="L-brk">${brk}</g>
+  <g id="L-screwR"><path id="sr-side" class="fc mid"/><path id="sr-th" class="ln lo"/><path id="kn-side" class="fc mid"/><path id="kn-kn" class="ln lo"/><path id="kn-cap" class="fk mid"/><path id="kn-ring" class="ln soft"/><path id="kn-dot" class="dotf"/></g>
+  <g id="L-marks"><path id="trace" class="trace"/><path id="seam" class="seam-act"/><path id="failmark" class="fail-mark"/></g>
+  <g id="L-gantry">${gantry}</g>
+  <g id="L-carr"><g id="carr">${carr}</g></g>
+  <g id="L-cable"><path id="cab-o" class="cable-o"/><path id="cab-i" class="cable-i"/><path id="cab-end" class="dotf"/></g>`;
+
+  const $ = id => document.getElementById(id);
+  const el = {
+    cubes: [0, 1, 2, 3].map(i => $("cube" + i)), pusher: $("pusher"), carr: $("carr"), plA: $("plA"), plB: $("plB"),
+    spB: $("spB"), spF: $("spF"), slSide: $("sl-side"), slTh: $("sl-th"), srSide: $("sr-side"), srTh: $("sr-th"),
+    knSide: $("kn-side"), knKn: $("kn-kn"), knCap: $("kn-cap"), knRing: $("kn-ring"), knDot: $("kn-dot"),
+    cabO: $("cab-o"), cabI: $("cab-i"), cabEnd: $("cab-end"), trace: $("trace"), seam: $("seam"), fail: $("failmark"),
+    pad: $("pad"), knurl: $("carr-knurl"), bg: $("bg"), reg: $("reg"),
+    roText: $("ro-text"), roFlag: $("ro-flag"),
+  };
+  const lids = [...svg.querySelectorAll("[data-lid]")];
+  const lamp = id => [$("lamp-" + id), $("lampx-" + id)];
+
+  // viewBox: generous margin on wide cards, tight on phones
+  function fitView() {
+    const w = svg.getBoundingClientRect().width || 900;
+    const kx = w < 560 ? 0.05 : 0.2, kt = w < 560 ? 0.06 : 0.1, kb = w < 560 ? 0.04 : 0.07;
+    const x = -DW * kx, y = -DH * kt, W = DW * (1 + 2 * kx), H = DH * (1 + kt + kb);
+    svg.setAttribute("viewBox", `${r2(x)} ${r2(y)} ${r2(W)} ${r2(H)}`);
+    el.bg.setAttribute("x", r2(x)); el.bg.setAttribute("y", r2(y)); el.bg.setAttribute("width", r2(W)); el.bg.setAttribute("height", r2(H));
+    const m = 14, l = 9; let d = "";
+    for (const [cx, cy] of [[x + m, y + m], [x + W - m, y + m], [x + m, y + H - m], [x + W - m, y + H - m]])
+      d += `M${r2(cx - l)} ${r2(cy)}H${r2(cx + l)}M${r2(cx)} ${r2(cy - l)}V${r2(cy + l)}`;
+    el.reg.setAttribute("d", d);
+  }
+  fitView();
+  new ResizeObserver(fitView).observe(svg);
+
+  /* ---------- state + render ---------- */
+  const st = { mode: "none", s: 0, cx: HOME, tip: TIP_REST, trace0: null, trace1: null };
+  const tr = (node, dx, dy, dz) => { const v = off(dx, dy, dz); node.setAttribute("transform", `translate(${r2(v[0])} ${r2(v[1])})`); };
+
+  function springPaths(z0, z1, cx) {
+    const turns = 6, r = 3.2, n = turns * 24; let back = "", front = "", cur = null, curFront = null;
+    const flush = () => { if (cur && cur.length > 1) { if (curFront) front += D(cur, false); else back += D(cur, false); } };
+    for (let k = 0; k <= n; k++) {
+      const t = 2 * Math.PI * k / 24, z = z0 + (z1 - z0) * k / n;
+      const nx = Math.cos(t), ny = Math.sin(t);
+      const isFront = nx * sa + ny * ca > 0;
+      const p = P(cx + r * nx, ROW_Y + r * ny, z);
+      if (cur === null || isFront !== curFront) { if (cur) { cur.push(p); flush(); } cur = [p]; curFront = isFront; }
+      else cur.push(p);
+    }
+    flush();
+    return [back, front];
+  }
+
+  function render() {
+    const xs = cubeXs(st.s, st.mode);
+    xs.forEach((x, i) => tr(el.cubes[i], x - X_APART[i], 0, 0));
+    const px = xs[3] + CUBE + 1;
+    tr(el.pusher, px - PX0, 0, 0);
+    // lead screw: fixed to the pusher, threads through the bracket nut
+    const s0 = px + 10, s1 = s0 + SCREW_L, k0 = s1 - KNOB_L;
+    const L = cylGeom([s0, ROW_Y, 26], [BRACKET_X, ROW_Y, 26], 3);
+    el.slSide.setAttribute("d", L.side);
+    const R = cylGeom([BRACKET_X + 13, ROW_Y, 26], [k0, ROW_Y, 26], 3);
+    el.srSide.setAttribute("d", R.side);
+    let thL = "", thR = "";
+    for (let x = s0 + 1.5; x < k0 - 0.5; x += 2) {
+      if (x < BRACKET_X - 0.5) thL += arc([x, ROW_Y, 26], [1, 0, 0], 3, 10);
+      else if (x > BRACKET_X + 13.5) thR += arc([x, ROW_Y, 26], [1, 0, 0], 3, 10);
+    }
+    el.slTh.setAttribute("d", thL); el.srTh.setAttribute("d", thR);
+    const K = cylGeom([k0, ROW_Y, 26], [s1, ROW_Y, 26], 8);
+    el.knSide.setAttribute("d", K.side); el.knCap.setAttribute("d", K.cap);
+    el.knKn.setAttribute("d", knurl([k0, ROW_Y, 26], [s1, ROW_Y, 26], 8, 28, st.s * Math.PI /* 2 mm pitch: one turn per 2 mm */, 0.12));
+    el.knRing.setAttribute("d", D(ring([s1, ROW_Y, 26], [1, 0, 0], 5, 32)));
+    el.knDot.setAttribute("d", D(ring([s1, ROW_Y, 26], [1, 0, 0], 1.6, 16)));
+    // carriage + plunger
+    tr(el.carr, st.cx, 0, 0);
+    tr(el.plA, 0, 0, st.tip); tr(el.plB, 0, 0, st.tip);
+    const [b, f] = springPaths(st.tip + 10, 80, 0);
+    el.spB.setAttribute("d", b); el.spF.setAttribute("d", f);
+    // service cable: carriage connector to the junction box
+    const c0 = [st.cx + 8, 29, 122], c3 = [243, 11, 125];
+    const c1 = [st.cx + 8, 29, 140], c2 = [243, 11, 142];
+    const p0 = P(...c0), p1 = P(...c1), p2 = P(...c2), p3 = P(...c3);
+    const cd = `M${r2(p0[0])} ${r2(p0[1])}C${r2(p1[0])} ${r2(p1[1])} ${r2(p2[0])} ${r2(p2[1])} ${r2(p3[0])} ${r2(p3[1])}`;
+    el.cabO.setAttribute("d", cd); el.cabI.setAttribute("d", cd);
+    el.cabEnd.setAttribute("d", D(ring(c0, [0, 0, 1], 1.4, 14)) + D(ring(c3, [0, 0, 1], 1.4, 14)));
+    // system sweep trace
+    el.trace.setAttribute("d", st.trace0 == null ? "" : D(proj([[st.trace0, ROW_Y, LID_TOP], [st.trace1, ROW_Y, LID_TOP]]), false));
+  }
+
+  /* ---------- run sequencer ---------- */
+  const SPEED = { carr: 160, tip: 60, push: 45, sweep: 85 };
+  const DWELL = 0.3;
+  let queue = [], cur = null, curT = 0;
+  const step = o => queue.push(o);
+  const move = (key, to, speed) => step({ start() { this.from = st[key]; this.dur = Math.abs(to - this.from) / speed; }, tick(t) { st[key] = this.from + (to - this.from) * t; } });
+  const wait = (dur, fn) => step({ dur, start: fn });
+  const call = fn => step({ dur: 0, start: fn });
+
+  function setLamp(id, s) { lamp(id).forEach(n => n && n.setAttribute("data-s", s)); }
+  function flag(s, txt) { el.roFlag.setAttribute("data-s", s); el.roFlag.textContent = txt; }
+  function ro(text, s, txt) { el.roText.textContent = text; flag(s, txt); }
+  function stepState(n, state, label) { const li = $("step-" + n); li.setAttribute("data-state", state); $("st-" + n).textContent = label; }
+  const lidOf = i => lids.filter(l => +l.dataset.lid === i);
+  function clearMarks() { lids.forEach(l => l.classList.remove("act", "bad")); svg.querySelectorAll(".face-bad").forEach(n => n.classList.remove("on")); el.seam.setAttribute("d", ""); el.fail.setAttribute("d", ""); el.pad.classList.remove("act"); }
+
+  function applyMode(mode) {
+    st.mode = mode;
+    svg.querySelectorAll('[data-variant="lid-ok"]').forEach(n => n.setAttribute("data-hide", mode === "cube" ? "1" : "0"));
+    svg.querySelectorAll('[data-variant="lid-proud"]').forEach(n => n.setAttribute("data-hide", mode === "cube" ? "0" : "1"));
+    svg.querySelectorAll('[data-variant="pin-ok"]').forEach(n => n.setAttribute("data-hide", mode === "joint" ? "1" : "0"));
+    svg.querySelectorAll('[data-variant="pin-bad"]').forEach(n => n.setAttribute("data-hide", mode === "joint" ? "0" : "1"));
+    document.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
+  }
+
+  function plan(mode) {
+    queue = []; cur = null;
+    const tally = { pass: 0, fail: 0 };
+    call(() => {
+      applyMode(mode); clearMarks();
+      st.trace0 = st.trace1 = null;
+      ["u0", "u1", "u2", "u3", "i0", "i1", "i2", "s0"].forEach(id => setLamp(id, "pend"));
+      stepState(1, "active", "Running"); stepState(2, "idle", "Pending"); stepState(3, "idle", "Pending");
+      ro("Step 1/3 · Unit · 4 cubes, one at a time", "run", "Running");
+    });
+    // STEP 1 — unit
+    const heights = [0, 1, 2, 3].map(i => CUBE + (mode === "cube" && i === 2 ? LID_PROUD : 0));
+    for (let i = 0; i < 4; i++) {
+      const h = heights[i], ok = Math.abs(h - CUBE) <= 0.2;
+      call(() => { setLamp("u" + i, "run"); lidOf(i).forEach(l => l.classList.add("act")); ro(`Step 1/3 · Unit · Cube ${LET[i]} · Height …`, "run", "Running"); });
+      move("cx", X_APART[i] + CUBE / 2, SPEED.carr);
+      move("tip", 20 + h, SPEED.tip);
+      wait(DWELL, () => { el.pad.classList.add("act"); ro(`Step 1/3 · Unit · Cube ${LET[i]} · Height ${h.toFixed(1)} mm`, "run", "Running"); });
+      call(() => {
+        el.pad.classList.remove("act"); setLamp("u" + i, ok ? "pass" : "fail"); ok ? tally.pass++ : tally.fail++;
+        lidOf(i).forEach(l => { l.classList.remove("act"); if (!ok) l.classList.add("bad"); });
+        ro(`Step 1/3 · Unit · Cube ${LET[i]} · Height ${h.toFixed(1)} mm`, ok ? "pass" : "fail", ok ? "Pass" : "Fail");
+      });
+      move("tip", TIP_REST, SPEED.tip);
+    }
+    if (mode === "cube") {
+      call(() => {
+        ["i0", "i1", "i2", "s0"].forEach(id => setLamp(id, "skip"));
+        stepState(1, "fail", "1 fail"); stepState(2, "skip", "Skipped"); stepState(3, "skip", "Skipped");
+        ro("Run stopped at step 1 · 3 pass · 1 fail · 4 skipped", "fail", "Fail");
+      });
+      move("cx", HOME, SPEED.carr);
+      wait(4.2);
+      return;
+    }
+    call(() => { stepState(1, "pass", "4/4 pass"); stepState(2, "active", "Running"); ro("Joining the row · lead screw turning", "run", "Running"); });
+    move("cx", 94, SPEED.carr);
+    move("s", sMax(mode), SPEED.push);
+    // STEP 2 — integration
+    const xs = cubeXs(sMax(mode), mode);
+    for (let j = 0; j < 3; j++) {
+      const a = xs[j] + CUBE, b = xs[j + 1], gap = b - a, ok = gap <= 0.2, mid = (a + b) / 2;
+      const name = `${LET[j]}–${LET[j + 1]}`;
+      call(() => { setLamp("i" + j, "run"); el.seam.setAttribute("d", D(proj([[mid, 42.5, LID_TOP], [mid, 69.5, LID_TOP]]), false)); ro(`Step 2/3 · Integration · Joint ${name} · Gap …`, "run", "Running"); });
+      move("cx", mid, SPEED.carr);
+      move("tip", LID_TOP, SPEED.tip);
+      wait(DWELL, () => { el.pad.classList.add("act"); ro(`Step 2/3 · Integration · Joint ${name} · Gap ${gap.toFixed(1)} mm`, "run", "Running"); });
+      call(() => {
+        el.pad.classList.remove("act"); el.seam.setAttribute("d", "");
+        setLamp("i" + j, ok ? "pass" : "fail"); ok ? tally.pass++ : tally.fail++;
+        if (!ok) svg.querySelector(`[data-face="${j}"]`).classList.add("on");
+        ro(`Step 2/3 · Integration · Joint ${name} · Gap ${gap.toFixed(1)} mm`, ok ? "pass" : "fail", ok ? "Pass" : "Fail");
+      });
+      move("tip", TIP_REST, SPEED.tip);
+    }
+    if (mode === "joint") {
+      call(() => {
+        setLamp("s0", "skip");
+        stepState(2, "fail", "1 fail"); stepState(3, "skip", "Skipped");
+        ro("Run stopped at step 2 · 6 pass · 1 fail · 1 skipped", "fail", "Fail");
+      });
+      move("cx", HOME, SPEED.carr);
+      wait(4.2);
+      call(() => { clearMarks(); ro("Resetting the fixture", "idle", "Pending"); });
+      move("s", 0, 60);
+      return;
+    }
+    // STEP 3 — system
+    const sx0 = xs[0] + 6, sx1 = xs[3] + CUBE - 6;
+    call(() => { stepState(2, "pass", "3/3 pass"); stepState(3, "active", "Running"); setLamp("s0", "run"); ro("Step 3/3 · System · End to end", "run", "Running"); });
+    move("cx", sx0, SPEED.carr);
+    move("tip", LID_TOP, SPEED.tip);
+    call(() => { el.pad.classList.add("act"); st.trace0 = sx0; st.trace1 = sx0; });
+    step({
+      start() { this.dur = (sx1 - sx0) / SPEED.sweep; },
+      tick(t) { st.cx = sx0 + (sx1 - sx0) * t; st.trace1 = st.cx; ro(`Step 3/3 · System · Sweep ${Math.round(st.cx - sx0)} of ${sx1 - sx0} mm`, "run", "Running"); },
+    });
+    call(() => {
+      el.pad.classList.remove("act"); setLamp("s0", "pass");
+      stepState(3, "pass", "1/1 pass");
+      ro("Run complete · 8 of 8 checks · flatness 0.0 mm", "pass", "Pass");
+    });
+    move("tip", TIP_REST, SPEED.tip);
+    move("cx", HOME, SPEED.carr);
+    wait(4.2);
+    call(() => { st.trace0 = st.trace1 = null; ro("Resetting the fixture", "idle", "Pending"); });
+    move("s", 0, 60);
+  }
+
+  /* ---------- loop, tour, controls ---------- */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  const TOUR = ["none", "joint", "cube"];
+  let tourIdx = 0, touched = false, chosen = "none", raf = 0, last = 0, visible = true;
+
+  function nextRun() {
+    const mode = touched ? chosen : TOUR[tourIdx++ % TOUR.length];
+    st.s = 0; st.tip = TIP_REST;
+    plan(mode);
+  }
+  function advance(dt) {
+    let budget = dt;
+    while (true) {
+      if (!cur) {
+        if (!queue.length) { nextRun(); }
+        cur = queue.shift(); curT = 0;
+        if (cur.start) cur.start.call(cur);
+        if (cur.dur == null) cur.dur = 0;
+      }
+      const remain = cur.dur - curT;
+      if (budget < remain) { curT += budget; if (cur.tick) cur.tick.call(cur, cur.dur ? curT / cur.dur : 1); break; }
+      budget -= Math.max(0, remain); curT = cur.dur;
+      if (cur.tick) cur.tick.call(cur, 1);
+      cur = null;
+      if (budget <= 0) break;
+    }
+  }
+  function settle(mode) {
+    // reduced motion: jump to the moment each run reports its result
+    st.s = 0; st.tip = TIP_REST; plan(mode);
+    let guard = 0;
+    while (queue.length && guard++ < 400) {
+      const s = queue.shift(); if (s.start) s.start.call(s); if (s.tick) s.tick.call(s, 1);
+      if (s.dur && s.dur >= 4) break;           // the hold after the verdict
+    }
+    queue = []; cur = null; render();
+  }
+  function frame(t) {
+    raf = 0;
+    if (!visible || reduce.matches) return;
+    const dt = last ? Math.min(0.05, (t - last) / 1000) : 0; last = t;
+    advance(dt); render();
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!raf && visible && !reduce.matches) { last = 0; raf = requestAnimationFrame(frame); } }
+
+  function restart(mode) {
+    touched = true; chosen = mode;
+    if (reduce.matches) { settle(mode); return; }
+    st.trace0 = st.trace1 = null; clearMarks();
+    queue = []; cur = null;
+    if (st.s > 0) { move("tip", TIP_REST, SPEED.tip); move("s", 0, 90); }
+    else move("tip", TIP_REST, SPEED.tip);
+    const q = queue; queue = []; plan(mode); queue = q.concat(queue);
+    play();
+  }
+  document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => restart(b.dataset.mode)));
+  const plate = $("plate");
+  plate.addEventListener("click", () => restart(touched ? chosen : st.mode));
+  plate.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); restart(touched ? chosen : st.mode); } });
+
+  // theme (skin) switch
+  const root = document.documentElement;
+  function currentSkin() {
+    const s = root.getAttribute("data-skin"); if (s) return s;
+    const t = root.getAttribute("data-theme");
+    if (t === "dark") return "void"; if (t === "light") return "paper";
+    return matchMedia("(prefers-color-scheme: dark)").matches ? "void" : "paper";
+  }
+  function markSkin() { const s = currentSkin(); document.querySelectorAll("[data-skin]").forEach(b => { if (b.tagName === "BUTTON") b.setAttribute("aria-pressed", String(b.dataset.skin === s)); }); }
+  try { const saved = localStorage.getItem("cube-rig-skin"); if (saved) root.setAttribute("data-skin", saved); } catch (e) {}
+  document.querySelectorAll("button[data-skin]").forEach(b => b.addEventListener("click", () => {
+    root.setAttribute("data-skin", b.dataset.skin); markSkin();
+    try { localStorage.setItem("cube-rig-skin", b.dataset.skin); } catch (e) {}
+  }));
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", markSkin);
+  new MutationObserver(markSkin).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  markSkin();
+
+  // visibility + reduced motion
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) play(); }, { threshold: 0.05 }).observe(svg);
+  reduce.addEventListener("change", () => { if (reduce.matches) settle(chosen); else play(); });
+
+  applyMode("none"); render();
+  if (reduce.matches) settle("none"); else play();
+
+  // test hook: jump the sequence by seconds (used for stills)
+  window.__rig = { advance: s => { advance(s); render(); }, plan, st, settle, stop: () => { visible = false; } };
+})();
+</script>
+
+</body></html>
