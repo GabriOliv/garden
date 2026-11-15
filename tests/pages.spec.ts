@@ -42,9 +42,9 @@ test("PAGE-05 um único link Comece a Leitura em 390 px e em 1280 px", async ({ 
 test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ page }) => {
   await page.goto(PAGES.home);
   const blocks = [
-    ["Notas", "banner-grafo-dossier", "Teorias e artigos sobre diversos tópicos de Garantia de Qualidade."],
-    ["Estudos de Certificações", "banner-automato-dossier", "Resumos e materiais de estudo usados para fazer certificações."],
-    ["Evolução", "banner-filotaxia-dossier", "Documentação separada em níveis de evolução e experiência."],
+    ["Notas", "banner-notas-dossier", "Teorias e artigos sobre diversos tópicos de Garantia de Qualidade."],
+    ["Estudos de Certificações", "banner-niveis-dossier", "Resumos e materiais de estudo usados para fazer certificações."],
+    ["Evolução", "banner-evolucao-dossier", "Documentação separada em níveis de evolução e experiência."],
   ];
   const main = page.locator("main");
   for (const [title, art, phrase] of blocks) {
