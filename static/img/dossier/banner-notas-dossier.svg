@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" width="720" height="480" role="img" aria-labelledby="n7-t">
+  <title id="n7-t">Fichas de anotação sendo escritas — estilo Dossier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+    svg { --paper:#f4f4f1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .dotted { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 4; }
+    .link { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 4; }
+    .plate { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .plate-soft { fill: var(--paper); stroke: var(--rule-soft); stroke-width: 1; }
+    .mut { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+    .sigs { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .dot { fill: var(--ink); }
+    .sig { fill: var(--signal); }
+    .tint { fill: var(--signal-tint); }
+    .hatch { fill: url(#n7-hatch); }
+    .dots { fill: url(#n7-dots); }
+    .pt-tint { fill: var(--signal-tint); }
+    .pt-line { stroke: var(--signal); stroke-width: 1; }
+    .pt-dot { fill: var(--signal); }
+    .pulse { fill: none; stroke: var(--ink); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .fb { transform-box: fill-box; transform-origin: center; }
+    .w { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .14em; fill: var(--ink); }
+    .small { font-size: 8px; letter-spacing: .1em; }
+    .mid { text-anchor: middle; }
+    .end { text-anchor: end; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+    .ro { opacity: 0; }
+
+    @keyframes n7w0 { 0% { stroke-dashoffset: 1; opacity: 1 } 4% { stroke-dashoffset: 1; opacity: 1 } 6.03% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w1 { 0% { stroke-dashoffset: 1; opacity: 1 } 6.36% { stroke-dashoffset: 1; opacity: 1 } 7.75% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w2 { 0% { stroke-dashoffset: 1; opacity: 1 } 8.07% { stroke-dashoffset: 1; opacity: 1 } 10.32% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w3 { 0% { stroke-dashoffset: 1; opacity: 1 } 10.64% { stroke-dashoffset: 1; opacity: 1 } 13.74% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w4 { 0% { stroke-dashoffset: 1; opacity: 1 } 14.07% { stroke-dashoffset: 1; opacity: 1 } 15.14% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w5 { 0% { stroke-dashoffset: 1; opacity: 1 } 15.46% { stroke-dashoffset: 1; opacity: 1 } 16.63% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w6 { 0% { stroke-dashoffset: 1; opacity: 1 } 16.96% { stroke-dashoffset: 1; opacity: 1 } 19.74% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w7 { 0% { stroke-dashoffset: 1; opacity: 1 } 20.06% { stroke-dashoffset: 1; opacity: 1 } 21.35% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w8 { 0% { stroke-dashoffset: 1; opacity: 1 } 21.67% { stroke-dashoffset: 1; opacity: 1 } 23.81% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w9 { 0% { stroke-dashoffset: 1; opacity: 1 } 24.13% { stroke-dashoffset: 1; opacity: 1 } 27.02% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w10 { 0% { stroke-dashoffset: 1; opacity: 1 } 27.34% { stroke-dashoffset: 1; opacity: 1 } 28.41% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w11 { 0% { stroke-dashoffset: 1; opacity: 1 } 28.73% { stroke-dashoffset: 1; opacity: 1 } 31.3% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w12 { 0% { stroke-dashoffset: 1; opacity: 1 } 31.63% { stroke-dashoffset: 1; opacity: 1 } 33.23% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w13 { 0% { stroke-dashoffset: 1; opacity: 1 } 33.55% { stroke-dashoffset: 1; opacity: 1 } 34.62% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w14 { 0% { stroke-dashoffset: 1; opacity: 1 } 34.94% { stroke-dashoffset: 1; opacity: 1 } 36.12% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w15 { 0% { stroke-dashoffset: 1; opacity: 1 } 36.44% { stroke-dashoffset: 1; opacity: 1 } 38.8% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w16 { 0% { stroke-dashoffset: 1; opacity: 1 } 39.12% { stroke-dashoffset: 1; opacity: 1 } 40.62% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w17 { 0% { stroke-dashoffset: 1; opacity: 1 } 40.94% { stroke-dashoffset: 1; opacity: 1 } 42.12% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w18 { 0% { stroke-dashoffset: 1; opacity: 1 } 42.44% { stroke-dashoffset: 1; opacity: 1 } 44.15% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w19 { 0% { stroke-dashoffset: 1; opacity: 1 } 44.47% { stroke-dashoffset: 1; opacity: 1 } 45.65% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w20 { 0% { stroke-dashoffset: 1; opacity: 1 } 45.97% { stroke-dashoffset: 1; opacity: 1 } 48.76% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w21 { 0% { stroke-dashoffset: 1; opacity: 1 } 49.08% { stroke-dashoffset: 1; opacity: 1 } 51.43% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w22 { 0% { stroke-dashoffset: 1; opacity: 1 } 51.76% { stroke-dashoffset: 1; opacity: 1 } 52.83% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w23 { 0% { stroke-dashoffset: 1; opacity: 1 } 53.15% { stroke-dashoffset: 1; opacity: 1 } 56.04% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w24 { 0% { stroke-dashoffset: 1; opacity: 1 } 56.36% { stroke-dashoffset: 1; opacity: 1 } 57.64% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7w25 { 0% { stroke-dashoffset: 1; opacity: 1 } 57.97% { stroke-dashoffset: 1; opacity: 1 } 59.68% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7cur { 0% { transform: translate(64px,93px); opacity: 0 } 3.5% { transform: translate(64px,93px); opacity: 0 } 4% { transform: translate(64px,93px); opacity: 1 } 4% { transform: translate(64px,93px); opacity: 1 } 6.03% { transform: translate(85px,93px); opacity: 1 } 6.36% { transform: translate(88px,93px); opacity: 1 } 7.75% { transform: translate(103px,93px); opacity: 1 } 8.07% { transform: translate(106px,93px); opacity: 1 } 10.32% { transform: translate(129px,93px); opacity: 1 } 10.64% { transform: translate(132px,93px); opacity: 1 } 13.74% { transform: translate(163px,93px); opacity: 1 } 14.07% { transform: translate(166px,93px); opacity: 1 } 15.14% { transform: translate(178px,93px); opacity: 1 } 15.46% { transform: translate(181px,93px); opacity: 1 } 16.63% { transform: translate(194px,93px); opacity: 1 } 16.96% { transform: translate(64px,107px); opacity: 1 } 19.74% { transform: translate(92px,107px); opacity: 1 } 20.06% { transform: translate(95px,107px); opacity: 1 } 21.35% { transform: translate(109px,107px); opacity: 1 } 21.67% { transform: translate(112px,107px); opacity: 1 } 23.81% { transform: translate(134px,107px); opacity: 1 } 24.13% { transform: translate(137px,107px); opacity: 1 } 27.02% { transform: translate(166px,107px); opacity: 1 } 27.34% { transform: translate(169px,107px); opacity: 1 } 28.41% { transform: translate(181px,107px); opacity: 1 } 28.73% { transform: translate(184px,107px); opacity: 1 } 31.3% { transform: translate(210px,107px); opacity: 1 } 31.63% { transform: translate(64px,121px); opacity: 1 } 33.23% { transform: translate(81px,121px); opacity: 1 } 33.55% { transform: translate(84px,121px); opacity: 1 } 34.62% { transform: translate(96px,121px); opacity: 1 } 34.94% { transform: translate(99px,121px); opacity: 1 } 36.12% { transform: translate(112px,121px); opacity: 1 } 36.44% { transform: translate(115px,121px); opacity: 1 } 38.8% { transform: translate(139px,121px); opacity: 1 } 39.12% { transform: translate(142px,121px); opacity: 1 } 40.62% { transform: translate(158px,121px); opacity: 1 } 40.94% { transform: translate(64px,135px); opacity: 1 } 42.12% { transform: translate(77px,135px); opacity: 1 } 42.44% { transform: translate(80px,135px); opacity: 1 } 44.15% { transform: translate(98px,135px); opacity: 1 } 44.47% { transform: translate(101px,135px); opacity: 1 } 45.65% { transform: translate(114px,135px); opacity: 1 } 45.97% { transform: translate(117px,135px); opacity: 1 } 48.76% { transform: translate(145px,135px); opacity: 1 } 49.08% { transform: translate(148px,135px); opacity: 1 } 51.43% { transform: translate(172px,135px); opacity: 1 } 51.76% { transform: translate(175px,135px); opacity: 1 } 52.83% { transform: translate(187px,135px); opacity: 1 } 53.15% { transform: translate(64px,149px); opacity: 1 } 56.04% { transform: translate(93px,149px); opacity: 1 } 56.36% { transform: translate(96px,149px); opacity: 1 } 57.64% { transform: translate(110px,149px); opacity: 1 } 57.97% { transform: translate(113px,149px); opacity: 1 } 59.68% { transform: translate(131px,149px); opacity: 1 } 64% { transform: translate(131px,149px); opacity: 0 } 100% { transform: translate(64px,93px); opacity: 0 } }
+    @keyframes n7hl { 0% { opacity: 0 } 42.62% { opacity: 0 } 44.12% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7ld { 0% { stroke-dashoffset: 1; opacity: 1 } 43.62% { stroke-dashoffset: 1; opacity: 1 } 48.62% { stroke-dashoffset: 0; opacity: 1 } 88% { stroke-dashoffset: 0; opacity: 1 } 95% { stroke-dashoffset: 0; opacity: 0 } 100% { stroke-dashoffset: 1; opacity: 0 } }
+    @keyframes n7lt { 0% { opacity: 0 } 43.62% { opacity: 0 } 45.12% { opacity: 1 } 88% { opacity: 1 } 95% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7pg { 0% { opacity: 0; transform: scale(1) } 43.52% { opacity: 0; transform: scale(1) } 43.62% { opacity: .9; transform: scale(1) } 53.62% { opacity: 0; transform: scale(5) } 100% { opacity: 0; transform: scale(5) } }
+    @keyframes n7c0 { 0% { opacity: 1 } 16.63% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7c1 { 0% { opacity: 0 } 16.63% { opacity: 1 } 31.3% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7c2 { 0% { opacity: 0 } 31.3% { opacity: 1 } 40.62% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7c3 { 0% { opacity: 0 } 40.62% { opacity: 1 } 52.83% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7c4 { 0% { opacity: 0 } 52.83% { opacity: 1 } 59.68% { opacity: 0 } 100% { opacity: 0 } }
+    @keyframes n7c5 { 0% { opacity: 0 } 59.68% { opacity: 1 } 96% { opacity: 0 } 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .w { stroke-dashoffset: 0; } .ro-rest { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="n7-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-tint" width="6" height="6"/>
+      <line class="pt-line" x1="0" y1="0" x2="0" y2="6"/>
+    </pattern>
+    <pattern id="n7-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+      <rect class="pt-tint" width="5" height="5"/>
+      <circle class="pt-dot" cx="2.5" cy="2.5" r=".9"/>
+    </pattern>
+    <pattern id="n7-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8.0" cy="8.0" r=".6"/></pattern>
+  </defs>
+
+  <rect class="bg" width="360" height="240"/>
+  <rect width="360" height="240" fill="url(#n7-grid)"/>
+  <rect class="plate-soft" x="56" y="54" width="176" height="128"/>
+  <rect class="plate-soft" x="48" y="62" width="176" height="128"/>
+  <rect class="plate" x="40" y="70" width="176" height="128"/>
+  <line class="hair" x1="40" y1="92" x2="216" y2="92"/>
+  <text class="label small" x="62" y="85">Nº 012</text>
+  <rect class="sig" x="202" y="78" width="6" height="6"/>
+  <line class="soft" x1="41" y1="106" x2="215" y2="106"/>
+  <line class="soft" x1="41" y1="120" x2="215" y2="120"/>
+  <line class="soft" x1="41" y1="134" x2="215" y2="134"/>
+  <line class="soft" x1="41" y1="148" x2="215" y2="148"/>
+  <line class="soft" x1="41" y1="162" x2="215" y2="162"/>
+  <line class="soft" x1="41" y1="176" x2="215" y2="176"/>
+  <line class="soft" x1="41" y1="190" x2="215" y2="190"/>
+  <line class="sigs" x1="56" y1="92" x2="56" y2="198"/>
+  <rect class="hatch ro ro-rest" style="animation: n7hl 12s linear infinite" x="62" y="124" width="96" height="9"/>
+  <line class="w hair" pathLength="1" style="animation: n7w0 12s linear infinite" x1="64" y1="102" x2="83" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w1 12s linear infinite" x1="88" y1="102" x2="101" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w2 12s linear infinite" x1="106" y1="102" x2="127" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w3 12s linear infinite" x1="132" y1="102" x2="161" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w4 12s linear infinite" x1="166" y1="102" x2="176" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w5 12s linear infinite" x1="181" y1="102" x2="192" y2="102"/>
+  <line class="w hair" pathLength="1" style="animation: n7w6 12s linear infinite" x1="64" y1="116" x2="90" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w7 12s linear infinite" x1="95" y1="116" x2="107" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w8 12s linear infinite" x1="112" y1="116" x2="132" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w9 12s linear infinite" x1="137" y1="116" x2="164" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w10 12s linear infinite" x1="169" y1="116" x2="179" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w11 12s linear infinite" x1="184" y1="116" x2="208" y2="116"/>
+  <line class="w hair" pathLength="1" style="animation: n7w12 12s linear infinite" x1="64" y1="130" x2="79" y2="130"/>
+  <line class="w hair" pathLength="1" style="animation: n7w13 12s linear infinite" x1="84" y1="130" x2="94" y2="130"/>
+  <line class="w hair" pathLength="1" style="animation: n7w14 12s linear infinite" x1="99" y1="130" x2="110" y2="130"/>
+  <line class="w hair" pathLength="1" style="animation: n7w15 12s linear infinite" x1="115" y1="130" x2="137" y2="130"/>
+  <line class="w hair" pathLength="1" style="animation: n7w16 12s linear infinite" x1="142" y1="130" x2="156" y2="130"/>
+  <line class="w hair" pathLength="1" style="animation: n7w17 12s linear infinite" x1="64" y1="144" x2="75" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w18 12s linear infinite" x1="80" y1="144" x2="96" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w19 12s linear infinite" x1="101" y1="144" x2="112" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w20 12s linear infinite" x1="117" y1="144" x2="143" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w21 12s linear infinite" x1="148" y1="144" x2="170" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w22 12s linear infinite" x1="175" y1="144" x2="185" y2="144"/>
+  <line class="w hair" pathLength="1" style="animation: n7w23 12s linear infinite" x1="64" y1="158" x2="91" y2="158"/>
+  <line class="w hair" pathLength="1" style="animation: n7w24 12s linear infinite" x1="96" y1="158" x2="108" y2="158"/>
+  <line class="w hair" pathLength="1" style="animation: n7w25 12s linear infinite" x1="113" y1="158" x2="129" y2="158"/>
+  <rect class="sig ro" style="animation: n7cur 12s linear infinite" x="0" y="0" width="2" height="10"/>
+  <circle class="pulse" style="animation: n7pg 12s ease-out infinite" cx="162" cy="128" r="3"/>
+  <circle class="dot ro ro-rest" style="animation: n7lt 12s linear infinite" cx="162" cy="128" r="2.5"/>
+  <line class="w hair" pathLength="1" style="animation: n7ld 12s linear infinite" x1="162" y1="128" x2="232" y2="128"/>
+  <g class="ro ro-rest" style="animation: n7lt 12s linear infinite"><text class="label" x="238" y="132">MARCADO</text><text class="label muted" x="238" y="146">LINHA 03</text></g>
+  <text class="label" x="238" y="86">FICHAS · 03</text>
+  <text class="label muted ro" style="animation: n7c0 12s steps(1) infinite" x="238" y="100">LINHAS · 00/05</text>
+  <text class="label muted ro" style="animation: n7c1 12s steps(1) infinite" x="238" y="100">LINHAS · 01/05</text>
+  <text class="label muted ro" style="animation: n7c2 12s steps(1) infinite" x="238" y="100">LINHAS · 02/05</text>
+  <text class="label muted ro" style="animation: n7c3 12s steps(1) infinite" x="238" y="100">LINHAS · 03/05</text>
+  <text class="label muted ro" style="animation: n7c4 12s steps(1) infinite" x="238" y="100">LINHAS · 04/05</text>
+  <text class="label muted ro ro-rest" style="animation: n7c5 12s steps(1) infinite" x="238" y="100">LINHAS · 05/05</text>
+  <text class="label muted" x="14" y="24">FIG. 07 — NOTAS</text>
+  <text class="label muted" x="14" y="226">GARDEN · REV A</text>
+</svg>

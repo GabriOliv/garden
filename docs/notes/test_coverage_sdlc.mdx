@@ -21,6 +21,8 @@ tags:
 draft: false
 ---
 
+import { Referencia, Referencias } from "@site/src/components/Referencias";
+
 # Cobertura de Testes
 
 {frontMatter.description}<br />
@@ -60,10 +62,10 @@ def test_aplica_desconto_comum():
 ## Iteração de SDLC sem Cobertura de Testes
 
 <figure>
-  <figcaption class="text--center">
+  <figcaption className="text--center">
     Iteração de desenvolvimento sem cobertura de testes[^1]
   </figcaption>
-  ![image](./assets/test_coverage_sdlc_without_coverage.svg)
+  ![image](./assets/diagrama-sdlc-sem-cobertura-dossier.svg)
 </figure>
 
 1. Software Estável:
@@ -95,10 +97,10 @@ def test_aplica_desconto_comum():
 ## Iteração de SDLC com Cobertura de Testes
 
 <figure>
-  <figcaption class="text--center">
+  <figcaption className="text--center">
     Iteração de desenvolvimento com cobertura de testes[^2]
   </figcaption>
-  ![image](./assets/test_coverage_sdlc_with_coverage.svg)
+  ![image](./assets/diagrama-sdlc-com-cobertura-dossier.svg)
 </figure>
 
 1. Software Estável:
@@ -225,10 +227,19 @@ Priorize a qualidade sobre a quantidade de linhas cobertas. Um teste ruim é pio
 
 ## Referências
 
-- Artigos:
-  - AMANN, Sven; JÜRGENS, Elmar. Change-Driven Testing. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 1-14.
-    - [https://doi.org/10.1007/978-3-030-29509-7_1](https://doi.org/10.1007/978-3-030-29509-7_1)
-    - Referência na forma de diagramar a presença de erros e cobertura de testes em um sistema; Foi adaptada em uma nova imagem para demonstrar a diferença entre o cenário de desenvolvimento com e sem cobertura de testes.
+<Referencias>
+
+<Referencia tipo="Artigo">
+
+AMANN, Sven; JÜRGENS, Elmar. Change-Driven Testing. In: _THE FUTURE OF SOFTWARE QUALITY ASSURANCE_. 2020. p. 1-14.
+
+[https://doi.org/10.1007/978-3-030-29509-7_1](https://doi.org/10.1007/978-3-030-29509-7_1)
+
+Referência na forma de diagramar a presença de erros e cobertura de testes em um sistema; Foi adaptada em uma nova imagem para demonstrar a diferença entre o cenário de desenvolvimento com e sem cobertura de testes.
+
+</Referencia>
+
+</Referencias>
 
 [^1]: Imagem: "Iteração de desenvolvimento sem cobertura de testes"
 

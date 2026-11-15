@@ -1,0 +1,5 @@
+/* O chip é inline-flex: a linha de base vem do primeiro item, que aqui seria o ícone e subiria o chip.
+   O nome em align-self: baseline passa a dar a linha de base, alinhada com os outros chips. */
+.stage > span {
+  align-self: baseline;
+}
