@@ -72,6 +72,17 @@ Gráficos e desenhos técnicos. O último bloco usa o tema Blueprint.
   />
 </section>
 
+<section data-component="Timeline" data-variant="vertical">
+  <Timeline
+    orientation="vertical"
+    events={[
+      { at: "01/11", label: "Planejamento", note: "Escopo definido" },
+      { at: "05/11", label: "Execução", active: true },
+      { at: "11/11", label: "Relatório" },
+    ]}
+  />
+</section>
+
 <section data-component="Schematic">
   <Schematic
     title="Camadas de teste"
@@ -88,6 +99,38 @@ Gráficos e desenhos técnicos. O último bloco usa o tema Blueprint.
 <section data-component="Hierarchy">
   <Hierarchy
     title="Plano de testes"
+    labels={ptBR.Hierarchy}
+    root={{
+      label: "Produto",
+      code: "P",
+      children: [
+        { label: "Login", code: "P1", active: true },
+        { label: "Pagamento", code: "P2", children: [{ label: "Cartão" }, { label: "Pix" }] },
+      ],
+    }}
+  />
+</section>
+
+<section data-component="Hierarchy" data-variant="left-right">
+  <Hierarchy
+    title="Plano de testes, da esquerda para a direita"
+    layout="left-right"
+    labels={ptBR.Hierarchy}
+    root={{
+      label: "Produto",
+      code: "P",
+      children: [
+        { label: "Login", code: "P1", active: true },
+        { label: "Pagamento", code: "P2", children: [{ label: "Cartão" }, { label: "Pix" }] },
+      ],
+    }}
+  />
+</section>
+
+<section data-component="Hierarchy" data-variant="folder">
+  <Hierarchy
+    title="Plano de testes em pastas"
+    layout="folder"
     labels={ptBR.Hierarchy}
     root={{
       label: "Produto",
