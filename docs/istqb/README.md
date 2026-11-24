@@ -15,13 +15,13 @@ Revisão de `15/09/2024`.
 	flowchart LR
 
 
-		S1:::invi
+		S1:::hidden
 
 		subgraph S0["Fundamental"]
 			A[CTFL]
 		end
 
-		R1[CTAL]:::ctal
+		R1[CTAL]:::signal
 
 		subgraph S1[" "]
 			subgraph S2["Avançado"]
@@ -32,8 +32,8 @@ Revisão de `15/09/2024`.
 			end
 			subgraph S3["Especializações"]
 				subgraph S4["Tecnologias"]
-					R2[CTAL]:::ctal
-					R3[CTAL]:::ctal
+					R2[CTAL]:::signal
+					R3[CTAL]:::signal
 					F[CTFL-AT]
 					G[CTAL-ATT]
 					H[CTAL-ATLaS]
@@ -46,7 +46,7 @@ Revisão de `15/09/2024`.
 					M[CT-GaMe]
 				end
 				subgraph S6["Características"]
-					R4[CTAL]:::ctal
+					R4[CTAL]:::signal
 					N[CT-AcT]
 					O[CT-PT]
 					P[CT-SEC]

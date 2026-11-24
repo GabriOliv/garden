@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { openIn, rgb, type Theme } from "./support/site";
+import { openIn, rgb, waitDiagrams, type Theme } from "./support/site";
 
 // Mesma tipagem que tests/chrome.spec.ts usa para o AxeBuilder (duas cópias do playwright-core).
 type AxeOptions = ConstructorParameters<typeof AxeBuilder>[0];
@@ -29,15 +29,15 @@ const ISTQB = "docs/istqb";
 
 const MAP: Row[] = [
   { page: CTFL_01, sel: ".cluster.error", fill: "paper", stroke: "contrastError", strokeWidth: "2px", text: "ink" },
-  { page: CTFL_01, sel: ".node.gra", fill: "paper", text: "ink" },
-  { page: CTFL_01, sel: ".node.yel", fill: "panel", text: "ink" },
-  { page: CTFL_01, sel: ".node.ora", fill: "inkMuted", text: "paper" },
-  { page: CTFL_01, sel: ".node.red", fill: "inverse", text: "onInverse" },
-  { page: PELTZMAN, sel: ".node.green", fill: "signalTint", stroke: "signal", text: "ink" },
-  { page: PELTZMAN, sel: ".cluster.invisible", fill: "transparent", stroke: "transparent", text: "transparent" },
-  { page: ISTQB, sel: ".node:not(.ctal)", fill: "panel", stroke: "ink", text: "ink" },
-  { page: ISTQB, sel: ".node.ctal", fill: "signalTint", stroke: "signal", text: "ink" },
-  { page: ISTQB, sel: ".cluster.invi", fill: "transparent", stroke: "transparent", text: "transparent" },
+  { page: CTFL_01, sel: ".node.paper", fill: "paper", text: "ink" },
+  { page: CTFL_01, sel: ".node.panel", fill: "panel", text: "ink" },
+  { page: CTFL_01, sel: ".node.muted", fill: "inkMuted", text: "paper" },
+  { page: CTFL_01, sel: ".node.inverse", fill: "inverse", text: "onInverse" },
+  { page: PELTZMAN, sel: ".node.signal", fill: "signalTint", stroke: "signal", text: "ink" },
+  { page: PELTZMAN, sel: ".cluster.hidden", fill: "transparent", stroke: "transparent", text: "transparent" },
+  { page: ISTQB, sel: ".node:not(.signal)", fill: "panel", stroke: "ink", text: "ink" },
+  { page: ISTQB, sel: ".node.signal", fill: "signalTint", stroke: "signal", text: "ink" },
+  { page: ISTQB, sel: ".cluster.hidden", fill: "transparent", stroke: "transparent", text: "transparent" },
 ];
 
 const TRANSPARENT = /^rgba\(\d+, \d+, \d+, 0\)$/;
@@ -51,7 +51,7 @@ const expectPaint = (actual: string, want: Paint, theme: Theme, what: string) =>
 async function openDiagrams(page: Page, path: string, theme: Theme) {
   await openIn(page, path, theme);
   await page.waitForLoadState("networkidle");
-  await expect(page.locator(".docusaurus-mermaid-container svg g.node").first()).toBeAttached();
+  await waitDiagrams(page);
 }
 
 test("DIAG-04 cada classe do mapa com os tokens da coluna Depois, em Paper e em Void", async ({
@@ -96,6 +96,10 @@ const DIAGRAM_PAGES = [
   "docs/istqb/ctfl/ctfl_01",
   "docs/istqb/ctfl/ctfl_04",
   "docs/istqb/cttas",
+  "docs/istqb/ctal-tm",
+  "docs/istqb/ctal-tm/ctaltm_01",
+  "docs/istqb/ctal-tm/ctaltm_02",
+  "docs/istqb/ctal-tm/ctaltm_03",
   "docs/notes/e2e_useful",
   "docs/notes/peltzman_effect",
   "docs/project/getting_started",
@@ -286,6 +290,8 @@ test("DIAG-01 texto dos diagramas em IBM Plex Sans, em Paper e em Void", async (
 test("DIAG-02 todo preenchimento, traço e texto dos diagramas só com tokens ou transparente, em Paper e em Void", async ({
   page,
 }) => {
+  // 12 páginas em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
+  test.setTimeout(180_000);
   for (const theme of ["paper", "void"] as Theme[]) {
     for (const path of DIAGRAM_PAGES) {
       await openIn(page, path, theme);
@@ -300,7 +306,7 @@ test("DIAG-03 nós e grupos sem classe com fundo paper ou panel e traço ink, em
   // 8 páginas em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
   test.setTimeout(180_000);
   // Classes do "Mapa de cores dos diagramas": esses nós e grupos têm cor própria (DIAG-04).
-  const CLASSED = ["ctal", "gra", "green", "invi", "invisible", "ora", "red", "yel", "error"];
+  const CLASSED = ["signal", "paper", "panel", "muted", "inverse", "hidden", "error"];
   for (const theme of ["paper", "void"] as Theme[]) {
     let nodes = 0;
     let clusters = 0;
@@ -336,7 +342,7 @@ test("DIAG-03 nós e grupos sem classe com fundo paper ou panel e traço ink, em
 
 test("DIAG-05 ao trocar o modo de cor, os diagramas passam aos tokens do novo tema", async ({ page }) => {
   await openIn(page, "docs/istqb", "paper");
-  const node = page.locator(".docusaurus-mermaid-container svg g.node:not(.ctal) rect, .docusaurus-mermaid-container svg g.node:not(.ctal) polygon").first();
+  const node = page.locator(".docusaurus-mermaid-container svg g.node:not(.signal) rect, .docusaurus-mermaid-container svg g.node:not(.signal) polygon").first();
   await expect(node).toHaveCSS("fill", rgb(T.paper.panel));
   const toggle = page.getByRole("button", { name: /Mudar entre modo claro e escuro/ });
   await expect(async () => {
@@ -370,5 +376,40 @@ test("LEFT-03 toda cor de texto, fundo e borda do chrome e do artigo é token do
       // Sem contar imagens, ícones, KaTeX e o logo do Algolia: esses ficam de fora da varredura.
       expect(await foreignPaints(page, "body", tokens, true), `${theme} ${path || "home"}`).toEqual([]);
     }
+  }
+});
+
+test("DIAG-07 quadrantChart em panel; xychart com fundo paper, eixos ink e linha signal, em Paper e em Void", async ({
+  page,
+}) => {
+  const quadrant = ".docusaurus-mermaid-container svg[aria-roledescription='quadrantChart']";
+  const xy = ".docusaurus-mermaid-container svg[aria-roledescription='xychart']";
+  for (const theme of ["paper", "void"] as Theme[]) {
+    await openIn(page, "docs/istqb/ctal-tm/ctaltm_01", theme);
+    await expect(page.locator(`${quadrant} .quadrant rect`)).toHaveCount(4);
+    for (const fill of await page.locator(`${quadrant} .quadrant rect`).evaluateAll((els) =>
+      els.map((e) => getComputedStyle(e).fill),
+    ))
+      expect(fill, `quadrante ${theme}`).toBe(rgb(T[theme].panel));
+
+    await openIn(page, "docs/istqb/ctal-tm/ctaltm_03", theme);
+    await expect(page.locator(`${xy} .background`)).toHaveCount(1);
+    expect(await page.locator(`${xy} .background`).evaluate((e) => getComputedStyle(e).fill), `fundo ${theme}`).toBe(
+      rgb(T[theme].paper),
+    );
+    const axes = await page
+      .locator(`${xy} path`)
+      .evaluateAll((els) => els.filter((e) => !e.closest(".plot")).map((e) => getComputedStyle(e).stroke));
+    expect(axes.length, `eixos ${theme}`).toBeGreaterThan(0);
+    for (const stroke of axes) expect(stroke, `eixo ${theme}`).toBe(rgb(T[theme].ink));
+    const lines = await page.locator(`${xy} .plot path`).evaluateAll((els) => els.map((e) => getComputedStyle(e).stroke));
+    expect(lines, `linha ${theme}`).toEqual([rgb(T[theme].signal)]);
+  }
+});
+
+test("DIAG-08 openDiagrams espera todos os diagramas: ctfl_01 3, Peltzman 1, ISTQB 1", async ({ page }) => {
+  for (const [path, n] of [[CTFL_01, 3], [PELTZMAN, 1], [ISTQB, 1]] as [string, number][]) {
+    await openDiagrams(page, path, "paper");
+    expect(await page.locator(".docusaurus-mermaid-container svg").count(), path).toBe(n);
   }
 });
