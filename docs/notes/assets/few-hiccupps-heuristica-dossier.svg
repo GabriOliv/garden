@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 360" width="800" height="360" role="img" aria-labelledby="fw-t fw-d">
+  <title id="fw-t">FEW HICCUPPS: onze referências para uma observação — estilo Dossier</title>
+  <desc id="fw-d">As onze letras de FEW HICCUPPS em fila, cada uma marcada como sistema, pessoas ou mundo. Abaixo, o arquivo de extrato exportado e um contador de incoerências. Na fase 01 só o requisito é usado e nada está errado. Na fase 02 acendem History, Product e Explainability e aparecem três incoerências. Na fase 03 acendem Image, Claims, Users' desires e Purpose e o total vai a sete. Na fase 04 acendem Comparable products, Statutes, World e Familiarity e o total chega a onze, enquanto o requisito continua atendido.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab-on { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .cell { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .lit { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1.5; }
+    .file { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .strip { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .slot { fill: var(--paper); stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
+    .sigfill { fill: var(--signal); }
+    .errfill { fill: var(--contrast-error); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .tiny { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 8px; font-weight: 500; letter-spacing: .06em; fill: var(--ink); }
+    .big { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 24px; font-weight: 500; fill: var(--ink); }
+    .code { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 11px; font-weight: 500; letter-spacing: .02em; fill: var(--ink); }
+    .body { font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .strong { font-weight: 700; }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    @keyframes fw-p0 { 0%, 24% { opacity: 1 } 25%, 100% { opacity: 0 } }
+    @keyframes fw-p1 { 0%, 25% { opacity: 0 } 26%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+    @keyframes fw-p2 { 0%, 50% { opacity: 0 } 51%, 74% { opacity: 1 } 75%, 100% { opacity: 0 } }
+    @keyframes fw-p3 { 0%, 75% { opacity: 0 } 76%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    @keyframes fw-f1 { 0%, 25% { opacity: 0 } 26%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    @keyframes fw-f2 { 0%, 50% { opacity: 0 } 51%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    .fw-p0 { opacity: 0; animation: fw-p0 20s linear infinite; }
+    .fw-p1 { opacity: 0; animation: fw-p1 20s linear infinite; }
+    .fw-p2 { opacity: 0; animation: fw-p2 20s linear infinite; }
+    .fw-p3 { opacity: 0; animation: fw-p3 20s linear infinite; }
+    .fw-f1 { opacity: 0; animation: fw-f1 20s linear infinite; }
+    .fw-f2 { opacity: 0; animation: fw-f2 20s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .fw-p0, .fw-p1, .fw-p2, .fw-p3, .fw-f1, .fw-f2 { animation: none; }
+      .fw-p0 { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="fw-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+  <rect class="bg" y="40" width="800" height="360"/>
+  <rect y="40" width="800" height="360" fill="url(#fw-grid)"/>
+
+  <!-- Abas: uma família de referências por fase -->
+  <rect class="tab" x="24" y="46" width="182" height="22"/>
+  <g class="fw-p0"><rect class="tab-on" x="24" y="46" width="182" height="22"/><rect class="sigfill" x="24" y="65" width="182" height="3"/></g>
+  <text class="label" x="34" y="61"><tspan class="lsig">01</tspan> SÓ O REQUISITO</text>
+  <rect class="tab" x="214" y="46" width="182" height="22"/>
+  <g class="fw-p1"><rect class="tab-on" x="214" y="46" width="182" height="22"/><rect class="sigfill" x="214" y="65" width="182" height="3"/></g>
+  <text class="label" x="224" y="61"><tspan class="lsig">02</tspan> O SISTEMA</text>
+  <rect class="tab" x="404" y="46" width="182" height="22"/>
+  <g class="fw-p2"><rect class="tab-on" x="404" y="46" width="182" height="22"/><rect class="sigfill" x="404" y="65" width="182" height="3"/></g>
+  <text class="label" x="414" y="61"><tspan class="lsig">03</tspan> AS PESSOAS</text>
+  <rect class="tab" x="594" y="46" width="182" height="22"/>
+  <g class="fw-p3"><rect class="tab-on" x="594" y="46" width="182" height="22"/><rect class="sigfill" x="594" y="65" width="182" height="3"/></g>
+  <text class="label" x="604" y="61"><tspan class="lsig">04</tspan> O MUNDO</text>
+
+  <text class="label muted" x="24" y="92">UMA OBSERVAÇÃO, ONZE REFERÊNCIAS</text>
+  <text class="label muted end" x="776" y="92">EXPORTAR EXTRATO · CSV</text>
+
+  <!-- Células das onze letras -->
+  <rect class="cell" x="33" y="104" width="58" height="56"/>
+  <rect class="cell" x="99" y="104" width="58" height="56"/>
+  <rect class="cell" x="165" y="104" width="58" height="56"/>
+  <rect class="cell" x="247" y="104" width="58" height="56"/>
+  <rect class="cell" x="313" y="104" width="58" height="56"/>
+  <rect class="cell" x="379" y="104" width="58" height="56"/>
+  <rect class="cell" x="445" y="104" width="58" height="56"/>
+  <rect class="cell" x="511" y="104" width="58" height="56"/>
+  <rect class="cell" x="577" y="104" width="58" height="56"/>
+  <rect class="cell" x="643" y="104" width="58" height="56"/>
+  <rect class="cell" x="709" y="104" width="58" height="56"/>
+
+  <!-- Sistema: E, H, P(roduct) acendem na fase 02 -->
+  <g class="fw-f1">
+    <rect class="lit" x="99" y="104" width="58" height="56"/><rect class="sigfill" x="99" y="157" width="58" height="3"/>
+    <rect class="lit" x="247" y="104" width="58" height="56"/><rect class="sigfill" x="247" y="157" width="58" height="3"/>
+    <rect class="lit" x="577" y="104" width="58" height="56"/><rect class="sigfill" x="577" y="157" width="58" height="3"/>
+  </g>
+  <!-- Pessoas: I, C(laims), U, P(urpose) acendem na fase 03 -->
+  <g class="fw-f2">
+    <rect class="lit" x="313" y="104" width="58" height="56"/><rect class="sigfill" x="313" y="157" width="58" height="3"/>
+    <rect class="lit" x="445" y="104" width="58" height="56"/><rect class="sigfill" x="445" y="157" width="58" height="3"/>
+    <rect class="lit" x="511" y="104" width="58" height="56"/><rect class="sigfill" x="511" y="157" width="58" height="3"/>
+    <rect class="lit" x="643" y="104" width="58" height="56"/><rect class="sigfill" x="643" y="157" width="58" height="3"/>
+  </g>
+  <!-- Mundo: F, W, C(omparable), S acendem na fase 04 -->
+  <g class="fw-p3">
+    <rect class="lit" x="33" y="104" width="58" height="56"/><rect class="sigfill" x="33" y="157" width="58" height="3"/>
+    <rect class="lit" x="165" y="104" width="58" height="56"/><rect class="sigfill" x="165" y="157" width="58" height="3"/>
+    <rect class="lit" x="379" y="104" width="58" height="56"/><rect class="sigfill" x="379" y="157" width="58" height="3"/>
+    <rect class="lit" x="709" y="104" width="58" height="56"/><rect class="sigfill" x="709" y="157" width="58" height="3"/>
+  </g>
+
+  <text class="big mid" x="62" y="135">F</text>
+  <text class="big mid" x="128" y="135">E</text>
+  <text class="big mid" x="194" y="135">W</text>
+  <text class="big mid" x="276" y="135">H</text>
+  <text class="big mid" x="342" y="135">I</text>
+  <text class="big mid" x="408" y="135">C</text>
+  <text class="big mid" x="474" y="135">C</text>
+  <text class="big mid" x="540" y="135">U</text>
+  <text class="big mid" x="606" y="135">P</text>
+  <text class="big mid" x="672" y="135">P</text>
+  <text class="big mid" x="738" y="135">S</text>
+  <text class="tiny mid" x="62" y="151">FAMILIAR</text>
+  <text class="tiny mid" x="128" y="151">EXPLAIN</text>
+  <text class="tiny mid" x="194" y="151">WORLD</text>
+  <text class="tiny mid" x="276" y="151">HISTORY</text>
+  <text class="tiny mid" x="342" y="151">IMAGE</text>
+  <text class="tiny mid" x="408" y="151">COMPAR.</text>
+  <text class="tiny mid" x="474" y="151">CLAIMS</text>
+  <text class="tiny mid" x="540" y="151">USERS</text>
+  <text class="tiny mid" x="606" y="151">PRODUCT</text>
+  <text class="tiny mid" x="672" y="151">PURPOSE</text>
+  <text class="tiny mid" x="738" y="151">STATUTES</text>
+  <text class="tiny muted mid" x="62" y="176">MUNDO</text>
+  <text class="tiny muted mid" x="128" y="176">SISTEMA</text>
+  <text class="tiny muted mid" x="194" y="176">MUNDO</text>
+  <text class="tiny muted mid" x="276" y="176">SISTEMA</text>
+  <text class="tiny muted mid" x="342" y="176">PESSOAS</text>
+  <text class="tiny muted mid" x="408" y="176">MUNDO</text>
+  <text class="tiny muted mid" x="474" y="176">PESSOAS</text>
+  <text class="tiny muted mid" x="540" y="176">PESSOAS</text>
+  <text class="tiny muted mid" x="606" y="176">SISTEMA</text>
+  <text class="tiny muted mid" x="672" y="176">PESSOAS</text>
+  <text class="tiny muted mid" x="738" y="176">MUNDO</text>
+
+  <line class="soft" x1="24" y1="190" x2="776" y2="190"/>
+
+  <!-- O arquivo exportado -->
+  <rect class="file" x="24" y="202" width="416" height="100"/>
+  <rect class="strip" x="24" y="202" width="416" height="20"/>
+  <text class="label" x="34" y="216">EXPORT_FINAL_V2.CSV</text>
+  <text class="code" x="40" y="240">data,<tspan class="lerr strong">descriÃ§Ã£o</tspan>,valor</text>
+  <text class="code" x="40" y="258">01/03/2026,SALDO ANTERIOR,1234.56</text>
+  <text class="code" x="40" y="276">02/03/2026,MERCADO, CENTRO,-87.90</text>
+  <text class="code" x="40" y="294">31/04/2026,PIX AGENDADO,-150.00</text>
+  <!-- Marcas de incoerência nas linhas -->
+  <g class="fw-f1"><rect class="errfill" x="30" y="248" width="3" height="13"/></g>
+  <g class="fw-f2"><rect class="errfill" x="24" y="219" width="416" height="3"/></g>
+  <g class="fw-p3">
+    <rect class="errfill" x="30" y="230" width="3" height="13"/>
+    <rect class="errfill" x="30" y="266" width="3" height="13"/>
+    <rect class="errfill" x="30" y="284" width="3" height="13"/>
+  </g>
+
+  <!-- Contador de incoerências -->
+  <text class="label muted" x="470" y="214">INCOERÊNCIAS ACHADAS</text>
+  <text class="label muted end" x="776" y="214">EXEMPLO DO TEXTO</text>
+  <rect class="slot" x="470" y="226" width="20" height="20"/>
+  <rect class="slot" x="496" y="226" width="20" height="20"/>
+  <rect class="slot" x="522" y="226" width="20" height="20"/>
+  <rect class="slot" x="548" y="226" width="20" height="20"/>
+  <rect class="slot" x="574" y="226" width="20" height="20"/>
+  <rect class="slot" x="600" y="226" width="20" height="20"/>
+  <rect class="slot" x="626" y="226" width="20" height="20"/>
+  <rect class="slot" x="652" y="226" width="20" height="20"/>
+  <rect class="slot" x="678" y="226" width="20" height="20"/>
+  <rect class="slot" x="704" y="226" width="20" height="20"/>
+  <rect class="slot" x="730" y="226" width="20" height="20"/>
+  <g class="fw-f1">
+    <rect class="sigfill" x="470" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="496" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="522" y="226" width="20" height="20"/>
+  </g>
+  <g class="fw-f2">
+    <rect class="sigfill" x="548" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="574" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="600" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="626" y="226" width="20" height="20"/>
+  </g>
+  <g class="fw-p3">
+    <rect class="sigfill" x="652" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="678" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="704" y="226" width="20" height="20"/>
+    <rect class="sigfill" x="730" y="226" width="20" height="20"/>
+  </g>
+  <text class="big fw-p0" x="470" y="290">00 / 11</text>
+  <text class="big lsig fw-p1" x="470" y="290">03 / 11</text>
+  <text class="big lsig fw-p2" x="470" y="290">07 / 11</text>
+  <text class="big lerr fw-p3" x="470" y="290">11 / 11</text>
+  <text class="label muted end" x="776" y="276">REQUISITO</text>
+  <text class="label lsig end" x="776" y="292">ATENDIDO</text>
+
+  <line class="soft" x1="24" y1="316" x2="776" y2="316"/>
+
+  <!-- Legenda de cada fase -->
+  <g class="fw-p0">
+  <text class="label lsig" x="24" y="336">FASE 01 · SÓ O REQUISITO</text>
+  <text class="body" x="24" y="356">A história diz uma frase: o cliente exporta o extrato do período em CSV. O arquivo baixa e o critério de aceite passa.</text>
+  <text class="body" x="24" y="374">Contra essa frase nada está errado, porque ela é a única referência em uso.</text>
+  </g>
+  <g class="fw-p1">
+  <text class="label lsig" x="24" y="336">FASE 02 · O SISTEMA CONTRA SI MESMO</text>
+  <text class="body" x="24" y="356">History: a versão anterior ordenava da transação mais recente para a mais antiga. Product: a tela mostra R$ 1.234,56.</text>
+  <text class="body" x="24" y="374">Explainability: o saldo final não bate com a soma das linhas, e ninguém do time sabe dizer por quê.</text>
+  </g>
+  <g class="fw-p2">
+  <text class="label lsig" x="24" y="336">FASE 03 · O QUE AS PESSOAS DIZEM E QUEREM</text>
+  <text class="body" x="24" y="356">Image: export_final_v2.csv parece improviso. Claims: a ajuda promete doze meses e o app aceita noventa dias.</text>
+  <text class="body" x="24" y="374">Users' desires e Purpose: quem exporta quer abrir na planilha, conferir gastos e declarar imposto.</text>
+  </g>
+  <g class="fw-p3">
+  <text class="label lerr" x="24" y="336">FASE 04 · O MUNDO LÁ FORA</text>
+  <text class="body" x="24" y="356">Comparable: outro banco exporta e a planilha abre certo. Statutes: a RFC 4180 pede aspas no campo com vírgula.</text>
+  <text class="body" x="24" y="374">World: abril não tem dia 31. Familiarity: <tspan class="lerr strong">descriÃ§Ã£o</tspan> é o velho defeito de codificação de caracteres.</text>
+  </g>
+</svg>

@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 350" width="800" height="350" role="img" aria-labelledby="fn-t fn-d">
+  <title id="fn-t">Flakiness e efeito nocebo: quando o vermelho vira ruído — estilo Dossier</title>
+  <desc id="fn-d">Quatro fases de um pipeline com os últimos vinte builds. Na primeira, quase tudo passa e o único vermelho é investigado. Na segunda, um teste instável falha de vez em quando, a segunda execução passa e a confiança do time no vermelho cai. Na terceira, uma falha real aparece no meio das falhas instáveis e é ignorada. Na quarta, os testes instáveis vão para uma quarentena com limite de oito, o pipeline principal fica limpo e o vermelho volta a ser investigado. Uma barra mostra a confiança do time no vermelho em cada fase. Escala ilustrativa.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab-on { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .pass { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .flaky { fill: url(#fn-hatch); stroke: var(--contrast-error); stroke-width: 1; stroke-dasharray: 3 2; }
+    .real { fill: var(--contrast-error); stroke: var(--contrast-error); stroke-width: 1; }
+    .slot { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 3 3; }
+    .track { fill: var(--panel); stroke: var(--rule-soft); stroke-width: 1; }
+    .sigfill { fill: var(--signal); }
+    .errfill { fill: var(--contrast-error); }
+    .ptr-sig { fill: var(--signal); }
+    .ptr-err { fill: var(--contrast-error); }
+    .pt-ground { fill: var(--paper); }
+    .pt-err { stroke: var(--contrast-error); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .body { font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    @keyframes fn-p0 { 0%, 24% { opacity: 1 } 25%, 100% { opacity: 0 } }
+    @keyframes fn-p1 { 0%, 25% { opacity: 0 } 26%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+    @keyframes fn-p2 { 0%, 50% { opacity: 0 } 51%, 74% { opacity: 1 } 75%, 100% { opacity: 0 } }
+    @keyframes fn-p3 { 0%, 75% { opacity: 0 } 76%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    .fn-p0 { opacity: 0; animation: fn-p0 20s linear infinite; }
+    .fn-p1 { opacity: 0; animation: fn-p1 20s linear infinite; }
+    .fn-p2 { opacity: 0; animation: fn-p2 20s linear infinite; }
+    .fn-p3 { opacity: 0; animation: fn-p3 20s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .fn-p0, .fn-p1, .fn-p2, .fn-p3 { animation: none; }
+      .fn-p0 { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="fn-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-err" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="fn-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+  <rect class="bg" y="40" width="800" height="350"/>
+  <rect y="40" width="800" height="350" fill="url(#fn-grid)"/>
+
+  <!-- Abas: uma fase por aba -->
+  <rect class="tab" x="24" y="46" width="182" height="22"/>
+  <g class="fn-p0"><rect class="tab-on" x="24" y="46" width="182" height="22"/><rect class="sigfill" x="24" y="65" width="182" height="3"/></g>
+  <text class="label" x="34" y="61"><tspan class="lsig">01</tspan> CONFIANÇA</text>
+  <rect class="tab" x="214" y="46" width="182" height="22"/>
+  <g class="fn-p1"><rect class="tab-on" x="214" y="46" width="182" height="22"/><rect class="sigfill" x="214" y="65" width="182" height="3"/></g>
+  <text class="label" x="224" y="61"><tspan class="lsig">02</tspan> RUÍDO</text>
+  <rect class="tab" x="404" y="46" width="182" height="22"/>
+  <g class="fn-p2"><rect class="tab-on" x="404" y="46" width="182" height="22"/><rect class="sigfill" x="404" y="65" width="182" height="3"/></g>
+  <text class="label" x="414" y="61"><tspan class="lsig">03</tspan> DESSENSIBILIZAÇÃO</text>
+  <rect class="tab" x="594" y="46" width="182" height="22"/>
+  <g class="fn-p3"><rect class="tab-on" x="594" y="46" width="182" height="22"/><rect class="sigfill" x="594" y="65" width="182" height="3"/></g>
+  <text class="label" x="604" y="61"><tspan class="lsig">04</tspan> QUARENTENA</text>
+
+  <!-- Pista principal: últimos 20 builds -->
+  <text class="label muted" x="24" y="92">PIPELINE PRINCIPAL · ÚLTIMOS 20 BUILDS</text>
+  <text class="label muted end" x="776" y="92">MAIS RECENTE →</text>
+  <g class="fn-p0">
+    <rect class="pass" x="40" y="112" width="30" height="30"/>
+    <rect class="pass" x="76" y="112" width="30" height="30"/>
+    <rect class="pass" x="112" y="112" width="30" height="30"/>
+    <rect class="pass" x="148" y="112" width="30" height="30"/>
+    <rect class="pass" x="184" y="112" width="30" height="30"/>
+    <rect class="pass" x="220" y="112" width="30" height="30"/>
+    <rect class="pass" x="256" y="112" width="30" height="30"/>
+    <rect class="pass" x="292" y="112" width="30" height="30"/>
+    <rect class="pass" x="328" y="112" width="30" height="30"/>
+    <rect class="pass" x="364" y="112" width="30" height="30"/>
+    <rect class="pass" x="400" y="112" width="30" height="30"/>
+    <rect class="pass" x="436" y="112" width="30" height="30"/>
+    <rect class="real" x="472" y="112" width="30" height="30"/>
+    <rect class="pass" x="508" y="112" width="30" height="30"/>
+    <rect class="pass" x="544" y="112" width="30" height="30"/>
+    <rect class="pass" x="580" y="112" width="30" height="30"/>
+    <rect class="pass" x="616" y="112" width="30" height="30"/>
+    <rect class="pass" x="652" y="112" width="30" height="30"/>
+    <rect class="pass" x="688" y="112" width="30" height="30"/>
+    <rect class="pass" x="724" y="112" width="30" height="30"/>
+    <text class="label lsig mid" x="487.0" y="104">INVESTIGA</text>
+    <path class="ptr-sig" d="M483.0 106 L491.0 106 L487.0 110 Z"/>
+  </g>
+  <g class="fn-p1">
+    <rect class="pass" x="40" y="112" width="30" height="30"/>
+    <rect class="pass" x="76" y="112" width="30" height="30"/>
+    <rect class="pass" x="112" y="112" width="30" height="30"/>
+    <rect class="flaky" x="148" y="112" width="30" height="30"/>
+    <rect class="pass" x="184" y="112" width="30" height="30"/>
+    <rect class="pass" x="220" y="112" width="30" height="30"/>
+    <rect class="pass" x="256" y="112" width="30" height="30"/>
+    <rect class="flaky" x="292" y="112" width="30" height="30"/>
+    <rect class="pass" x="328" y="112" width="30" height="30"/>
+    <rect class="pass" x="364" y="112" width="30" height="30"/>
+    <rect class="flaky" x="400" y="112" width="30" height="30"/>
+    <rect class="pass" x="436" y="112" width="30" height="30"/>
+    <rect class="pass" x="472" y="112" width="30" height="30"/>
+    <rect class="pass" x="508" y="112" width="30" height="30"/>
+    <rect class="flaky" x="544" y="112" width="30" height="30"/>
+    <rect class="pass" x="580" y="112" width="30" height="30"/>
+    <rect class="pass" x="616" y="112" width="30" height="30"/>
+    <rect class="flaky" x="652" y="112" width="30" height="30"/>
+    <rect class="pass" x="688" y="112" width="30" height="30"/>
+    <rect class="pass" x="724" y="112" width="30" height="30"/>
+    <rect class="pass" x="156" y="148" width="14" height="10"/>
+    <rect class="pass" x="300" y="148" width="14" height="10"/>
+    <rect class="pass" x="408" y="148" width="14" height="10"/>
+    <rect class="pass" x="552" y="148" width="14" height="10"/>
+    <rect class="pass" x="660" y="148" width="14" height="10"/>
+    <text class="label muted" x="24" y="172">↳ RODA DE NOVO, PASSA</text>
+  </g>
+  <g class="fn-p2">
+    <rect class="pass" x="40" y="112" width="30" height="30"/>
+    <rect class="pass" x="76" y="112" width="30" height="30"/>
+    <rect class="flaky" x="112" y="112" width="30" height="30"/>
+    <rect class="pass" x="148" y="112" width="30" height="30"/>
+    <rect class="pass" x="184" y="112" width="30" height="30"/>
+    <rect class="flaky" x="220" y="112" width="30" height="30"/>
+    <rect class="pass" x="256" y="112" width="30" height="30"/>
+    <rect class="pass" x="292" y="112" width="30" height="30"/>
+    <rect class="flaky" x="328" y="112" width="30" height="30"/>
+    <rect class="pass" x="364" y="112" width="30" height="30"/>
+    <rect class="pass" x="400" y="112" width="30" height="30"/>
+    <rect class="flaky" x="436" y="112" width="30" height="30"/>
+    <rect class="pass" x="472" y="112" width="30" height="30"/>
+    <rect class="real" x="508" y="112" width="30" height="30"/>
+    <rect class="pass" x="544" y="112" width="30" height="30"/>
+    <rect class="flaky" x="580" y="112" width="30" height="30"/>
+    <rect class="pass" x="616" y="112" width="30" height="30"/>
+    <rect class="pass" x="652" y="112" width="30" height="30"/>
+    <rect class="flaky" x="688" y="112" width="30" height="30"/>
+    <rect class="pass" x="724" y="112" width="30" height="30"/>
+    <text class="label lerr mid" x="523.0" y="104">FALHA REAL · IGNORADA</text>
+    <path class="ptr-err" d="M519.0 106 L527.0 106 L523.0 110 Z"/>
+    <rect class="pass" x="120" y="148" width="14" height="10"/>
+    <rect class="pass" x="228" y="148" width="14" height="10"/>
+    <rect class="pass" x="336" y="148" width="14" height="10"/>
+    <rect class="pass" x="444" y="148" width="14" height="10"/>
+    <rect class="pass" x="588" y="148" width="14" height="10"/>
+    <rect class="pass" x="696" y="148" width="14" height="10"/>
+    <text class="label muted" x="24" y="172">↳ RODA DE NOVO, PASSA</text>
+  </g>
+  <g class="fn-p3">
+    <rect class="pass" x="40" y="112" width="30" height="30"/>
+    <rect class="pass" x="76" y="112" width="30" height="30"/>
+    <rect class="pass" x="112" y="112" width="30" height="30"/>
+    <rect class="pass" x="148" y="112" width="30" height="30"/>
+    <rect class="pass" x="184" y="112" width="30" height="30"/>
+    <rect class="pass" x="220" y="112" width="30" height="30"/>
+    <rect class="pass" x="256" y="112" width="30" height="30"/>
+    <rect class="pass" x="292" y="112" width="30" height="30"/>
+    <rect class="pass" x="328" y="112" width="30" height="30"/>
+    <rect class="pass" x="364" y="112" width="30" height="30"/>
+    <rect class="pass" x="400" y="112" width="30" height="30"/>
+    <rect class="pass" x="436" y="112" width="30" height="30"/>
+    <rect class="pass" x="472" y="112" width="30" height="30"/>
+    <rect class="pass" x="508" y="112" width="30" height="30"/>
+    <rect class="pass" x="544" y="112" width="30" height="30"/>
+    <rect class="pass" x="580" y="112" width="30" height="30"/>
+    <rect class="real" x="616" y="112" width="30" height="30"/>
+    <rect class="pass" x="652" y="112" width="30" height="30"/>
+    <rect class="pass" x="688" y="112" width="30" height="30"/>
+    <rect class="pass" x="724" y="112" width="30" height="30"/>
+    <text class="label lsig end" x="646.0" y="104">INVESTIGA</text>
+    <path class="ptr-sig" d="M627.0 106 L635.0 106 L631.0 110 Z"/>
+  </g>
+
+  <!-- Quarentena: até 8 testes -->
+  <text class="label muted" x="24" y="196">QUARENTENA · ATÉ 8 TESTES · FORA DO PIPELINE PRINCIPAL</text>
+  <rect class="slot" x="40" y="204" width="30" height="22"/>
+  <rect class="slot" x="76" y="204" width="30" height="22"/>
+  <rect class="slot" x="112" y="204" width="30" height="22"/>
+  <rect class="slot" x="148" y="204" width="30" height="22"/>
+  <rect class="slot" x="184" y="204" width="30" height="22"/>
+  <rect class="slot" x="220" y="204" width="30" height="22"/>
+  <rect class="slot" x="256" y="204" width="30" height="22"/>
+  <rect class="slot" x="292" y="204" width="30" height="22"/>
+  <g class="fn-p3">
+    <rect class="flaky" x="40" y="204" width="30" height="22"/>
+    <rect class="flaky" x="76" y="204" width="30" height="22"/>
+    <rect class="flaky" x="112" y="204" width="30" height="22"/>
+    <rect class="flaky" x="148" y="204" width="30" height="22"/>
+    <rect class="flaky" x="184" y="204" width="30" height="22"/>
+    <text class="label lsig" x="334" y="219">DONO E PRAZO PARA CADA UM</text>
+  </g>
+
+  <!-- Legenda -->
+  <rect class="pass" x="24" y="240" width="10" height="10"/>
+  <text class="label muted" x="40" y="249">PASSOU</text>
+  <rect class="flaky" x="120" y="240" width="10" height="10"/>
+  <text class="label muted" x="136" y="249">FALHA INSTÁVEL</text>
+  <rect class="real" x="270" y="240" width="10" height="10"/>
+  <text class="label muted" x="286" y="249">FALHA REAL</text>
+  <text class="label muted end" x="776" y="249">ESCALA ILUSTRATIVA</text>
+
+  <!-- Confiança do time no vermelho -->
+  <text class="label" x="24" y="272">CONFIANÇA DO TIME NO VERMELHO</text>
+  <rect class="track" x="24" y="280" width="752" height="12"/>
+  <rect class="sigfill fn-p0" x="24" y="280" width="662" height="12"/>
+  <rect class="sigfill fn-p1" x="24" y="280" width="338" height="12"/>
+  <rect class="errfill fn-p2" x="24" y="280" width="113" height="12"/>
+  <rect class="sigfill fn-p3" x="24" y="280" width="564" height="12"/>
+
+  <line class="soft" x1="24" y1="304" x2="776" y2="304"/>
+
+  <!-- Legenda de cada fase -->
+  <g class="fn-p0">
+  <text class="label lsig" x="24" y="324">FASE 01 — UM VERMELHO, UMA INVESTIGAÇÃO</text>
+  <text class="body" x="24" y="344">Quase todo build passa. Quando um fica vermelho, alguém abre o log no mesmo minuto.</text>
+  <text class="body" x="24" y="362">O vermelho tem significado porque quase nunca aparece sem motivo.</text>
+  </g>
+  <g class="fn-p1">
+  <text class="label lsig" x="24" y="324">FASE 02 — O TESTE DO PIX COMEÇA A PISCAR</text>
+  <text class="body" x="24" y="344">Falhas intermitentes com o mesmo código. A segunda execução passa, e o time aprende a rodar de novo.</text>
+  <text class="body" x="24" y="362">Cada alarme falso ensina que o vermelho pode esperar.</text>
+  </g>
+  <g class="fn-p2">
+  <text class="label lerr" x="24" y="324">FASE 03 — A FALHA REAL CHEGA NO MEIO DO RUÍDO</text>
+  <text class="body" x="24" y="344">Uma regressão de verdade deixa o build vermelho três vezes seguidas, e ninguém abre o log.</text>
+  <text class="body" x="24" y="362">A fama do teste decide a leitura antes da investigação. O defeito entra com aprovação de administrador.</text>
+  </g>
+  <g class="fn-p3">
+  <text class="label lsig" x="24" y="324">FASE 04 — QUARENTENA COM LIMITE</text>
+  <text class="body" x="24" y="344">Os testes instáveis saem do pipeline principal, cada um com dono e prazo para a correção.</text>
+  <text class="body" x="24" y="362">No máximo oito na quarentena, como sugere Fowler. No pipeline principal, vermelho volta a significar defeito.</text>
+  </g>
+</svg>
