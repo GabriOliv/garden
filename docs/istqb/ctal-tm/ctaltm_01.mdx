@@ -1,0 +1,1173 @@
+---
+sidebar_position: 1
+title: Capítulo 1
+description: CTAL-TM - Capítulo 1 - Gerenciando as Atividades de Teste
+tags: [stageB, istqb, ctaltm, capitulo]
+draft: false
+---
+
+import { Comparison, Timeline, FieldList, DataTable, Accordion } from "@gabrioliv/dossier";
+
+# 1 Gerenciando as Atividades de Teste
+
+## 1.1 O Processo de Teste
+
+O Test Manager (Gerente de Teste) não executa todo o processo de teste. Ele foca em três das sete atividades, baseadas na norma ISO/IEC/IEEE 29119-2.
+
+<DataTable
+  caption="Atividades de Teste"
+  columns={[
+    { key: "a", label: "Atividade" },
+    { key: "f", label: "Foco do Test Manager" },
+  ]}
+  rows={[
+    { a: "Planejamento de teste", f: "Sim" },
+    { a: "Monitoramento e Controle de testes", f: "Sim" },
+    { a: "Análise de teste", f: "Não" },
+    { a: "Modelagem de teste", f: "Não" },
+    { a: "Implementação de teste", f: "Não" },
+    { a: "Execução de teste", f: "Não" },
+    { a: "Conclusão de teste", f: "Sim" },
+  ]}
+/>
+
+Análise, modelagem, implementação e execução não são o foco dele. O que cada uma das três atividades envolve:
+
+<Comparison
+  columns={[
+    {
+      title: "Planejamento",
+      items: ["Definição de objetivos", "Abordagem", "Escopo", "Recursos", "Cronograma", "Resultados", "Participantes"],
+      lead: "Define o que, como, quem, quando e com quais recursos testar:",
+    },
+    {
+      title: "Monitoramento e Controle",
+      items: [
+        "Monitoramento: progresso, resultados, desvios",
+        "Tomada de ações corretivas",
+        "Comunicação: status, resultados",
+      ],
+      lead: "Acompanha o teste contra o plano e corrige o rumo:",
+    },
+    {
+      title: "Conclusão",
+      items: [
+        "Finalizar e arquivar os artefatos (testware)",
+        "Avaliar: processo de teste, produto do teste",
+        "Identificar melhorias no processo",
+        "Comunicar o encerramento",
+      ],
+      lead: "Fecha o teste e consolida o que foi aprendido:",
+    },
+  ]}
+/>
+
+---
+
+### 1.1.1 Atividades de Planejamento de Teste
+
+**TM-1.1.1 (K2)** — Resumir o planejamento de testes
+
+O planejamento define o que, como, quem, quando e com quais recursos se vai testar.
+
+- É um **processo iterativo**: começa o mais cedo possível e é revisto quando o contexto muda. Começa e termina em diferentes pontos do processo de desenvolvimento.
+- Tem várias **granularidades**:
+  - Projeto
+  - Sprint
+  - Tipo de teste
+- Exige identificar
+  - Atividades
+  - Recursos necessários
+  - Políticas de teste.
+- O plano cobre: objetivos, abordagem, escopo, recursos, cronograma, resultados e participantes.
+
+<Figure title="Atividades básicas, em ordem" meta="TM-1.1.1" full>
+
+<Timeline
+  orientation="vertical"
+  events={[
+    { at: "1", label: "Entender o contexto e organizar o planejamento", note: "Entender a empresa e as necessidades dos stakeholders em relação ao teste" },
+    { at: "2", label: "Identificar e analisar os riscos do produto", note: "Quais riscos envolvem o produto, com probabilidade e impacto" },
+    { at: "3", label: "Identificar abordagens de tratamento dos riscos", note: "Ações preventivas, corretivas e atenuantes" },
+    { at: "4", label: "Definir a abordagem, estimar e alocar recursos", note: "Abordagem conforme os dados levantados; equipe, ferramenta e ambiente" },
+    { at: "5", label: "Estabelecer o plano de teste", note: "Deve ser aceito pelos stakeholders sem divergência" },
+  ]}
+/>
+
+</Figure>
+
+### 1.1.2 Atividades de Monitoramento e Controle de Teste
+
+**TM-1.1.2 (K2)** — Resumir o monitoramento de testes e controle de testes
+
+É uma atividade **contínua**, em paralelo às demais. O gerenciamento aqui é de **cronograma e estrutura**. Ajudam: objetivos claros, medidas e metas definidos no planejamento.
+
+<Comparison
+  columns={[
+    {
+      code: "M",
+      title: "Monitoramento",
+      lead: "Coletar e identificar (observa)",
+      items: [
+        "Coletar e registrar resultados de teste",
+        "Identificar desvios em relação ao plano",
+        "Identificar riscos e analisar os novos",
+        "Monitorar riscos que mudaram",
+      ],
+    },
+    {
+      code: "C",
+      title: "Controle",
+      lead: "Comparar plano × real e agir (decide)",
+      items: [
+        "Implementar o plano e as diretrizes de controle",
+        "Gerenciar desvios",
+        "Tratar riscos recém-identificados",
+        "Estabelecer a prontidão para iniciar o teste",
+        "Concluir o teste ao atender os critérios de saída",
+      ],
+    },
+  ]}
+/>
+
+Os resultados chegam aos stakeholders como status e relatórios de progresso.
+
+:::tip
+
+**Para a prova**
+
+- Monitorar observa. Controlar age.
+- Fluxo: plano, coleta, comparação plano × real, ação corretiva, possível replanejamento.
+- Critérios de entrada e saída são instrumentos do controle.
+- Exemplo de controle: execução atrasada, então repriorizar pelos riscos mais altos.
+
+:::
+
+### 1.1.3 Atividades de Conclusão do Teste
+
+**TM-1.1.3 (K2)** — Resumir a conclusão do teste
+
+A conclusão acontece em **marcos** do projeto, como uma versão (release), o fim de uma iteração ou a conclusão de um nível de teste. Não só no fim do projeto.
+
+- **Itens não resolvidos** viram solicitações de alteração ou itens de backlog.
+- **Critérios de saída atendidos**: os resultados são capturados, arquivados e fornecidos aos stakeholders.
+
+Atividades:
+
+- Criar e aprovar o relatório de conclusão.
+- Arquivar o testware.
+- Transferir o material de teste.
+- Limpar e restaurar o ambiente de teste.
+- Executar, coletar e documentar as lições aprendidas.
+
+:::tip
+
+**Para a prova**
+
+- Defeitos em aberto não somem: viram change request ou backlog.
+- Lições aprendidas alimentam a melhoria de processo (seção 1.5).
+- O relatório de conclusão precisa ser aprovado.
+
+:::
+
+**Revisão da seção 1.1**
+
+<Accordion
+  items={[
+    { title: <>Em quais atividades do processo de teste o Test Manager foca?</>, content: <p>Planejamento, monitoramento e controle, e conclusão.</p> },
+    { title: <>Qual a diferença entre monitorar e controlar?</>, content: <p>Monitorar coleta e identifica (observa). Controlar compara plano e real, e toma ação corretiva (age).</p> },
+    { title: <>Um defeito segue aberto na conclusão. O que acontece com ele?</>, content: <p>Vira solicitação de alteração ou item de backlog.</p> },
+  ]}
+/>
+
+## 1.2 O Contexto do Teste
+
+O contexto são as condições e restrições exclusivas que mudam como o teste deve ser feito. Ele molda decisões e estratégias.
+
+Fatores que influenciam o contexto:
+
+- tipo de produto
+- setor de atuação
+- requisitos regulatórios
+- forma do SDLC (ciclo de vida de desenvolvimento)
+
+O Test Manager **escolhe, não desenvolve**: entende o contexto, adequa o plano e escolhe estratégias e técnicas.
+
+### 1.2.1 Stakeholders no teste
+
+**TM-1.2.1 (K2)** — Comparar por que diferentes stakeholders estão interessados em testes
+
+Stakeholder é quem tem interesse **direto ou indireto** na qualidade do produto.
+
+| Stakeholder         | Por que se interessa pelo teste                                                                                                                                     |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Desenvolvedores     | Implementam o SUT, agem sobre os resultados, fazem testes unitários e contribuem com o processo de teste                                                            |
+| Testadores          | Preparam o material de teste e ajudam no plano: análise de requisitos, modelagem, execução, rastreamento e relatório de defeitos, automação, relatório de progresso |
+| GP e PO             | Especificam requisitos, definem o nível de qualidade, recomendam cobertura com base em riscos, analisam o produto, participam do UAT e decidem com base nos resultados de teste |
+| Clientes e usuários | Compram e usam o produto, são fonte de requisitos e participam do UAT                                                                                               |
+
+:::note
+
+Há mais tipos, conforme o projeto. Exemplos: suporte, head, tech lead.
+
+:::
+
+:::tip
+
+**Para a prova**
+
+- O mesmo resultado de teste gera comunicações diferentes para públicos diferentes.
+- O conjunto de stakeholders depende do projeto.
+
+:::
+
+### 1.2.2 Importância do conhecimento dos stakeholders no gerenciamento de testes
+
+**TM-1.2.2 (K2)** — Explicar por que o conhecimento dos stakeholders é importante no gerenciamento de testes
+
+A **Matriz de Poder e Interesse** categoriza os stakeholders para melhorar a interação. Ela ajuda a:
+
+- priorizar o envolvimento;
+- gerenciar expectativas;
+- escolher stakeholders para feedback do sistema;
+- valorizar perspectivas diversas.
+
+A composição depende do software: um sistema de uso interno não tem os mesmos stakeholders de um produto comercial. Eles também mudam ao longo do projeto, então reavalie a matriz.
+
+<Figure title="MATRIZ DE PODER E INTERESSE" meta="TM-1.2.2" full>
+
+    ```mermaid
+    quadrantChart
+        title Matriz de Poder e Interesse
+        x-axis "Baixo Interesse" --> "Alto Interesse"
+        y-axis "Baixa Influência" --> "Alta Influência"
+        quadrant-1 "Promotores"
+        quadrant-2 "Latentes"
+        quadrant-3 "Apáticos"
+        quadrant-4 "Defensores"
+    ```
+
+<figcaption>
+  O interesse cresce para a direita e a influência para cima. Cada quadrante pede uma postura diferente do Test Manager.
+</figcaption>
+
+</Figure>
+
+<DataTable
+  caption="Quadrantes da matriz de poder e interesse"
+  columns={[
+    { key: "q", label: "Quadrante" },
+    { key: "perfil", label: "Perfil" },
+    { key: "lid", label: "Liderança em geral" },
+    { key: "tm", label: "Test Manager" },
+    { key: "ex", label: "Exemplos" },
+  ]}
+  rows={[
+    { q: <><strong>Promotores</strong><br />Alto poder, alto interesse</>, perfil: "Colaboradores-chave, vitais para moldar a estratégia e o plano de testes", lid: "Gerenciar de perto", tm: "Consultar", ex: "Product Manager, Product Owner, cliente estratégico, patrocinador do projeto" },
+    { q: <><strong>Latentes</strong><br />Alto poder, baixo interesse</>, perfil: "Não se importam com o dia a dia, mas pesam em alocação de recursos e decisões de alto nível", lid: "Manter satisfeitos", tm: "Entregar relatórios mínimos", ex: "Investidores, diretor financeiro (CFO), diretor de outra área, head" },
+    { q: <><strong>Defensores</strong><br />Baixo poder, alto interesse</>, perfil: "Dão feedback qualitativo sobre o produto. Mantenha-os engajados com atualizações regulares e discussões específicas", lid: "Manter informados", tm: "Receber feedback qualitativo", ex: "Desenvolvedores, QA e testers, usuários finais, suporte" },
+    { q: <><strong>Apáticos</strong><br />Baixo poder, baixo interesse</>, perfil: "Não estão intimamente envolvidos. Basta atualizar sobre marcos e buscar opiniões pontuais", lid: "Monitorar", tm: "Buscar percepção única", ex: "Fornecedor de infra não relacionado, devs de outras equipes, outros POs" },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- Memorize os 4 quadrantes e a postura do Test Manager em cada um.
+- Poder e interesse definem o nível de detalhe e a frequência dos relatórios.
+- Um latente ignorado pode cortar o orçamento de testes.
+
+:::
+
+### 1.2.3 Gerenciamento de testes em um modelo de desenvolvimento de software híbrido
+
+**TM-1.2.3 (K2)** — Explicar os testes em um modelo de desenvolvimento de software híbrido
+
+Modelo **híbrido** é a abordagem tradicional somada a uma metodologia ágil. Exemplo: Modelo V ou Cascata com Scrum ou Kanban.
+
+<Comparison
+  columns={[
+    {
+      code: "A",
+      title: "Transição para o ágil",
+      lead: "Por que adotar",
+      items: ["Funciona como etapa de transição", "Facilita a mudança de cultura"],
+    },
+    {
+      code: "B",
+      title: "Adequação à finalidade",
+      lead: "Por que adotar",
+      items: ["Moderniza as tarefas que precisam", "Altera só as atividades em que faz sentido"],
+    },
+  ]}
+/>
+
+Atividades do Test Manager:
+
+- avaliar a compreensão da equipe sobre as metodologias;
+- identificar pontos fracos e fortes da adaptação;
+- garantir que a equipe consiga combinar os processos;
+- aprimorar a colaboração entre a equipe de teste e os stakeholders na sprint;
+- participar de esforços de coordenação para manter a equipe focada, como o scrum-of-scrums para alinhar várias equipes;
+- revisar as atividades de teste para garantir o alinhamento com a metodologia ágil.
+
+:::tip
+
+**Para a prova**
+
+- Híbrido é tradicional somado a ágil, não "ágil mal feito".
+- O desafio central é o alinhamento. O Test Manager é o integrador entre os dois mundos.
+
+:::
+
+### 1.2.4 Atividades de gerenciamento de testes para vários modelos de ciclo de vida
+
+**TM-1.2.4 (K2)** — Resumir as atividades de gerenciamento de testes para vários ciclos de vida de desenvolvimento de software
+
+As atividades são as mesmas em essência, mas mudam de forma. No sequencial, o gerenciamento é antecipado e formal. No iterativo, é contínuo, colaborativo e leve.
+
+<DataTable
+  caption="Gerenciamento de testes por modelo de desenvolvimento"
+  columns={[
+    { key: "a", label: "Atividade" },
+    { key: "seq", label: "Sequencial" },
+    { key: "it", label: "Iterativo" },
+  ]}
+  rows={[
+    { a: "Estimativa", seq: "Detalhada para todas as etapas", it: "De etapa em etapa, como parte da iteração" },
+    { a: "Testware", seq: "Estratégia, plano, casos, cronograma e relatórios", it: "Foco em critérios de aceite e documentação mínima" },
+    { a: "Funções", seq: "O Test Manager supervisiona as decisões e gerencia a equipe", it: "Um coach substitui o Test Manager tradicional" },
+    { a: "Ferramentas", seq: "Gestão de testes em fases", it: "CI, automações e testes contínuos" },
+    { a: "Abordagem de teste", seq: "Programada com antecedência para as fases do projeto", it: "Incorporada às iterações" },
+    { a: "Automação", seq: "Estratégica, pode ocorrer em vários estágios", it: "Integrada desde o início, com foco em regressão por CI/CD" },
+    { a: "Monitoramento e relatórios", seq: "Baseados em marcos", it: "Contínuos, em tempo real" },
+    { a: "Métricas", seq: "Tradicionais e de gerenciamento de defeitos: taxa de execução, taxa de defeitos", it: "Ágeis, além das tradicionais: burndown, velocidade da equipe" },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- A questão costuma dar um cenário e pedir a prática que combina com o modelo.
+- Ágil não elimina a gestão de teste. Ela muda de forma.
+
+:::
+
+### 1.2.5 Atividades de gerenciamento de testes em vários níveis de teste
+
+**TM-1.2.5 (K2)** — Comparar as atividades de gerenciamento de testes em vários níveis de teste
+
+| Nível de teste            | Foco do gerenciamento                                                                                                     |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------------ |
+| Componente                | Definir escopo e objetivos, testadores em atividades de suporte e coordenar os devs na solução de problemas               |
+| Integração de componentes | Determinar as sequências de integração, supervisionar o progresso frente aos objetivos e cooperar com devs                |
+| Integração do sistema     | Garantir escopo de acordo com os riscos e metas de qualidade; supervisionar o progresso e gerenciar problemas             |
+| Sistema                   | Adequar o planejamento ao SDLC.<br/>Ágil: garantir teste contínuo.<br/>Sequencial: planejar a fase de teste               |
+| Aceite                    | Confirmar os critérios de aceite, coordenar e gerenciar o UAT e ajudar na implantação fora do ambiente de desenvolvimento |
+
+:::tip
+
+**Para a prova**
+
+- Componente: devs executam, o gerente apoia.
+- Integração: sequência de integração e cooperação.
+- Aceite: usuários e critérios de negócio.
+- Quanto mais alto o nível, maior a coordenação com quem está fora da equipe técnica.
+
+:::
+
+### 1.2.6 Atividades de gerenciamento de testes para diferentes tipos de testes
+
+**TM-1.2.6 (K2)** — Comparar as atividades de gerenciamento de testes para vários tipos de testes
+
+| Tipo de teste | Foco do gerenciamento                                                  |
+| :------------ | :--------------------------------------------------------------------- |
+| Funcional     | Planejamento, coordenação do progresso e alocação de recursos          |
+| Não funcional | Benchmarking de performance e verificação de conformidade              |
+| Caixa-preta   | Análise de cobertura e incorporação do feedback dos stakeholders       |
+| Caixa-branca  | Incorporar feedback técnico, validar a cobertura e o uso de ferramenta |
+
+:::tip
+
+**Para a prova**
+
+- Não funcional: metas mensuráveis, ambientes representativos, planejar cedo.
+- Caixa-branca: cobertura estrutural e ferramentas.
+- O tipo de teste muda quem o gerente envolve, quais métricas acompanha e que infraestrutura providencia.
+- Tipos atravessam níveis.
+
+:::
+
+### 1.2.7 Atividades de gerenciamento de testes para planejar, monitorar e controlar
+
+**TM-1.2.7 (K4)** — Analisar um determinado projeto e determinar as atividades de gerenciamento de testes que enfatizam o planejamento de testes, monitoramento de testes, e controle de testes
+
+| Fase do processo | Ênfase do gerenciamento                                |
+| :--------------- | :----------------------------------------------------- |
+| Planejamento     | Escopo, riscos e alocação de recursos                  |
+| Monitoramento    | Supervisão, otimização e colaboração                   |
+| Controle         | Decisão diante de desvios e adaptabilidade do processo |
+
+Roteiro para analisar um cenário (K4):
+
+1. **SDLC**: sequencial pede plano detalhado e relatórios por marco; ágil pede planejamento por iteração e monitoramento contínuo; híbrido pede alinhar os dois.
+2. **Níveis e tipos de teste** que mais pesam.
+3. **Riscos**: domínio crítico ou regulado pede planejamento mais formal e rastreabilidade.
+4. **Stakeholders**: muitos promotores pedem consulta frequente; latentes pedem relatórios executivos.
+5. **Restrições**: prazo curto pede controle por priorização baseada em risco.
+
+:::tip
+
+**Para a prova**
+
+- Em K4, a resposta certa é a mais aderente ao contexto, não a mais completa.
+- Descarte opções que contradizem o SDLC ou ignoram os riscos do enunciado.
+
+:::
+
+**Revisão da seção 1.2**
+
+<Accordion
+  items={[
+    { title: <>Como o Test Manager trata um stakeholder Latente?</>, content: <p>Alto poder, baixo interesse. Mantém satisfeito com relatórios mínimos.</p> },
+    { title: <>Qual a diferença de estimativa entre modelo sequencial e iterativo?</>, content: <p>Sequencial: detalhada para todas as etapas. Iterativo: de etapa em etapa, como parte da iteração.</p> },
+    { title: <>Qual a ênfase do gerenciamento no aceite?</>, content: <p>Confirmar critérios de aceite, coordenar o UAT e ajudar na implantação fora do ambiente de desenvolvimento.</p> },
+  ]}
+/>
+
+## 1.3 Teste Baseado em Risco
+
+Qualquer stakeholder pode levantar riscos. O ciclo é: identificar, avaliar, monitorar e mitigar.
+
+:::note
+
+Risco alto significa testar cedo.
+
+:::
+
+### 1.3.1 Testes como uma atividade de mitigação de riscos
+
+**TM-1.3.1 (K2)** — Explicar as várias medidas que os testes baseados em riscos tomam para responder aos riscos
+
+Teste mitiga risco de dois jeitos:
+
+- **Acha defeitos**: eles são corrigidos antes da produção e o risco cai.
+- **Não acha defeitos**: aumenta a confiança de que o risco é baixo (risco residual conhecido).
+
+O Test Manager faz o **gerenciamento de riscos de qualidade**:
+
+| Parte             | Inclui                    |
+| :---------------- | :------------------------ |
+| Análise de risco  | Identificação e avaliação |
+| Controle de risco | Monitoramento e mitigação |
+
+Medidas que o teste baseado em riscos toma:
+
+- escolher técnicas e rigor conforme o nível do risco;
+- definir a profundidade do teste (mais casos para risco alto);
+- priorizar a execução: risco alto primeiro e mais cedo;
+- escolher níveis e tipos de teste adequados;
+- registrar os riscos e reavaliá-los ao longo do projeto.
+
+:::note[Importante]
+
+- Registrar os riscos ao gerenciar os testes.
+- Mitigar os riscos de qualidade.
+
+:::
+
+A análise de riscos ajuda em várias etapas:
+
+- **planejamento**: dá acurácia;
+- **modelagem**: orienta a cobertura dos casos;
+- **execução**: define a prioridade dos testes.
+
+:::tip
+
+**Para a prova**
+
+- Risco = probabilidade × impacto.
+- Mesmo sem achar defeitos, o teste gera valor: informa o risco residual.
+
+:::
+
+### 1.3.2 Identificação de riscos de qualidade
+
+**TM-1.3.2 (K2)** — Dar exemplos de diferentes técnicas que um Gerente de Teste pode usar para identificar riscos relacionados à qualidade do produto
+
+A tarefa do Test Manager é reunir os riscos dos stakeholders.
+
+**Técnicas:**
+
+- entrevistas com especialistas
+- avaliações independentes
+- retrospectivas (evento do Scrum)
+- workshops de risco
+- brainstorming
+- listas de verificação (checklists)
+- experiências passadas
+
+**Cuidados:**
+
+- variedade de stakeholders, para não perder riscos;
+- alinhar o processo com o gerente de projeto (GP);
+- riscos não têm distribuição uniforme no produto.
+
+:::note
+
+**Subprodutos.** A identificação pode revelar riscos de outras áreas. Eles não são o foco do Test Manager, mas ele deve comunicá-los aos responsáveis. Isso ajuda outras partes do SDLC de forma indireta.
+
+:::
+
+:::tip
+
+**Para a prova**
+
+- Saiba reconhecer qual técnica combina com o cenário.
+- Workshop e brainstorming dão envolvimento amplo. Checklist e experiências passadas usam conhecimento existente.
+
+:::
+
+### 1.3.3 Avaliação do risco de qualidade
+
+**TM-1.3.3 (K2)** — Resumir os fatores que determinam os níveis de risco relacionados à qualidade do produto
+
+Processo de avaliação, em 4 passos:
+
+1. **Categorizar**: por tipo (risco de produto ou de projeto) ou por área (interface, performance, segurança).
+2. **Determinar a probabilidade** de o problema ocorrer.
+3. **Determinar o impacto** se ele ocorrer.
+4. **Calcular o nível de risco**.
+
+Probabilidade e impacto podem ser avaliados de duas formas, e o cálculo do nível segue a forma escolhida:
+
+<Comparison
+  columns={[
+    {
+      code: "Q",
+      title: "Qualitativa",
+      lead: "Baixo, médio, alto",
+      items: ["Nível de risco pela matriz de risco", "Mais comum"],
+      active: true,
+    },
+    {
+      code: "N",
+      title: "Quantitativa",
+      lead: "Valores numéricos",
+      items: ["Nível de risco por cálculo", "Exige base de dados"],
+    },
+  ]}
+/>
+
+<Figure title="MATRIZ DE RISCO: PROBABILIDADE × IMPACTO" meta="TM-1.3.3">
+
+![Matriz 3 por 3 com probabilidade e impacto em baixo, médio e alto, e o nível de risco em cada célula](./assets/tm-matriz-risco.svg)
+
+<figcaption>
+  Cruze a probabilidade (horizontal) com o impacto (vertical) para achar o nível de risco. Risco baixo pede menos
+  esforço; risco alto, mais rigor e mais cedo.
+</figcaption>
+
+</Figure>
+
+Fatores que influenciam cada eixo:
+
+- **Probabilidade** (fatores técnicos): complexidade da tecnologia, tamanho e complexidade do código, número de pessoas e interfaces, experiência da equipe, pressão de prazo, distribuição geográfica, código legado ou novo, histórico de defeitos da área.
+- **Impacto** (fatores de negócio): frequência de uso, importância para o negócio, dano à reputação, perda financeira, questões legais e regulatórias, número de usuários afetados.
+
+:::tip
+
+**Para a prova**
+
+- Probabilidade liga a fatores técnicos. Impacto liga a fatores de negócio.
+- Matriz de risco para qualitativo, cálculo para quantitativo. A avaliação quantitativa só vale com dados confiáveis.
+
+:::
+
+### 1.3.4 Mitigação do risco de qualidade por meio de testes apropriados
+
+**TM-1.3.4 (K4)** — Selecionar atividades de teste apropriadas para mitigar riscos de acordo com seu nível de risco em um determinado contexto
+
+Resumo: testar melhor e mais cedo os riscos maiores. Risco alto pede técnicas mais rigorosas, mais casos e execução cedo. Risco baixo pode ficar com teste exploratório rápido ou ser aceito.
+
+Estratégia de sequenciamento: **Depth-First (DFS)** ou **Breadth-First (BFS)**.
+
+|          |      DFS (Depth-First)      |        BFS (Breadth-First)         |
+| :------- | :-------------------------: | :--------------------------------: |
+| Foco     |        Profundidade         |            Abrangência             |
+| Método   |    Maior risco primeiro     | Todos os riscos pelo menos uma vez |
+| Objetivo |    Mitigar riscos graves    |    Visão abrangente dos testes     |
+| Uso      | Teste baseado em risco (risk-based testing) |           Prazos curtos            |
+
+<Figure title="ORDEM DE EXECUÇÃO: DFS × BFS (9 EXECUÇÕES DE TESTE)" meta="TM-1.3.4">
+
+![Ordem de execução: DFS esgota o maior risco antes de passar ao próximo; BFS cobre todos os riscos ao menos uma vez](./assets/tm-dfs-bfs.svg)
+
+<figcaption>Riscos de um e-commerce. O número no quadrado é a ordem em que o teste roda.</figcaption>
+
+</Figure>
+
+Exemplo (e-commerce, 3 riscos):
+
+- **Pagamento falhar (alto)**: técnicas formais, integração com o gateway e segurança, executados primeiro.
+- **Cálculo de frete incorreto (médio)**: particionamento de equivalência e valor limite.
+- **Cor do botão (baixo)**: exploratório rápido, ou aceitar o risco.
+
+:::tip
+
+**Para a prova**
+
+- Relacione o nível de risco à extensão e à ordem do teste.
+- Leia a restrição do cenário (prazo, criticidade) para escolher DFS ou BFS.
+
+:::
+
+### 1.3.5 Técnicas para teste baseado em risco
+
+**TM-1.3.5 (K2)** — Diferenciar entre exemplos pesados e leves de técnicas de teste baseadas em risco baseados em riscos
+
+A escolha depende do projeto, do processo e do produto.
+
+<Comparison
+  columns={[
+    {
+      code: "P",
+      title: "Técnicas pesadas",
+      lead: "Estruturadas e completas",
+      items: [
+        "Análise de Perigo (Hazard Analysis): processo analítico para identificar perigos adjacentes",
+        "Custo de Exposição: risco de cada falha e custo associado a teste e falha",
+        "FMEA (Failure Mode and Effect Analysis): identifica riscos, causas e efeitos; atribui gravidade, prioridade e taxa de detecção",
+        "FTA (Fault Tree Analysis): parte da falha e desce. Relaciona os defeitos de cada falha, depois os erros de cada defeito, até todas as causas-raiz. Falha → defeito → erro → causa-raiz = mitigar",
+      ],
+    },
+    {
+      code: "L",
+      title: "Técnicas leves",
+      lead: "Simples e fáceis de implementar. Geralmente com base na entrada dos stakeholders com requisitos ou especificações do software",
+      items: [
+        "SST (Systematic Software Testing)",
+        "PRAM (Pragmatic Risk Analysis and Management)",
+        "PRISMA (Product Risk Management)",
+      ],
+    },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- Saiba classificar cada técnica como pesada ou leve. Pesadas: Hazard, Custo de Exposição, FMEA, FTA. Leves: SST, PRAM, PRISMA.
+- FTA vai de cima para baixo, a partir da falha. FMEA analisa modos de falha e efeitos.
+
+:::
+
+### 1.3.6 Métricas de sucesso e dificuldades associadas aos testes baseados em riscos
+
+**TM-1.3.6 (K2)** — Dar exemplos de métricas de sucesso e dificuldades associadas a testes baseados em riscos
+
+O teste baseado em risco foi bem-sucedido se a resposta for **sim** a:
+
+- Os stakeholders importantes participaram?
+- O envolvimento deles foi adequado?
+- Os incidentes de riscos críticos em produção foram resolvidos?
+- A maioria dos riscos altos foi encontrada cedo?
+- É possível explicar os resultados de teste em termos de risco?
+- Os testes ignorados são de risco baixo?
+
+Dificuldades comuns:
+
+| Dificuldade                            | Solução                                           |
+| :------------------------------------- | :------------------------------------------------ |
+| Dificuldade em metrificar riscos       | Usar dados históricos                             |
+| Não existe um bom ponto de partida     | Fazer regularmente e com relatórios               |
+| Riscos duplicados e ignorados          | Usar as pessoas certas e mitigar só o que importa |
+| Principais riscos perdidos             | Treinar as pessoas certas para identificar riscos |
+| Mudança de stakeholders e novos riscos | Fazer a análise com frequência                    |
+
+:::tip
+
+**Para a prova**
+
+- Sucesso é achar os riscos altos cedo e explicar resultados em termos de risco.
+- A análise de risco não é feita uma única vez.
+
+:::
+
+**Revisão da seção 1.3**
+
+<Accordion
+  items={[
+    { title: <>Qual a diferença entre análise e controle de risco?</>, content: <p>Análise: identificação e avaliação. Controle: monitoramento e mitigação.</p> },
+    { title: <>Prazo curto e nenhum risco pode ficar sem teste. DFS ou BFS?</>, content: <p>BFS: cobre todos os riscos pelo menos uma vez. DFS esgota o maior risco primeiro.</p> },
+    { title: <>FMEA e PRISMA: pesada ou leve?</>, content: <p>FMEA é pesada. PRISMA é leve.</p> },
+  ]}
+/>
+
+## 1.4 A Estratégia de Teste do Projeto
+
+No projeto, o planejamento de testes produz a **estratégia de teste**, que visa o objetivo do projeto.
+
+### 1.4.1 Escolha de uma abordagem de teste
+
+**TM-1.4.1 (K2)** — Explicar as escolhas típicas de uma abordagem de teste
+
+:::note
+
+Qualquer teste pode ser feito em qualquer fase, mas isso não é eficiente.
+
+:::
+
+Estratégia é escolher os aspectos do teste com melhor encaixe (fit). A abordagem combina níveis e tipos de teste que, juntos, entregam o melhor resultado.
+
+Escolhas típicas:
+
+- níveis, tipos e técnicas de teste;
+- grau de independência dos testadores;
+- nível de automação e ferramentas;
+- critérios de entrada e saída;
+- nível de formalidade e documentação;
+- ambientes, dados de teste e métricas;
+- retestes e regressão.
+
+:::tip
+
+**Para a prova**
+
+- A estratégia de teste organizacional dá a base; a abordagem adapta essa base ao contexto do projeto (veja 1.4.2).
+- Na prática, a abordagem combina várias estratégias, guiada por contexto e riscos.
+
+:::
+
+### 1.4.2 Análise da estratégia de teste organizacional, do contexto do projeto e de outros aspectos
+
+**TM-1.4.2 (K4)** — Analisar uma estratégia de teste organizacional e o contexto do projeto para selecionar a abordagem de teste apropriada
+
+Dadas as características abaixo, o Test Manager monta a melhor estratégia.
+
+| Característica                    | O que observar                          | Exemplo de impacto                                                                                    |
+| :-------------------------------- | :-------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| Domínio                           | O que o produto é                       | Software de gestão geral é mais flexível em regras; software hospitalar exige mais rigor de validação |
+| Metas organizacionais             | O que a organização exige               | Maior automação ou mais relatórios                                                                    |
+| Metas do projeto                  | Exigências do projeto                   | Restrições de tempo, custo e orçamento                                                                |
+| Recursos de teste                 | Restrições de recursos e infraestrutura | Custo de ferramentas, ambiente, máquinas; dispositivos móveis a testar                                |
+| SDLC do projeto                   | Tradicional ou ágil                     | O tipo de SDLC pesa na escolha dos testes                                                             |
+| Interface com outros sistemas     | Sistema de sistemas                     | Testes de integração; alinhar os testes com outras equipes                                            |
+| Disponibilidade de dados de teste | Configuração de ambiente                | Dados anonimizados, dados para testes com IA, criação de dados e população de banco                   |
+
+Roteiro para o cenário (K4):
+
+1. Destaque os fatores citados.
+2. Identifique o dominante (criticidade, regulação ou restrição forte).
+3. Escolha a abordagem que atende esse fator sem violar a estratégia organizacional.
+4. Elimine as opções incoerentes.
+
+:::tip
+
+**Para a prova**
+
+- A abordagem respeita a estratégia organizacional, adaptada ao contexto.
+- Procure a opção que trata o fator mais crítico do enunciado.
+
+:::
+
+### 1.4.3 Definição dos objetivos do teste
+
+**TM-1.4.3 (K3)** — Usar a metodologia de metas S.M.A.R.T. para definir objetivos de teste mensuráveis e critérios de saída
+
+Uma meta deve ser **S.M.A.R.T.**:
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "S: Specific (Específica)", value: "Objetivo claro" },
+    { label: "M: Measurable (Mensurável)", value: "Medição de progresso" },
+    { label: "A: Achievable (Atingível)", value: "Viável considerando os recursos" },
+    { label: "R: Relevant (Relevante)", value: "Alinhada aos objetivos do projeto" },
+    { label: "T: Timely (Temporal)", value: "Prazo definido para conclusão" },
+  ]}
+/>
+
+Exemplos de metas:
+
+- atingir critérios de saída específicos;
+- cumprir regras e regulamentos do setor;
+- garantir a disponibilidade dos dados aos usuários;
+- automatizar testes de regressão.
+
+Exemplo de transformação:
+
+- Ruim: "Garantir boa performance."
+- SMART: "Até o fim da sprint 6, validar que 95% das requisições do checkout respondem em até 2 s com 500 usuários simultâneos no ambiente de homologação."
+
+:::tip
+
+**Para a prova**
+
+- Em K3, verifique cada letra: falta prazo? falta número? é inviável?
+- A alternativa correta costuma ter número, escopo e prazo.
+
+:::
+
+**Revisão da seção 1.4**
+
+<Accordion
+  items={[
+    { title: <>Qual característica do projeto o enunciado de um K4 sobre abordagem destaca?</>, content: <p>Os fatores citados (domínio, metas, recursos, SDLC, interfaces, dados). Escolha a abordagem que trata o fator dominante.</p> },
+    { title: <>O que torna uma meta SMART?</>, content: <p>Específica, mensurável, atingível, relevante e com prazo.</p> },
+  ]}
+/>
+
+## 1.5 Aprimoramento do Processo de Teste
+
+O teste custa entre 30% e 40% do projeto, então o processo precisa ser aprimorado.
+
+### 1.5.1 O processo de aprimoramento de testes (IDEAL)
+
+**TM-1.5.1 (K2)** — Explicar como usar o modelo IDEAL para aprimorar o processo de teste em um determinado projeto
+
+|     | Inglês       | Português    | O que acontece                                                                                                                   |
+| :-: | :----------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------- |
+|  I  | Initiating   | Iniciar      | Definir motivação, objetivos, escopo e patrocínio; obter apoio da gestão e montar a equipe de melhoria                           |
+|  D  | Diagnosing   | Diagnosticar | Avaliar a situação atual (as-is) por modelo (TMMi, TPI NEXT) ou por análise, compará-la ao estado desejado e gerar recomendações |
+|  E  | Establishing | Estabelecer  | Priorizar melhorias e definir o plano de ação, com responsáveis e métricas, pesando risco e ROI                                  |
+|  A  | Acting       | Agir         | Criar a solução, testar em piloto, ajustar e implantar                                                                           |
+|  L  | Learning     | Aprender     | Analisar resultados e lições aprendidas, verificar os objetivos e propor o próximo ciclo                                         |
+
+<Figure title="CICLO IDEAL (MELHORIA DO PROCESSO DE TESTE)" meta="TM-1.5.1">
+
+![Ciclo IDEAL: Iniciar, Diagnosticar, Estabelecer, Agir, Aprender](./assets/tm-ideal.svg)
+
+<figcaption>As cinco fases seguem o sentido horário. Depois de Aprender, um novo ciclo recomeça em Iniciar.</figcaption>
+
+</Figure>
+
+O plano de melhoria passa por análise de riscos e de ROI.
+
+:::tip
+
+**Para a prova**
+
+- Saiba a ordem e o que pertence a cada fase: avaliação da situação atual é Diagnosticar; piloto é Agir.
+- IDEAL é cíclico.
+
+:::
+
+### 1.5.2 Melhoria do processo de Teste Baseado em Modelos
+
+**TM-1.5.2 (K2)** — Resumir a abordagem de melhoria baseada em modelos para testar a melhoria de processos e entender como aplicá-la em um contexto de projeto
+
+Premissa: a qualidade do produto vem da qualidade dos processos. Compara-se o processo atual com as boas práticas de um modelo.
+
+<Comparison
+  columns={[
+    {
+      code: "A",
+      title: "TMMi",
+      lead: "Test Maturity Model integration",
+      items: [
+        "Modelo com copyright registrado",
+        "5 níveis de maturidade",
+        "Cada nível tem áreas de processo e metas de melhoria",
+        "Estágios: 1 Inicial, 2 Gerenciado, 3 Definido, 4 Mensurado, 5 Otimização",
+      ],
+    },
+    {
+      code: "B",
+      title: "TPI NEXT",
+      lead: "Modelo contínuo",
+      items: [
+        "Modelo com copyright registrado",
+        "16 áreas-chave, cada uma com um aspecto específico do processo de teste",
+        "Cada área tem 4 níveis de maturidade",
+      ],
+    },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- TMMi: 5 níveis. TPI NEXT: 16 áreas-chave × 4 níveis.
+- Baseado em modelo compara com boas práticas externas. Não confunda com o analítico, que parte dos próprios dados.
+
+:::
+
+### 1.5.3 Abordagem de melhoria do processo de Teste com Base Analítica
+
+**TM-1.5.3 (K2)** — Resumir a abordagem de melhoria baseada em análise para testar a melhoria do processo e entender como aplicá-la em um contexto de projeto
+
+Usa os dados do próprio projeto e da equipe, qualitativos e quantitativos.
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "Análise de causa-raiz", value: "Encontrar a origem dos problemas e soluções" },
+    { label: "Medidas, métricas e indicadores", value: "Forma de avaliar a performance" },
+    {
+      label: "GQM (Goal-Question-Metric)",
+      value: "Estrutura para definir e analisar métricas: objetivo, perguntas, métricas, nesta ordem",
+    },
+  ]}
+/>
+
+Exemplo de GQM: objetivo "reduzir defeitos que escapam para produção"; pergunta "em que fase foram introduzidos?"; métrica "% de defeitos de produção por fase de origem".
+
+:::tip
+
+**Para a prova**
+
+- GQM: Goal, depois Question, depois Metric.
+- As abordagens analítica e baseada em modelo podem ser combinadas.
+
+:::
+
+### 1.5.4 Retrospectivas
+
+**TM-1.5.4 (K3)** — Implementar uma retrospectiva de projeto ou iteração para avaliar os processos de teste e descobrir áreas de teste a serem aprimoradas
+
+Reunião em que as equipes avaliam métodos e colaboração. Vale para SDLC sequencial e ágil.
+
+<Figure title="ETAPAS DA RETROSPECTIVA" meta="TM-1.5.4" full>
+
+<Timeline
+  orientation="vertical"
+  events={[
+    { at: "1", label: "Introdução", note: "Objetivo e agenda" },
+    { at: "2", label: "Coleta de dados", note: "Dados sobre o que aconteceu na iteração" },
+    { at: "3", label: "Derivar melhorias", note: "Análise dos dados até a causa-raiz" },
+    { at: "4", label: "Decidir ações de melhoria", note: "Ações para solução" },
+    { at: "5", label: "Retrospectiva de fechamento", note: "Fechamento e documentação" },
+  ]}
+/>
+
+<figcaption>As cinco etapas da retrospectiva, em ordem.</figcaption>
+
+</Figure>
+
+:::tip
+
+**Para a prova**
+
+- Ordem: introdução, dados, melhorias, ações, fechamento.
+- O resultado útil da retrospectiva são ações concretas, com responsável e prazo.
+
+:::
+
+**Revisão da seção 1.5**
+
+<Accordion
+  items={[
+    { title: <>Em qual fase do IDEAL se faz o projeto piloto?</>, content: <p>Agir (Acting).</p> },
+    { title: <>Qual a diferença entre melhoria baseada em modelo e analítica?</>, content: <p>Modelo (TMMi, TPI NEXT) compara com boas práticas. Analítica (causa-raiz, métricas, GQM) parte dos dados do próprio projeto.</p> },
+    { title: <>Quantas áreas-chave tem o TPI NEXT?</>, content: <p>16 áreas-chave, cada uma com 4 níveis de maturidade.</p> },
+  ]}
+/>
+
+## 1.6 Ferramentas de Teste
+
+Três tipos de ferramenta: comerciais, open-source e personalizadas.
+
+### 1.6.1 Boas práticas para a introdução de ferramentas
+
+**TM-1.6.1 (K2)** — Resumir as práticas recomendadas para a introdução de ferramentas
+
+O Test Manager pode participar da introdução de ferramentas.
+
+<Comparison
+  columns={[
+    {
+      code: "A",
+      title: "Avaliação",
+      lead: "Antes de decidir",
+      items: [
+        "Identificar oportunidades",
+        "Compreender as tecnologias usadas",
+        "Entender como a ferramenta se integra ao SDLC",
+        "Avaliar requisitos claros da ferramenta",
+        "Avaliar o fornecedor (comercial) ou o suporte (open-source)",
+        "Identificar requisitos internos de treinamento",
+        "Pesar prós e contras do licenciamento",
+        "Fazer uma prova de conceito (PoC, um MVP)",
+      ],
+    },
+    {
+      code: "B",
+      title: "Implementação",
+      lead: "Depois de decidir",
+      items: [
+        "Executar um projeto piloto",
+        "Adaptar e avaliar processos",
+        "Definir diretrizes de uso",
+        "Fornecer treinamento",
+        "Implementar aos poucos",
+        "Coletar dados de uso real para melhorias",
+        "Definir o responsável (owner) pela ferramenta",
+      ],
+    },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- PoC avalia se a ferramenta atende (seleção). Piloto testa a adoção no contexto real (implementação).
+
+:::
+
+### 1.6.2 Aspectos técnicos e comerciais das decisões sobre ferramentas
+
+**TM-1.6.2 (K2)** — Explicar o impacto de diferentes aspectos técnicos e comerciais ao decidir sobre um tipo de ferramenta
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "Normas e segurança", value: "A empresa tem missão crítica ou regra de conformidade?" },
+    { label: "Aspectos financeiros", value: "Limite de orçamento ou custo de pessoal para manutenção" },
+    { label: "Requisitos dos stakeholders", value: "A ferramenta atende esses requisitos?" },
+    { label: "Cenário de software", value: "Uma ferramenta ou ecossistema existente limita ou se sobrepõe à nova" },
+  ]}
+/>
+
+:::tip
+
+**Para a prova**
+
+- Pense no custo total de propriedade, não só na licença.
+- Regulamentação e segurança podem eliminar opções de início.
+
+:::
+
+### 1.6.3 Considerações sobre o processo de seleção e avaliação do retorno sobre o investimento
+
+**TM-1.6.3 (K4)** — Analisar uma determinada situação para criar um plano de seleção de ferramentas, abrangendo riscos, custos e benefícios
+
+É preciso assegurar o ROI sob vários pontos de vista:
+
+| Cargo       | Foco na ferramenta                          |
+| :---------- | :------------------------------------------ |
+| Gestão      | ROI positivo                                |
+| Suporte     | Poucas ferramentas para manter e configurar |
+| GP          | Agregar valor mensurável                    |
+| Usuário     | Usabilidade e operacionalidade              |
+| Operacional | Facilidade de manutenção                    |
+
+Faça a análise de custo-benefício:
+
+<Comparison
+  columns={[
+    {
+      code: "N",
+      title: "Custos não recorrentes",
+      lead: "Pagos uma vez",
+      items: [
+        "Definir e determinar requisitos",
+        "Avaliar e selecionar a ferramenta",
+        "Adquirir e adaptar inicialmente",
+        "Definir diretrizes",
+        "Treinamento inicial",
+        "Integrar a ferramenta",
+        "Aquisição de hardware e software",
+      ],
+    },
+    {
+      code: "R",
+      title: "Custos recorrentes",
+      lead: "Pagos de forma contínua ou periódica",
+      items: ["Licenciamento", "Manutenção", "Treinamento", "Portabilidade e infraestrutura"],
+    },
+  ]}
+/>
+
+**Riscos de ROI:**
+
+- imaturidade da organização;
+- mudanças nas políticas de manutenção;
+- custos mais altos;
+- benefício menor.
+
+**Benefícios das ferramentas de teste:**
+
+- menos trabalho manual;
+- ciclo de teste mais rápido;
+- menor custo de execução;
+- mais cobertura;
+- menos erro humano;
+- acesso a dados dos testes (relatórios).
+
+:::tip
+
+**Para a prova**
+
+- Diferencie custos recorrentes de não recorrentes.
+- O ROI costuma ser negativo no início e positivo ao longo do tempo.
+
+:::
+
+### 1.6.4 Ciclo de vida da ferramenta
+
+**TM-1.6.4 (K2)** — Diferenciar os estágios do ciclo de vida da ferramenta
+
+<Figure title="CICLO DE VIDA DA FERRAMENTA DE TESTE" meta="TM-1.6.4">
+
+![Ciclo de vida da ferramenta: Aquisição, Manutenção, Evolução, Aposentadoria](./assets/tm-ciclo-ferramenta.svg)
+
+<figcaption>Quatro estágios em sequência. Ao aposentar a ferramenta, a nova volta à aquisição.</figcaption>
+
+</Figure>
+
+| Estágio          | Pergunta-chave                                 | O que envolve                                                                                   |
+| :--------------- | :--------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| 1. Aquisição     | Qual ferramenta e como introduzi-la?           | Seleção e obtenção, responsável (owner), diretrizes de uso, treinamento e integração inicial    |
+| 2. Manutenção    | Como mantê-la funcionando e útil?              | Licenças e atualizações, suporte aos usuários, compatibilidade com o ambiente, scripts e dados  |
+| 3. Evolução      | Como adaptá-la às novas necessidades?          | Novas tecnologias, necessidades e versões; adaptar, estender ou reconfigurar                    |
+| 4. Aposentadoria | Como substituí-la sem perder dados e testware? | Ferramenta obsoleta ou que não compensa mais; migração de dados e artefatos; descomissionamento |
+
+:::tip
+
+**Para a prova**
+
+- Saiba a ordem e reconheça o estágio de um cenário.
+- Aposentadoria envolve migração e arquivamento de dados e testware.
+
+:::
+
+### 1.6.5 Métricas de ferramentas
+
+**TM-1.6.5 (K2)** — Dar exemplos de coleta e avaliação de métricas e avaliação usando ferramentas
+
+Exemplos de dados coletados pelas ferramentas:
+
+| Ferramenta                       | Dados coletados                                                               |
+| :------------------------------- | :---------------------------------------------------------------------------- |
+| Gerenciamento de teste           | Itens de teste, testes executados, status e testes aprovados                  |
+| Gerenciamento de requisitos      | Cobertura de requisitos, casos de teste aprovados                             |
+| Gerenciamento de defeitos        | Informações dos defeitos, porcentagem de detecção, níveis de teste executados |
+| Análise estática                 | Complexidade do código                                                        |
+| Teste de performance             | Tempo de resposta, taxa de falha                                              |
+| Cobertura de código              | Objetos de teste cobertos                                                     |
+| Ferramentas de teste             | Número de defeitos encontrados, cobertura dos requisitos                      |
+
+:::tip
+
+**Para a prova**
+
+- Associe cada métrica à ferramenta que a gera.
+- Confira se os dados estão completos e corretos, combine métricas de várias ferramentas e observe tendências.
+
+:::
+
+**Revisão da seção 1.6**
+
+<Accordion
+  items={[
+    { title: <>Qual a diferença entre prova de conceito e projeto piloto?</>, content: <p>PoC faz parte da avaliação: confirma se a ferramenta atende. O piloto faz parte da implementação: testa a adoção no contexto real.</p> },
+    { title: <>Licenciamento e manutenção são custos recorrentes ou não recorrentes?</>, content: <p>Recorrentes, junto com treinamento e portabilidade ou infraestrutura.</p> },
+    { title: <>Quais os 4 estágios do ciclo de vida da ferramenta?</>, content: <p>Aquisição, manutenção, evolução e aposentadoria.</p> },
+  ]}
+/>

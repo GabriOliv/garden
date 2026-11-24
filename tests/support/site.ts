@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { expect, type Locator, type Page } from "@playwright/test";
 
 /** As cinco páginas dos critérios, relativas ao `baseURL` (`/garden/`). */
@@ -40,3 +42,20 @@ export const drawing = (svg: Locator) =>
     copy.querySelector("title")?.remove();
     return copy.innerHTML;
   });
+
+/** Blocos ```mermaid (com ou sem recuo) do fonte da página aberta: `<rota>.mdx`, `.md` ou `<rota>/README.mdx`, `.md`. */
+export function mermaidBlocks(page: Page) {
+  const route = new URL(page.url()).pathname.replace(/^\/garden\//, "").replace(/\/$/, "");
+  const file = [`${route}.mdx`, `${route}.md`, `${route}/README.mdx`, `${route}/README.md`]
+    .map((f) => join(__dirname, "..", "..", f))
+    .find((f) => existsSync(f));
+  if (!file) throw new Error(`sem fonte para ${route}`);
+  return (readFileSync(file, "utf-8").match(/^\s*```mermaid\s*$/gm) ?? []).length;
+}
+
+/** Espera todos os diagramas Mermaid da página aberta desenharem. */
+export async function waitDiagrams(page: Page) {
+  const n = mermaidBlocks(page);
+  await expect(page.locator(".docusaurus-mermaid-container svg")).toHaveCount(n, { timeout: 20_000 });
+  return n;
+}

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 112" width="800" height="112" role="img" aria-labelledby="hz-t hz-d">
+  <title id="hz-t">Teoria dos dois fatores de Herzberg</title>
+  <desc id="hz-d">Escala de insatisfação a motivação, com neutro no centro e dois blocos. Os fatores de higiene ficam do lado da insatisfação; os motivadores, do lado da motivação.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .card { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .card-sig { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .hd-sig { fill: var(--signal); }
+    .hd-err { fill: var(--contrast-error); }
+    .hd-ink { fill: var(--ink); }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .hatch { fill: url(#hz-hatch); stroke: var(--ink); stroke-width: 1; }
+    .tint { fill: var(--signal-tint); }
+    .curve { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .dot { fill: var(--paper); stroke: var(--signal); stroke-width: 2; }
+    .dot-on { fill: var(--signal); stroke: var(--signal); stroke-width: 2; }
+    .dash { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+    .sq { fill: var(--ink); }
+    .sqs { fill: var(--signal); }
+    .sqe { fill: var(--contrast-error); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; fill: var(--ink); }
+    .sm { font-size: 12px; }
+    .b { font-weight: 600; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .inv { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="hz-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="hz-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="hz-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink)"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="112"/>
+  <rect width="800" height="112" fill="url(#hz-grid)"/>
+  <text class="label" x="60" y="34">INSATISFAÇÃO</text>
+  <text class="label mid" x="400" y="34">NEUTRO</text>
+  <text class="label end lsig" x="740" y="34">MOTIVAÇÃO</text>
+  <line class="rule" x1="60" y1="46" x2="740" y2="46"/>
+  <line class="rule" x1="60" y1="40" x2="60" y2="52"/>
+  <line class="rule" x1="400" y1="40" x2="400" y2="52"/>
+  <line class="rule" x1="740" y1="40" x2="740" y2="52"/>
+  <rect class="hatch" x="60" y="62" width="340" height="32"/>
+  <rect class="pt-ground" x="148" y="68" width="164" height="20"/>
+  <text class="label mid" x="230" y="83" style="letter-spacing:.06em">HIGIENE</text>
+  <rect class="hd-sig" x="400" y="62" width="340" height="32" stroke="var(--ink)"/>
+  <text class="label inv mid" x="570" y="83" style="letter-spacing:.06em">MOTIVADORES</text>
+</svg>

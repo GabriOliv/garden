@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-labelledby="tk-t tk-d">
+  <title id="tk-t">Modelo de Tuckman</title>
+  <desc id="tk-d">Curva qualitativa do desempenho da equipe de teste ao longo das cinco fases de Tuckman: Formação, Confronto, Normalização, Desempenho e Encerramento. O desempenho começa moderado, cai no Confronto, sobe na Normalização, atinge o ponto mais alto no Desempenho, em destaque, e se desfaz no Encerramento.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .card { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .card-sig { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .hd-sig { fill: var(--signal); }
+    .hd-err { fill: var(--contrast-error); }
+    .hd-ink { fill: var(--ink); }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .hatch { fill: url(#tk-hatch); stroke: var(--ink); stroke-width: 1; }
+    .tint { fill: var(--signal-tint); }
+    .curve { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .dot { fill: var(--paper); stroke: var(--signal); stroke-width: 2; }
+    .dot-on { fill: var(--signal); stroke: var(--signal); stroke-width: 2; }
+    .dash { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+    .sq { fill: var(--ink); }
+    .sqs { fill: var(--signal); }
+    .sqe { fill: var(--contrast-error); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; fill: var(--ink); }
+    .sm { font-size: 12px; }
+    .b { font-weight: 600; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .inv { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="tk-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="tk-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="tk-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink)"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="300"/>
+  <rect width="800" height="300" fill="url(#tk-grid)"/>
+  <path d="M 40 185 H 104 C 178.0 185 178.0 222 252 222 C 326.0 222 326.0 145 400 145 C 460.0 145 460.0 85 520 85 H 576 C 636.0 85 636.0 190 696 190 H 760 V 235 H 40 Z" fill="var(--signal-tint)" opacity=".7"/>
+  <path class="curve" d="M 40 185 H 104 C 178.0 185 178.0 222 252 222 C 326.0 222 326.0 145 400 145 C 460.0 145 460.0 85 520 85 H 576 C 636.0 85 636.0 190 696 190 H 760"/>
+  <line class="rule" x1="40" y1="235" x2="760" y2="235"/>
+  <line class="hair" x1="40" y1="235" x2="40" y2="34" marker-end="url(#tk-arr)" style="color:var(--ink)"/>
+  <text class="label" x="52" y="30">DESEMPENHO DA EQUIPE</text>
+  <line class="soft" x1="104" y1="185" x2="104" y2="235"/>
+  <circle class="dot" cx="104" cy="185" r="6"/>
+  <line class="soft" x1="252" y1="222" x2="252" y2="235"/>
+  <circle class="dot" cx="252" cy="222" r="6"/>
+  <line class="soft" x1="400" y1="145" x2="400" y2="235"/>
+  <circle class="dot" cx="400" cy="145" r="6"/>
+  <line class="soft" x1="548" y1="85" x2="548" y2="235"/>
+  <circle class="dot-on" cx="548" cy="85" r="6"/>
+  <line class="soft" x1="696" y1="190" x2="696" y2="235"/>
+  <circle class="dot" cx="696" cy="190" r="6"/>
+  <rect class="card" x="32" y="252" width="144" height="40"/>
+  <rect class="hd-ink" x="32" y="252" width="144" height="4"/>
+  <text class="label mid" x="104" y="272" style="letter-spacing:.04em">1 FORMAÇÃO</text>
+  <text class="txt sm muted mid" x="104" y="287" font-style="italic">Forming</text>
+  <rect class="card" x="180" y="252" width="144" height="40"/>
+  <rect class="hd-ink" x="180" y="252" width="144" height="4"/>
+  <text class="label mid" x="252" y="272" style="letter-spacing:.04em">2 CONFRONTO</text>
+  <text class="txt sm muted mid" x="252" y="287" font-style="italic">Storming</text>
+  <rect class="card" x="328" y="252" width="144" height="40"/>
+  <rect class="hd-ink" x="328" y="252" width="144" height="4"/>
+  <text class="label mid" x="400" y="272" style="letter-spacing:.04em">3 NORMALIZAÇÃO</text>
+  <text class="txt sm muted mid" x="400" y="287" font-style="italic">Norming</text>
+  <rect class="card-sig" x="476" y="252" width="144" height="40"/>
+  <rect class="hd-sig" x="476" y="252" width="144" height="4"/>
+  <text class="label mid lsig" x="548" y="272" style="letter-spacing:.04em">4 DESEMPENHO</text>
+  <text class="txt sm muted mid" x="548" y="287" font-style="italic">Performing</text>
+  <rect class="card" x="624" y="252" width="144" height="40"/>
+  <rect class="hd-ink" x="624" y="252" width="144" height="4"/>
+  <text class="label mid" x="696" y="272" style="letter-spacing:.04em">5 ENCERRAMENTO</text>
+  <text class="txt sm muted mid" x="696" y="287" font-style="italic">Adjourning</text>
+</svg>

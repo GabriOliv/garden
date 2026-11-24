@@ -1,0 +1,474 @@
+---
+sidebar_position: 2
+title: Capítulo 2
+description: CTAL-TM - Capítulo 2 - Gerenciando o Produto
+tags: [stageA, istqb, ctaltm, capitulo]
+draft: false
+---
+
+import { Comparison, FieldList, DataTable, Accordion } from "@gabrioliv/dossier";
+
+# 2 Gerenciando o Produto
+
+Três assuntos: **métricas** (2.1), **estimativas** (2.2) e **defeitos** (2.3).
+
+## 2.1 Métricas de Teste
+
+:::note[Por que ter métricas de teste?]
+
+"O que é medido, é feito." Métricas transformam o andamento do teste em informação objetiva.
+
+:::
+
+Toda métrica deve responder a um **objetivo** do teste (ideia do GQM, visto no capítulo 1).
+
+<Comparison
+  level={3}
+  columns={[
+    { title: "Projeto", lead: "Mede os critérios de saída do projeto", items: ["Progresso, esforço, cronograma", "Ex.: % de casos de teste executados"] },
+    { title: "Produto", lead: "Mede atributos e qualidade do produto", items: ["Ex.: densidade de defeitos", "Ex.: cobertura de requisitos"] },
+    { title: "Processo", lead: "Mede a capacidade e a eficiência do processo", items: ["Ex.: DDP"] },
+  ]}
+/>
+
+### 2.1.1 Métricas para atividades de gerenciamento de testes
+
+**TM-2.1.1 (K2)** — Dar exemplos de métricas para atingir os objetivos do teste
+
+As métricas seguem as atividades de gerenciamento:
+
+1. **Planejamento**: define as métricas.
+2. **Monitoramento**: coleta.
+3. **Conclusão**: registra e consolida.
+
+| Objetivo do teste | Métrica | Monitoramento | Conclusão |
+| --- | --- | :---: | :---: |
+| Cobrir os requisitos | Cobertura de requisitos | X | X |
+| Mitigar riscos do produto | Cobertura dos riscos do produto | X | X |
+| Testar a estrutura | Cobertura de código | X |  |
+| Cumprir prazo e esforço | Estimativa de teste real vs. planejada | X | X |
+| Avançar a execução | Porcentagem de casos de teste executados | X | X |
+| Estabilizar o produto | Defeitos encontrados vs. resolvidos (acumulado) | X |  |
+| Reduzir o custo de regressão | Casos de teste automatizados |  | X |
+
+**DDP (Porcentagem de Detecção de Defeitos)** mede a eficácia do processo de teste: quantos defeitos o teste pegou antes de eles chegarem ao campo.
+
+$$
+DDP = \frac{\text{defeitos encontrados pelo teste}}{\text{defeitos encontrados pelo teste} + \text{defeitos encontrados depois (ex.: produção)}} \times 100
+$$
+
+Exemplo: 90 defeitos no teste e 10 em produção. DDP = 90 ÷ 100 = **90%**.
+
+:::tip Para a prova
+
+- Saiba calcular o DDP.
+- Cobertura de código só aparece no monitoramento; casos automatizados só na conclusão.
+- Cobertura de requisitos e cobertura de riscos são métricas diferentes: uma não substitui a outra.
+
+:::
+
+### 2.1.2 Monitoramento, Controle e Conclusão
+
+**TM-2.1.2 (K2)** — Explicar como controlar o progresso do teste usando métricas de teste
+
+| Atividade | Papel das métricas |
+| --- | --- |
+| Monitoramento | Indicadores de como o teste evolui em relação ao plano |
+| Controle | Base para as ações corretivas |
+| Conclusão | Dados finais para o relatório de conclusão e as lições aprendidas |
+
+Cadeia de raciocínio: **métrica, interpretação, ação**.
+
+| O que a métrica mostra | Ação de controle possível |
+| --- | --- |
+| Execução 30% abaixo do planejado | Repriorizar por risco, adicionar recursos, renegociar escopo ou prazo |
+| Muitos testes bloqueados | Resolver ambiente e dados; escalar as dependências |
+| Defeitos abertos mais rápido do que corrigidos | Ajustar a capacidade de correção; reforçar o teste da área instável |
+| Concentração de defeitos em uma área | Aumentar testes e revisões ali |
+| Cobertura de risco alto insuficiente perto do prazo | Cortar testes de risco baixo e focar nos altos |
+| Defeitos reabertos em alta | Revisar a qualidade das correções e dos testes de confirmação |
+
+Boas práticas: olhe **tendências**, compare com o plano e os critérios de saída, e combine várias métricas. Uma métrica isolada engana: poucos defeitos pode significar teste fraco, não produto bom.
+
+### 2.1.3 Relatório de Teste
+
+**TM-2.1.3 (K4)** — Analisar os resultados dos testes para criar relatórios de testes que capacitem os stakeholders a tomar decisões
+
+As métricas certas são a base de um relatório útil. Dimensões típicas: **risco**, **defeitos**, **progresso**, **cobertura** e **custos**.
+
+<Comparison
+  columns={[
+    { code: "A", title: "Relatório de progresso", lead: "Periódico, durante o teste", items: ["Status e desvios", "Impedimentos e riscos", "Próximos passos"] },
+    { code: "B", title: "Relatório de conclusão", lead: "Ao final de um marco", items: ["Avaliação frente aos critérios de saída", "Riscos residuais e defeitos abertos", "Lições aprendidas"] },
+  ]}
+/>
+
+Como montar um bom relatório:
+
+1. **Conheça o público**: patrocinadores querem risco e recomendação; desenvolvedores, detalhe técnico.
+2. **Analise, não só colete**: interprete tendências e ligue aos objetivos e critérios de saída.
+3. **Fale em risco e impacto no negócio.**
+4. **Seja objetivo e visual**: gráficos de tendência, semáforos.
+5. **Traga uma recomendação clara.** O Test Manager informa e recomenda; quem decide é o stakeholder.
+
+:::tip Para a prova
+
+Em questões K4, prefira a opção que interpreta os dados em termos de **risco e objetivo** e entrega informação adaptada ao público. Números soltos, índice único agregado ou parecer sem dados não capacitam a decisão.
+
+:::
+
+**Revisão da seção 2.1**
+
+<Accordion
+  items={[
+    { title: <>Qual a diferença entre métrica de projeto, de produto e de processo?</>, content: <p>Projeto mede critérios de saída; produto mede atributos e qualidade; processo mede capacidade e eficiência do processo.</p> },
+    { title: <>90 defeitos achados no teste e 10 em produção: qual o DDP?</>, content: <p>90 ÷ (90 + 10) × 100 = 90%.</p> },
+    { title: <>Cobertura de requisitos de 100% garante baixo risco residual?</>, content: <p>Não. É outra métrica: a cobertura dos riscos do produto pode estar baixa, e defeitos graves podem seguir abertos.</p> },
+  ]}
+/>
+
+## 2.2 Estimativas de Teste
+
+### 2.2.1 Estimativa das atividades que o teste envolverá
+
+**TM-2.2.1 (K2)** — Explicar os fatores que precisam ser considerados na estimativa de testes
+
+Estimar é prever o trabalho de teste em três critérios: **esforço**, **tempo** e **custo**.
+
+Passos:
+
+1. Identificar o **nível de teste** envolvido.
+2. **Dividir** o teste necessário em etapas.
+3. **Estimar o esforço** de cada etapa e somar.
+
+A estimativa precisa cobrir:
+
+- **Todas as atividades** do processo de teste, não só a execução (ambiente, dados, relatórios, reuniões).
+- **Retestes e regressão** após as correções (vários ciclos).
+- **Riscos** do produto e do projeto.
+- **Premissas e dependências** (entregas do desenvolvimento, ambientes).
+- **Contingência** para as incertezas.
+- **Dados históricos** de projetos semelhantes.
+
+Registre as premissas para poder **reestimar** quando o contexto mudar. A estimativa começa pouco precisa e melhora com o que se aprende.
+
+:::tip Para a prova
+
+A estimativa cobre o processo todo, inclusive retestes e regressão. Documentar premissas é essencial.
+
+:::
+
+### 2.2.2 Fatores que podem influenciar o esforço de teste
+
+**TM-2.2.2 (K2)** — Dar exemplos de fatores que podem influenciar as estimativas de teste
+
+O esforço depende de cinco grupos de fatores. Para cada um, pergunte: este fator aumenta ou reduz o trabalho de teste?
+
+<DataTable
+  caption="Fatores que influenciam o esforço de teste"
+  columns={[
+    { key: "grupo", label: "Grupo" },
+    { key: "fatores", label: "Fatores" },
+    { key: "exemplo", label: "Exemplo" },
+  ]}
+  rows={[
+    { grupo: "Produto", fatores: "Qualidade da base de teste, tamanho do produto, complexidade do domínio, requisitos de qualidade (ex.: alta confiabilidade)", exemplo: "Requisitos ambíguos exigem mais análise e geram mais defeitos" },
+    { grupo: "Processo de desenvolvimento", fatores: "Estabilidade e maturidade do processo, modelo de desenvolvimento, fatores materiais (ex.: ferramentas)", exemplo: "Regressão automatizada reduz o custo de cada ciclo" },
+    { grupo: "Pessoas", fatores: "Habilidades e experiência, satisfação da equipe", exemplo: "Equipe experiente no domínio trabalha mais rápido e erra menos" },
+    { grupo: "Resultados do teste", fatores: "Gravidade dos defeitos, quantidade de retrabalho", exemplo: "Software de baixa qualidade gera muitos ciclos de reteste" },
+    { grupo: "Contexto do teste", fatores: "Complexidade do projeto, trabalho local ou remoto", exemplo: "Equipe distribuída exige mais coordenação e comunicação" },
+  ]}
+/>
+
+:::tip Para a prova
+
+Saiba classificar um fator na categoria certa. "Resultados do teste" também é fator: muitos defeitos graves geram retrabalho.
+
+:::
+
+### 2.2.3 Seleção de técnicas de estimativa de teste
+
+**TM-2.2.3 (K4)** — Selecionar uma técnica ou abordagem apropriada para a estimativa de testes para um determinado contexto
+
+Não existe técnica universal. Estimar é mais difícil quando a qualidade geral do software é baixa, e as estimativas dependem do contexto do teste.
+
+A escolha depende de:
+
+- **Erro de estimativa** aceitável
+- **Disponibilidade de dados** (e se são comparáveis ao projeto atual)
+- **Disponibilidade de especialistas**
+- **Conhecimento em modelagem**
+- **Restrições de tempo**
+
+<DataTable
+  caption="Técnicas de estimativa"
+  columns={[
+    { key: "t", label: "Técnica" },
+    { key: "como", label: "Como funciona" },
+    { key: "quando", label: "Quando usar" },
+  ]}
+  rows={[
+    { t: "Wideband Delphi", como: "Especialistas estimam individualmente e de forma anônima, discutem as divergências e repetem até convergir", quando: <>Modelo <strong>sequencial</strong>, com especialistas disponíveis e poucos dados. Exige várias rodadas: não cabe com prazo curto</> },
+    { t: "Planning Poker", como: "Variante do Delphi. A equipe estima com cartas, discute os extremos e reestima", quando: <>Modelo <strong>ágil</strong>, estimativa feita pela própria equipe</> },
+    { t: "Estimativa de 3 pontos", como: "Usa as estimativas otimista (O), mais provável (M) e pessimista (P)", quando: "A incerteza é alta ou a diretoria exige uma medida dela; há conhecimento em modelagem e tempo" },
+    { t: "Razão (proporção)", como: "Usa proporções históricas, como teste igual a 40% do desenvolvimento", quando: "Há dados históricos de projetos semelhantes" },
+    { t: "Extrapolação", como: "Projeta a partir de dados medidos no início do projeto atual", quando: "Projetos em andamento, iterativos" },
+  ]}
+/>
+
+**3 pontos:** valor esperado E = (O + 4M + P) ÷ 6; desvio padrão = (P − O) ÷ 6. Exemplo: O = 6, M = 9, P = 18 dias. E = (6 + 36 + 18) ÷ 6 = 10 dias; desvio = 12 ÷ 6 = 2.
+
+Roteiro de decisão:
+
+1. Há dados históricos **confiáveis e comparáveis**? Use técnica baseada em métricas.
+2. Não há dados, mas há especialistas? Wideband Delphi ou 3 pontos.
+3. Equipe ágil? Planning Poker.
+4. Muita incerteza? Combine técnicas.
+
+:::tip Para a prova
+
+- Delphi combina com sequencial; Planning Poker com ágil.
+- Saiba o cálculo de 3 pontos (peso 4 no mais provável; desvio dividido por 6).
+- "Há dados" não é "há dados comparáveis": histórico de outra tecnologia não ajuda.
+- Falta de conhecimento em modelagem inviabiliza modelos estatísticos, mas os dados ainda servem a técnicas simples, como proporção.
+
+:::
+
+**Revisão da seção 2.2**
+
+<Accordion
+  items={[
+    { title: <>Cite três atividades que a estimativa deve cobrir além da execução.</>, content: <p>Preparar ambiente e dados, relatórios e reuniões, retestes e regressão (qualquer três dos itens da lista de cobertura).</p> },
+    { title: <>Falhas graves encontradas em muitas áreas: em qual categoria de fator isso entra?</>, content: <p>Resultados do teste (gravidade dos defeitos e retrabalho).</p> },
+    { title: <>O prazo para estimar é de dois dias. Wideband Delphi serve?</>, content: <p>Dificilmente: exige várias rodadas até convergir. Com especialistas e pouco tempo, prefira uma estimativa mais rápida.</p> },
+  ]}
+/>
+
+## 2.3 Gerenciamento de Defeitos
+
+Atividades que começam quando se observa que o resultado real diverge do esperado. O nome varia:
+
+- **Gerenciamento de defeitos**: syllabus.
+- **Gerenciamento de incidentes**: ISO/IEC/IEEE 29119-3.
+- **Gerenciamento de anomalias**: TMAP.
+
+Uma boa ferramenta de gerenciamento:
+
+- dá visão do projeto em todo o SDLC;
+- coleta dados dos defeitos;
+- ajuda na tomada de decisão.
+
+### 2.3.1 Ciclo de Vida do Defeito
+
+**TM-2.3.1 (K3)** — Implementar um processo de gerenciamento de defeitos, incluindo o fluxo de trabalho de defeitos que possa ser usado para monitorar e controlar defeitos
+
+Ciclo: descoberta da anomalia, preenchimento do relatório, evolução do relatório com o avanço dos testes e, no fim, uso para **análise**, **correção** e **teste de confirmação**.
+
+<Figure title="FLUXO DE TRABALHO DO DEFEITO" meta="TM-2.3.1">
+
+![Fluxo do defeito: Aberto, Em Andamento, Resolvido e Fechado em sequência, com Rejeitado ao lado; o teste de confirmação que falha volta para Em Andamento e o defeito rejeitado pode ser reaberto ou fechado](./assets/tm-fluxo-defeito.svg)
+
+<figcaption>Do estado inicial Aberto ao único estado terminal, Fechado. Cada estado não terminal tem mais de uma saída, como pede a boa prática 6 abaixo.</figcaption>
+
+</Figure>
+
+Etapas e fluxo podem variar entre organizações.
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "Aberto", value: "Estado inicial, quando o relatório é criado." },
+    { label: "Em Andamento", value: "A equipe trabalha: análise ou correção." },
+    { label: "Rejeitado", value: "Desconsiderado segundo algum critério." },
+    { label: "Resolvido", value: "Corrigido ou pronto para o teste de confirmação." },
+    { label: "Fechado", value: "Estado terminal. Não requer mais trabalho." },
+  ]}
+/>
+
+Boas práticas do fluxo:
+
+1. **O mesmo fluxo em toda a organização**, para facilitar o gerenciamento.
+2. **Duplicados e falsos positivos em estado separado**: dados úteis para melhorar o processo de teste.
+3. **Um único estado terminal.**
+4. **Nomes de estado iguais aos de outras entidades** (ex.: requisitos, tarefas).
+5. **Estados consecutivos com responsáveis (funções) diferentes**: cada transição passa a bola.
+6. **Todo estado não terminal com mais de uma saída**, para haver decisão.
+7. **Atributos exigidos na transição devem ter uso real**: não criar artefatos desnecessários.
+
+:::tip Para a prova
+
+Teste de confirmação que falha devolve o defeito para **Em Andamento**. "Reaberto" é outra transição: de Rejeitado de volta para Aberto. O estado terminal é o único sem saída.
+
+:::
+
+### 2.3.2 Gerenciamento de defeitos multifuncional
+
+**TM-2.3.2 (K2)** — Explicar o processo e os participantes necessários para o gerenciamento eficaz de defeitos
+
+<Comparison
+  columns={[
+    { code: "A", title: "Tradicional", lead: "O Test Manager é dono dos dois processos", items: ["Processo de Teste", "Processo de Gerenciamento de Defeitos"] },
+    { code: "B", title: "Multifuncional", lead: "Dois donos", items: ["Test Manager: Processo de Teste", "Comitê de Gerenciamento de Defeitos: Gerenciamento de Defeitos"] },
+  ]}
+/>
+
+O **Comitê de Gerenciamento de Defeitos** reúne tipicamente teste, desenvolvimento, gerência de projeto e negócio (product owner ou analista de negócio). Ele:
+
+- avalia cada relatório: é defeito válido? é duplicado?
+- decide **aceitar, rejeitar ou adiar** a correção;
+- define **prioridade** e responsável;
+- avalia o impacto em risco, cronograma e custo.
+
+A decisão sai na **reunião de triagem**. Em projetos muito grandes pode haver um **gerente de defeitos** dedicado.
+
+<Figure title="COMITÊ, FERRAMENTA E COMUNICAÇÃO: UM NÃO SUBSTITUI O OUTRO" meta="TM-2.3.2" full>
+
+    ```mermaid
+    %%{init:{'flowchart':{'useMaxWidth':'true'}}}%%
+    flowchart LR
+    	a["Comitê de Gerenciamento de Defeitos"]
+    	b["Ferramenta de Gerenciamento de Defeitos"]
+    	c["Boa Comunicação"]
+
+    	a -->|não substitui| b
+    	b -->|não substitui| c
+    ```
+
+<figcaption>O comitê não substitui a ferramenta, e a ferramenta não substitui a boa comunicação.</figcaption>
+
+</Figure>
+
+:::tip Para a prova
+
+Por que multifuncional? Porque decidir sobre defeitos envolve **negócio, técnica e teste** juntos. Triagem = decidir validade, prioridade e destino do defeito.
+
+:::
+
+### 2.3.3 Especificidades do gerenciamento de defeitos em equipes ágeis
+
+**TM-2.3.3 (K2)** — Explicar as especificidades do gerenciamento de defeitos no desenvolvimento ágil de software
+
+Em equipes ágeis, o gerenciamento pode ser feito por **comunicação direta**. Muitos defeitos são achados e corrigidos na hora, sem relatório.
+
+**O relatório formal é necessário quando o defeito:**
+
+1. **bloqueia** uma atividade da sprint;
+2. **não pode ser resolvido na mesma iteração**;
+3. **precisa de outras equipes** para ser resolvido;
+4. **deve ser resolvido por um fornecedor**;
+5. tem um **relatório explicitamente solicitado**.
+
+Além disso:
+
+- O relatório deve refletir a forma de trabalho da equipe (leve).
+- **As decisões sobre o defeito devem ser documentadas** (ex.: decidir não corrigir).
+
+:::tip Para a prova
+
+Memorize as 5 situações. "Ágil não documenta nada" é falso: documenta o necessário.
+
+:::
+
+### 2.3.4 Desafios do gerenciamento de defeitos no desenvolvimento de software híbrido
+
+**TM-2.3.4 (K2)** — Explicar os desafios do gerenciamento de defeitos no desenvolvimento de software híbrido
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "Alinhamento de ferramentas", value: "Cada equipe acaba usando uma ferramenta diferente. Fica difícil ter visão única, rastreabilidade e métricas consolidadas." },
+    { label: "Priorização de defeitos", value: "Equipes ágeis priorizam no backlog; partes tradicionais usam comitê e triagem formal. É difícil reunir as pessoas para a gestão de defeitos." },
+    { label: "Transparência do plano de teste", value: "É preciso compartilhar o plano e o status com o restante das equipes, que têm graus de formalidade diferentes." },
+  ]}
+/>
+
+Respostas possíveis do Test Manager: acordar uma ferramenta comum (ou integração), definir um fluxo de trabalho e uma classificação mínimos comuns, manter uma triagem conjunta e publicar dashboards compartilhados.
+
+:::tip Para a prova
+
+Os 3 desafios centrais: **ferramentas, priorização, transparência**.
+
+:::
+
+### 2.3.5 Informações do relatório de defeitos
+
+**TM-2.3.5 (K3)** — Usar os dados e as informações de classificação que devem ser coletados durante o gerenciamento de defeitos
+
+As informações do relatório devem bastar para quatro finalidades:
+
+| Finalidade | Para quê | Exemplo de informação |
+| --- | --- | --- |
+| Gerenciar o relatório no ciclo de vida do defeito | Conseguir gerenciar o defeito com o relatório | Esperado × atual |
+| Avaliar o status do projeto, a qualidade do produto e o progresso do teste | Medir se o produto está muito quebrado | Riscos e custo de cada defeito |
+| Avaliar a qualidade de um incremento do produto | Saber quais defeitos surgem em cada feature | Resumo e agrupamento por risco e tipo de defeito |
+| Avaliar a capacidade do processo | Saber se o processo está rodando como deveria | Fase do SDLC de detecção e de remoção do defeito |
+
+**Informado por quem reporta:**
+
+<FieldList
+  columns={2}
+  fields={[
+    { label: "Título e resumo", value: "Título do defeito e resumo da anomalia" },
+    { label: "Descrição detalhada", value: "Descrição da anomalia e etapas de reprodução" },
+    { label: "Severidade", value: "Gravidade do impacto" },
+    { label: "Prioridade", value: "Urgência para corrigir a anomalia" },
+  ]}
+/>
+
+**Gerado pela ferramenta de gerenciamento:**
+
+<FieldList
+  columns={2}
+  fields={[
+    { label: "Identificador", value: "Código único do defeito" },
+    { label: "Data e hora", value: "Quando o relatório foi criado" },
+    { label: "Quem descobriu", value: "Pessoa ou tester" },
+    { label: "Fase do projeto", value: "Em que a anomalia foi encontrada" },
+    { label: "Estado", value: "Estado atual do relatório" },
+    { label: "Responsável", value: "Quem responde pelo defeito agora" },
+    { label: "Histórico", value: "Mudanças feitas no relatório" },
+    { label: "Referências", value: "Casos de teste e defeitos relacionados" },
+  ]}
+/>
+
+A ISO/IEC/IEEE 29119-3 detalha mais dados que podem ser coletados.
+
+:::tip Para a prova
+
+**Severidade** é o impacto; **prioridade** é a urgência de correção. Em K3, descubra qual dado **falta** para atender a finalidade pedida.
+
+:::
+
+### 2.3.6 Definição de ações de melhoria do processo usando informações do relatório de defeitos
+
+**TM-2.3.6 (K2)** — Explicar como as estatísticas de relatórios de defeitos podem ser usadas para planejar a melhoria do processo
+
+| Estatística | Iniciativa de melhoria |
+| --- | --- |
+| Fases de introdução, detecção e remoção de defeitos | Melhorar a eficácia da detecção de defeitos em cada fase |
+| Fase com maior número de defeitos | Melhorias direcionadas à **prevenção** de defeitos |
+| Causa-raiz dos defeitos | Reduzir o número total de defeitos |
+| Localização de defeitos e grupos de defeitos | Melhorar a análise de riscos técnicos e refatorar os componentes problemáticos |
+| Defeitos reabertos | Melhorar a qualidade da depuração e das correções |
+| Defeitos duplicados e rejeitados | Melhorar a qualidade dos relatórios de defeitos |
+| Número total de defeitos | Medidas proativas para evitar erros antecipadamente |
+
+:::warning Não rastrear defeitos
+
+Algumas gestões decidem não rastrear defeitos no SDLC, em nome da eficiência. As consequências:
+
+- menos visibilidade do processo de desenvolvimento e do processo de teste;
+- melhorias baseadas em dados ficam difíceis;
+- faltam dados de suporte confiáveis.
+
+:::
+
+**Revisão da seção 2.3**
+
+<Accordion
+  items={[
+    { title: <>Um defeito corrigido e reprovado no teste de confirmação: o que acontece no fluxo?</>, content: <p>Volta para Em Andamento. Se passa, vai para Fechado.</p> },
+    { title: <>Quais situações exigem relatório formal no ágil?</>, content: <p>Bloqueia atividade da sprint; não resolve na iteração; precisa de outras equipes; precisa de fornecedor; relatório pedido explicitamente.</p> },
+    { title: <>Muitos defeitos reabertos e muitos duplicados ou rejeitados: qual melhoria cada um aponta?</>, content: <p>Reabertos: qualidade da depuração e das correções. Duplicados e rejeitados: qualidade dos relatórios de defeitos.</p> },
+  ]}
+/>

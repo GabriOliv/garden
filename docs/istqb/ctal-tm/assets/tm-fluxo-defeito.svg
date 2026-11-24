@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" role="img" aria-labelledby="fd-t fd-d">
+  <title id="fd-t">Fluxo de trabalho do defeito</title>
+  <desc id="fd-d">Cinco estados. O defeito começa em Aberto. De Aberto, a análise leva a Em Andamento, ou vai para Rejeitado se estiver fora do critério. De Em Andamento, corrigido leva a Resolvido, ou desconsiderado leva a Rejeitado. De Resolvido, o teste de confirmação que passa leva a Fechado; o que falha volta para Em Andamento. De Rejeitado, a rejeição aceita leva a Fechado, ou o defeito é reaberto e volta para Aberto. Fechado é o único estado terminal.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .focus { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .ptr { fill: var(--ink); }
+    .dot { fill: var(--ink); }
+    .ring { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 11px; font-weight: 500; letter-spacing: .08em; fill: var(--ink); }
+    .name { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 15px; font-weight: 600; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 13px; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="fd-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="fd-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="ptr"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="520"/>
+  <rect width="800" height="520" fill="url(#fd-grid)"/>
+
+  <!-- transições -->
+  <!-- início -> Aberto -->
+  <circle class="dot" cx="745" cy="68" r="7"/>
+  <line class="hair" x1="738" y1="68" x2="680" y2="68" marker-end="url(#fd-arr)"/>
+  <text class="label mid muted" x="745" y="96">INÍCIO</text>
+
+  <!-- Aberto -> Em Andamento -->
+  <line class="hair" x1="570" y1="96" x2="570" y2="170" marker-end="url(#fd-arr)"/>
+  <text class="txt muted" x="582" y="138">análise</text>
+
+  <!-- Em Andamento -> Resolvido -->
+  <line class="hair" x1="570" y1="226" x2="570" y2="300" marker-end="url(#fd-arr)"/>
+  <text class="txt muted" x="582" y="268">corrigido</text>
+
+  <!-- Resolvido -> Fechado -->
+  <line class="hair" x1="570" y1="356" x2="570" y2="430" marker-end="url(#fd-arr)"/>
+  <text class="txt muted" x="582" y="398">confirmação passou</text>
+
+  <!-- Resolvido -> Em Andamento (confirmação falhou) -->
+  <path class="hair" d="M680 328 H725 V198 H680" marker-end="url(#fd-arr)"/>
+  <text class="txt muted mid" x="0" y="0" transform="translate(742 263) rotate(-90)">confirmação falhou</text>
+
+  <!-- Em Andamento -> Rejeitado -->
+  <line class="hair" x1="460" y1="198" x2="280" y2="198" marker-end="url(#fd-arr)"/>
+  <text class="txt muted mid" x="370" y="190">desconsiderado</text>
+
+  <!-- Aberto -> Rejeitado (fora do critério) -->
+  <path class="hair" d="M460 52 H130 V170" marker-end="url(#fd-arr)"/>
+  <text class="txt muted mid" x="300" y="44">fora do critério</text>
+
+  <!-- Rejeitado -> Aberto (reaberto) -->
+  <path class="hair" d="M220 170 V84 H460" marker-end="url(#fd-arr)"/>
+  <text class="txt muted mid" x="340" y="78">reaberto</text>
+
+  <!-- Rejeitado -> Fechado -->
+  <path class="hair" d="M170 226 V458 H460" marker-end="url(#fd-arr)"/>
+  <text class="txt muted mid" x="315" y="450">rejeição aceita</text>
+
+  <!-- Fechado -> fim -->
+  <line class="hair" x1="680" y1="458" x2="734" y2="458" marker-end="url(#fd-arr)"/>
+  <circle class="ring" cx="745" cy="458" r="9"/>
+  <circle class="dot" cx="745" cy="458" r="5"/>
+  <text class="label mid muted" x="745" y="488">FIM</text>
+
+  <!-- estados -->
+  <rect class="plate" x="460" y="40" width="220" height="56"/>
+  <text class="name mid" x="570" y="73">Aberto</text>
+
+  <rect class="plate" x="460" y="170" width="220" height="56"/>
+  <text class="name mid" x="570" y="203">Em Andamento</text>
+
+  <rect class="plate" x="60" y="170" width="220" height="56"/>
+  <text class="name mid" x="170" y="203">Rejeitado</text>
+
+  <rect class="plate" x="460" y="300" width="220" height="56"/>
+  <text class="name mid" x="570" y="333">Resolvido</text>
+
+  <rect class="focus" x="460" y="430" width="220" height="56"/>
+  <text class="label mid lsig" x="570" y="452">ESTADO TERMINAL</text>
+  <text class="name mid" x="570" y="473">Fechado</text>
+</svg>

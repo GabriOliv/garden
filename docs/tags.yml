@@ -223,3 +223,7 @@ cttas:
   label: "CT-TAS"
   permalink: "/cttas"
   description: "Certified Tester, Test Automation Strategy"
+ctaltm:
+  label: "CTAL-TM"
+  permalink: "/ctaltm"
+  description: "Certified Tester Advanced Level, Test Management"

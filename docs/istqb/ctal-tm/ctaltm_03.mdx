@@ -1,0 +1,341 @@
+---
+sidebar_position: 3
+title: Capítulo 3
+description: CTAL-TM - Capítulo 3 - Gerenciando a Equipe
+tags: [stageA, istqb, ctaltm, capitulo]
+draft: false
+---
+
+import { LineChart, Comparison, FieldList, Accordion } from "@gabrioliv/dossier";
+
+# 3 Gerenciando a Equipe
+
+## 3.1 A Equipe de Teste
+
+### 3.1.1 Habilidades típicas em quatro áreas de competência
+
+**TM-3.1.1 (K2)** — Dê exemplos de habilidades típicas necessárias para os membros da equipe de teste em quatro áreas de competência
+
+Uma equipe eficaz precisa de mais que conhecimento técnico. O syllabus separa as habilidades em quatro áreas. Todas importam, mas o ISTQB certifica principalmente a **competência profissional**.
+
+| Área | Foco | Habilidades | Exemplo |
+| --- | --- | --- | --- |
+| **Profissional** | Conhecimento especializado para fazer o trabalho | Tarefas especializadas de teste; conhecimento do domínio de negócio; conhecimento tecnológico | Aplicar análise de valor limite; conhecer as regras de cálculo de impostos |
+| **Metodológica** | Forma de abordar e resolver problemas | Habilidades gerais; habilidades analíticas; habilidades conceituais | Decompor um requisito complexo em condições de teste |
+| **Social** | Relacionar-se com outras pessoas | Habilidade de comunicação; cooperação; gerência de conflitos | Reportar um defeito sem culpar o desenvolvedor |
+| **Pessoal** | Relação consigo mesmo | Desenvolver o próprio talento; autogerenciamento; responsabilidade; receber críticas | Aceitar feedback sobre casos de teste mal escritos e melhorar |
+
+:::tip[Para a prova]
+
+Classifique a habilidade na área certa: "gerenciar conflito" é **social**; "aceitar críticas" é **pessoal**; "pensamento analítico" é **metodológica**; "conhecer o domínio de negócio" é **profissional**.
+
+:::
+
+### 3.1.2 Analisar as habilidades necessárias dos membros da equipe de teste
+
+**TM-3.1.2 (K4)** — Analisar um determinado contexto de projeto para determinar as habilidades necessárias para os membros da equipe de teste
+
+Ligue cada área ao trabalho que ela sustenta:
+
+| Área | Para que serve no projeto |
+| --- | --- |
+| Profissional + Metodológica | Tarefas de teste: planejamento, implementação, execução etc. |
+| Social | Interagir e se comunicar com a equipe e os stakeholders |
+| Pessoal | Equipes **autogeradas** exigem nível alto de autogerenciamento |
+| Pessoal (Gerente de Teste) | Saber **delegar** tarefas |
+
+Roteiro para analisar um cenário:
+
+1. **Domínio**: é regulado ou crítico? Exige conhecimento de domínio e normas.
+2. **Tecnologia e tipos de teste**: mobile, API, desempenho, segurança? Exige habilidades técnicas específicas e automação.
+3. **SDLC**: ágil pede colaboração, autogerenciamento e automação em CI. Sequencial pede documentação e processos formais.
+4. **Organização da equipe**: distribuída ou com fornecedores pede comunicação e negociação.
+5. **Lacunas**: compare habilidades necessárias × disponíveis (matriz de habilidades) e planeje desenvolvimento ou contratação.
+
+**Exemplo:** app de telemedicina, Scrum, integração com prontuário eletrônico, exigências da LGPD.
+
+- *Profissional:* domínio de saúde, testes de API, segurança e privacidade, automação mobile.
+- *Metodológica:* análise de risco, modelagem de testes para regras clínicas.
+- *Social:* comunicação com médicos (usuários) e com o fornecedor do prontuário.
+- *Pessoal:* autonomia e autogerenciamento na equipe Scrum.
+
+:::tip[Para a prova]
+
+Este é K4: a resposta certa **conecta características do contexto às habilidades**. Desconfie de opções genéricas que servem para qualquer projeto.
+
+:::
+
+### 3.1.3 Avaliação das habilidades dos membros da equipe de teste
+
+**TM-3.1.3 (K2)** — Explicar as técnicas típicas de avaliação de habilidades dos membros da equipe de teste
+
+Equipes **diversas** são mais eficazes. Para saber o que cada pessoa traz:
+
+- **Observar atividades típicas de teste** (análise, modelagem, execução, reporte) mostra as competências **profissionais e metodológicas**.
+- **Certificações e experiência profissional** também validam competências.
+
+:::tip[Para a prova]
+
+Observar atividades típicas de teste avalia competência profissional e metodológica. Certificações e experiência profissional são outra forma de validar competências.
+
+:::
+
+### 3.1.4 Desenvolvimento das habilidades dos membros da equipe de teste
+
+**TM-3.1.4 (K2)** — Diferencie as abordagens típicas para desenvolver as habilidades dos membros da equipe de teste
+
+Habilidades podem ser aprendidas, mas **nem todas as abordagens são igualmente eficazes**. Combinar costuma funcionar melhor.
+
+| Abordagem | Como funciona | Mais adequada para |
+| --- | --- | --- |
+| Treinamento e educação | Cursos, certificações, workshops | Base teórica ampla, padronizar conhecimento |
+| Autoestudo | Livros, vídeos, artigos | Pessoas autônomas, baixo custo, ritmo flexível |
+| Aprendizado entre pares | Dois colegas compartilham conhecimento (pair testing, apresentações internas) | Espalhar conhecimento que já existe na equipe |
+| Mentoring ou coaching | Orientação individual de um profissional sênior | Carreira, habilidades sociais e pessoais, casos complexos |
+| Treinamento no trabalho | Prática de uma tarefa real, com instrução direta | Habilidades práticas e do contexto |
+
+:::tip[Para a prova]
+
+Associe cenário e abordagem. "Sênior orienta júnior individualmente" é mentoring ou coaching. "Dois colegas trocam conhecimento" é aprendizado entre pares.
+
+:::
+
+### 3.1.5 Habilidades gerenciais necessárias para gerenciar uma equipe de teste
+
+**TM-3.1.5 (K2)** — Explicar as habilidades necessárias para gerenciar uma equipe de teste
+
+<FieldList
+  variant="definition"
+  fields={[
+    { label: "Resiliência", value: "Manter-se eficaz sob pressão e diante de más notícias, como uma release adiada." },
+    { label: "Capacidade de delegar", value: "Distribuir tarefas e responsabilidades conforme as habilidades de cada um." },
+    { label: "Ser aceito como líder", value: "Ter credibilidade técnica e relacional perante a equipe." },
+    { label: "Afirmar interesses", value: "Defender a qualidade e os recursos de teste perante os stakeholders." },
+    { label: "Promover benefícios", value: "Mostrar o valor do teste para o negócio." },
+    { label: "Resolver conflitos", value: "Mediar disputas entre testadores, com desenvolvedores ou com stakeholders." },
+  ]}
+/>
+
+**Modelo de Tuckman** é um modelo geral de formação e liderança de equipes. Cada estágio pede uma postura do líder.
+
+<Figure title="MODELO DE TUCKMAN" meta="TM-3.1.5">
+
+![Curva do desempenho da equipe ao longo das cinco fases de Tuckman, com o Desempenho em destaque](./assets/tm-tuckman.svg)
+
+<figcaption>O desempenho cai no Confronto, sobe na Normalização, chega ao pico no Desempenho (fase destacada) e cai no Encerramento. Entrada ou saída de membros pode fazer a equipe voltar a fases anteriores.</figcaption>
+
+</Figure>
+
+| Estágio | O que acontece | Papel do Gerente de Teste |
+| --- | --- | --- |
+| Forming (Formação) | Pessoas se conhecem e dependem do líder | Juntar pessoas à equipe, dar direção, objetivos e papéis |
+| Storming (Confronto) | Surgem conflitos e disputas | Mediar e **resolver conflitos** |
+| Norming (Normalização) | Normas e colaboração se firmam | Liderar por **metas e valores** e apoiar a equipe |
+| Performing (Desempenho) | Equipe autônoma e produtiva | **Delegar** e atribuir responsabilidade |
+| Adjourning (Encerramento) | A equipe se desfaz | Agir com **apreço** aos membros que saem |
+
+Mnemônico da ordem: **F**ormação, **C**onfronto, **N**ormalização, **D**esempenho, **E**ncerramento.
+
+:::tip[Para a prova]
+
+Saiba a ordem dos estágios e a postura do líder em cada um. Entrada ou saída de membros pode fazer a equipe **voltar** a estágios anteriores.
+
+:::
+
+### 3.1.6 Fatores motivadores ou desmotivadores para uma equipe de teste em determinadas situações
+
+**TM-3.1.6 (K2)** — Dê exemplos de fatores de motivação e higiene para os membros da equipe de teste
+
+Equipe motivada é mais produtiva. A **Teoria dos Dois Fatores** (Herzberg) diz que satisfação e insatisfação vêm de fatores diferentes.
+
+<Figure title="TEORIA DOS DOIS FATORES" meta="TM-3.1.6">
+
+![Escala de insatisfação a motivação com duas barras: fatores de higiene do lado da insatisfação e motivadores do lado da motivação](./assets/tm-herzberg.svg)
+
+<figcaption>São dois eixos separados, não uma escala única: higiene atua do neutro para a insatisfação; motivadores, do neutro para a motivação.</figcaption>
+
+</Figure>
+
+<Comparison
+  level={4}
+  columns={[
+    {
+      code: "M",
+      title: "Motivadores (intrínsecos)",
+      lead: "Presentes, geram motivação. Ausentes, não causam necessariamente insatisfação. Resolvem a falta de motivação.",
+      items: [
+        "Reconhecimento (destacar quem achou um defeito crítico)",
+        "Autonomia (escolher a abordagem exploratória)",
+        "Responsabilidade (ser dono da estratégia de automação)",
+        "Tarefas interessantes e significativas",
+        "Avanço e desenvolvimento",
+      ],
+    },
+    {
+      code: "H",
+      title: "Fatores de higiene (extrínsecos)",
+      lead: "Ausentes, geram insatisfação. Presentes, só evitam a insatisfação. Resolvem a insatisfação, mas não motivam.",
+      items: [
+        "Remuneração adequada",
+        "Política de valorização justa",
+        "Condições de trabalho (ferramentas, ambiente, carga)",
+        "Segurança (cumprimento de acordos)",
+        "Bom relacionamento interpessoal",
+      ],
+    },
+  ]}
+/>
+
+Situações típicas que desmotivam: testadores vistos como "atrasadores" da release, teste espremido no fim do prazo, trabalho repetitivo sem automação, defeitos ignorados, falta de reconhecimento quando "nada deu errado".
+
+:::tip[Para a prova]
+
+Higiene resolve **insatisfação**; motivadores geram **motivação**. Aumentar o salário (higiene) não garante motivação. Saiba classificar exemplos em cada grupo.
+
+:::
+
+**Revisão da seção 3.1**
+
+<Accordion
+  items={[
+    { title: <>Um testador aceita bem o feedback sobre seus casos de teste e melhora. Qual área de competência?</>, content: <p>Pessoal (receber críticas). Gerência de conflitos e comunicação seriam sociais.</p> },
+    { title: <>Como avaliar as competências profissionais e metodológicas de um candidato?</>, content: <p>Observando atividades típicas de teste, como análise, modelagem e execução. Certificações e experiência profissional também validam competências.</p> },
+    { title: <>A equipe discute muito e há disputas abertas. Em qual estágio de Tuckman ela está e o que o gerente faz?</>, content: <p>Storming (Confronto). O gerente media e resolve os conflitos.</p> },
+    { title: <>Aumentar a remuneração basta para motivar a equipe?</>, content: <p>Não. Remuneração é fator de higiene: evita insatisfação, mas não motiva. Motivam reconhecimento, autonomia, responsabilidade e desenvolvimento.</p> },
+  ]}
+/>
+
+## 3.2 Relacionamentos com os stakeholders
+
+O Test Manager precisa **criar valor comercial** para os testes e ajudar o stakeholder a entender o equilíbrio entre testes e prazos. Para isso, fala a língua dos custos.
+
+### 3.2.1 Custo da qualidade
+
+**TM-3.2.1 (K2)** — Dê exemplos de cada uma das quatro categorias que determinam o custo da qualidade
+
+Manter a qualidade gera um custo que deve ser claro. O custo da qualidade tem quatro categorias:
+
+<Figure title="CUSTO DA QUALIDADE" meta="TM-3.2.1">
+
+![Quatro categorias do custo da qualidade: prevenção e avaliação (conformidade), falhas internas e externas (não conformidade), numa linha do tempo com a entrega ao cliente](./assets/tm-custo-qualidade.svg)
+
+<figcaption>Conformidade reúne os custos de prevenir e avaliar. Não conformidade reúne as falhas, internas antes da entrega e externas depois dela.</figcaption>
+
+</Figure>
+
+| Categoria | Definição | Exemplos |
+| --- | --- | --- |
+| Prevenção | Evitar que defeitos sejam introduzidos | Treinamento, revisões de requisitos, padrões de código, melhoria de processo, análise de risco, TDD/BDD |
+| Avaliação | Encontrar defeitos antes da entrega | Planejar e executar testes, revisões de código, análise estática, ambientes e ferramentas de teste |
+| Falhas internas | Defeitos achados **antes** da entrega ao cliente | Retrabalho de correção, retestes, regressão, atraso de cronograma |
+| Falhas externas | Defeitos achados **depois** da entrega | Suporte e chamados, hotfixes, multas, indenizações, perda de clientes e reputação, recall |
+
+#### Curva de Boehm
+
+O custo de corrigir um defeito cresce exponencialmente com o avanço do SDLC (requisitos cerca de 1×, produção cerca de 100×). Investir em prevenção e avaliação reduz as falhas, principalmente as externas.
+
+<Figure title="CURVA DE BOEHM" meta="TM-3.2.1" full>
+
+<LineChart
+  title="Curva de Boehm: custo relativo de correção por fase"
+  unit="×"
+  yMin={0}
+  yMax={100}
+  data={[
+    { x: "Requisitos", y: 1, callout: true },
+    { x: "Design", y: 5, callout: true },
+    { x: "Codificação", y: 10, callout: true },
+    { x: "Testes", y: 25, callout: true },
+    { x: "Produção", y: 100, callout: true, active: true },
+  ]}
+/>
+
+<figcaption>Custo relativo de corrigir um defeito em cada fase do SDLC: cerca de 1× em requisitos e 100× em produção. Valores intermediários ilustrativos.</figcaption>
+
+</Figure>
+
+:::tip[Para a prova]
+
+Classifique exemplos: treinamento é **prevenção**; executar testes é **avaliação**; retrabalho antes da release é **falha interna**; suporte a cliente por causa de bug é **falha externa**.
+
+:::
+
+### 3.2.2 Relação custo-benefício dos testes
+
+**TM-3.2.2 (K3)** — Aplicar um cálculo de custo-benefício para estimar o valor agregado dos testes para os stakeholders
+
+Os benefícios do teste são de dois tipos:
+
+- **Qualitativos:** melhor reputação do software, confiança nas decisões de release, satisfação do cliente.
+- **Quantitativos:** quantidade de defeitos encontrados, custo de falhas evitado, menos retrabalho.
+
+O cálculo usa as categorias do custo da qualidade.
+
+#### Economia Média por Defeito (EMD)
+
+Valor **líquido** economizado por defeito descoberto nos testes: o que custaria falhar externamente, menos o custo de avaliar e de falhar internamente.
+
+$$
+EMD = \text{Média de } CFex - (\text{Média de } CAv + \text{Média de } CFin)
+$$
+
+- **CFex**: custo de falhas externas
+- **CAv**: custo de avaliação
+- **CFin**: custo de falhas internas
+
+O custo de prevenção de defeitos (CPD, parcela do CTQ abaixo) **não entra** na EMD.
+
+#### Custo Total da Qualidade (CTQ)
+
+$$
+\begin{aligned}
+CTQ \;=\;\; & \underbrace{CPD}_{\text{prevenção}} \\[4pt]
++\;\; & \underbrace{(\,CAv \times NDalb\,)}_{\text{avaliação}} \\[4pt]
++\;\; & \underbrace{(\,CFin \times NDaln\,)}_{\text{falhas internas}} \\[4pt]
++\;\; & \underbrace{(\,CFex \times NDpln\,)}_{\text{falhas externas}}
+\end{aligned}
+$$
+
+| Parcela | Custo | Quantidade de defeitos |
+| --- | --- | --- |
+| Prevenção | **CPD**: custo de prevenção de defeitos | Não se aplica: valor fixo, entra uma vez |
+| Avaliação | **CAv** | **NDalb**: achados antes da liberação |
+| Falhas internas | **CFin** | **NDaln**: achados antes do lançamento |
+| Falhas externas | **CFex** | **NDpln**: achados após o lançamento |
+
+**EMD** é por defeito e não usa CPD. **CTQ** é do projeto: soma o CPD uma vez e multiplica cada custo pelo seu próprio contador de defeitos.
+
+#### Exemplo resolvido
+
+:::note
+
+Os números abaixo são **ilustrativos**, só para treinar o cálculo. Na prática, vêm do histórico da organização.
+
+:::
+
+Dados: CAv = 200, CFin = 300, CFex = 5.000, 120 defeitos achados no teste, esforço total de teste de 150.000.
+
+1. **EMD:** 5.000 − (200 + 300) = 5.000 − 500 = **4.500** por defeito.
+2. **Economia bruta:** 120 × 4.500 = **540.000**.
+3. **Valor agregado:** 540.000 − 150.000 = **390.000**.
+4. **Retorno** sobre o esforço de teste: 390.000 ÷ 150.000 = 2,6, ou 260%.
+
+Na conversa com os stakeholders: apresente o número junto com os benefícios qualitativos e explique as premissas (custos médios estimados do histórico). O objetivo é **equilíbrio** entre teste, prazo e risco, não minimizar o teste: testar de menos gera custos maiores que os testes omitidos.
+
+:::tip[Para a prova]
+
+- EMD: sempre **falha externa − (avaliação + falha interna)**. Armadilhas: somar em vez de subtrair, subtrair também o CPD, esquecer o CFin.
+- CTQ: não esqueça o CPD nem o termo de falhas externas, e use o contador certo em cada parcela (NDalb, NDaln, NDpln).
+- Leia quais custos o enunciado dá e quantos defeitos há em cada fase.
+
+:::
+
+**Revisão da seção 3.2**
+
+<Accordion
+  items={[
+    { title: <>Em qual categoria do custo da qualidade entra o suporte a clientes por um defeito em produção?</>, content: <p>Falhas externas. Retrabalho antes da release é falha interna; treinamento é prevenção; executar testes é avaliação.</p> },
+    { title: <>CFex = 6.000, CAv = 200, CFin = 400. Qual é a EMD?</>, content: <p>6.000 − (200 + 400) = 5.400 por defeito.</p> },
+    { title: <>Por que o CPD aparece no CTQ mas não na EMD?</>, content: <p>A EMD é um valor médio por defeito e só compara falha externa com avaliação e falha interna. O CTQ é o custo do projeto e soma o CPD uma vez.</p> },
+  ]}
+/>
