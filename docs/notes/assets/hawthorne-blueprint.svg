@@ -1,0 +1,370 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 400" width="800" height="400" role="img" aria-labelledby="hw-t hw-d">
+  <title id="hw-t">Efeito Hawthorne na documentação — estilo Dossier · tema Blueprint</title>
+  <desc id="hw-d">Três fases. Sem observador, um único endpoint POST /orders acumula cinco papéis e quinze campos opcionais; os testes passam e as seis ambiguidades ficam invisíveis. Ao escrever o OpenAPI, o leitor futuro passa a observar e a varredura expõe as ambiguidades uma a uma. Na autorrevisão, o autor divide a rota em três operações coesas com contratos curtos e as ambiguidades caem a zero.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400&amp;family=IBM+Plex+Sans+Condensed:wght@600&amp;display=swap');
+    svg{--paper:#0f3270;--panel:#163b80;--ink:#f1f5ff;--ink-muted:#b4c7ec;--rule-soft:#2f5aa3;--signal:#7fdcff;--signal-tint:#1d4a96;--contrast-error:#ff9282;}
+        .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .ptr { fill: var(--ink); }
+    .ptr-sig { fill: var(--signal); }
+    .tab { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab-on { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .plate-fill { fill: var(--panel); }
+    .box { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .strip { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .strip-sig { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .node { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .ring-sig { fill: none; stroke: var(--signal); stroke-width: 1; }
+    .eye { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .eye-off { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+    .iris { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .gaze { fill: none; stroke: var(--signal); stroke-width: 1; stroke-dasharray: 3 3; }
+    .loop { fill: none; stroke: var(--signal); stroke-width: 1; stroke-dasharray: 4 4; animation: hw-march 1.2s linear infinite; }
+    .hatchbox { stroke: var(--ink); stroke-width: 1; }
+    .scanband { fill: var(--signal-tint); opacity: .7; }
+    .scanline { stroke: var(--signal); stroke-width: 1.5; }
+    .sigfill { fill: var(--signal); }
+    .errfill { fill: var(--contrast-error); }
+    .inkfill { fill: var(--ink); }
+    .mutedfill { fill: var(--ink-muted); }
+    .realbar { fill: url(#hw-hatch); stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .body { font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: var(--ink); }
+    .big { font-family: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; font-size: 26px; font-weight: 600; }
+    .big.muted, .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .tight { letter-spacing: .02em; }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    @keyframes hw-march { to { stroke-dashoffset: -8; } }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration: 0s !important; } }
+    @keyframes hw-v0-900 { 0%{opacity:0} 0.926%{opacity:1} 32.407%{opacity:1} 33.333%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v900-1800 { 0%{opacity:0} 33.333%{opacity:0} 34.259%{opacity:1} 65.741%{opacity:1} 66.667%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1800-2700 { 0%{opacity:0} 66.667%{opacity:0} 67.593%{opacity:1} 99.074%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v919-2700 { 0%{opacity:0} 34.074%{opacity:0} 35.556%{opacity:1} 98.519%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v0-1820 { 0%{opacity:0} 1.481%{opacity:1} 65.926%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-scan { 0%{transform:translateY(0)} 37.037%{transform:translateY(0)} 59.259%{transform:translateY(138.0px)} 100%{transform:translateY(138.0px)} }
+    @keyframes hw-v969-1639 { 0%{opacity:0} 35.926%{opacity:0} 37.037%{opacity:1} 59.630%{opacity:1} 60.741%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1128-1820 { 0%{opacity:0} 41.778%{opacity:0} 42.704%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1211-1820 { 0%{opacity:0} 44.852%{opacity:0} 45.778%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1293-1820 { 0%{opacity:0} 47.889%{opacity:0} 48.815%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1376-1820 { 0%{opacity:0} 50.963%{opacity:0} 51.889%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1459-1820 { 0%{opacity:0} 54.037%{opacity:0} 54.963%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1565-1820 { 0%{opacity:0} 57.963%{opacity:0} 58.889%{opacity:1} 66.481%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1839-2700 { 0%{opacity:0} 68.148%{opacity:0} 69.630%{opacity:1} 98.519%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v0-919 { 0%{opacity:0} 1.481%{opacity:1} 32.593%{opacity:1} 34.074%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln0 { 0%{transform:scaleX(0)} 39.556%{transform:scaleX(0)} 41.778%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1068-1820 { 0%{opacity:0} 39.556%{opacity:0} 40.296%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln1 { 0%{transform:scaleX(0)} 42.630%{transform:scaleX(0)} 44.852%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1151-1820 { 0%{opacity:0} 42.630%{opacity:0} 43.370%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln2 { 0%{transform:scaleX(0)} 45.667%{transform:scaleX(0)} 47.889%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1233-1820 { 0%{opacity:0} 45.667%{opacity:0} 46.407%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln3 { 0%{transform:scaleX(0)} 48.741%{transform:scaleX(0)} 50.963%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1316-1820 { 0%{opacity:0} 48.741%{opacity:0} 49.481%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln4 { 0%{transform:scaleX(0)} 51.815%{transform:scaleX(0)} 54.037%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1399-1820 { 0%{opacity:0} 51.815%{opacity:0} 52.556%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-ln5 { 0%{transform:scaleX(0)} 55.741%{transform:scaleX(0)} 57.963%{transform:scaleX(1)} 100%{transform:scaleX(1)} }
+    @keyframes hw-v1505-1820 { 0%{opacity:0} 55.741%{opacity:0} 56.481%{opacity:1} 66.667%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v0-1128 { 0%{opacity:0} 0.556%{opacity:1} 41.222%{opacity:1} 41.778%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1128-1211 { 0%{opacity:0} 41.778%{opacity:0} 42.333%{opacity:1} 44.296%{opacity:1} 44.852%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1211-1293 { 0%{opacity:0} 44.852%{opacity:0} 45.407%{opacity:1} 47.333%{opacity:1} 47.889%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1293-1376 { 0%{opacity:0} 47.889%{opacity:0} 48.444%{opacity:1} 50.407%{opacity:1} 50.963%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1376-1459 { 0%{opacity:0} 50.963%{opacity:0} 51.519%{opacity:1} 53.481%{opacity:1} 54.037%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1459-1565 { 0%{opacity:0} 54.037%{opacity:0} 54.593%{opacity:1} 57.407%{opacity:1} 57.963%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v1820-2700 { 0%{opacity:0} 67.407%{opacity:0} 67.963%{opacity:1} 99.444%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-pupil { 0%{transform:translateX(-4px)} 40.741%{transform:translateX(-4px)} 46.296%{transform:translateX(1px)} 51.852%{transform:translateX(-4px)} 57.407%{transform:translateX(1px)} 62.963%{transform:translateX(-4px)} 100%{transform:translateX(-4px)} }
+    @keyframes hw-v919-1820 { 0%{opacity:0} 34.074%{opacity:0} 35.556%{opacity:1} 65.926%{opacity:1} 67.407%{opacity:0} 100%{opacity:0} }
+    @keyframes hw-v80-2700 { 0%{opacity:0} 2.963%{opacity:0} 4.444%{opacity:1} 98.519%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v940-2700 { 0%{opacity:0} 34.815%{opacity:0} 36.296%{opacity:1} 98.519%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1128-2700 { 0%{opacity:0} 41.778%{opacity:0} 42.519%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1211-2700 { 0%{opacity:0} 44.852%{opacity:0} 45.593%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1293-2700 { 0%{opacity:0} 47.889%{opacity:0} 48.630%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1376-2700 { 0%{opacity:0} 50.963%{opacity:0} 51.704%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1459-2700 { 0%{opacity:0} 54.037%{opacity:0} 54.778%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1565-2700 { 0%{opacity:0} 57.963%{opacity:0} 58.704%{opacity:1} 99.259%{opacity:1} 100%{opacity:0} }
+    @keyframes hw-v1860-2700 { 0%{opacity:0} 68.889%{opacity:0} 70.370%{opacity:1} 98.519%{opacity:1} 100%{opacity:0} }
+    .hw-v0-900{opacity:0;animation:hw-v0-900 27.0s linear infinite}
+    .hw-v900-1800{opacity:0;animation:hw-v900-1800 27.0s linear infinite}
+    .hw-v1800-2700{opacity:0;animation:hw-v1800-2700 27.0s linear infinite}
+    .hw-v919-2700{opacity:0;animation:hw-v919-2700 27.0s linear infinite}
+    .hw-v0-1820{opacity:0;animation:hw-v0-1820 27.0s linear infinite}
+    .hw-scanner{animation:hw-scan 27.0s linear infinite}
+    .hw-v969-1639{opacity:0;animation:hw-v969-1639 27.0s linear infinite}
+    .hw-v1128-1820{opacity:0;animation:hw-v1128-1820 27.0s linear infinite}
+    .hw-v1211-1820{opacity:0;animation:hw-v1211-1820 27.0s linear infinite}
+    .hw-v1293-1820{opacity:0;animation:hw-v1293-1820 27.0s linear infinite}
+    .hw-v1376-1820{opacity:0;animation:hw-v1376-1820 27.0s linear infinite}
+    .hw-v1459-1820{opacity:0;animation:hw-v1459-1820 27.0s linear infinite}
+    .hw-v1565-1820{opacity:0;animation:hw-v1565-1820 27.0s linear infinite}
+    .hw-v1839-2700{opacity:0;animation:hw-v1839-2700 27.0s linear infinite}
+    .hw-v0-919{opacity:0;animation:hw-v0-919 27.0s linear infinite}
+    .hw-ln0{transform-box:fill-box;transform-origin:left center;animation:hw-ln0 27.0s linear infinite}
+    .hw-v1068-1820{opacity:0;animation:hw-v1068-1820 27.0s linear infinite}
+    .hw-ln1{transform-box:fill-box;transform-origin:left center;animation:hw-ln1 27.0s linear infinite}
+    .hw-v1151-1820{opacity:0;animation:hw-v1151-1820 27.0s linear infinite}
+    .hw-ln2{transform-box:fill-box;transform-origin:left center;animation:hw-ln2 27.0s linear infinite}
+    .hw-v1233-1820{opacity:0;animation:hw-v1233-1820 27.0s linear infinite}
+    .hw-ln3{transform-box:fill-box;transform-origin:left center;animation:hw-ln3 27.0s linear infinite}
+    .hw-v1316-1820{opacity:0;animation:hw-v1316-1820 27.0s linear infinite}
+    .hw-ln4{transform-box:fill-box;transform-origin:left center;animation:hw-ln4 27.0s linear infinite}
+    .hw-v1399-1820{opacity:0;animation:hw-v1399-1820 27.0s linear infinite}
+    .hw-ln5{transform-box:fill-box;transform-origin:left center;animation:hw-ln5 27.0s linear infinite}
+    .hw-v1505-1820{opacity:0;animation:hw-v1505-1820 27.0s linear infinite}
+    .hw-v0-1128{opacity:0;animation:hw-v0-1128 27.0s linear infinite}
+    .hw-v1128-1211{opacity:0;animation:hw-v1128-1211 27.0s linear infinite}
+    .hw-v1211-1293{opacity:0;animation:hw-v1211-1293 27.0s linear infinite}
+    .hw-v1293-1376{opacity:0;animation:hw-v1293-1376 27.0s linear infinite}
+    .hw-v1376-1459{opacity:0;animation:hw-v1376-1459 27.0s linear infinite}
+    .hw-v1459-1565{opacity:0;animation:hw-v1459-1565 27.0s linear infinite}
+    .hw-v1820-2700{opacity:0;animation:hw-v1820-2700 27.0s linear infinite}
+    .hw-pupil{animation:hw-pupil 27.0s ease-in-out infinite}
+    .hw-v919-1820{opacity:0;animation:hw-v919-1820 27.0s linear infinite}
+    .hw-v80-2700{opacity:0;animation:hw-v80-2700 27.0s linear infinite}
+    .hw-v940-2700{opacity:0;animation:hw-v940-2700 27.0s linear infinite}
+    .hw-v1128-2700{opacity:0;animation:hw-v1128-2700 27.0s linear infinite}
+    .hw-v1211-2700{opacity:0;animation:hw-v1211-2700 27.0s linear infinite}
+    .hw-v1293-2700{opacity:0;animation:hw-v1293-2700 27.0s linear infinite}
+    .hw-v1376-2700{opacity:0;animation:hw-v1376-2700 27.0s linear infinite}
+    .hw-v1459-2700{opacity:0;animation:hw-v1459-2700 27.0s linear infinite}
+    .hw-v1565-2700{opacity:0;animation:hw-v1565-2700 27.0s linear infinite}
+    .hw-v1860-2700{opacity:0;animation:hw-v1860-2700 27.0s linear infinite}
+  </style>
+  <defs>
+    <pattern id="hw-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="hw-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+  <rect class="bg" width="800" height="440"/>
+  <rect width="800" height="440" fill="url(#hw-grid)"/>
+  <rect class="tab" x="24" y="46" width="244" height="22"/>
+  <g class="hw-v0-900"><rect class="tab-on" x="24" y="46" width="244" height="22"/><rect class="sigfill" x="24" y="65" width="244" height="3"/></g>
+  <text class="label" x="34" y="61"><tspan class="lsig">01</tspan> SEM OBSERVADOR</text>
+  <rect class="tab" x="278" y="46" width="244" height="22"/>
+  <g class="hw-v900-1800"><rect class="tab-on" x="278" y="46" width="244" height="22"/><rect class="sigfill" x="278" y="65" width="244" height="3"/></g>
+  <text class="label" x="288" y="61"><tspan class="lsig">02</tspan> DOCUMENTANDO</text>
+  <rect class="tab" x="532" y="46" width="244" height="22"/>
+  <g class="hw-v1800-2700"><rect class="tab-on" x="532" y="46" width="244" height="22"/><rect class="sigfill" x="532" y="65" width="244" height="3"/></g>
+  <text class="label" x="542" y="61"><tspan class="lsig">03</tspan> AUTORREVISÃO</text>
+  <g class="hw-v919-2700">
+  <path class="loop" d="M700 162 V86 H70 V156"/>
+  <path class="ptr-sig" d="M66 154 L70 162 L74 154 Z"/>
+  <rect class="bg" x="238.6" y="79" width="292.8" height="14"/>
+  <text class="label lsig mid" x="385" y="90">O AUTOR SE AVALIA PELOS OLHOS DO LEITOR</text>
+  </g>
+  <circle class="node" cx="70" cy="188" r="22"/>
+  <circle class="hair" cx="70" cy="182" r="5"/>
+  <path class="hair" d="M60 200 Q70 186 80 200"/>
+  <circle class="ring-sig hw-v919-2700" cx="70" cy="188" r="27"/>
+  <text class="label mid" x="70" y="232">AUTOR</text>
+  <text class="label muted mid" x="70" y="246">EXECUTOR</text>
+  <text class="label lsig mid hw-v919-2700" x="70" y="260">+ AVALIADOR</text>
+  <line class="hair" x1="98" y1="188" x2="122" y2="188"/>
+  <path class="ptr" d="M121 184 L128 188 L121 192 Z"/>
+  <line class="hair" x1="402" y1="188" x2="432" y2="188"/>
+  <path class="ptr" d="M431 184 L438 188 L431 192 Z"/>
+  <rect class="plate" x="130" y="102" width="270" height="172"/>
+  <text class="label" x="140" y="116">CÓDIGO · ORDERS</text>
+  <text class="label lsig end" x="390" y="116">TESTES: PASSAM</text>
+  <line class="hair" x1="130" y1="122" x2="400" y2="122"/>
+  <g class="hw-v0-1820">
+  <rect class="box" x="146" y="130" width="238" height="120"/>
+  <text class="label" x="154" y="144">POST /orders</text>
+  <text class="label muted end" x="376" y="144">1 ROTA · 5 PAPÉIS</text>
+  <rect class="strip" x="154" y="152" width="222" height="15"/>
+  <text class="label" x="161" y="163">VALIDA REGRAS</text>
+  <rect class="strip" x="154" y="171" width="222" height="15"/>
+  <text class="label" x="161" y="182">CALCULA PREÇO</text>
+  <rect class="strip" x="154" y="190" width="222" height="15"/>
+  <text class="label" x="161" y="201">CHECA ESTOQUE</text>
+  <rect class="strip" x="154" y="209" width="222" height="15"/>
+  <text class="label" x="161" y="220">NOTIFICA</text>
+  <rect class="strip" x="154" y="228" width="222" height="15"/>
+  <text class="label" x="161" y="239">RESPONDE</text>
+  </g>
+  <text class="label hw-v0-1820" x="146" y="264">15 CAMPOS OPCIONAIS</text>
+  <g class="hw-v969-1639"><g class="hw-scanner">
+  <rect class="scanband" x="136" y="118.0" width="258" height="12"/>
+  <line class="scanline" x1="136" y1="130.0" x2="394" y2="130.0"/>
+  </g></g>
+  <g class="hw-v1128-1820">
+  <text class="label lerr end" x="360" y="163">EXCEÇÕES</text>
+  <rect class="errfill" x="364" y="156" width="8" height="8"/>
+  </g>
+  <g class="hw-v1211-1820">
+  <text class="label lerr end" x="360" y="182">CASO ESPECIAL</text>
+  <rect class="errfill" x="364" y="175" width="8" height="8"/>
+  </g>
+  <g class="hw-v1293-1820">
+  <text class="label lerr end" x="360" y="201">ACOPLADO</text>
+  <rect class="errfill" x="364" y="194" width="8" height="8"/>
+  </g>
+  <g class="hw-v1376-1820">
+  <text class="label lerr end" x="360" y="220">EFEITO OCULTO</text>
+  <rect class="errfill" x="364" y="213" width="8" height="8"/>
+  </g>
+  <g class="hw-v1459-1820">
+  <text class="label lerr end" x="360" y="239">409 OU 500?</text>
+  <rect class="errfill" x="364" y="232" width="8" height="8"/>
+  </g>
+  <g class="hw-v1565-1820">
+  <text class="label lerr end" x="372" y="263.5">QUAIS?</text>
+  <rect class="errfill" x="376" y="256.5" width="8" height="8"/>
+  </g>
+  <g class="hw-v1839-2700">
+  <rect class="box" x="146" y="130" width="74" height="120"/>
+  <text class="label lsig tight" x="151" y="144">CRIAR</text>
+  <line class="hair" x1="146" y1="150" x2="220" y2="150"/>
+  <rect class="strip-sig" x="152" y="157" width="62" height="15"/>
+  <text class="label" x="156" y="168">REGISTRA</text>
+  <text class="label muted" x="152" y="192">CAMPOS</text>
+  <text class="label" x="152" y="206">5 OBRIG.</text>
+  <text class="label muted" x="152" y="226">RESP.</text>
+  <text class="label" x="152" y="240">201·400</text>
+  <rect class="box" x="228" y="130" width="74" height="120"/>
+  <text class="label lsig tight" x="233" y="144">VALIDAR</text>
+  <line class="hair" x1="228" y1="150" x2="302" y2="150"/>
+  <rect class="strip-sig" x="234" y="157" width="62" height="15"/>
+  <text class="label" x="238" y="168">REGRAS</text>
+  <text class="label muted" x="234" y="192">CAMPOS</text>
+  <text class="label" x="234" y="206">1 OBRIG.</text>
+  <text class="label muted" x="234" y="226">RESP.</text>
+  <text class="label" x="234" y="240">200·422</text>
+  <rect class="box" x="310" y="130" width="74" height="120"/>
+  <text class="label lsig tight" x="315" y="144">PROCESSAR</text>
+  <line class="hair" x1="310" y1="150" x2="384" y2="150"/>
+  <rect class="strip-sig" x="316" y="157" width="62" height="15"/>
+  <text class="label" x="320" y="168">EXECUTA</text>
+  <text class="label muted" x="316" y="192">CAMPOS</text>
+  <text class="label" x="316" y="206">1 OBRIG.</text>
+  <text class="label muted" x="316" y="226">RESP.</text>
+  <text class="label" x="316" y="240">202·409</text>
+  <text class="label" x="146" y="264">CAMPOS: SÓ OS NECESSÁRIOS</text>
+  </g>
+  <rect class="plate" x="440" y="102" width="180" height="172"/>
+  <text class="label" x="450" y="116">DOC · OPENAPI</text>
+  <line class="hair" x1="440" y1="122" x2="620" y2="122"/>
+  <line class="soft" x1="440" y1="244" x2="620" y2="244"/>
+  <g class="hw-v0-919">
+  <rect x="452" y="130" width="156" height="106" fill="url(#hw-hatch)" class="hatchbox"/>
+  <rect class="plate-fill" x="490" y="176" width="80" height="16"/>
+  <text class="label mid" x="530" y="188">AUSENTE</text>
+  </g>
+  <g class="hw-v1068-1820">
+  <rect class="inkfill hw-ln0" x="452" y="132" width="118" height="4"/>
+  <rect class="errfill hw-v1128-1820" x="576" y="131" width="6" height="6"/>
+  </g>
+  <g class="hw-v1151-1820">
+  <rect class="inkfill hw-ln1" x="452" y="149" width="92" height="4"/>
+  <rect class="errfill hw-v1211-1820" x="550" y="148" width="6" height="6"/>
+  </g>
+  <g class="hw-v1233-1820">
+  <rect class="inkfill hw-ln2" x="452" y="166" width="134" height="4"/>
+  <rect class="errfill hw-v1293-1820" x="592" y="165" width="6" height="6"/>
+  </g>
+  <g class="hw-v1316-1820">
+  <rect class="inkfill hw-ln3" x="452" y="183" width="104" height="4"/>
+  <rect class="errfill hw-v1376-1820" x="562" y="182" width="6" height="6"/>
+  </g>
+  <g class="hw-v1399-1820">
+  <rect class="inkfill hw-ln4" x="452" y="200" width="80" height="4"/>
+  <rect class="errfill hw-v1459-1820" x="538" y="199" width="6" height="6"/>
+  </g>
+  <g class="hw-v1505-1820">
+  <rect class="inkfill hw-ln5" x="452" y="217" width="112" height="4"/>
+  <rect class="errfill hw-v1565-1820" x="570" y="216" width="6" height="6"/>
+  </g>
+  <g class="hw-v1839-2700">
+  <rect class="sigfill" x="452" y="132" width="6" height="6"/>
+  <text class="label lsig" x="464" y="139">CRIAR</text>
+  <rect class="mutedfill" x="464" y="145" width="84" height="3"/>
+  <rect class="mutedfill" x="464" y="153" width="60" height="3"/>
+  <rect class="sigfill" x="452" y="169" width="6" height="6"/>
+  <text class="label lsig" x="464" y="176">VALIDAR</text>
+  <rect class="mutedfill" x="464" y="182" width="70" height="3"/>
+  <rect class="mutedfill" x="464" y="190" width="52" height="3"/>
+  <rect class="sigfill" x="452" y="206" width="6" height="6"/>
+  <text class="label lsig" x="464" y="213">PROCESSAR</text>
+  <rect class="mutedfill" x="464" y="219" width="96" height="3"/>
+  <rect class="mutedfill" x="464" y="227" width="74" height="3"/>
+  </g>
+  <text class="label" x="490" y="258">AMBIGUIDADES</text>
+  <text class="label" x="490" y="270">VISÍVEIS</text>
+  <text class="big muted hw-v0-1128" x="452" y="270">0</text>
+  <text class="big lerr hw-v1128-1211" x="452" y="270">1</text>
+  <text class="big lerr hw-v1211-1293" x="452" y="270">2</text>
+  <text class="big lerr hw-v1293-1376" x="452" y="270">3</text>
+  <text class="big lerr hw-v1376-1459" x="452" y="270">4</text>
+  <text class="big lerr hw-v1459-1565" x="452" y="270">5</text>
+  <text class="big lerr hw-v1565-1820" x="452" y="270">6</text>
+  <text class="big lsig hw-v1820-2700" x="452" y="270">0</text>
+  <g class="hw-v0-919"><path class="eye-off" d="M674 188 Q700 168 726 188 Q700 208 674 188 Z"/></g>
+  <g class="hw-v919-2700">
+  <path class="eye" d="M674 188 Q700 168 726 188 Q700 208 674 188 Z"/>
+  <g class="hw-pupil"><circle class="iris" cx="700" cy="188" r="8"/><circle class="sigfill" cx="700" cy="188" r="3.5"/></g>
+  <line class="gaze" x1="670" y1="188" x2="630" y2="188"/>
+  <path class="ptr-sig" d="M632 184 L624 188 L632 192 Z"/>
+  </g>
+  <text class="label mid" x="700" y="232">LEITOR FUTURO</text>
+  <text class="label muted mid hw-v0-919" x="700" y="246">AUSENTE</text>
+  <text class="label lsig mid hw-v919-1820" x="700" y="246">OBSERVANDO</text>
+  <text class="label lsig mid hw-v1839-2700" x="700" y="246">ENTENDE</text>
+  <line class="soft" x1="24" y1="290" x2="776" y2="290"/>
+  <g class="hw-v0-900">
+  <text class="label lsig" x="24" y="312">FASE 01 — SEM OBSERVADOR</text>
+  <text class="body" x="24" y="336">Um só POST /orders valida, precifica, checa estoque e notifica.</text>
+  <text class="body" x="24" y="355">15 campos opcionais. Os testes unitários passam: parece pronto.</text>
+  <text class="label lerr" x="24" y="380">6 AMBIGUIDADES REAIS · NENHUMA VISÍVEL</text>
+  </g>
+  <g class="hw-v900-1800">
+  <text class="label lsig" x="24" y="312">FASE 02 — DOCUMENTANDO</text>
+  <text class="body" x="24" y="336">Escrever o OpenAPI traz o leitor futuro: alguém passa a observar.</text>
+  <text class="body" x="24" y="355">Cada condicional e exceção agora precisa de justificativa.</text>
+  <text class="label lerr" x="24" y="380">6 AMBIGUIDADES EXPOSTAS · 409 E 500 MISTURADOS</text>
+  </g>
+  <g class="hw-v1800-2700">
+  <text class="label lsig" x="24" y="312">FASE 03 — AUTORREVISÃO</text>
+  <text class="body" x="24" y="336">O autor, agora avaliador, divide a rota em 3 operações coesas.</text>
+  <text class="body" x="24" y="355">Contratos curtos, só campos necessários, códigos por contexto.</text>
+  <text class="label lsig" x="24" y="380">DOCUMENTAR É INSTRUMENTO DE DESIGN</text>
+  </g>
+  <text class="label" x="480" y="312">AMBIGUIDADES NO CONTRATO</text>
+  <rect class="realbar" x="480" y="320" width="10" height="10"/>
+  <text class="label muted" x="496" y="329">REAIS</text>
+  <rect class="sigfill" x="556" y="320" width="10" height="10"/>
+  <text class="label muted" x="572" y="329">PERCEBIDAS</text>
+  <line class="hair" x1="480" y1="410" x2="776" y2="410"/>
+  <rect class="realbar hw-v80-2700" x="514" y="356" width="24" height="54"/>
+  <text class="label mid hw-v80-2700" x="526" y="351">6</text>
+  <rect class="sigfill hw-v80-2700" x="542" y="408" width="24" height="2"/>
+  <text class="label lsig mid hw-v80-2700" x="554" y="405">0</text>
+  <text class="label muted mid" x="540" y="426">F01</text>
+  <rect class="realbar hw-v940-2700" x="614" y="356" width="24" height="54"/>
+  <text class="label mid hw-v940-2700" x="626" y="351">6</text>
+  <rect class="sigfill hw-v1128-2700" x="642" y="401" width="24" height="8"/>
+  <rect class="sigfill hw-v1211-2700" x="642" y="392" width="24" height="8"/>
+  <rect class="sigfill hw-v1293-2700" x="642" y="383" width="24" height="8"/>
+  <rect class="sigfill hw-v1376-2700" x="642" y="374" width="24" height="8"/>
+  <rect class="sigfill hw-v1459-2700" x="642" y="365" width="24" height="8"/>
+  <rect class="sigfill hw-v1565-2700" x="642" y="356" width="24" height="8"/>
+  <text class="label lsig mid hw-v1128-1211" x="654" y="396">1</text>
+  <text class="label lsig mid hw-v1211-1293" x="654" y="387">2</text>
+  <text class="label lsig mid hw-v1293-1376" x="654" y="378">3</text>
+  <text class="label lsig mid hw-v1376-1459" x="654" y="369">4</text>
+  <text class="label lsig mid hw-v1459-1565" x="654" y="360">5</text>
+  <text class="label lsig mid hw-v1565-2700" x="654" y="351">6</text>
+  <text class="label muted mid" x="640" y="426">F02</text>
+  <rect class="sigfill hw-v1860-2700" x="714" y="408" width="24" height="2"/>
+  <text class="label mid hw-v1860-2700" x="726" y="405">0</text>
+  <rect class="sigfill hw-v1860-2700" x="742" y="408" width="24" height="2"/>
+  <text class="label lsig mid hw-v1860-2700" x="754" y="405">0</text>
+  <text class="label muted mid" x="740" y="426">F03</text>
+</svg>

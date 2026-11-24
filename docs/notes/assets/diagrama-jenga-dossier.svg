@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" role="img" aria-labelledby="jg-t jg-d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 400" width="800" height="400" role="img" aria-labelledby="jg-t jg-d">
   <title id="jg-t">Jenga ao longo do tempo — estilo Dossier</title>
   <desc id="jg-d">Quatro torres de Jenga: a torre íntegra, a torre após o ciclo A de alterações, a torre após o ciclo B e o colapso. Blocos retirados do meio e recolocados no topo deixam lacunas que acumulam instabilidade.</desc>
   <style>
@@ -50,9 +50,6 @@
   </defs>
   <rect class="bg" width="800" height="440"/>
   <rect width="800" height="440" fill="url(#jg-grid)"/>
-  <text class="label muted" x="24" y="26">FIG. 03 — JENGA AO LONGO DO TEMPO</text>
-  <text class="label muted end" x="776" y="26">GARDEN · REV A</text>
-  <line class="rule" x1="24" y1="36" x2="776" y2="36"/>
   <g transform="translate(45 70) scale(0.42)">
     <path class="j-base" vector-effect="non-scaling-stroke" d="M 482 482 L 722 482 L 762 522 L 762 602 L 522 602 L 482 562 L 482 482 Z" transform="translate(622,0)scale(-1,1)translate(-622,0)"/>
     <path class="j-base-top" vector-effect="non-scaling-stroke" d="M 482 482 L 722 482 L 762 522 L 522 522 Z" transform="translate(622,0)scale(-1,1)translate(-622,0)"/>

@@ -1,0 +1,44 @@
+/* Figura de nota (spec figure-legend). O recuo de 3% é a margem de 24 px do diagrama de 800 px. */
+.garden-fig {
+  margin: 0 0 var(--ifm-leading);
+}
+
+.garden-fig-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: var(--ds-space-4);
+  /* A régua ficava 8 unidades acima do diagrama no SVG; o recorte deixou 4. */
+  margin: 0 3% var(--ds-space-1);
+  padding-bottom: var(--ds-space-2);
+  border-bottom: var(--ds-stroke-rule) solid var(--ds-rule);
+  color: var(--ds-ink-muted);
+  text-transform: uppercase;
+}
+
+.garden-fig-full > .garden-fig-legend {
+  margin-inline: 0;
+}
+
+.garden-fig img {
+  display: block;
+  width: 100%;
+}
+
+.garden-fig > p {
+  margin: 0;
+}
+
+/*
+ * Frase descritiva no corpo de texto do Dossier, em ink: o `--ds-text-caption` (12 px, ink-muted)
+ * que o theming.md pede para legendas de figura ficava pouco visível (pedido do usuário).
+ */
+.garden-fig > figcaption {
+  margin: var(--ds-space-2) 3% 0;
+  font: var(--ds-text-body);
+  color: var(--ds-ink);
+}
+
+.garden-fig-full > figcaption {
+  margin-inline: 0;
+}

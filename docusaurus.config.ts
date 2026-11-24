@@ -4,6 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import figureNumbers from "./src/remark/figureNumbers";
 
 // Seção de exemplos: só existe no build de teste (`npm run build:test`).
 const examples = process.env.GARDEN_EXAMPLES === "1";
@@ -66,7 +67,7 @@ const config: Config = {
             // 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
             "https://github.com/GabriOliv/garden/blob/main/",
           // 'https://github.com/GabriOliv/garden',
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkMath, figureNumbers],
           rehypePlugins: [rehypeKatex],
         },
         blog: false,
