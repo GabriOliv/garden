@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 352" width="800" height="352" role="img" aria-labelledby="pz-t pz-d">
+  <title id="pz-t">Efeito Peltzman no QA — estilo Dossier</title>
+  <desc id="pz-d">Animação em três fases. 01: só o dev verifica o código e poucos defeitos chegam à produção. 02: entra um QA dedicado, o dev relaxa a própria verificação, o QA satura e mais defeitos chegam à produção do que antes, ao contrário do esperado. 03: responsabilidade distribuída, o QA complementa o dev e os escapes voltam a cair.</desc>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;display=swap');
+svg{--paper:#f4f4f1;--panel:#e6e6e1;--ink:#0b0c0e;--ink-muted:#50535a;--rule-soft:#c6c7c1;--signal:#002fa7;--signal-tint:#d7dff3;--contrast-error:#b42318;}
+@media (prefers-color-scheme: dark){svg{--paper:#0a0b0d;--panel:#16181d;--ink:#eeeeea;--ink-muted:#9ea1a8;--rule-soft:#2c2f36;--signal:#2b7fff;--signal-tint:#101a3c;--contrast-error:#ff6a55;}}
+.bg{fill:var(--paper)}.gridpt{fill:var(--rule-soft)}
+.hair{fill:none;stroke:var(--ink);stroke-width:1}.rule{fill:none;stroke:var(--ink);stroke-width:2}
+.hair-soft{stroke:var(--rule-soft);stroke-width:1}
+.lane{stroke:var(--rule-soft);stroke-width:1;stroke-dasharray:2 4}
+.plate{fill:var(--panel);stroke:var(--ink);stroke-width:1}
+.bin{fill:var(--paper);stroke:var(--ink);stroke-width:1}
+.pt-ground{fill:var(--paper)}.pt-ink{stroke:var(--ink-muted);stroke-width:1}
+.tab{fill:none;stroke:var(--ink);stroke-width:1}.tab-on{fill:var(--signal-tint)}.sig-bar{fill:var(--signal)}
+.ghost{fill:none;stroke:var(--rule-soft);stroke-width:1;stroke-dasharray:2 2}
+.tooth{fill:var(--ink)}.tooth-qa{fill:var(--signal)}
+.absent{fill:url(#pz-hatch);stroke:var(--rule-soft);stroke-width:1;stroke-dasharray:3 3}
+.defect{fill:var(--contrast-error);stroke:var(--ink);stroke-width:1}
+.meter{fill:none;stroke:var(--ink);stroke-width:1}.m-err{fill:var(--contrast-error)}.m-sig{fill:var(--signal)}
+.bar{fill:var(--signal-tint);stroke:var(--signal);stroke-width:1}
+.bar-err{fill:var(--contrast-error);stroke:var(--ink);stroke-width:1}
+.expected{fill:none;stroke:var(--ink-muted);stroke-width:1;stroke-dasharray:3 2}
+.exp-line{stroke:var(--ink-muted);stroke-width:1;stroke-dasharray:3 2}
+.grow-y{transform-box:fill-box;transform-origin:50% 100%}
+.grow-x{transform-box:fill-box;transform-origin:0 50%}
+.label{font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:10px;font-weight:500;letter-spacing:.12em;fill:var(--ink)}
+.muted{fill:var(--ink-muted)}.lsig{fill:var(--signal)}.lerr{fill:var(--contrast-error)}
+.end{text-anchor:end}.mid{text-anchor:middle}
+@keyframes v1{0.000%{opacity:1}32.037%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v2{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}65.370%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes v3{0.000%{opacity:0}66.667%{opacity:0}67.963%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes v4{0.000%{opacity:1}31.667%{opacity:1}33.333%{opacity:0}66.667%{opacity:0}68.333%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v5{0.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v6{0.000%{opacity:1}31.667%{opacity:1}33.333%{opacity:0}66.667%{opacity:0}68.333%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v7{0.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v8{0.000%{opacity:1}31.667%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v9{0.000%{opacity:0}33.333%{opacity:0}35.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v10{0.000%{opacity:0}33.333%{opacity:0}35.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v11{0.000%{opacity:0}33.333%{opacity:0}35.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v12{0.000%{opacity:0}33.333%{opacity:0}35.000%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v13{0.000%{opacity:0}66.667%{opacity:0}68.333%{opacity:1}98.333%{opacity:1}100.000%{opacity:0}}
+@keyframes v14{0.000%{opacity:1}32.037%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v15{0.000%{opacity:1}32.037%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v16{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}65.370%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes v17{0.000%{opacity:0}66.667%{opacity:0}67.963%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes v18{0.000%{opacity:1}32.037%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v19{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}65.370%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes v20{0.000%{opacity:0}66.667%{opacity:0}67.963%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes m21{0.000%{transform:scaleX(0)}36.296%{transform:scaleX(0)}57.407%{transform:scaleX(1)}100.000%{transform:scaleX(1)}}
+@keyframes v22{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}65.370%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes m23{0.000%{transform:scaleX(0)}69.630%{transform:scaleX(0)}81.481%{transform:scaleX(.45)}100.000%{transform:scaleX(.45)}}
+@keyframes v24{0.000%{opacity:0}66.667%{opacity:0}67.963%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes d25{0.000%{opacity:0;transform:translateX(112px)}1.111%{opacity:0;transform:translateX(112px)}1.852%{opacity:1;transform:translateX(146.0px)}4.728%{opacity:1;transform:translateX(278px)}6.209%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d26{0.000%{opacity:0;transform:translateX(112px)}3.004%{opacity:0;transform:translateX(112px)}3.745%{opacity:1;transform:translateX(146.0px)}17.122%{opacity:1;transform:translateX(760px)}32.037%{opacity:1;transform:translateX(760px)}33.333%{opacity:0;transform:translateX(760px)}100.000%{opacity:0;transform:translateX(760px)}}
+@keyframes d27{0.000%{opacity:0;transform:translateX(112px)}4.897%{opacity:0;transform:translateX(112px)}5.638%{opacity:1;transform:translateX(146.0px)}8.514%{opacity:1;transform:translateX(278px)}9.995%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d28{0.000%{opacity:0;transform:translateX(112px)}6.790%{opacity:0;transform:translateX(112px)}7.531%{opacity:1;transform:translateX(146.0px)}10.407%{opacity:1;transform:translateX(278px)}11.888%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d29{0.000%{opacity:0;transform:translateX(112px)}8.683%{opacity:0;transform:translateX(112px)}9.424%{opacity:1;transform:translateX(146.0px)}12.300%{opacity:1;transform:translateX(278px)}13.781%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d30{0.000%{opacity:0;transform:translateX(112px)}10.576%{opacity:0;transform:translateX(112px)}11.317%{opacity:1;transform:translateX(146.0px)}14.193%{opacity:1;transform:translateX(278px)}15.674%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d31{0.000%{opacity:0;transform:translateX(112px)}12.469%{opacity:0;transform:translateX(112px)}13.210%{opacity:1;transform:translateX(146.0px)}26.282%{opacity:1;transform:translateX(746px)}32.037%{opacity:1;transform:translateX(746px)}33.333%{opacity:0;transform:translateX(746px)}100.000%{opacity:0;transform:translateX(746px)}}
+@keyframes d32{0.000%{opacity:0;transform:translateX(112px)}14.362%{opacity:0;transform:translateX(112px)}15.103%{opacity:1;transform:translateX(146.0px)}17.979%{opacity:1;transform:translateX(278px)}19.460%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d33{0.000%{opacity:0;transform:translateX(112px)}16.255%{opacity:0;transform:translateX(112px)}16.996%{opacity:1;transform:translateX(146.0px)}19.872%{opacity:1;transform:translateX(278px)}21.353%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d34{0.000%{opacity:0;transform:translateX(112px)}18.148%{opacity:0;transform:translateX(112px)}18.889%{opacity:1;transform:translateX(146.0px)}21.765%{opacity:1;transform:translateX(278px)}23.246%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d35{0.000%{opacity:0;transform:translateX(112px)}34.444%{opacity:0;transform:translateX(112px)}35.185%{opacity:1;transform:translateX(146.0px)}48.562%{opacity:1;transform:translateX(760px)}65.370%{opacity:1;transform:translateX(760px)}66.667%{opacity:0;transform:translateX(760px)}100.000%{opacity:0;transform:translateX(760px)}}
+@keyframes d36{0.000%{opacity:0;transform:translateX(112px)}35.993%{opacity:0;transform:translateX(112px)}36.734%{opacity:1;transform:translateX(146.0px)}43.749%{opacity:1;transform:translateX(468px)}45.231%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d37{0.000%{opacity:0;transform:translateX(112px)}37.542%{opacity:0;transform:translateX(112px)}38.283%{opacity:1;transform:translateX(146.0px)}51.660%{opacity:1;transform:translateX(760px)}65.370%{opacity:1;transform:translateX(760px)}66.667%{opacity:0;transform:translateX(760px)}100.000%{opacity:0;transform:translateX(760px)}}
+@keyframes d38{0.000%{opacity:0;transform:translateX(112px)}39.091%{opacity:0;transform:translateX(112px)}39.832%{opacity:1;transform:translateX(146.0px)}42.707%{opacity:1;transform:translateX(278px)}44.189%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d39{0.000%{opacity:0;transform:translateX(112px)}40.640%{opacity:0;transform:translateX(112px)}41.380%{opacity:1;transform:translateX(146.0px)}48.396%{opacity:1;transform:translateX(468px)}49.877%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d40{0.000%{opacity:0;transform:translateX(112px)}42.189%{opacity:0;transform:translateX(112px)}42.929%{opacity:1;transform:translateX(146.0px)}56.001%{opacity:1;transform:translateX(746px)}65.370%{opacity:1;transform:translateX(746px)}66.667%{opacity:0;transform:translateX(746px)}100.000%{opacity:0;transform:translateX(746px)}}
+@keyframes d41{0.000%{opacity:0;transform:translateX(112px)}43.737%{opacity:0;transform:translateX(112px)}44.478%{opacity:1;transform:translateX(146.0px)}57.550%{opacity:1;transform:translateX(746px)}65.370%{opacity:1;transform:translateX(746px)}66.667%{opacity:0;transform:translateX(746px)}100.000%{opacity:0;transform:translateX(746px)}}
+@keyframes d42{0.000%{opacity:0;transform:translateX(112px)}45.286%{opacity:0;transform:translateX(112px)}46.027%{opacity:1;transform:translateX(146.0px)}53.042%{opacity:1;transform:translateX(468px)}54.524%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d43{0.000%{opacity:0;transform:translateX(112px)}46.835%{opacity:0;transform:translateX(112px)}47.576%{opacity:1;transform:translateX(146.0px)}50.452%{opacity:1;transform:translateX(278px)}51.933%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d44{0.000%{opacity:0;transform:translateX(112px)}48.384%{opacity:0;transform:translateX(112px)}49.125%{opacity:1;transform:translateX(146.0px)}61.891%{opacity:1;transform:translateX(732px)}65.370%{opacity:1;transform:translateX(732px)}66.667%{opacity:0;transform:translateX(732px)}100.000%{opacity:0;transform:translateX(732px)}}
+@keyframes d45{0.000%{opacity:0;transform:translateX(112px)}49.933%{opacity:0;transform:translateX(112px)}50.673%{opacity:1;transform:translateX(146.0px)}57.689%{opacity:1;transform:translateX(468px)}59.170%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d46{0.000%{opacity:0;transform:translateX(112px)}51.481%{opacity:0;transform:translateX(112px)}52.222%{opacity:1;transform:translateX(146.0px)}64.989%{opacity:1;transform:translateX(732px)}65.370%{opacity:1;transform:translateX(732px)}66.667%{opacity:0;transform:translateX(732px)}100.000%{opacity:0;transform:translateX(732px)}}
+@keyframes d47{0.000%{opacity:0;transform:translateX(112px)}67.778%{opacity:0;transform:translateX(112px)}68.519%{opacity:1;transform:translateX(146.0px)}71.394%{opacity:1;transform:translateX(278px)}72.876%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d48{0.000%{opacity:0;transform:translateX(112px)}69.671%{opacity:0;transform:translateX(112px)}70.412%{opacity:1;transform:translateX(146.0px)}77.427%{opacity:1;transform:translateX(468px)}78.908%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d49{0.000%{opacity:0;transform:translateX(112px)}71.564%{opacity:0;transform:translateX(112px)}72.305%{opacity:1;transform:translateX(146.0px)}75.180%{opacity:1;transform:translateX(278px)}76.662%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d50{0.000%{opacity:0;transform:translateX(112px)}73.457%{opacity:0;transform:translateX(112px)}74.198%{opacity:1;transform:translateX(146.0px)}77.073%{opacity:1;transform:translateX(278px)}78.555%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d51{0.000%{opacity:0;transform:translateX(112px)}75.350%{opacity:0;transform:translateX(112px)}76.091%{opacity:1;transform:translateX(146.0px)}89.467%{opacity:1;transform:translateX(760px)}98.704%{opacity:1;transform:translateX(760px)}100.000%{opacity:0;transform:translateX(760px)}}
+@keyframes d52{0.000%{opacity:0;transform:translateX(112px)}77.243%{opacity:0;transform:translateX(112px)}77.984%{opacity:1;transform:translateX(146.0px)}80.859%{opacity:1;transform:translateX(278px)}82.341%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d53{0.000%{opacity:0;transform:translateX(112px)}79.136%{opacity:0;transform:translateX(112px)}79.877%{opacity:1;transform:translateX(146.0px)}86.892%{opacity:1;transform:translateX(468px)}88.373%{opacity:0;transform:translateX(468px)}100.000%{opacity:0;transform:translateX(468px)}}
+@keyframes d54{0.000%{opacity:0;transform:translateX(112px)}81.029%{opacity:0;transform:translateX(112px)}81.770%{opacity:1;transform:translateX(146.0px)}84.645%{opacity:1;transform:translateX(278px)}86.127%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d55{0.000%{opacity:0;transform:translateX(112px)}82.922%{opacity:0;transform:translateX(112px)}83.663%{opacity:1;transform:translateX(146.0px)}86.538%{opacity:1;transform:translateX(278px)}88.020%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes d56{0.000%{opacity:0;transform:translateX(112px)}84.815%{opacity:0;transform:translateX(112px)}85.556%{opacity:1;transform:translateX(146.0px)}88.431%{opacity:1;transform:translateX(278px)}89.913%{opacity:0;transform:translateX(278px)}100.000%{opacity:0;transform:translateX(278px)}}
+@keyframes v57{0.000%{opacity:1}16.011%{opacity:1}17.122%{opacity:0}100.000%{opacity:0}}
+@keyframes v58{0.000%{opacity:0}17.122%{opacity:0}17.344%{opacity:1}26.060%{opacity:1}26.282%{opacity:0}100.000%{opacity:0}}
+@keyframes v59{0.000%{opacity:0}26.282%{opacity:0}27.393%{opacity:1}32.222%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v60{0.000%{opacity:0}33.333%{opacity:0}34.444%{opacity:1}47.451%{opacity:1}48.562%{opacity:0}100.000%{opacity:0}}
+@keyframes v61{0.000%{opacity:0}48.562%{opacity:0}48.784%{opacity:1}51.438%{opacity:1}51.660%{opacity:0}100.000%{opacity:0}}
+@keyframes v62{0.000%{opacity:0}51.660%{opacity:0}51.882%{opacity:1}55.779%{opacity:1}56.001%{opacity:0}100.000%{opacity:0}}
+@keyframes v63{0.000%{opacity:0}56.001%{opacity:0}56.223%{opacity:1}57.328%{opacity:1}57.550%{opacity:0}100.000%{opacity:0}}
+@keyframes v64{0.000%{opacity:0}57.550%{opacity:0}57.772%{opacity:1}61.669%{opacity:1}61.891%{opacity:0}100.000%{opacity:0}}
+@keyframes v65{0.000%{opacity:0}61.891%{opacity:0}62.114%{opacity:1}64.767%{opacity:1}64.989%{opacity:0}100.000%{opacity:0}}
+@keyframes v66{0.000%{opacity:0}64.989%{opacity:0}65.556%{opacity:1}66.100%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes v67{0.000%{opacity:0}66.667%{opacity:0}67.778%{opacity:1}88.356%{opacity:1}89.467%{opacity:0}100.000%{opacity:0}}
+@keyframes v68{0.000%{opacity:0}89.467%{opacity:0}90.579%{opacity:1}98.889%{opacity:1}100.000%{opacity:0}}
+@keyframes v69{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes b70{0.000%{transform:scaleY(0)}17.122%{transform:scaleY(0.0000)}17.863%{transform:scaleY(0.5000)}26.282%{transform:scaleY(0.5000)}27.023%{transform:scaleY(1.0000)}98.519%{transform:scaleY(1)}100.000%{transform:scaleY(0)}}
+@keyframes v71{0.000%{opacity:0}27.023%{opacity:0}28.319%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes b72{0.000%{transform:scaleY(0)}48.562%{transform:scaleY(0.0000)}49.303%{transform:scaleY(0.1667)}51.660%{transform:scaleY(0.1667)}52.400%{transform:scaleY(0.3333)}56.001%{transform:scaleY(0.3333)}56.742%{transform:scaleY(0.5000)}57.550%{transform:scaleY(0.5000)}58.291%{transform:scaleY(0.6667)}61.891%{transform:scaleY(0.6667)}62.632%{transform:scaleY(0.8333)}64.989%{transform:scaleY(0.8333)}65.730%{transform:scaleY(1.0000)}98.519%{transform:scaleY(1)}100.000%{transform:scaleY(0)}}
+@keyframes v73{0.000%{opacity:0}65.730%{opacity:0}67.026%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes b74{0.000%{transform:scaleY(0)}89.467%{transform:scaleY(0.0000)}90.208%{transform:scaleY(1.0000)}98.519%{transform:scaleY(1)}100.000%{transform:scaleY(0)}}
+@keyframes v75{0.000%{opacity:0}90.208%{opacity:0}91.504%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes v76{0.000%{opacity:0}65.730%{opacity:0}67.026%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+@keyframes v77{0.000%{opacity:1}32.037%{opacity:1}33.333%{opacity:0}100.000%{opacity:0}}
+@keyframes v78{0.000%{opacity:0}33.333%{opacity:0}34.630%{opacity:1}65.370%{opacity:1}66.667%{opacity:0}100.000%{opacity:0}}
+@keyframes v79{0.000%{opacity:0}66.667%{opacity:0}67.963%{opacity:1}98.704%{opacity:1}100.000%{opacity:0}}
+  </style>
+  <defs>
+    <pattern id="pz-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="pz-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+  <rect class="bg" width="800" height="392"/>
+  <rect width="800" height="392" fill="url(#pz-grid)"/>
+  <rect class="tab-on" x="24" y="44" width="250" height="22" style="animation:v1 27.0s linear infinite"/>
+  <rect class="sig-bar" x="24" y="64" width="250" height="2" style="animation:v1 27.0s linear infinite"/>
+  <rect class="tab" x="24" y="44" width="250" height="22"/>
+  <text class="label" x="34" y="59"><tspan class="lsig">01</tspan> SÓ DEV</text>
+  <rect class="tab-on" x="275" y="44" width="250" height="22" style="animation:v2 27.0s linear infinite"/>
+  <rect class="sig-bar" x="275" y="64" width="250" height="2" style="animation:v2 27.0s linear infinite"/>
+  <rect class="tab" x="275" y="44" width="250" height="22"/>
+  <text class="label" x="285" y="59"><tspan class="lsig">02</tspan> DEV + QA DEDICADO</text>
+  <rect class="tab-on" x="526" y="44" width="250" height="22" style="animation:v3 27.0s linear infinite"/>
+  <rect class="sig-bar" x="526" y="64" width="250" height="2" style="animation:v3 27.0s linear infinite"/>
+  <rect class="tab" x="526" y="44" width="250" height="22"/>
+  <text class="label" x="536" y="59"><tspan class="lsig">03</tspan> RESPONSABILIDADE DISTRIBUÍDA</text>
+  <text class="label muted" x="24" y="86">CÓDIGO</text>
+  <text class="label mid" x="290" y="86">BARREIRA DEV</text>
+  <text class="label mid" x="480" y="86">BARREIRA QA</text>
+  <text class="label" x="620" y="86">PRODUÇÃO</text>
+  <rect class="plate" x="24" y="92" width="84" height="134"/>
+  <line class="hair-soft" x1="34" y1="114" x2="88" y2="114"/>
+  <line class="hair-soft" x1="34" y1="138" x2="74" y2="138"/>
+  <line class="hair-soft" x1="34" y1="162" x2="60" y2="162"/>
+  <line class="hair-soft" x1="34" y1="186" x2="88" y2="186"/>
+  <text class="label muted mid" x="66" y="216">COMMITS</text>
+  <line class="lane" x1="112" y1="104" x2="620" y2="104"/>
+  <line class="lane" x1="112" y1="126" x2="620" y2="126"/>
+  <line class="lane" x1="112" y1="148" x2="620" y2="148"/>
+  <line class="lane" x1="112" y1="170" x2="620" y2="170"/>
+  <line class="lane" x1="112" y1="192" x2="620" y2="192"/>
+  <line class="lane" x1="112" y1="214" x2="620" y2="214"/>
+  <rect class="bin" x="620" y="92" width="156" height="134"/>
+  <rect width="156" height="134" x="620" y="92" fill="url(#pz-hatch)" opacity=".35"/>
+  <line class="hair" x1="290" y1="92" x2="290" y2="226"/>
+  <rect class="ghost" x="287" y="96" width="6" height="16"/>
+  <rect class="ghost" x="287" y="118" width="6" height="16"/>
+  <rect class="ghost" x="287" y="140" width="6" height="16"/>
+  <rect class="ghost" x="287" y="162" width="6" height="16"/>
+  <rect class="ghost" x="287" y="184" width="6" height="16"/>
+  <rect class="ghost" x="287" y="206" width="6" height="16"/>
+  <line class="hair" x1="480" y1="92" x2="480" y2="226"/>
+  <rect class="ghost" x="477" y="96" width="6" height="16"/>
+  <rect class="ghost" x="477" y="118" width="6" height="16"/>
+  <rect class="ghost" x="477" y="140" width="6" height="16"/>
+  <rect class="ghost" x="477" y="162" width="6" height="16"/>
+  <rect class="ghost" x="477" y="184" width="6" height="16"/>
+  <rect class="ghost" x="477" y="206" width="6" height="16"/>
+  <rect class="tooth" x="287" y="96" width="6" height="16" style="animation:v4 27.0s linear infinite"/>
+  <rect class="tooth" x="287" y="118" width="6" height="16" style="animation:v5 27.0s linear infinite"/>
+  <rect class="tooth" x="287" y="140" width="6" height="16" style="animation:v6 27.0s linear infinite"/>
+  <rect class="tooth" x="287" y="184" width="6" height="16" style="animation:v7 27.0s linear infinite"/>
+  <rect class="tooth" x="287" y="206" width="6" height="16" style="animation:v8 27.0s linear infinite"/>
+  <rect class="tooth-qa" x="477" y="96" width="6" height="16" style="animation:v9 27.0s linear infinite"/>
+  <rect class="tooth-qa" x="477" y="118" width="6" height="16" style="animation:v10 27.0s linear infinite"/>
+  <rect class="tooth-qa" x="477" y="140" width="6" height="16" style="animation:v11 27.0s linear infinite"/>
+  <rect class="tooth-qa" x="477" y="184" width="6" height="16" style="animation:v12 27.0s linear infinite"/>
+  <rect class="tooth-qa" x="477" y="206" width="6" height="16" style="animation:v13 27.0s linear infinite"/>
+  <rect class="absent" x="466" y="92" width="28" height="134" style="animation:v14 27.0s linear infinite"/>
+  <text class="label mid" x="290" y="244" style="animation:v15 27.0s linear infinite">RIGOROSO</text>
+  <text class="label mid muted" x="290" y="244" style="animation:v16 27.0s linear infinite">RELAXADO</text>
+  <text class="label mid" x="290" y="244" style="animation:v17 27.0s linear infinite">RIGOROSO</text>
+  <text class="label mid muted" x="480" y="244" style="animation:v18 27.0s linear infinite">AUSENTE</text>
+  <text class="label mid lerr" x="480" y="244" style="animation:v19 27.0s linear infinite">SOBRECARGA</text>
+  <text class="label mid lsig" x="480" y="244" style="animation:v20 27.0s linear infinite">COMPLEMENTAR</text>
+  <text class="label muted end" x="432" y="260">CARGA</text>
+  <rect class="meter" x="440" y="253" width="80" height="6"/>
+  <g style="animation:v22 27.0s linear infinite"><rect class="m-err grow-x" x="440" y="253" width="80" height="6" style="animation:m21 27.0s ease-out infinite"/></g>
+  <g style="animation:v24 27.0s linear infinite"><rect class="m-sig grow-x" x="440" y="253" width="80" height="6" style="animation:m23 27.0s ease-out infinite"/></g>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d25 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d26 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d27 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="188.0" width="8" height="8" style="animation:d28 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="122.0" width="8" height="8" style="animation:d29 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d30 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d31 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d32 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d33 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="188.0" width="8" height="8" style="animation:d34 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d35 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d36 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d37 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="122.0" width="8" height="8" style="animation:d38 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d39 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d40 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d41 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d42 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="188.0" width="8" height="8" style="animation:d43 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d44 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d45 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d46 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d47 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d48 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d49 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="122.0" width="8" height="8" style="animation:d50 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="166.0" width="8" height="8" style="animation:d51 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="188.0" width="8" height="8" style="animation:d52 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="210.0" width="8" height="8" style="animation:d53 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="100.0" width="8" height="8" style="animation:d54 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="144.0" width="8" height="8" style="animation:d55 27.0s linear infinite"/>
+  <rect class="defect" x="0" y="188.0" width="8" height="8" style="animation:d56 27.0s linear infinite"/>
+  <text class="label end muted" x="776" y="86" style="animation:v57 27.0s linear infinite">ESCAPES 0</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v58 27.0s linear infinite">ESCAPES 1</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v59 27.0s linear infinite">ESCAPES 2</text>
+  <text class="label end muted" x="776" y="86" style="animation:v60 27.0s linear infinite">ESCAPES 0</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v61 27.0s linear infinite">ESCAPES 1</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v62 27.0s linear infinite">ESCAPES 2</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v63 27.0s linear infinite">ESCAPES 3</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v64 27.0s linear infinite">ESCAPES 4</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v65 27.0s linear infinite">ESCAPES 5</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v66 27.0s linear infinite">ESCAPES 6</text>
+  <text class="label end muted" x="776" y="86" style="animation:v67 27.0s linear infinite">ESCAPES 0</text>
+  <text class="label end lerr" x="776" y="86" style="animation:v68 27.0s linear infinite">ESCAPES 1</text>
+  <line class="hair" x1="24" y1="276" x2="776" y2="276" style="stroke:var(--rule-soft)"/>
+  <text class="label muted" x="24" y="296">DEFEITOS EM PRODUÇÃO POR FASE</text>
+  <line class="hair" x1="24" y1="368" x2="310" y2="368"/>
+  <text class="label mid muted" x="52" y="382">01</text>
+  <text class="label mid muted" x="152" y="382">02</text>
+  <text class="label mid muted" x="268" y="382">03</text>
+  <g style="animation:v69 27.0s linear infinite"><rect class="expected" x="136" y="360" width="32" height="8"/><line class="exp-line" x1="130" y1="360" x2="172" y2="360"/><text class="label muted" x="176" y="364">ESPERADO</text></g>
+  <rect class="bar grow-y" x="36" y="352" width="32" height="16" style="animation:b70 27.0s linear infinite"/>
+  <text class="label mid" x="52" y="346" style="animation:v71 27.0s linear infinite">2</text>
+  <rect class="bar-err grow-y" x="136" y="320" width="32" height="48" style="animation:b72 27.0s linear infinite"/>
+  <text class="label mid lerr" x="152" y="314" style="animation:v73 27.0s linear infinite">6</text>
+  <rect class="bar grow-y" x="252" y="360" width="32" height="8" style="animation:b74 27.0s linear infinite"/>
+  <text class="label mid" x="268" y="354" style="animation:v75 27.0s linear infinite">1</text>
+  <text class="label lerr" x="176" y="328" style="animation:v76 27.0s linear infinite">OBSERVADO</text>
+  <g style="animation:v77 27.0s linear infinite"><rect class="sig-bar" x="386" y="300" width="4" height="50"/><text class="label" x="400" y="312">QUEM ESCREVE O CÓDIGO TAMBÉM O VERIFICA:</text><text class="label" x="400" y="330">TESTE UNITÁRIO E REVIEW BARRAM QUASE TUDO.</text><text class="label lsig" x="400" y="348">POUCOS DEFEITOS ESCAPAM.</text></g>
+  <g style="animation:v78 27.0s linear infinite"><rect class="sig-bar" x="386" y="300" width="4" height="50"/><text class="label" x="400" y="312">COM O QA COMO REDE DE PROTEÇÃO, O DEV RELAXA.</text><text class="label" x="400" y="330">O QA VIRA A ÚNICA BARREIRA E SATURA:</text><text class="label lerr" x="400" y="348">MAIS DEFEITOS CHEGAM À PRODUÇÃO.</text></g>
+  <g style="animation:v79 27.0s linear infinite"><rect class="sig-bar" x="386" y="300" width="4" height="50"/><text class="label" x="400" y="312">QA COMPLEMENTA, NÃO SUBSTITUI O DEV.</text><text class="label" x="400" y="330">CADA ETAPA FILTRA O QUE É SEU:</text><text class="label lsig" x="400" y="348">OS ESCAPES VOLTAM A CAIR.</text></g>
+  <rect class="defect" x="400" y="368" width="8" height="8"/>
+  <text class="label muted" x="414" y="376">DEFEITO</text>
+  <rect class="tooth" x="492" y="366" width="5" height="12"/>
+  <text class="label muted" x="503" y="376">VERIFICAÇÃO DEV</text>
+  <rect class="tooth-qa" x="638" y="366" width="5" height="12"/>
+  <text class="label muted" x="649" y="376">VERIFICAÇÃO QA</text>
+</svg>

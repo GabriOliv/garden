@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 176" width="800" height="176" role="img" aria-labelledby="cf-t cf-d">
+  <title id="cf-t">Ciclo de vida da ferramenta de teste</title>
+  <desc id="cf-d">Quatro estágios em sequência: aquisição, manutenção, evolução e aposentadoria. Da aposentadoria, a substituição por uma nova ferramenta leva de volta à aquisição.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .box { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .hatch { fill: url(#hatch); stroke: var(--ink); stroke-width: 1; }
+    .focus { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .sig { fill: var(--signal); stroke: var(--ink); stroke-width: 1; }
+    .sigline { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .ptr { fill: var(--ink); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .08em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 13px; fill: var(--ink); }
+    .big { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 500; fill: var(--ink); }
+    .name { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .onsig { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="ptr"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="176"/>
+  <rect width="800" height="176" fill="url(#grid)"/>
+  <rect class="plate" x="30" y="20" width="170" height="80"/>
+  <text class="label lsig" x="42" y="48" >01</text>
+  <text class="name" x="42" y="76" >Aquisição</text>
+  <line class="hair" x1="200" y1="60" x2="220" y2="60" marker-end="url(#arr)"/>
+  <rect class="plate" x="220" y="20" width="170" height="80"/>
+  <text class="label lsig" x="232" y="48" >02</text>
+  <text class="name" x="232" y="76" >Manutenção</text>
+  <line class="hair" x1="390" y1="60" x2="410" y2="60" marker-end="url(#arr)"/>
+  <rect class="plate" x="410" y="20" width="170" height="80"/>
+  <text class="label lsig" x="422" y="48" >03</text>
+  <text class="name" x="422" y="76" >Evolução</text>
+  <line class="hair" x1="580" y1="60" x2="600" y2="60" marker-end="url(#arr)"/>
+  <rect class="focus" x="600" y="20" width="170" height="80"/>
+  <text class="label lsig" x="612" y="48" >04</text>
+  <text class="name" x="612" y="76" >Aposentadoria</text>
+  <path class="sigline" d="M685 100 V130 H115 V104" marker-end="url(#arr)"/>
+  <text class="label mid lsig" x="400" y="156" >nova ferramenta: volta à aquisição</text>
+</svg>

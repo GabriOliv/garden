@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-labelledby="mr-t mr-d">
+  <title id="mr-t">Matriz de risco: probabilidade e impacto</title>
+  <desc id="mr-d">Matriz 3 por 3 com probabilidade (baixa, média, alta) no eixo horizontal e impacto (baixo, médio, alto) no vertical. O nível de risco cresce para o canto de alta probabilidade e alto impacto: baixo no canto inferior esquerdo, médio na diagonal intermediária e alto no canto superior direito.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .box { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .hatch { fill: url(#hatch); stroke: var(--ink); stroke-width: 1; }
+    .focus { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .sig { fill: var(--signal); stroke: var(--ink); stroke-width: 1; }
+    .sigline { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .ptr { fill: var(--ink); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .08em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 13px; fill: var(--ink); }
+    .big { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 500; fill: var(--ink); }
+    .name { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .onsig { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="ptr"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="360"/>
+  <rect width="800" height="360" fill="url(#grid)"/>
+  <rect class="plate" x="150" y="20" width="120" height="90"/>
+  <text class="label mid" x="210.0" y="69.0" >MÉDIO</text>
+  <rect class="sig" x="270" y="20" width="120" height="90"/>
+  <text class="label mid onsig" x="330.0" y="69.0" >ALTO</text>
+  <rect class="sig" x="390" y="20" width="120" height="90"/>
+  <text class="label mid onsig" x="450.0" y="69.0" >ALTO</text>
+  <rect class="box" x="150" y="110" width="120" height="90"/>
+  <text class="label mid" x="210.0" y="159.0" >BAIXO</text>
+  <rect class="plate" x="270" y="110" width="120" height="90"/>
+  <text class="label mid" x="330.0" y="159.0" >MÉDIO</text>
+  <rect class="sig" x="390" y="110" width="120" height="90"/>
+  <text class="label mid onsig" x="450.0" y="159.0" >ALTO</text>
+  <rect class="box" x="150" y="200" width="120" height="90"/>
+  <text class="label mid" x="210.0" y="249.0" >BAIXO</text>
+  <rect class="box" x="270" y="200" width="120" height="90"/>
+  <text class="label mid" x="330.0" y="249.0" >BAIXO</text>
+  <rect class="plate" x="390" y="200" width="120" height="90"/>
+  <text class="label mid" x="450.0" y="249.0" >MÉDIO</text>
+  <rect class="rule" x="150" y="20" width="360" height="270"/>
+  <text class="label mid" x="210.0" y="312" >BAIXA</text>
+  <text class="label mid" x="330.0" y="312" >MÉDIA</text>
+  <text class="label mid" x="450.0" y="312" >ALTA</text>
+  <text class="label end" x="138" y="69.0" >ALTO</text>
+  <text class="label end" x="138" y="159.0" >MÉDIO</text>
+  <text class="label end" x="138" y="249.0" >BAIXO</text>
+  <text class="label mid lsig" x="330.0" y="340" >PROBABILIDADE →</text>
+  <text class="label lsig mid" transform="translate(48 155.0) rotate(-90)">IMPACTO →</text>
+  <text class="label" x="580" y="110" >NÍVEL DE RISCO</text>
+  <rect class="box" x="580" y="126" width="22" height="18"/>
+  <text class="txt" x="612" y="140" >Baixo</text>
+  <rect class="plate" x="580" y="156" width="22" height="18"/>
+  <text class="txt" x="612" y="170" >Médio</text>
+  <rect class="sig" x="580" y="186" width="22" height="18"/>
+  <text class="txt" x="612" y="200" >Alto</text>
+</svg>

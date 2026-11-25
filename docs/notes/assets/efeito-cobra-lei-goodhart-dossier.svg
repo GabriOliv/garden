@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 800 360" width="800" height="360" role="img" aria-labelledby="cg-t cg-d">
+  <title id="cg-t">O painel e o produto: Lei de Goodhart e efeito cobra em métricas de teste, estilo Dossier</title>
+  <desc id="cg-d">Gráfico de duas linhas ao longo de três trimestres. Na fase 01, medida, o número do painel e a qualidade do produto andam juntos. Na fase 02, meta, o número entra no bônus e no ranking e sobe, enquanto a qualidade cai, e a distância entre as duas linhas fica marcada em vermelho. Na fase 03, meta retirada, o número despenca mas a qualidade não volta ao nível de antes da meta, porque ficam os testes sem verificação, as severidades erradas e o medo de abrir defeito. Escala ilustrativa.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .divider { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 3; }
+    .tab { fill: none; stroke: var(--rule-soft); stroke-width: 1; }
+    .tab-on { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 1; }
+    .sigfill { fill: var(--signal); }
+    .errfill { fill: var(--contrast-error); }
+    .panelfill { fill: var(--panel); }
+    .metric { fill: none; stroke: var(--signal); stroke-width: 2.5; stroke-linejoin: round; }
+    .quality { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 5 3; stroke-linejoin: round; }
+    .baseline { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 1 3; }
+    .gap { fill: var(--contrast-error); fill-opacity: .14; }
+    .debt { fill: url(#cg-hatch); fill-opacity: .7; }
+    .dot-m { fill: var(--paper); stroke: var(--signal); stroke-width: 2; }
+    .dot-q { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--contrast-error); stroke-width: 1; }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .body { font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 12px; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    @keyframes cg-p0 { 0%, 32% { opacity: 1 } 33%, 100% { opacity: 0 } }
+    @keyframes cg-p1 { 0%, 33% { opacity: 0 } 34%, 65% { opacity: 1 } 66%, 100% { opacity: 0 } }
+    @keyframes cg-p2 { 0%, 66% { opacity: 0 } 67%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    @keyframes cg-from1 { 0%, 33% { opacity: 0 } 34%, 99% { opacity: 1 } 100% { opacity: 0 } }
+    .cg-p0 { opacity: 0; animation: cg-p0 18s linear infinite; }
+    .cg-p1 { opacity: 0; animation: cg-p1 18s linear infinite; }
+    .cg-p2 { opacity: 0; animation: cg-p2 18s linear infinite; }
+    .cg-from1 { opacity: 0; animation: cg-from1 18s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .cg-p0, .cg-p1, .cg-p2, .cg-from1 { animation: none; }
+      .cg-p0 { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="cg-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="5" height="5"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="5"/>
+    </pattern>
+    <pattern id="cg-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+  </defs>
+  <rect class="bg" y="40" width="800" height="360"/>
+  <rect y="40" width="800" height="360" fill="url(#cg-grid)"/>
+
+  <!-- Abas: uma fase por trimestre -->
+  <rect class="tab" x="24" y="46" width="244" height="22"/>
+  <g class="cg-p0"><rect class="tab-on" x="24" y="46" width="244" height="22"/><rect class="sigfill" x="24" y="65" width="244" height="3"/></g>
+  <text class="label" x="34" y="61"><tspan class="lsig">01</tspan> MEDIDA</text>
+  <rect class="tab" x="278" y="46" width="244" height="22"/>
+  <g class="cg-p1"><rect class="tab-on" x="278" y="46" width="244" height="22"/><rect class="sigfill" x="278" y="65" width="244" height="3"/></g>
+  <text class="label" x="288" y="61"><tspan class="lsig">02</tspan> META</text>
+  <rect class="tab" x="532" y="46" width="244" height="22"/>
+  <g class="cg-p2"><rect class="tab-on" x="532" y="46" width="244" height="22"/><rect class="sigfill" x="532" y="65" width="244" height="3"/></g>
+  <text class="label" x="542" y="61"><tspan class="lsig">03</tspan> META RETIRADA</text>
+
+  <!-- Legenda do gráfico -->
+  <line class="metric" x1="24" y1="91" x2="44" y2="91"/>
+  <text class="label muted" x="52" y="95">NÚMERO NO PAINEL</text>
+  <line class="quality" x1="214" y1="91" x2="234" y2="91"/>
+  <text class="label muted" x="242" y="95">QUALIDADE DO PRODUTO</text>
+  <text class="label muted end" x="776" y="95">ESCALA ILUSTRATIVA</text>
+
+  <!-- Eixos e trimestres -->
+  <text class="label muted" x="24" y="124">ALTO</text>
+  <text class="label muted" x="24" y="290">BAIXO</text>
+  <line class="hair" x1="70" y1="296" x2="760" y2="296"/>
+  <line class="divider" x1="250" y1="108" x2="250" y2="296"/>
+  <line class="divider" x1="490" y1="108" x2="490" y2="296"/>
+  <text class="label muted mid" x="170" y="120">TRIMESTRE 1</text>
+  <text class="label muted mid" x="370" y="120">TRIMESTRE 2</text>
+  <text class="label muted mid" x="610" y="120">TRIMESTRE 3</text>
+
+  <!-- Fase 02 e 03: distância entre o painel e o produto -->
+  <polygon class="gap cg-from1" points="250,232 330,190 410,160 490,142 490,266 410,256 330,246 250,238"/>
+  <g class="cg-from1">
+    <text class="label lerr mid" x="420" y="214">DISTÂNCIA</text>
+  </g>
+  <polygon class="gap cg-p2" points="490,142 570,238 650,248 730,252 730,268 650,270 570,268 490,266"/>
+
+  <!-- Fase 03: o nível de antes da meta não volta -->
+  <g class="cg-p2">
+    <polygon class="debt" points="490,238 730,238 730,268 650,270 570,268 490,266"/>
+    <line class="baseline" x1="90" y1="238" x2="760" y2="238"/>
+    <text class="label muted end" x="760" y="230">NÍVEL ANTES DA META</text>
+    <text class="label lerr end" x="760" y="286">AS COBRAS FICAM</text>
+  </g>
+
+  <!-- Linhas: trimestre 1 sempre visível -->
+  <polyline class="quality" points="90,256 170,246 250,238"/>
+  <polyline class="metric" points="90,250 170,240 250,232"/>
+  <g class="cg-from1">
+    <polyline class="quality" points="250,238 330,246 410,256 490,266"/>
+    <polyline class="metric" points="250,232 330,190 410,160 490,142"/>
+    <circle class="dot-q" cx="330" cy="246" r="3"/><circle class="dot-q" cx="410" cy="256" r="3"/><circle class="dot-q" cx="490" cy="266" r="3"/>
+    <circle class="dot-m" cx="330" cy="190" r="3.5"/><circle class="dot-m" cx="410" cy="160" r="3.5"/><circle class="dot-m" cx="490" cy="142" r="3.5"/>
+    <text class="label lsig end" x="476" y="134">82% · ZERO CRÍTICOS</text>
+  </g>
+  <g class="cg-p2">
+    <polyline class="quality" points="490,266 570,268 650,270 730,268"/>
+    <polyline class="metric" points="490,142 570,238 650,248 730,252"/>
+    <circle class="dot-q" cx="570" cy="268" r="3"/><circle class="dot-q" cx="650" cy="270" r="3"/><circle class="dot-q" cx="730" cy="268" r="3"/>
+    <circle class="dot-m" cx="570" cy="238" r="3.5"/><circle class="dot-m" cx="650" cy="248" r="3.5"/><circle class="dot-m" cx="730" cy="252" r="3.5"/>
+  </g>
+  <circle class="dot-q" cx="90" cy="256" r="3"/><circle class="dot-q" cx="170" cy="246" r="3"/><circle class="dot-q" cx="250" cy="238" r="3"/>
+  <circle class="dot-m" cx="90" cy="250" r="3.5"/><circle class="dot-m" cx="170" cy="240" r="3.5"/><circle class="dot-m" cx="250" cy="232" r="3.5"/>
+
+  <line class="soft" x1="24" y1="314" x2="776" y2="314"/>
+
+  <!-- Legenda de cada fase -->
+  <g class="cg-p0">
+  <text class="label lsig" x="24" y="336">FASE 01 · O NÚMERO MEDE</text>
+  <text class="body" x="24" y="356">Ninguém ganha nem perde nada com a cobertura ou com a contagem de defeitos.</text>
+  <text class="body" x="24" y="374">O número sobe e desce junto com a qualidade, e o painel serve para enxergar o produto.</text>
+  </g>
+  <g class="cg-p1">
+  <text class="label lsig" x="24" y="336">FASE 02 · O NÚMERO VIRA META</text>
+  <text class="body" x="24" y="356">Bônus e ranking entram. Defeito partido em cinco, severidade rebaixada, teste sem verificação.</text>
+  <text class="body" x="24" y="374">O painel fica verde enquanto o produto piora, e a distância entre os dois não aparece em lugar nenhum.</text>
+  </g>
+  <g class="cg-p2">
+  <text class="label lerr" x="24" y="336">FASE 03 · A META SAI, AS COBRAS FICAM</text>
+  <text class="body" x="24" y="356">O ranking acaba e o número despenca. A qualidade não volta ao nível de antes da meta.</text>
+  <text class="body" x="24" y="374">Ficam os testes sem verificação, as severidades erradas e o medo de abrir defeito.</text>
+  </g>
+</svg>

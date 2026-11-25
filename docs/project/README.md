@@ -44,7 +44,7 @@ import styles from '@site/src/css/styles.module.css';
 
 Resumos de estudo usados para certificações.
 
-<Grid minColumnWidth={280} gap={6}>
+<Grid columns={2} gap={6}>
 	<Stack gap={3} data-item="CTFL" className={styles.linkCard}>
 
     	![image](./assets/banner/banner-flask-dossier.svg)
@@ -62,6 +62,16 @@ Resumos de estudo usados para certificações.
     	<h3 className="ds-t-heading"><Link to="/docs/istqb/cttas">CT-TAS - Test Automation Strategy</Link></h3>
 
     	<p className="ds-t-body">Certificação de Especialização para perspectiva estratégica sobre a automação de testes.</p>
+
+    	<span className={styles.linkCardFoot}><Icon name="arrow-right" size={24} className="link-arrow" /></span>
+    </Stack>
+    <Stack gap={3} data-item="CTAL-TM" className={styles.linkCard}>
+
+    	![image](./assets/banner/banner-flask-dossier.svg)
+
+    	<h3 className="ds-t-heading"><Link to="/docs/istqb/ctal-tm">CTAL-TM - Test Management</Link></h3>
+
+    	<p className="ds-t-body">Certificação de nível avançado para a gestão de testes.</p>
 
     	<span className={styles.linkCardFoot}><Icon name="arrow-right" size={24} className="link-arrow" /></span>
     </Stack>

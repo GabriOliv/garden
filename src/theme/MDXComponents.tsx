@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import DocTitle from "@site/src/components/DocTitle";
+import Figure from "@site/src/components/Figure";
 import { shortUrl, useInReferencias } from "@site/src/components/Referencias";
 
 /** Junta os filhos de texto de um título. */
@@ -22,5 +23,6 @@ function A(props: { href?: string; children?: ReactNode }): ReactNode {
 export default {
   ...MDXComponents,
   a: A,
+  Figure,
   h1: ({ children }: { children?: ReactNode }) => <DocTitle title={toText(children)} />,
 };

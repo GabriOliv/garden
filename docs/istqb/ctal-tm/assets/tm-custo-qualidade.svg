@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 216" width="800" height="216" role="img" aria-labelledby="cq-t cq-d">
+  <title id="cq-t">Custo da qualidade</title>
+  <desc id="cq-d">As quatro categorias do custo da qualidade. Custos de conformidade: prevenção e avaliação. Custos de não conformidade: falhas internas, antes da entrega ao cliente, e falhas externas, depois da entrega. Uma linha do tempo marca a entrega entre as falhas internas e as externas.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .card { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .card-sig { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .hd-sig { fill: var(--signal); }
+    .hd-err { fill: var(--contrast-error); }
+    .hd-ink { fill: var(--ink); }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .hatch { fill: url(#cq-hatch); stroke: var(--ink); stroke-width: 1; }
+    .tint { fill: var(--signal-tint); }
+    .curve { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .dot { fill: var(--paper); stroke: var(--signal); stroke-width: 2; }
+    .dot-on { fill: var(--signal); stroke: var(--signal); stroke-width: 2; }
+    .dash { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+    .sq { fill: var(--ink); }
+    .sqs { fill: var(--signal); }
+    .sqe { fill: var(--contrast-error); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .12em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; fill: var(--ink); }
+    .sm { font-size: 12px; }
+    .b { font-weight: 600; }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .lerr { fill: var(--contrast-error); }
+    .inv { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="cq-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="cq-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="cq-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--ink)"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="216"/>
+  <rect width="800" height="216" fill="url(#cq-grid)"/>
+  <text class="label lsig mid" x="218" y="34">CUSTOS DE CONFORMIDADE</text>
+  <path d="M 36 62 V 46 H 400 V 62" fill="none" stroke="var(--signal)" stroke-width="2"/>
+  <text class="label lerr mid" x="594" y="34">CUSTOS DE NÃO CONFORMIDADE</text>
+  <path d="M 412 62 V 46 H 776 V 62" fill="none" stroke="var(--contrast-error)" stroke-width="2"/>
+  <rect class="card" x="36" y="76" width="176" height="56"/>
+  <rect class="hd-sig" x="36" y="76" width="176" height="56"/>
+  <text class="label inv mid" x="124" y="109" style="letter-spacing:.06em">PREVENÇÃO</text>
+  <rect class="card" x="224" y="76" width="176" height="56"/>
+  <rect class="hd-sig" x="224" y="76" width="176" height="56"/>
+  <text class="label inv mid" x="312" y="109" style="letter-spacing:.06em">AVALIAÇÃO</text>
+  <rect class="card" x="412" y="76" width="176" height="56"/>
+  <rect class="hd-err" x="412" y="76" width="176" height="56"/>
+  <text class="label inv mid" x="500" y="109" style="letter-spacing:.06em">FALHAS INTERNAS</text>
+  <rect class="card" x="600" y="76" width="176" height="56"/>
+  <rect class="hd-err" x="600" y="76" width="176" height="56"/>
+  <text class="label inv mid" x="688" y="109" style="letter-spacing:.06em">FALHAS EXTERNAS</text>
+  <line class="rule" x1="36" y1="176" x2="776" y2="176" marker-end="url(#cq-arr)" style="color:var(--ink)"/>
+  <line class="rule" x1="594" y1="166" x2="594" y2="186" style="stroke:var(--contrast-error)"/>
+  <text class="label" x="36" y="202">ANTES DA ENTREGA</text>
+  <text class="label lerr mid" x="594" y="202" style="letter-spacing:.04em">ENTREGA</text>
+  <text class="label end" x="776" y="202" style="letter-spacing:.06em">DEPOIS</text>
+</svg>

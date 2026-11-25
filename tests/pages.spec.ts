@@ -65,6 +65,7 @@ test("PAGE-03 home mostra os três blocos com ilustração e frase", async ({ pa
 const ITEMS = [
   ["CTFL", "CTFL - Certified Tester Foundation Level", "Primeira certificação da ISTQB para a carreira de Teste de Software.", "banner-flask-dossier", "/garden/docs/istqb/ctfl"],
   ["CT-TAS", "CT-TAS - Test Automation Strategy", "Certificação de Especialização para perspectiva estratégica sobre a automação de testes.", "banner-flask-dossier", "/garden/docs/istqb/cttas"],
+  ["CTAL-TM", "CTAL-TM - Test Management", "Certificação de nível avançado para a gestão de testes.", "banner-flask-dossier", "/garden/docs/istqb/ctal-tm"],
   ["Notas", "Notas", "Notas sobre QA, Teste ou Computação em geral.", "banner-flask-qa-dossier", "/garden/docs/notes"],
 ] as const;
 
@@ -99,8 +100,11 @@ test("PAGE-06 seções Certificações, Documentações e Organização por Evol
   ]);
 });
 
-test("PAGE-07 itens CTFL, CT-TAS e Notas com imagem e descrição", async ({ page }) => {
+test("PAGE-07 itens CTFL, CT-TAS, CTAL-TM e Notas com imagem e descrição, nessa ordem", async ({ page }) => {
   await page.goto(PAGES.start);
+  expect(await page.locator("main [data-item]").evaluateAll((els) => els.map((e) => e.getAttribute("data-item")))).toEqual(
+    ITEMS.map(([key]) => key),
+  );
   for (const [key, title, description, image] of ITEMS) {
     const item = page.locator(`main [data-item="${key}"]`);
     await expect(item.getByRole("heading", { level: 3, name: title, exact: true })).toBeVisible();
@@ -112,7 +116,7 @@ test("PAGE-07 itens CTFL, CT-TAS e Notas com imagem e descrição", async ({ pag
   }
 });
 
-test("PAGE-08 o título de CTFL, CT-TAS e Notas é o link, e o card todo abre a página", async ({ page }) => {
+test("PAGE-08 o título de CTFL, CT-TAS, CTAL-TM e Notas é o link, e o card todo abre a página", async ({ page }) => {
   for (const [key, title, description, , url] of ITEMS) {
     await page.goto(PAGES.start);
     const item = page.locator(`main [data-item="${key}"]`);

@@ -2,11 +2,23 @@ import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { rgb } from "./support/site";
 
-// As notas de hoje, na ordem do índice antigo.
+// As notas do índice, na ordem de `docs/notes/README.md`.
 const GROUPS = {
-  Teorias: ["peltzman_effect", "hawthorne_effect_on_documentation", "software_ongoing_manual_testing", "e2e_useful"],
+  Teorias: [
+    "peltzman_effect",
+    "hawthorne_effect_on_documentation",
+    "software_ongoing_manual_testing",
+    "e2e_useful",
+    "few_hiccupps_heuristica",
+    "testes_mutacao",
+    "efeito_cobra_lei_goodhart",
+    "flakiness_efeito_nocebo",
+    "independencia_teste_afastamento",
+  ],
   Processos: ["test_coverage_sdlc"],
 };
+/** Linhas do índice somando os grupos. */
+const ROWS = Object.values(GROUPS).flat().length;
 
 /** Título e descrição do front matter da nota. */
 function frontMatter(id: string) {
@@ -58,7 +70,7 @@ test("IDX-04 linhas separadas por fio de 1 px em rule-soft, sem caixa nem sombra
   await page.goto("docs/notes");
   const rows = page.locator("ol.ds-contents > li.ds-toc-item");
   const n = await rows.count();
-  expect(n).toBe(5);
+  expect(n).toBe(ROWS);
   for (let i = 0; i < n; i++) {
     const s = await rows.nth(i).evaluate((el) => {
       const cs = getComputedStyle(el);
@@ -80,8 +92,8 @@ test("IDX-05 em 390 px número, título e descrição de cada linha sem rolagem 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("docs/notes");
   const rows = page.locator("li.ds-toc-item");
-  await expect(rows).toHaveCount(5);
-  for (let i = 0; i < 5; i++) {
+  await expect(rows).toHaveCount(ROWS);
+  for (let i = 0; i < ROWS; i++) {
     for (const part of [".ds-toc-index", ".ds-toc-title", ".ds-toc-desc"]) {
       const box = (await rows.nth(i).locator(part).boundingBox())!;
       expect(box.width, part).toBeGreaterThan(0);

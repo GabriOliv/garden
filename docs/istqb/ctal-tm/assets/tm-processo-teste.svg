@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 112" width="912" height="112" role="img" aria-labelledby="pt-t pt-d">
+  <title id="pt-t">Processo de teste</title>
+  <desc id="pt-d">Sete atividades do processo de teste da ISO/IEC/IEEE 29119-2 em sequência: planejamento, monitoramento e controle, análise, modelagem, implementação, execução e conclusão. Planejamento, monitoramento e controle e conclusão estão destacados em azul.</desc>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap');
+    svg { --paper:#f4f4f1; --panel:#e6e6e1; --ink:#0b0c0e; --ink-muted:#50535a; --rule-soft:#c6c7c1; --signal:#002fa7; --signal-tint:#d7dff3; --contrast-error:#b42318; }
+    @media (prefers-color-scheme: dark) {
+      svg { --paper:#0a0b0d; --panel:#16181d; --ink:#eeeeea; --ink-muted:#9ea1a8; --rule-soft:#2c2f36; --signal:#2b7fff; --signal-tint:#101a3c; --contrast-error:#ff6a55; }
+    }
+    .bg { fill: var(--paper); }
+    .gridpt { fill: var(--rule-soft); }
+    .hair { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .rule { fill: none; stroke: var(--ink); stroke-width: 2; }
+    .soft { fill: none; stroke: var(--rule-soft); stroke-width: 1; stroke-dasharray: 2 4; }
+    .plate { fill: var(--panel); stroke: var(--ink); stroke-width: 1; }
+    .box { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+    .hatch { fill: url(#hatch); stroke: var(--ink); stroke-width: 1; }
+    .focus { fill: var(--signal-tint); stroke: var(--signal); stroke-width: 2; }
+    .sig { fill: var(--signal); stroke: var(--ink); stroke-width: 1; }
+    .sigline { fill: none; stroke: var(--signal); stroke-width: 2; }
+    .pt-ground { fill: var(--paper); }
+    .pt-ink { stroke: var(--ink-muted); stroke-width: 1; }
+    .ptr { fill: var(--ink); }
+    .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: .08em; fill: var(--ink); }
+    .txt { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 13px; fill: var(--ink); }
+    .big { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 500; fill: var(--ink); }
+    .name { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: var(--ink); }
+    .muted { fill: var(--ink-muted); }
+    .lsig { fill: var(--signal); }
+    .onsig { fill: var(--paper); }
+    .end { text-anchor: end; }
+    .mid { text-anchor: middle; }
+  </style>
+  <defs>
+    <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pt-ground" width="4" height="4"/><line class="pt-ink" x1="0" y1="0" x2="0" y2="4"/>
+    </pattern>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle class="gridpt" cx="8" cy="8" r=".6"/></pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" class="ptr"/></marker>
+  </defs>
+  <rect class="bg" width="912" height="112"/>
+  <rect width="912" height="112" fill="url(#grid)"/>
+  <rect class="focus" x="14" y="20" width="116" height="72"/>
+  <text class="label lsig" x="22" y="42" >01</text>
+  <text class="txt" style="font-size:13px;font-weight:600" x="22" y="66">Planejamento</text>
+  <line class="hair" x1="130" y1="56" x2="142" y2="56" marker-end="url(#arr)"/>
+  <rect class="focus" x="142" y="20" width="116" height="72"/>
+  <text class="label lsig" x="150" y="42" >02</text>
+  <text class="txt" style="font-size:13px;font-weight:600" x="150" y="66">Monitoramento</text>
+  <text class="txt" style="font-size:13px;font-weight:600" x="150" y="82">e controle</text>
+  <line class="hair" x1="258" y1="56" x2="270" y2="56" marker-end="url(#arr)"/>
+  <rect class="box" x="270" y="20" width="116" height="72"/>
+  <text class="label muted" x="278" y="42" >03</text>
+  <text class="txt" style="font-size:13px;font-weight:400" x="278" y="66">Análise</text>
+  <line class="hair" x1="386" y1="56" x2="398" y2="56" marker-end="url(#arr)"/>
+  <rect class="box" x="398" y="20" width="116" height="72"/>
+  <text class="label muted" x="406" y="42" >04</text>
+  <text class="txt" style="font-size:13px;font-weight:400" x="406" y="66">Modelagem</text>
+  <line class="hair" x1="514" y1="56" x2="526" y2="56" marker-end="url(#arr)"/>
+  <rect class="box" x="526" y="20" width="116" height="72"/>
+  <text class="label muted" x="534" y="42" >05</text>
+  <text class="txt" style="font-size:13px;font-weight:400" x="534" y="66">Implementação</text>
+  <line class="hair" x1="642" y1="56" x2="654" y2="56" marker-end="url(#arr)"/>
+  <rect class="box" x="654" y="20" width="116" height="72"/>
+  <text class="label muted" x="662" y="42" >06</text>
+  <text class="txt" style="font-size:13px;font-weight:400" x="662" y="66">Execução</text>
+  <line class="hair" x1="770" y1="56" x2="782" y2="56" marker-end="url(#arr)"/>
+  <rect class="focus" x="782" y="20" width="116" height="72"/>
+  <text class="label lsig" x="790" y="42" >07</text>
+  <text class="txt" style="font-size:13px;font-weight:600" x="790" y="66">Conclusão</text>
+</svg>

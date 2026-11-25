@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { openIn, PAGES, rgb } from "./support/site";
 
 const files = (dir: string): string[] =>
@@ -47,11 +47,11 @@ async function examplePages(page: Page): Promise<string[]> {
   return [...new Set(hrefs)].filter((h) => /^\/garden\/exemplos(\/|$)/.test(h));
 }
 
-test("EX-02 cada um dos 49 componentes exportados tem uma demonstração desenhada", async ({
+test("EX-02 cada um dos 50 componentes exportados tem uma demonstração desenhada", async ({
   page,
 }) => {
   const exported = Object.keys(await import("@gabrioliv/dossier")).filter((n) => n !== "toast");
-  expect(exported).toHaveLength(49);
+  expect(exported).toHaveLength(50);
 
   const drawn = new Set<string>();
   for (const href of await examplePages(page)) {
@@ -69,6 +69,9 @@ test("EX-02 cada um dos 49 componentes exportados tem uma demonstração desenha
 test("EX-04 cada página de exemplo abre sem erro no console, em Paper e em Void", async ({
   page,
 }) => {
+  // Todas as páginas de exemplo em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
+  test.setTimeout(120_000);
+  expect(test.info().timeout).toBe(120_000);
   const pages = await examplePages(page);
   expect(pages.length).toBeGreaterThan(1);
 
@@ -270,4 +273,114 @@ test("EX-05 textos de ptBR: Fechar no Dialog, Notificações no Toaster, Pagina�
     await expect(page.getByRole("dialog")).toBeVisible({ timeout: 500 });
   }).toPass();
   await expect(page.getByRole("dialog").getByRole("button", { name: "Fechar", exact: true })).toBeVisible();
+});
+
+test("EX-19 Figure do Dossier em documento: FIG. 01 — Bancada de teste do cubo, GARDEN · REV A, imagem e figcaption", async ({
+  page,
+}) => {
+  await page.goto("exemplos/documento");
+  const fig = page.locator('section[data-component="Figure"] figure.ds-fig');
+  await expect(fig).toHaveCount(1);
+  await expect(fig.locator(".ds-fig-legend .ds-fig-title")).toHaveText("FIG. 01 — Bancada de teste do cubo");
+  await expect(fig.locator(".ds-fig-legend")).toHaveCSS("text-transform", "uppercase");
+  await expect(fig.locator(".ds-fig-legend .ds-fig-meta")).toHaveText("GARDEN · REV A");
+  const img = fig.locator("img");
+  await expect(img).toHaveCount(1);
+  expect(await img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBe(true);
+  await expect(fig.locator("figcaption")).toHaveText("Bancada de teste do cubo, em perspectiva isométrica.");
+});
+
+/** Caixa de cada nó de uma demo do Hierarchy, pelo rótulo. */
+const treeBoxes = (tree: Locator) =>
+  tree.locator(".ds-tree-node").evaluateAll((els) =>
+    Object.fromEntries(
+      els.map((e) => {
+        const r = e.getBoundingClientRect();
+        return [e.querySelector(".ds-tree-label")!.textContent!, { left: r.left, right: r.right, top: r.top, bottom: r.bottom }];
+      }),
+    ),
+  );
+
+const TREE_LABELS = ["Produto", "Login", "Pagamento", "Cartão", "Pix"];
+
+test("EX-20 Hierarchy left-right em diagramas: mesmos nós, filhos à direita do pai", async ({ page }) => {
+  await page.goto("exemplos/diagramas");
+  const tree = page.locator('section[data-component="Hierarchy"][data-variant="left-right"] .ds-tree.ds-tree-lr');
+  await expect(tree).toHaveCount(1);
+  await expect(tree.locator(".ds-tree-label")).toHaveText(TREE_LABELS);
+  const b = await treeBoxes(tree);
+  for (const kid of ["Login", "Pagamento"]) expect(b[kid].left, kid).toBeGreaterThan(b.Produto.right);
+  for (const kid of ["Cartão", "Pix"]) expect(b[kid].left, kid).toBeGreaterThan(b.Pagamento.right);
+  expect(b.Pagamento.top).toBeGreaterThan(b.Login.top);
+});
+
+test("EX-21 Hierarchy folder em diagramas: mesmos nós, um por linha, recuados sob o pai", async ({ page }) => {
+  await page.goto("exemplos/diagramas");
+  const tree = page.locator('section[data-component="Hierarchy"][data-variant="folder"] .ds-tree.ds-tree-folder');
+  await expect(tree).toHaveCount(1);
+  await expect(tree.locator(".ds-tree-label")).toHaveText(TREE_LABELS);
+  const b = await treeBoxes(tree);
+  for (let i = 1; i < TREE_LABELS.length; i++)
+    expect(b[TREE_LABELS[i]].top, TREE_LABELS[i]).toBeGreaterThanOrEqual(b[TREE_LABELS[i - 1]].bottom);
+  for (const kid of ["Login", "Pagamento"]) expect(b[kid].left, kid).toBeGreaterThan(b.Produto.left);
+  for (const kid of ["Cartão", "Pix"]) expect(b[kid].left, kid).toBeGreaterThan(b.Pagamento.left);
+});
+
+test("EX-22 demo top-down do Hierarchy sem ds-tree-lr nem ds-tree-folder e com os filhos abaixo do pai", async ({
+  page,
+}) => {
+  await page.goto("exemplos/diagramas");
+  const tree = page.locator('section[data-component="Hierarchy"]:not([data-variant]) .ds-tree');
+  await expect(tree).toHaveCount(1);
+  await expect(tree).toHaveAttribute("class", "ds-tree");
+  await expect(tree.locator(".ds-tree-label")).toHaveText(TREE_LABELS);
+  const b = await treeBoxes(tree);
+  for (const kid of ["Login", "Pagamento"]) expect(b[kid].top, kid).toBeGreaterThan(b.Produto.bottom);
+  expect(b.Pagamento.left).toBeGreaterThan(b.Login.right);
+});
+
+/** Caixa de cada evento de uma demo do Timeline, na ordem. */
+const eventBoxes = (timeline: Locator) =>
+  timeline.locator(".ds-tl-item").evaluateAll((els) =>
+    els.map((e) => {
+      const r = e.getBoundingClientRect();
+      return { top: r.top, bottom: r.bottom, left: r.left, right: r.right };
+    }),
+  );
+
+const TIMELINE_LABELS = ["Planejamento", "Execução", "Relatório"];
+
+test("EX-23 Timeline vertical em diagramas a 1280 px: mesmos eventos, cada um abaixo do anterior", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("exemplos/diagramas");
+  const timeline = page.locator('section[data-component="Timeline"][data-variant="vertical"] ol.ds-timeline.ds-timeline-vertical');
+  await expect(timeline).toHaveCount(1);
+  await expect(timeline.locator(".ds-tl-label")).toHaveText(TIMELINE_LABELS);
+  const b = await eventBoxes(timeline);
+  for (let i = 1; i < b.length; i++) expect(b[i].top, TIMELINE_LABELS[i]).toBeGreaterThanOrEqual(b[i - 1].bottom);
+});
+
+test("EX-24 demo horizontal do Timeline a 1280 px sem ds-timeline-vertical e com os eventos lado a lado", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("exemplos/diagramas");
+  const timeline = page.locator('section[data-component="Timeline"]:not([data-variant]) ol.ds-timeline');
+  await expect(timeline).toHaveCount(1);
+  await expect(timeline).toHaveAttribute("class", "ds-timeline");
+  await expect(timeline.locator(".ds-tl-label")).toHaveText(TIMELINE_LABELS);
+  const b = await eventBoxes(timeline);
+  for (let i = 1; i < b.length; i++) {
+    expect(b[i].left, TIMELINE_LABELS[i]).toBeGreaterThanOrEqual(b[i - 1].right);
+    expect(b[i].top, TIMELINE_LABELS[i]).toBeLessThan(b[i - 1].bottom);
+    expect(b[i].bottom, TIMELINE_LABELS[i]).toBeGreaterThan(b[i - 1].top);
+  }
+});
+
+test("EX-25 a imagem do Figure do Dossier em documento não desenha legenda FIG. própria", async ({ page }) => {
+  await page.goto("exemplos/documento");
+  const src = await page.locator('section[data-component="Figure"] figure.ds-fig img').getAttribute("src");
+  const res = await page.request.get(new URL(src!, page.url()).href);
+  expect(res.status()).toBe(200);
+  expect(await res.text()).not.toMatch(/FIG\./);
 });

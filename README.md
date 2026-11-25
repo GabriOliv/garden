@@ -45,6 +45,27 @@ npm start
 
 O site estará disponível em `http://localhost:3000`
 
+### Alternativa: Docker
+
+```bash
+docker compose up -d garden
+```
+
+O site fica em `http://localhost:3000/garden/`.
+
+O container guarda o `node_modules` num volume próprio, separado do host. Quando a versão do `@gabrioliv/dossier` (ou de outra dependência) subir no `package.json`, recrie a imagem e o volume. Sem isso, o container continua com a versão antiga e componentes novos ou props novas não funcionam:
+
+```bash
+docker compose build garden
+docker compose up -d --renew-anon-volumes garden
+```
+
+Para conferir a versão em uso no container:
+
+```bash
+docker compose exec garden grep '"version"' node_modules/@gabrioliv/dossier/package.json
+```
+
 ## 🔨 Build e Deploy Local
 
 ### Build para produção
