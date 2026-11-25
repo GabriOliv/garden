@@ -160,3 +160,23 @@ a:hover > .link-arrow {
 .docusaurus-mermaid-container svg[aria-roledescription="xychart"] text {
 	fill: var(--ds-ink) !important;
 }
+
+/* Estágio de maturidade no fim da linha de meta do título: ícone em ink, nome em ink-muted. */
+.ds-header-stage {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ds-space-2);
+}
+.ds-header-stage svg {
+	flex: none;
+	color: var(--ds-ink);
+}
+
+/* DataTable do Dossier é display: table com overflow visível: tabela larga empurra a página no celular.
+   Abaixo do breakpoint do Docusaurus, vira bloco com rolagem própria, como as tabelas do Markdown. */
+@media (max-width: 996px) {
+	.markdown .ds-table {
+		display: block;
+		overflow-x: auto;
+	}
+}

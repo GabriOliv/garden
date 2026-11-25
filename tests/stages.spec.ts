@@ -76,6 +76,31 @@ test("STAGE-03 clicar no chip abre a página da tag de estágio", async ({ page 
   }
 });
 
+test("STAGE-12 estágio no fim da linha de meta do título, com o mesmo ícone do chip", async ({ page }) => {
+  for (const { tag, label } of PUBLISHED) {
+    await page.goto(NOTE_OF[tag as keyof typeof NOTE_OF]);
+    const stage = page.locator("header.ds-header .ds-header-meta .ds-header-stage");
+    await expect(stage).toHaveCount(1);
+    await expect(stage).toHaveText(label);
+    const icon = stage.locator("svg");
+    await expect(icon).toHaveAttribute("aria-hidden", "true");
+    expect(await drawing(icon), tag).toBe(await drawing(chip(footer(page), tag).locator("svg")));
+    // Depois do kicker, encostado à direita da linha.
+    const [meta, box] = await Promise.all([
+      page.locator("header.ds-header .ds-header-meta").boundingBox(),
+      stage.boundingBox(),
+    ]);
+    expect(Math.round(box!.x + box!.width)).toBe(Math.round(meta!.x + meta!.width));
+  }
+});
+
+test("STAGE-13 documento sem tag de estágio não mostra estágio no título", async ({ page }) => {
+  // Os exemplos (só no build de teste) não têm tags.
+  await page.goto("exemplos/chrome");
+  await expect(page.locator("header.ds-header h1")).toBeVisible();
+  await expect(page.locator(".ds-header-stage")).toHaveCount(0);
+});
+
 test("STAGE-07 ícones A e B na cor do texto ao redor", async ({ page }) => {
   for (const tag of ["stageA", "stageB"] as const) {
     await page.goto(NOTE_OF[tag]);
@@ -220,6 +245,8 @@ const tableHTML = (page: Page, heading: string) =>
 test("STAGE-11 nenhum emoji de estágio em chips, páginas de tag, legendas e títulos", async ({
   page,
 }) => {
+  // Visita cada página de tag: com a suíte inteira rodando, passa dos 30 s padrão.
+  test.setTimeout(120_000);
   // Build inteiro, lido do disco: todo chip de tag e todo `<title>`.
   const files = htmlFiles("build-test");
   expect(files.length).toBeGreaterThan(0);
