@@ -129,12 +129,14 @@ a:hover > .link-arrow {
 	color: var(--ds-on-inverse) !important;
 }
 
-.docusaurus-mermaid-container .cluster.error rect {
+.docusaurus-mermaid-container .cluster.error rect,
+.docusaurus-mermaid-container .node.error :is(rect, path, polygon) {
 	fill: var(--ds-paper) !important;
 	stroke: var(--ds-contrast-error) !important;
 	stroke-width: 2px !important;
 }
-.docusaurus-mermaid-container .cluster.error :is(span, p, .nodeLabel) {
+.docusaurus-mermaid-container .cluster.error :is(span, p, .nodeLabel),
+.docusaurus-mermaid-container .node.error :is(span, p, .nodeLabel) {
 	color: var(--ds-ink) !important;
 }
 

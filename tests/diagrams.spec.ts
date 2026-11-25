@@ -26,9 +26,13 @@ type Row = { page: string; sel: string; fill: Paint; stroke?: Paint; strokeWidth
 const CTFL_01 = "docs/istqb/ctfl/ctfl_01";
 const PELTZMAN = "docs/notes/peltzman_effect";
 const ISTQB = "docs/istqb";
+const GOODHART = "docs/notes/efeito_cobra_lei_goodhart";
+const FLAKINESS = "docs/notes/flakiness_efeito_nocebo";
 
 const MAP: Row[] = [
   { page: CTFL_01, sel: ".cluster.error", fill: "paper", stroke: "contrastError", strokeWidth: "2px", text: "ink" },
+  { page: GOODHART, sel: ".node.error", fill: "paper", stroke: "contrastError", strokeWidth: "2px", text: "ink" },
+  { page: FLAKINESS, sel: ".node.error", fill: "paper", stroke: "contrastError", strokeWidth: "2px", text: "ink" },
   { page: CTFL_01, sel: ".node.paper", fill: "paper", text: "ink" },
   { page: CTFL_01, sel: ".node.panel", fill: "panel", text: "ink" },
   { page: CTFL_01, sel: ".node.muted", fill: "inkMuted", text: "paper" },
@@ -58,7 +62,7 @@ test("DIAG-04 cada classe do mapa com os tokens da coluna Depois, em Paper e em 
   page,
 }) => {
   for (const theme of ["paper", "void"] as Theme[]) {
-    for (const path of [CTFL_01, PELTZMAN, ISTQB]) {
+    for (const path of [...new Set(MAP.map((r) => r.page))]) {
       await openDiagrams(page, path, theme);
       for (const row of MAP.filter((r) => r.page === path)) {
         const shapes = await page
