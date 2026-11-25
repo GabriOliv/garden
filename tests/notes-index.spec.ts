@@ -13,6 +13,7 @@ const GROUPS = {
     "testes_mutacao",
     "efeito_cobra_lei_goodhart",
     "flakiness_efeito_nocebo",
+    "independencia_teste_afastamento",
   ],
   Processos: ["test_coverage_sdlc"],
 };

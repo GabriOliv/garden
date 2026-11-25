@@ -8,6 +8,7 @@ import { frontMatter as few_hiccupps_heuristica } from './few_hiccupps_heuristic
 import { frontMatter as efeito_cobra_lei_goodhart } from './efeito_cobra_lei_goodhart.mdx';
 import { frontMatter as testes_mutacao } from './testes_mutacao.mdx';
 import { frontMatter as flakiness_efeito_nocebo } from './flakiness_efeito_nocebo.mdx';
+import { frontMatter as independencia_teste_afastamento } from './independencia_teste_afastamento.mdx';
 
 // Exporting an object that maps note identifiers to their front matter
 export default {
@@ -20,4 +21,5 @@ export default {
   efeito_cobra_lei_goodhart,
   testes_mutacao,
   flakiness_efeito_nocebo,
+  independencia_teste_afastamento,
 };

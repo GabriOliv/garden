@@ -18,7 +18,7 @@ import notes from './data.ts';
 
 <Contents
 	labels={ptBR.Contents}
-	items={["peltzman_effect", "hawthorne_effect_on_documentation", "software_ongoing_manual_testing", "e2e_useful", "few_hiccupps_heuristica", "testes_mutacao", "efeito_cobra_lei_goodhart", "flakiness_efeito_nocebo"].map((id) => ({
+	items={["peltzman_effect", "hawthorne_effect_on_documentation", "software_ongoing_manual_testing", "e2e_useful", "few_hiccupps_heuristica", "testes_mutacao", "efeito_cobra_lei_goodhart", "flakiness_efeito_nocebo", "independencia_teste_afastamento"].map((id) => ({
 		title: notes[id].title,
 		description: notes[id].description,
 		href: `./notes/${id}`,
