@@ -90,6 +90,7 @@ O artigo também conta o que deu errado no começo. Muitos sobreviventes não in
 Daí vem a limitação mais incômoda, o falso sobrevivente. Um mutante equivalente muda o texto do programa sem mudar o que ele faz, e nenhum teste consegue matá-lo. O artigo da Google dá o exemplo da memoização, o cache que guarda o resultado de uma chamada cara: sem o cache, o programa fica mais lento e devolve as mesmas respostas. Os autores lembram que decidir se um mutante é equivalente é indecidível, então nenhuma ferramenta separa todos os casos sozinha[^10]. Semanas depois, a Camila guarda em cache a consulta de CEP que alimenta o frete. O mutante que remove o cache sobrevive, e ela gasta meia hora até concluir que não há teste a escrever. Na conta do Stryker, um mutante equivalente entra como não detectado e puxa a pontuação para baixo, e por isso cem por cento raramente é a meta certa.
 
 <Comparison
+  level={2}
   columns={[
     {
       code: "+",

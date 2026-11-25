@@ -25,7 +25,7 @@ Se você escreve código, já passou por isso, talvez sem perceber. Você termin
 
 Imagine uma desenvolvedora que acabou de escrever a regra de agendamento de uma clínica. Na cabeça dela, toda consulta dura 30 minutos. Ela escreve um teste que marca uma consulta às 9h e confere que o horário das 9h30 continua livre. Passa. Escreve outro para o fim do expediente. Passa também. O requisito, porém, dizia que consultas de retorno duram 15 minutos, e essa regra nunca entrou em teste nenhum, porque nunca entrou na cabeça de quem escreveu o código.
 
-A psicologia chama isso de viés de confirmação. O psicólogo Raymond Nickerson, numa [revisão de décadas de pesquisa](https://doi.org/10.1037/1089-2680.2.2.175), descreveu esse viés como a tendência de buscar e interpretar evidências de um jeito que favorece aquilo em que já acreditamos. Quase sempre isso acontece sem intenção: a gente procura, sem perceber, justamente os casos em que a própria crença vai se confirmar. Quem testa o próprio código está testando a própria hipótese, e o defeito que mora fora dela fica invisível. (Escrevi sobre os experimentos que mostram esse viés em outra nota, [Independência de Teste como Mitigação do Viés de Confirmação](./independence_test_article).)
+A psicologia chama isso de viés de confirmação. O psicólogo Raymond Nickerson, numa [revisão de décadas de pesquisa](https://doi.org/10.1037/1089-2680.2.2.175), descreveu esse viés como a tendência de buscar e interpretar evidências de um jeito que favorece aquilo em que já acreditamos. Quase sempre isso acontece sem intenção: a gente procura, sem perceber, justamente os casos em que a própria crença vai se confirmar. Quem testa o próprio código está testando a própria hipótese, e o defeito que mora fora dela fica invisível.
 
 A saída que a área de teste encontrou é a mesma gaveta de King, só que trocando o tempo por outra pessoa. Chama-se independência de teste: a distância entre quem produziu algo e quem vai testar. Quanto mais longe do autor estiver o testador, menos ele compartilha as premissas que guiaram a escrita, e maior a chance de ele testar o caso que o autor nem imaginou.
 
@@ -55,6 +55,7 @@ O _syllabus_ da CTFL, a certificação básica de testadores mantida pelo [ISTQB
 Cada degrau traz gente com outra formação, outra perspectiva técnica e outros vieses, e por isso cada degrau tende a encontrar tipos diferentes de defeito. Um testador de fora também consegue questionar premissas que todo mundo no projeto assumiu sem discutir. O syllabus também lista o outro lado. Quem testa de longe pode ficar isolado, se comunicar mal com quem desenvolve e acabar visto como gargalo, e os desenvolvedores podem relaxar com a qualidade porque "alguém vai testar depois". A recomendação dele é misturar os degraus, com desenvolvedores testando componentes, um time de teste olhando o sistema inteiro e o pessoal do negócio fazendo o teste de aceite.
 
 <Comparison
+  level={2}
   columns={[
     {
       code: "+",
