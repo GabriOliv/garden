@@ -99,7 +99,6 @@ const DIAGRAM_PAGES = [
   "docs/istqb/ctal-tm",
   "docs/istqb/ctal-tm/ctaltm_01",
   "docs/istqb/ctal-tm/ctaltm_02",
-  "docs/istqb/ctal-tm/ctaltm_03",
   "docs/notes/e2e_useful",
   "docs/notes/peltzman_effect",
   "docs/project/getting_started",
@@ -290,7 +289,7 @@ test("DIAG-01 texto dos diagramas em IBM Plex Sans, em Paper e em Void", async (
 test("DIAG-02 todo preenchimento, traço e texto dos diagramas só com tokens ou transparente, em Paper e em Void", async ({
   page,
 }) => {
-  // 12 páginas em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
+  // 11 páginas em dois temas: com a suíte inteira rodando, passa dos 30 s padrão.
   test.setTimeout(180_000);
   for (const theme of ["paper", "void"] as Theme[]) {
     for (const path of DIAGRAM_PAGES) {
@@ -379,11 +378,8 @@ test("LEFT-03 toda cor de texto, fundo e borda do chrome e do artigo é token do
   }
 });
 
-test("DIAG-07 quadrantChart em panel; xychart com fundo paper, eixos ink e linha signal, em Paper e em Void", async ({
-  page,
-}) => {
+test("DIAG-07 quadrantChart em panel, em Paper e em Void", async ({ page }) => {
   const quadrant = ".docusaurus-mermaid-container svg[aria-roledescription='quadrantChart']";
-  const xy = ".docusaurus-mermaid-container svg[aria-roledescription='xychart']";
   for (const theme of ["paper", "void"] as Theme[]) {
     await openIn(page, "docs/istqb/ctal-tm/ctaltm_01", theme);
     await expect(page.locator(`${quadrant} .quadrant rect`)).toHaveCount(4);
@@ -391,19 +387,6 @@ test("DIAG-07 quadrantChart em panel; xychart com fundo paper, eixos ink e linha
       els.map((e) => getComputedStyle(e).fill),
     ))
       expect(fill, `quadrante ${theme}`).toBe(rgb(T[theme].panel));
-
-    await openIn(page, "docs/istqb/ctal-tm/ctaltm_03", theme);
-    await expect(page.locator(`${xy} .background`)).toHaveCount(1);
-    expect(await page.locator(`${xy} .background`).evaluate((e) => getComputedStyle(e).fill), `fundo ${theme}`).toBe(
-      rgb(T[theme].paper),
-    );
-    const axes = await page
-      .locator(`${xy} path`)
-      .evaluateAll((els) => els.filter((e) => !e.closest(".plot")).map((e) => getComputedStyle(e).stroke));
-    expect(axes.length, `eixos ${theme}`).toBeGreaterThan(0);
-    for (const stroke of axes) expect(stroke, `eixo ${theme}`).toBe(rgb(T[theme].ink));
-    const lines = await page.locator(`${xy} .plot path`).evaluateAll((els) => els.map((e) => getComputedStyle(e).stroke));
-    expect(lines, `linha ${theme}`).toEqual([rgb(T[theme].signal)]);
   }
 });
 

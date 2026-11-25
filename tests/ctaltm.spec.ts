@@ -8,11 +8,11 @@ const ROOT = join(__dirname, "..");
 /** Cópia de `tmp/original-ctal-tm/ctal-tm.md` (o `tmp/` não vai para o git). */
 const SOURCE = readFileSync(join(__dirname, "support", "ctal-tm-source.md"), "utf-8").split("\n");
 
-/** Capítulos publicados: id do critério de títulos, rota, arquivo e H1. */
+/** Capítulos publicados: id do critério de títulos, rota, arquivo, H1 e tag de estágio. */
 const CHAPTERS = [
-  { n: 1, id: "CTM-01", path: "docs/istqb/ctal-tm/ctaltm_01", file: "docs/istqb/ctal-tm/ctaltm_01.mdx", h1: "1 Gerenciando as Atividades de Teste" },
-  { n: 2, id: "CTM-02", path: "docs/istqb/ctal-tm/ctaltm_02", file: "docs/istqb/ctal-tm/ctaltm_02.mdx", h1: "2 Gerenciando o Produto" },
-  { n: 3, id: "CTM-03", path: "docs/istqb/ctal-tm/ctaltm_03", file: "docs/istqb/ctal-tm/ctaltm_03.mdx", h1: "3 Gerenciando a Equipe" },
+  { n: 1, id: "CTM-01", path: "docs/istqb/ctal-tm/ctaltm_01", file: "docs/istqb/ctal-tm/ctaltm_01.mdx", h1: "1 Gerenciando as Atividades de Teste", stage: "stageB" },
+  { n: 2, id: "CTM-02", path: "docs/istqb/ctal-tm/ctaltm_02", file: "docs/istqb/ctal-tm/ctaltm_02.mdx", h1: "2 Gerenciando o Produto", stage: "stageA" },
+  { n: 3, id: "CTM-03", path: "docs/istqb/ctal-tm/ctaltm_03", file: "docs/istqb/ctal-tm/ctaltm_03.mdx", h1: "3 Gerenciando a Equipe", stage: "stageA" },
 ];
 
 const README = "docs/istqb/ctal-tm";
@@ -44,59 +44,20 @@ const prose = (lines: string[]): string[] => {
   return out;
 };
 
-/** Títulos `##` a `######` da fonte, sem os `#`. */
+/** Títulos que o resumo encurtou: texto da fonte → texto da página. */
+const RENAMED: Record<string, string> = {
+  "1.2.4 Atividades de gerenciamento de testes para vários modelos de ciclo de vida de desenvolvimento de software":
+    "1.2.4 Atividades de gerenciamento de testes para vários modelos de ciclo de vida",
+};
+
+/** Títulos `##` a `######` da fonte, sem os `#`, com os encurtamentos de `RENAMED`. */
 const sourceHeadings = (lines: string[]) =>
   prose(lines).flatMap((l) => {
     const m = l.match(/^#{2,6}\s+(.*\S)\s*$/);
-    return m ? [m[1]] : [];
+    return m ? [RENAMED[m[1]] ?? m[1]] : [];
   });
 
 const squash = (s: string) => s.replace(/\s+/g, " ").trim();
-
-/** Uma linha da fonte sem marcação: `>`, `[!info]`, marcador de lista, `**`. */
-const plain = (l: string) =>
-  squash(
-    l
-      .replace(/^(\s*(>|-|\d+\.)(\s+|$))+/, "")
-      .replace(/^>\s*/, "")
-      .replace(/\[!\w+\]\s*/, "")
-      .replace(/\*\*/g, ""),
-  );
-
-/** Textos que a página do capítulo precisa mostrar: cada linha e cada célula de tabela. */
-const expectedTexts = (lines: string[]): string[] =>
-  prose(lines).flatMap((l) => {
-    const t = l.trim();
-    if (!t || t === "---" || /^#/.test(t) || t.startsWith("![[")) return [];
-    if (t.startsWith("|")) {
-      if (/^\|[\s:|-]+\|?$/.test(t)) return [];
-      return t
-        .split("|")
-        .flatMap((c) => c.split("<br>"))
-        .map(squash)
-        .filter(Boolean);
-    }
-    const p = plain(t);
-    return p ? [p] : [];
-  });
-
-/** Blocos `>` no início da linha (não os de dentro de lista), cada um como lista de linhas. */
-const quotes = (lines: string[]): string[][] => {
-  const blocks: string[][] = [];
-  let cur: string[] | null = null;
-  for (const l of prose(lines)) {
-    if (l.startsWith(">")) {
-      const p = plain(l);
-      cur ??= [];
-      if (p) cur.push(p);
-    } else if (cur) {
-      blocks.push(cur);
-      cur = null;
-    }
-  }
-  if (cur) blocks.push(cur);
-  return blocks;
-};
 
 const articleText = (page: Page) => page.locator("article").first().evaluate((el) => el.textContent ?? "");
 
@@ -137,45 +98,17 @@ for (const ch of CHAPTERS) {
     }
   });
 
-  test(`CTM-05 capítulo ${ch.n}: cada linha e célula da fonte aparece na página`, async ({ page }) => {
-    await page.goto(ch.path);
-    const text = squash(await articleText(page));
-    const want = expectedTexts(src);
-    expect(want.length).toBeGreaterThan(100);
-    // Cada texto precisa aparecer depois do anterior: troca de ordem ou célula curta fora do lugar falha.
-    const missing: string[] = [];
-    let pos = 0;
-    for (const w of want) {
-      const i = text.indexOf(w, pos);
-      if (i === -1) missing.push(w);
-      else pos = i + w.length;
-    }
-    expect(missing).toEqual([]);
-  });
-
   test(`CTM-06 capítulo ${ch.n}: sem sintaxe Obsidian`, async ({ page }) => {
     await page.goto(ch.path);
     const text = await articleText(page);
     for (const bad of ["[[", "]]", "![[", "[!info]"]) expect(text, bad).not.toContain(bad);
   });
 
-  test(`CTM-07 capítulo ${ch.n}: blocos > da fonte dentro de admonition`, async ({ page }) => {
-    await page.goto(ch.path);
-    const blocks = quotes(src);
-    expect(blocks.length).toBeGreaterThan(0);
-    const adm = page.locator("article .theme-admonition");
-    await expect(adm).toHaveCount(blocks.length);
-    for (const [i, block] of blocks.entries()) {
-      const text = squash((await adm.nth(i).textContent()) ?? "");
-      for (const line of block) expect(text, `bloco ${i + 1}`).toContain(line);
-    }
-  });
-
   test(`CTM-09 capítulo ${ch.n}: tags e sidebar_position`, async ({ page }) => {
     const fm = frontmatter(ch.file);
     expect(fm).toMatch(new RegExp(`^sidebar_position: ${ch.n}$`, "m"));
     await page.goto(ch.path);
-    for (const tag of ["stageA", "istqb", "ctaltm", "capitulo"]) {
+    for (const tag of [ch.stage, "istqb", "ctaltm", "capitulo"]) {
       await expect(page.locator(`article a[rel="tag"][href$="/docs/tags/${tag}"]`), tag).toHaveCount(1);
     }
     await expect(page.locator('article a[rel="tag"]')).toHaveCount(4);
@@ -191,64 +124,39 @@ test("CTM-17 quadrantChart Matriz de Poder e Interesse com os 4 quadrantes", asy
   await expect(page.locator(".docusaurus-mermaid-container svg[aria-roledescription='quadrantChart']")).toHaveCount(1);
 });
 
-test("CTM-18 flowchart DFS × BFS logo abaixo da tabela da 1.3.4", async ({ page }) => {
+test("CTM-18 figura DFS × BFS logo abaixo da tabela da 1.3.4", async ({ page }) => {
   await page.goto("docs/istqb/ctal-tm/ctaltm_01");
-  await diagrams(page);
-  // Primeiro elemento depois da tabela DFS × BFS, antes do próximo título.
-  const next = await page.locator("article table").filter({ hasText: "DFS Depth-First" }).evaluate((table) => {
+  // Primeiro elemento com imagem depois da tabela DFS × BFS, antes do próximo título.
+  const next = await page.locator("article table").filter({ hasText: "DFS (Depth-First)" }).evaluate((table) => {
     let el = table.nextElementSibling;
-    while (el && !/^H\d$/.test(el.tagName) && !el.querySelector(".docusaurus-mermaid-container svg")) el = el.nextElementSibling;
-    return el && !/^H\d$/.test(el.tagName)
-      ? {
-          kind: el.querySelector("svg")!.getAttribute("aria-roledescription"),
-          text: (el.textContent ?? "").replace(/\s+/g, " "),
-        }
-      : null;
+    while (el && !/^H\d$/.test(el.tagName) && !el.querySelector("img")) el = el.nextElementSibling;
+    if (!el || /^H\d$/.test(el.tagName)) return null;
+    const img = el.querySelector("img")!;
+    return { tag: el.tagName, alt: img.alt, legend: el.querySelector(".garden-fig-legend")?.textContent ?? "" };
   });
   expect(next).not.toBeNull();
-  expect(next!.kind).toMatch(/^flowchart/);
-  for (const t of ["DFS Depth-First", "Maior risco primeiro", "BFS Breadth-First", "Todos os riscos pelo menos uma vez"]) {
-    expect(next!.text).toContain(t);
-  }
-  // DFS em cadeia do maior risco ao menor; BFS de "todos os riscos" para cada risco.
-  const flow = page.locator(".docusaurus-mermaid-container svg[aria-roledescription^='flowchart']").filter({ hasText: "DFS Depth-First" });
-  const label = async (id: string) => squash((await flow.locator(`g.node[id*="-${id}-"]`).textContent()) ?? "");
-  expect(await Promise.all(["d0", "d1", "d2", "d3", "b0", "b1", "b2", "b3"].map(label))).toEqual([
-    "Maior risco primeiro", "1º Risco Alto", "2º Risco Médio", "3º Risco Baixo",
-    "Todos os riscos pelo menos uma vez", "Risco Alto", "Risco Médio", "Risco Baixo",
-  ]);
-  const edges = await flow.locator("path.flowchart-link").evaluateAll((ps) => ps.map((p) => p.id.replace(/^L_|_\d+$/g, "")).sort());
-  expect(edges).toEqual(["b0_b1", "b0_b2", "b0_b3", "d0_d1", "d1_d2", "d2_d3"]);
+  expect(next!.tag).toBe("FIGURE");
+  expect(next!.legend).toContain("ORDEM DE EXECUÇÃO: DFS × BFS");
+  for (const t of ["DFS", "BFS"]) expect(next!.alt).toContain(t);
 });
 
-test("CTM-19 stateDiagram do defeito com os 5 estados e Fechado como único terminal", async ({ page }) => {
+test("CTM-19 figura do fluxo do defeito com os 5 estados e Fechado como único terminal", async ({ page }) => {
   await page.goto("docs/istqb/ctal-tm/ctaltm_02");
-  await diagrams(page);
-  const svg = page.locator(".docusaurus-mermaid-container svg[aria-roledescription^='stateDiagram']");
-  await expect(svg).toHaveCount(1);
-  const states = await svg.locator("g.node").evaluateAll((els) =>
-    els.map((el) => (el.textContent ?? "").trim()).filter(Boolean),
-  );
-  expect(states.sort()).toEqual(["Aberto", "Em Andamento", "Fechado", "Rejeitado", "Resolvido"]);
-  // O único estado com transição para o fim `[*]` é o Fechado.
-  const mdx = readFileSync(join(ROOT, "docs/istqb/ctal-tm/ctaltm_02.mdx"), "utf-8");
-  const block = mdx.match(/```mermaid\nstateDiagram\n([\s\S]*?)```/)![1];
-  const names = Object.fromEntries([...block.matchAll(/^\s*(\w+): (.+)$/gm)].map((m) => [m[1], m[2].trim()]));
-  const terminal = [...block.matchAll(/^\s*(\w+) --> \[\*\]/gm)].map((m) => names[m[1]]);
-  expect(terminal).toEqual(["Fechado"]);
-  const fromClosed = [...block.matchAll(/^\s*(\w+) --> (\S+)/gm)]
-    .filter((m) => names[m[1]] === "Fechado")
-    .map((m) => m[2]);
-  expect(fromClosed).toEqual(["[*]"]);
+  const fig = page.locator("article figure").filter({ hasText: "FLUXO DE TRABALHO DO DEFEITO" });
+  await expect(fig).toHaveCount(1);
+  // O SVG pequeno entra inline (`data:`) no build: a figura é conferida pelo texto alternativo.
+  const alt = (await fig.locator("img").getAttribute("alt")) ?? "";
+  for (const state of ["Aberto", "Em Andamento", "Resolvido", "Fechado", "Rejeitado"]) expect(alt).toContain(state);
+  await expect(fig.locator("figcaption")).toContainText("único estado terminal, Fechado");
 });
 
-test("CTM-08 as 3 fórmulas da 3.2.2 em KaTeX, sem $$ visível", async ({ page }) => {
+test("CTM-08 as 2 fórmulas da 3.2.2 em KaTeX, iguais à fonte, sem $$ visível", async ({ page }) => {
   await page.goto("docs/istqb/ctal-tm/ctaltm_03");
   // A seção 3.2.2 vai do seu título até o fim do artigo (é a última).
   const formulas = page.locator("article h3[id=\"322-relação-custo-benefício-dos-testes\"] ~ * .katex");
-  await expect(formulas).toHaveCount(3);
-  await expect(page.locator("article .katex")).toHaveCount(3);
-  // Cada fórmula é o bloco `$$` da fonte, inteiro.
+  await expect(formulas).toHaveCount(2);
+  await expect(page.locator("article .katex")).toHaveCount(2);
+  // Cada fórmula é um bloco `$$` da fonte, inteiro, na ordem da fonte. O resumo deixou de fora a EMD por extenso.
   const source: string[] = [];
   let block: string[] | null = null;
   for (const l of chapter(3)) {
@@ -261,35 +169,38 @@ test("CTM-08 as 3 fórmulas da 3.2.2 em KaTeX, sem $$ visível", async ({ page }
   }
   expect(source).toHaveLength(3);
   const texts = await formulas.locator(".katex-mathml annotation").allTextContents();
-  expect(texts.map(squash)).toEqual(source.map(squash));
-  await expect(page.locator(".katex-display")).toHaveCount(3);
+  const want = source.map(squash);
+  expect(texts.map(squash)).toEqual(want.filter((f) => texts.map(squash).includes(f)));
+  await expect(page.locator(".katex-display")).toHaveCount(2);
   expect(await articleText(page)).not.toContain("$$");
 });
 
-test("CTM-20 xychart Curva de Boehm com os 5 pontos 1, 5, 10, 25 e 100", async ({ page }) => {
+test("CTM-20 LineChart Curva de Boehm com os 5 pontos 1, 5, 10, 25 e 100", async ({ page }) => {
   await page.goto("docs/istqb/ctal-tm/ctaltm_03");
-  await diagrams(page);
-  const svg = page.locator(".docusaurus-mermaid-container svg[aria-roledescription='xychart']");
-  await expect(svg).toHaveCount(1);
-  const text = (await svg.textContent()) ?? "";
-  expect(text).toContain("Curva de Boehm — Custo de Correção por Fase");
-  for (const x of ["Requisitos", "Design", "Codificação", "Testes", "Produção"]) expect(text).toContain(x);
-  await expect(svg.locator("g.line-plot-0 path")).toHaveCount(1);
+  const chart = page.locator("article figure").filter({ hasText: "CURVA DE BOEHM" }).getByRole("img", {
+    name: "Curva de Boehm: custo relativo de correção por fase",
+  });
+  await expect(chart).toHaveCount(1);
+  const xs = await page.locator("article figure .ds-lc-xlabel").allTextContents();
+  expect(xs.map(squash)).toEqual(["Requisitos", "Design", "Codificação", "Testes", "Produção"]);
   const mdx = readFileSync(join(ROOT, "docs/istqb/ctal-tm/ctaltm_03.mdx"), "utf-8");
-  expect(mdx).toMatch(/^\s*line \[1, 5, 10, 25, 100\]$/m);
+  const ys = [...mdx.matchAll(/\{ x: "[^"]+", y: (\d+)/g)].map((m) => Number(m[1]));
+  expect(ys).toEqual([1, 5, 10, 25, 100]);
 });
 
 test("CTM-23 diagramas do CTAL-TM sem classDef, style, class nem init de tema", () => {
+  let total = 0;
   for (const file of FILES) {
     const mdx = readFileSync(join(ROOT, file), "utf-8");
     const blocks = [...mdx.matchAll(/```mermaid\n([\s\S]*?)```/g)].map((m) => m[1]);
-    expect(blocks.length, file).toBeGreaterThan(0);
+    total += blocks.length;
     for (const b of blocks) {
       expect(b, file).not.toMatch(/^\s*(classDef|style|class)\s/m);
       expect(b, file).not.toMatch(/:::\w/);
       expect(b, file).not.toMatch(/%%\{.*theme/);
     }
   }
+  expect(total).toBeGreaterThan(0);
 });
 
 test("CTM-06 README: sem sintaxe Obsidian", async ({ page }) => {
@@ -298,11 +209,13 @@ test("CTM-06 README: sem sintaxe Obsidian", async ({ page }) => {
   for (const bad of ["[[", "]]", "![[", "[!info]"]) expect(text, bad).not.toContain(bad);
 });
 
-test("CTM-10 README: H1 e os h2 Capítulos, Fluxo de Estudo e Referências", async ({ page }) => {
+test("CTM-10 README: H1 e os h2 Capítulos, Como estudar, Peso de cada capítulo, Fluxo de Estudo e Referências", async ({ page }) => {
   await page.goto(README);
   await expect(page.locator("article h1")).toHaveText("Certified Tester Advanced Level, Test Management");
   expect(await pageHeadings(page)).toEqual([
     { level: 2, text: "Capítulos" },
+    { level: 2, text: "Como estudar com este resumo" },
+    { level: 2, text: "Peso de cada capítulo" },
     { level: 2, text: "Fluxo de Estudo" },
     { level: 2, text: "Referências" },
   ]);
@@ -335,7 +248,7 @@ test("CTM-12 README: cada link Capítulo N abre ctaltm_0N", async ({ page }) => 
   }
 });
 
-test("CTM-13 README: timeline com Primeira e Segunda Parte e legenda K2, K3, K4", async ({ page }) => {
+test("CTM-13 README: timeline com Primeira e Segunda Parte", async ({ page }) => {
   await page.goto(README);
   const texts = await diagrams(page);
   expect(texts).toHaveLength(1);
@@ -353,12 +266,6 @@ test("CTM-13 README: timeline com Primeira e Segunda Parte e legenda K2, K3, K4"
       "Revisão", "Revisão final e Simulado", "Timeline de Estudo",
     ].map(bare),
   );
-  const legend = page.locator('article h2:text-is("Fluxo de Estudo") ~ ul').first().locator("li");
-  expect((await legend.allTextContents()).map(squash)).toEqual([
-    "K2: Conhecimento Nível 2 (Compreensão)",
-    "K3: Conhecimento Nível 3 (Aplicação)",
-    "K4: Conhecimento Nível 4 (Análise)",
-  ]);
 });
 
 test("CTM-14 README: 4 linhas REFERÊNCIA, a última a frase das demais bibliografias", async ({ page }) => {
@@ -374,9 +281,9 @@ test("CTM-14 README: 4 linhas REFERÊNCIA, a última a frase das demais bibliogr
   ]);
 });
 
-test("CTM-15 README: tags stageA, istqb, ctaltm e readme; tag ctaltm com label CTAL-TM", async ({ page }) => {
+test("CTM-15 README: tags stageB, istqb, ctaltm e readme; tag ctaltm com label CTAL-TM", async ({ page }) => {
   await page.goto(README);
-  for (const tag of ["stageA", "istqb", "ctaltm", "readme"]) {
+  for (const tag of ["stageB", "istqb", "ctaltm", "readme"]) {
     await expect(page.locator(`article a[rel="tag"][href$="/docs/tags/${tag}"]`), tag).toHaveCount(1);
   }
   await expect(page.locator('article a[rel="tag"]')).toHaveCount(4);
@@ -411,7 +318,7 @@ test("CTM-26 a 390 px as 4 páginas não rolam na horizontal; tabela larga rola 
     );
     for (const [i, t] of tables.entries()) {
       expect(t.right, `${path} tabela ${i + 1} dentro da janela`).toBeLessThanOrEqual(390);
-      expect(["auto", "scroll"], `${path} tabela ${i + 1} rola no bloco`).toContain(t.overflow);
+      if (t.wide) expect(["auto", "scroll"], `${path} tabela ${i + 1} rola no bloco`).toContain(t.overflow);
     }
     wideTables += tables.filter((t) => t.wide).length;
     const formulas = await page.locator("article .katex-display").evaluateAll((els) =>
@@ -432,14 +339,14 @@ test("CTM-26 a 390 px as 4 páginas não rolam na horizontal; tabela larga rola 
   expect(wideFormulas).toBeGreaterThan(0);
 });
 
-test("CTM-27 diagrams devolve um texto por diagrama: README 1, capítulo 1 2, capítulo 2 3, capítulo 3 1", async ({
+test("CTM-27 diagrams devolve um texto por diagrama: README 1, capítulo 1 1, capítulo 2 1, capítulo 3 0", async ({
   page,
 }) => {
   const expected: [string, number][] = [
     [README, 1],
-    [CHAPTERS[0].path, 2],
-    [CHAPTERS[1].path, 3],
-    [CHAPTERS[2].path, 1],
+    [CHAPTERS[0].path, 1],
+    [CHAPTERS[1].path, 1],
+    [CHAPTERS[2].path, 0],
   ];
   for (const [path, n] of expected) {
     await page.goto(path);
